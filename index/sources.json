@@ -2,14 +2,14 @@
   "generated_at": "2026-02-20T00:20:48Z",
   "sources": [
     {
-      "bytes": 856499,
-      "path": "/Users/opsroller/Projects/Codex/org-mode/doc/org-manual.org",
-      "sha256": "e95577c2fe03596f2ef03c8a60d5cc78beb7bd96b1086cf8f1c0504627dbd3b4"
+      "bytes": 856453,
+      "path": "docs/org-manual.org",
+      "sha256": "15c29cb95e22fce6c8a07e57310f03bf5ff421425d449210e7f4b2c03c49201d"
     },
     {
-      "bytes": 87999,
-      "path": "/Users/opsroller/Projects/Codex/org-mode/doc/org-guide.org",
-      "sha256": "95bdb4f5d475d6455b4dd7bf68dddadcf6ec7410075a9b20370a379da499b217"
+      "bytes": 87972,
+      "path": "docs/org-guide.org",
+      "sha256": "f91d769e9a3330f8f4e1fb3326713eb67373df446b9a297601bd6f009785e614"
     }
   ]
 }
