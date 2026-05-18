@@ -25,4 +25,8 @@ This skill packages the Org Mode manual and guide as offline Org sources with a 
 - External URLs are only mirrored for domains allowlisted in `manifest.toml` (`mirror.allowlist`).
 - Non-allowlisted URLs remain as external links in chunks.
 - Mirroring caps: 8 MB per page, 1 GB total.
+- Interpret `mirror/map.json` entries as follows:
+  - Entries with `status: "ok"` and a `path` are available offline mirrors.
+  - Entries with `status: "error"` are unavailable offline; rely on the original link only if external access is allowed.
+  - Entries with `status: "skipped"` are intentionally not mirrored, usually because the URL was outside the allowlist.
 - Directives that reference `fdl.org` or `doc-setup.org` are removed from packaged docs.
