@@ -4,8 +4,8 @@ description = "Offline Org Mode manual and guide (Org source), chunked and index
 license = "GFDL-1.3"
 entrypoint = "SKILL.md"
 sources = [
-  "doc/org-manual.org",
-  "doc/org-guide.org",
+  "docs/org-manual.org",
+  "docs/org-guide.org",
 ]
 mirror = { allowlist = ["cars9.uchicago.edu", "citationstyles.org", "cs.tufts.edu", "ctan.org", "daringfireball.net", "dlmf.nist.gov", "docs.mathjax.org", "docs.oasis-open.org", "duckduckgo.com", "dvisvgm.bplaced.net", "elpa.gnu.org", "elpa.nongnu.org", "en.wikipedia.org", "git.sr.ht", "github.com", "gnu.org", "gnuplot.info", "https.git.savannah.nongnu.org", "jsdelivr.com", "list.orgmode.org", "lists.gnu.org", "man.he.net", "mathjax.org", "mathtoweb.sourceforge.io", "mirrors.ctan.org", "nextcloud.com", "nominatim.openstreetmap.org", "orgmode.org", "public-inbox.org", "tug.org", "ui.adsabs.harvard.edu", "validator.w3.org", "www.astro.uva.nl"], per_page_mb = 8, total_mb = 1024 }
 index = "index/index.json"
