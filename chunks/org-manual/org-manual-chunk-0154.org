@@ -1,0 +1,64 @@
+#+chunk-id: org-manual-chunk-0154
+#+source-file: org-manual
+#+heading-path: Exporting > Advanced Export Configuration > Filters
+#+start-line: 16826
+#+end-line: 16882
+#+external-urls: 
+#+mirrored-urls: 
+*** Filters
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+#+cindex: Filters, exporting
+Filters are lists of functions to be applied to certain parts for
+a given backend.  The output from the first function in the filter is
+passed on to the next function in the filter.  The final output is the
+output from the final function in the filter.
+
+The Org export process has many filter sets applicable to different
+types of objects, plain text, parse trees, export options, and final
+output formats.  The filters are named after the element type or
+object type: ~org-export-filter-TYPE-functions~, where {{{var(TYPE)}}}
+is the type targeted by the filter.  Valid types are:
+
+#+attr_texinfo: :columns 0.33 0.33 0.33
+| body                | bold               | babel-call       |
+| center-block        | clock              | code             |
+| diary-sexp          | drawer             | dynamic-block    |
+| entity              | example-block      | export-block     |
+| export-snippet      | final-output       | fixed-width      |
+| footnote-definition | footnote-reference | headline         |
+| horizontal-rule     | inline-babel-call  | inline-src-block |
+| inlinetask          | italic             | item             |
+| keyword             | latex-environment  | latex-fragment   |
+| line-break          | link               | node-property    |
+| options             | paragraph          | parse-tree       |
+| plain-list          | plain-text         | planning         |
+| property-drawer     | quote-block        | radio-target     |
+| section             | special-block      | src-block        |
+| statistics-cookie   | strike-through     | subscript        |
+| superscript         | table              | table-cell       |
+| table-row           | target             | timestamp        |
+| underline           | verbatim           | verse-block      |
+
+Here is an example filter that replaces non-breaking spaces ~ ~ in the
+Org buffer with =~= for the LaTeX backend.
+
+#+begin_src emacs-lisp
+(defun my-latex-filter-nobreaks (text backend info)
+  "Ensure \" \" are properly handled in LaTeX export."
+  (when (org-export-derived-backend-p backend 'latex)
+    (replace-regexp-in-string " " "~" text)))
+
+(add-to-list 'org-export-filter-plain-text-functions
+             'my-latex-filter-nobreaks)
+#+end_src
+
+A filter requires three arguments: the code to be transformed, the
+name of the backend, and some optional information about the export
+process.  The third argument can be safely ignored.  Note the use of
+~org-export-derived-backend-p~ predicate that tests for /latex/
+backend or any other backend, such as /beamer/, derived from
+/latex/.
+

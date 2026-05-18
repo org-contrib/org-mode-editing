@@ -1,0 +1,37 @@
+#+chunk-id: org-manual-chunk-0035
+#+source-file: org-manual
+#+heading-path: TODO Items > Extended Use of TODO Keywords > Faces for TODO keywords
+#+start-line: 4240
+#+end-line: 4269
+#+external-urls: 
+#+mirrored-urls: 
+*** Faces for TODO keywords
+:PROPERTIES:
+:DESCRIPTION: Highlighting states.
+:END:
+#+cindex: faces, for TODO keywords
+
+#+vindex: org-todo, face
+#+vindex: org-done, face
+#+vindex: org-todo-keyword-faces
+Org mode highlights TODO keywords with special faces: ~org-todo~ for
+keywords indicating that an item still has to be acted upon, and
+~org-done~ for keywords indicating that an item is finished.  If you
+are using more than two different states, you might want to use
+special faces for some of them.  This can be done using the variable
+~org-todo-keyword-faces~.  For example:
+
+#+begin_src emacs-lisp
+(setq org-todo-keyword-faces
+      '(("TODO" . org-warning) ("STARTED" . "yellow")
+        ("CANCELED" . (:foreground "blue" :weight bold))))
+#+end_src
+
+#+vindex: org-faces-easy-properties
+While using a list with face properties as shown for =CANCELED=
+/should/ work, this does not always seem to be the case.  If
+necessary, define a special face and use that.  A string is
+interpreted as a color.  The variable ~org-faces-easy-properties~
+determines if that color is interpreted as a foreground or
+a background color.
+

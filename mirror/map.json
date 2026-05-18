@@ -1,0 +1,456 @@
+{
+  "http://cars9.uchicago.edu/~ravel/software/gnuplot-mode.html": {
+    "error": "<urlopen error timed out>",
+    "status": "error"
+  },
+  "http://dvisvgm.bplaced.net/": {
+    "error": "HTTP Error 403: Forbidden",
+    "status": "error"
+  },
+  "http://man.he.net/?topic=%s&section=all": {
+    "bytes": 496,
+    "mime": "text/html",
+    "path": "by-url/609bd73ada334adbccf6090f1a350ec3a88e324612bc94f4c28fce552965fcfc.html",
+    "status": "ok"
+  },
+  "http://orgmode.org/=": {
+    "error": "HTTP Error 404: Not Found",
+    "status": "error"
+  },
+  "http://www.astro.uva.nl/=dominik=": {
+    "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+    "status": "error"
+  },
+  "https://10.1.2.9/bugzilla/show_bug.cgi?id=": {
+    "reason": "not_allowlisted",
+    "status": "skipped"
+  },
+  "https://citationstyles.org/": {
+    "bytes": 18977,
+    "mime": "text/html; charset=utf-8",
+    "path": "by-url/60a045ca99f9c3771871e70fe0762c0c4a2acb7f255d22ea5747fc16827022f3.html",
+    "status": "ok"
+  },
+  "https://daringfireball.net/projects/markdown/.": {
+    "bytes": 15918,
+    "mime": "text/html; charset=UTF-8",
+    "path": "by-url/2bfc1f1c35aee234328cc37dc3476580b362cd5af3190672bc8a9713282beffa.html",
+    "status": "ok"
+  },
+  "https://dlmf.nist.gov/LaTeXML/": {
+    "bytes": 19857,
+    "mime": "text/html",
+    "path": "by-url/27c9e90553250704e72d79f37cb80df5a60feec59df73e52db4a521ec9aa55c0.html",
+    "status": "ok"
+  },
+  "https://docs.mathjax.org/en/latest/input/tex/html.html#tex-and-latex-in-html-documents": {
+    "bytes": 26346,
+    "mime": "text/html; charset=utf-8",
+    "path": "by-url/2f88593d0c6982c7b16fa6ef3b9db148df2eecd54217f15fbe2e44a3741f4e43.html",
+    "status": "ok"
+  },
+  "https://docs.mathjax.org/en/latest/web/start.html": {
+    "bytes": 30706,
+    "mime": "text/html; charset=utf-8",
+    "path": "by-url/ab430165cc8a5811d7cb98775f8da8bfe346c2d6625933e30e5130b81458d214.html",
+    "status": "ok"
+  },
+  "https://docs.oasis-open.org/office/v1.2/OpenDocument-v1.2.html": {
+    "bytes": 471471,
+    "mime": "text/html",
+    "path": "by-url/c497a8fb4c63fe3ac47550f86528b95cd1b3033915541e3ddbb523d002728140.html",
+    "status": "ok"
+  },
+  "https://duckduckgo.com/?q=%s": {
+    "bytes": 21215,
+    "mime": "text/html; charset=UTF-8",
+    "path": "by-url/03338cfe27dc089cc3406c74cffc2f497bc808f47e16bed6803ddaa92d2e6005.html",
+    "status": "ok"
+  },
+  "https://elpa.gnu.org/packages/engrave-faces.html": {
+    "bytes": 4252,
+    "mime": "text/html",
+    "path": "by-url/313e75323cc34a1e4f4ce7ae462785800784dc8ef44c77c73db30934560df3b5.html",
+    "status": "ok"
+  },
+  "https://elpa.nongnu.org/": {
+    "bytes": 3042,
+    "mime": "text/html",
+    "path": "by-url/5f05c72ba743fc9f0499b0800de1062f87d17693a149cdfdb470c4eb5a8ae02a.html",
+    "status": "ok"
+  },
+  "https://elpa.nongnu.org/nongnu/cdlatex.html": {
+    "bytes": 17673,
+    "mime": "text/html",
+    "path": "by-url/897bace2af2375b90d2924b999122b03abc063d884d4a8d7c4dd85122e5e5118.html",
+    "status": "ok"
+  },
+  "https://elpa.nongnu.org/nongnu/org-contrib.html": {
+    "bytes": 11003,
+    "mime": "text/html",
+    "path": "by-url/1d4d1deaeb40333e40e8be40fc0f1d5141a452014a9dab7d4e2f2ec5f64350c2.html",
+    "status": "ok"
+  },
+  "https://en.wikipedia.org/wiki/Beamer_(LaTeX": {
+    "error": "HTTP Error 404: Not Found",
+    "status": "error"
+  },
+  "https://en.wikipedia.org/wiki/Citation_Style_Language": {
+    "bytes": 71982,
+    "mime": "text/html; charset=UTF-8",
+    "path": "by-url/b349fcb5d65dc89e47973480b2c720b5a201b1ddc1092c4a7218604419a39e62.html",
+    "status": "ok"
+  },
+  "https://en.wikipedia.org/wiki/Markdown": {
+    "bytes": 194196,
+    "mime": "text/html; charset=UTF-8",
+    "path": "by-url/b8a8a85801703ea444e1623e2f03c25915b481905ac5c1d63fe4ef4a99bbf445.html",
+    "status": "ok"
+  },
+  "https://example.com/": {
+    "reason": "not_allowlisted",
+    "status": "skipped"
+  },
+  "https://example.com/=,": {
+    "reason": "not_allowlisted",
+    "status": "skipped"
+  },
+  "https://example.com/=.": {
+    "reason": "not_allowlisted",
+    "status": "skipped"
+  },
+  "https://example.com/print/posters.html=": {
+    "reason": "not_allowlisted",
+    "status": "skipped"
+  },
+  "https://example.com/shop/products.php/posters.html.php=.": {
+    "reason": "not_allowlisted",
+    "status": "skipped"
+  },
+  "https://git.sr.ht/~bzg/org-contrib": {
+    "bytes": 16760,
+    "mime": "text/html; charset=utf-8",
+    "path": "by-url/e814b9d63570809010ffea2f16c1eb2dc552e0625d25308de4c9fe6cdf81031a.html",
+    "status": "ok"
+  },
+  "https://git.sr.ht/~bzg/org-mode": {
+    "bytes": 8957,
+    "mime": "text/html; charset=utf-8",
+    "path": "by-url/997e54aef41f3f2f2b360ca4af86faff8dfd125ca455dd94feec91f607ae12d4.html",
+    "status": "ok"
+  },
+  "https://github.com/andras-simonyi/citeproc-el": {
+    "bytes": 435096,
+    "mime": "text/html; charset=utf-8",
+    "path": "by-url/a79aa0fa0d8b6677f863090c93f792cd0b74ce274b2038d923b0ae89ac2dda14.html",
+    "status": "ok"
+  },
+  "https://github.com/cdominik/constants-for-Emacs": {
+    "bytes": 252160,
+    "mime": "text/html; charset=utf-8",
+    "path": "by-url/bf4dbcad97fae3e6f87c6afccfbf6a2ae6d8bc5f633573ff909593a4392bf178.html",
+    "status": "ok"
+  },
+  "https://github.com/hniksic/emacs-htmlize": {
+    "bytes": 250310,
+    "mime": "text/html; charset=utf-8",
+    "path": "by-url/b2b258a34a8b4ec8e8469d650c1946fdfb5034eb0d63d71b3781aae2a7963cba.html",
+    "status": "ok"
+  },
+  "https://github.com/stathissideris/ditaa": {
+    "bytes": 368615,
+    "mime": "text/html; charset=utf-8",
+    "path": "by-url/6d9159bd3892b6b31f3fcce2cbdf680eea8bd781514ed17b2de82e5c98a8a659.html",
+    "status": "ok"
+  },
+  "https://https.git.savannah.nongnu.org/git/org-mode.git": {
+    "bytes": 1179,
+    "mime": "text/html",
+    "path": "by-url/6c6c415dd9d527b20d824f0eea3d3f36f3edddbc67d7e08bf7ade3c795f8525e.git",
+    "status": "ok"
+  },
+  "https://list.orgmode.org": {
+    "bytes": 19463,
+    "mime": "text/html; charset=UTF-8",
+    "path": "by-url/9d812f725a2ded044c38186d82123338d3b63aad47a6fb459632e1afe6b81f1f.html",
+    "status": "ok"
+  },
+  "https://lists.gnu.org/mailman/listinfo/emacs-orgmode": {
+    "bytes": 6625,
+    "mime": "text/html; charset=utf-8",
+    "path": "by-url/603ec67259ac3d53c8d3828ea40887cd5a84c8b40a4472b277a5bed80c7152f2.html",
+    "status": "ok"
+  },
+  "https://mathtoweb.sourceforge.io/": {
+    "bytes": 142518,
+    "mime": "text/html; charset=utf-8",
+    "path": "by-url/be5d1dcabb422beb4fe143d0cff9cbb022543828cb3776e45fdcf4255fb07c6c.html",
+    "status": "ok"
+  },
+  "https://mirrors.ctan.org/info/latex-doc-ptr/latex-doc-ptr.pdf": {
+    "bytes": 179459,
+    "mime": "application/pdf",
+    "path": "by-url/078b94be52091798f585c2ed80c86f21a5f46ed5bca0b4290849e6515acc210f.pdf",
+    "status": "ok"
+  },
+  "https://mirrors.ctan.org/macros/latex/required/babel/base/babel.pdf": {
+    "bytes": 497120,
+    "mime": "application/pdf",
+    "path": "by-url/d46a193794f241fab2caadcde2987faef5f47dcaccf47682f9631f302577df62.pdf",
+    "status": "ok"
+  },
+  "https://nextcloud.com": {
+    "bytes": 225641,
+    "mime": "text/html; charset=UTF-8",
+    "path": "by-url/e69d64e782a70f8366092668b33a6619452f1b8909e1a3c09226bd7a13f316db.html",
+    "status": "ok"
+  },
+  "https://nominatim.openstreetmap.org/search?q=%s&polygon=1": {
+    "bytes": 780,
+    "mime": "text/html",
+    "path": "by-url/ed1bf27e876f1937b7442732819782d7c8428540524869ecd481eda612033266.html",
+    "status": "ok"
+  },
+  "https://orgmode.org": {
+    "bytes": 29988,
+    "mime": "text/html",
+    "path": "by-url/8f1099ddb6d95a5a3d22e4d5fb5cf198457425bd218d3581a8c4a02e753cefd1.html",
+    "status": "ok"
+  },
+  "https://orgmode.org,": {
+    "error": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+    "status": "error"
+  },
+  "https://orgmode.org/=": {
+    "error": "HTTP Error 404: Not Found",
+    "status": "error"
+  },
+  "https://orgmode.org/list/": {
+    "bytes": 19463,
+    "mime": "text/html; charset=UTF-8",
+    "path": "by-url/0087cde4e50845c9bafd5c659edc31059f5a5fe2f68d1b12a9ca95df7dba35ab.html",
+    "status": "ok"
+  },
+  "https://orgmode.org/org-info.js": {
+    "bytes": 36638,
+    "mime": "application/javascript",
+    "path": "by-url/00c3cae6fa149097541fbfab67b0f2cf722e11332ac52f177babf9f1efbf3bbc.js",
+    "status": "ok"
+  },
+  "https://orgmode.org/resources/img/org-mode-unicorn.svg": {
+    "bytes": 7945,
+    "mime": "image/svg+xml",
+    "path": "by-url/811b655d33705e0f3300dda62259c35d2b85668f7b147b5ad5c4b2d0b68c0cd1.svg",
+    "status": "ok"
+  },
+  "https://orgmode.org/worg/": {
+    "bytes": 13351,
+    "mime": "text/html",
+    "path": "by-url/ee3eab131b2a2081cf38a996348b207abdd0333e4af4bb5dcd8e51ffb38d72a6.html",
+    "status": "ok"
+  },
+  "https://orgmode.org/worg/=": {
+    "error": "HTTP Error 404: Not Found",
+    "status": "error"
+  },
+  "https://orgmode.org/worg/agenda-optimization.html": {
+    "bytes": 6534,
+    "mime": "text/html",
+    "path": "by-url/67b89964e5c4057477d35ff23ed5fe5ae4959b515d022a15d2b3c4d0fb9f2af6.html",
+    "status": "ok"
+  },
+  "https://orgmode.org/worg/code/org-info-js/.": {
+    "bytes": 54162,
+    "mime": "text/html",
+    "path": "by-url/4c4b65213bd34acd0ba0edf97b02201d96562684bd3db9a94b85b4542009bbb2.html",
+    "status": "ok"
+  },
+  "https://orgmode.org/worg/dev/org-build-system.html": {
+    "bytes": 45548,
+    "mime": "text/html",
+    "path": "by-url/8e57a64ab62f38f5533dc492c9652ee45622f5257b3360ac839b7a5ff8ea8019.html",
+    "status": "ok"
+  },
+  "https://orgmode.org/worg/dev/org-element-api.html": {
+    "bytes": 50104,
+    "mime": "text/html",
+    "path": "by-url/68e4dfae0cd34b7dc835d804a25517aadfcd6a0ea791159e2147f3db17fd228f.html",
+    "status": "ok"
+  },
+  "https://orgmode.org/worg/dev/org-export-reference.html": {
+    "bytes": 100743,
+    "mime": "text/html",
+    "path": "by-url/b22be4dccd11ae6f7401a8c7ddc613c1e2612639073384072249e8dcd860fa45.html",
+    "status": "ok"
+  },
+  "https://orgmode.org/worg/doc.html#hooks.": {
+    "bytes": 1822564,
+    "mime": "text/html",
+    "path": "by-url/332ed65dcec82a9a3e58eeaf21eb5ecfc3826e91fe4f599656f71b3cb23d9ee1.html",
+    "status": "ok"
+  },
+  "https://orgmode.org/worg/library-of-babel.html": {
+    "bytes": 44569,
+    "mime": "text/html",
+    "path": "by-url/8be7d3a2e4b05bc5d0c3968125dc62be08696eb1457062a2ec0a037d7ac1237b.html",
+    "status": "ok"
+  },
+  "https://orgmode.org/worg/org-contrib/.": {
+    "bytes": 38077,
+    "mime": "text/html",
+    "path": "by-url/6004cc69b61a3bda3f9da9a93074a7c3e8fd2c088dd015c98f26b79002b27a3a.html",
+    "status": "ok"
+  },
+  "https://orgmode.org/worg/org-contrib/babel/.": {
+    "bytes": 5246,
+    "mime": "text/html",
+    "path": "by-url/6a76481e24739e8d373353548f25cc2edf033df2bf93b88a487b93e20c800077.html",
+    "status": "ok"
+  },
+  "https://orgmode.org/worg/org-contrib/babel/languages/index.html": {
+    "bytes": 28809,
+    "mime": "text/html",
+    "path": "by-url/bcc5d240384c12cf299940231b1309738eec17e9e996e7c0bcd06eb02169033e.html",
+    "status": "ok"
+  },
+  "https://orgmode.org/worg/org-contrib/index.html": {
+    "bytes": 38077,
+    "mime": "text/html",
+    "path": "by-url/849588f5aeb82019f2dad5d5a729ec4db3bdd05fe75a71e09b0f636803513279.html",
+    "status": "ok"
+  },
+  "https://orgmode.org/worg/org-contrib/org-protocol.html=": {
+    "error": "HTTP Error 404: Not Found",
+    "status": "error"
+  },
+  "https://orgmode.org/worg/org-faq.html#mobileorg_webdav": {
+    "bytes": 250169,
+    "mime": "text/html",
+    "path": "by-url/d9c6ff626e496312b7ebf42d192045d318e33d4c9b763f4608d3d5e3c4e4524e.html",
+    "status": "ok"
+  },
+  "https://orgmode.org/worg/org-syntax.html": {
+    "bytes": 132763,
+    "mime": "text/html",
+    "path": "by-url/a692cc3e644085cffb08a3d2be6a67bfd3a0b9b8428818f17919cddbae8c0820.html",
+    "status": "ok"
+  },
+  "https://orgmode.org/worg/org-tutorials/org-lookups.html": {
+    "bytes": 14243,
+    "mime": "text/html",
+    "path": "by-url/f713f9d951fa80f79ecd08755d7c5b639efda81e8c8ce4bdfb22d4c9561c4026.html",
+    "status": "ok"
+  },
+  "https://orgmode.org/worg/org-tutorials/org-plot.html": {
+    "bytes": 34771,
+    "mime": "text/html",
+    "path": "by-url/5c9484f8eb695e59a1aa801d263be0247b6a8aba862f4b670e97159273573a64.html",
+    "status": "ok"
+  },
+  "https://public-inbox.org/": {
+    "error": "<urlopen error [SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version (_ssl.c:1129)>",
+    "status": "error"
+  },
+  "https://rss.slashdot.org/Slashdot/slashdot": {
+    "reason": "not_allowlisted",
+    "status": "skipped"
+  },
+  "https://sourceforge.net/projects/dvipng/": {
+    "reason": "not_allowlisted",
+    "status": "skipped"
+  },
+  "https://sourceforge.net/projects/pgf/": {
+    "reason": "not_allowlisted",
+    "status": "skipped"
+  },
+  "https://tug.org/begin.html": {
+    "bytes": 8754,
+    "mime": "text/html",
+    "path": "by-url/b963e5480250a9a2b3787fcae13440de94e2a7b94f2f4118c874bb96ab80b116.html",
+    "status": "ok"
+  },
+  "https://ui.adsabs.harvard.edu/search/q=%20author%3A\\": {
+    "bytes": 6199,
+    "mime": "text/html",
+    "path": "by-url/5a244d36f566ba71a66e5f3585e51f1cffae1e72b116dcc7551f9b7efe22b3ad.html",
+    "status": "ok"
+  },
+  "https://validator.w3.org/nu/?doc=%h": {
+    "error": "HTTP Error 403: Forbidden",
+    "status": "error"
+  },
+  "https://www.cs.tufts.edu/~nr/noweb/.": {
+    "bytes": 14292,
+    "mime": "text/html; charset=UTF-8",
+    "path": "by-url/569382db7610d1753b79daa8589bb16d1bc5a2652806ccb53a4a2a33a1b8e957.html",
+    "status": "ok"
+  },
+  "https://www.ctan.org/pkg/comment": {
+    "bytes": 16239,
+    "mime": "text/html;charset=UTF-8",
+    "path": "by-url/681f6180993f3207f958bb8bdbc55bf4698a0433f4fa98a2f4be9fd5d9fe540b.html",
+    "status": "ok"
+  },
+  "https://www.ctan.org/pkg/fvextra": {
+    "bytes": 16383,
+    "mime": "text/html;charset=UTF-8",
+    "path": "by-url/2e2e8ceb21ea2aee3ccd09f164b9c2b26ff30ae7566a54dd3875660aec54c810.html",
+    "status": "ok"
+  },
+  "https://www.ctan.org/pkg/listings": {
+    "bytes": 17567,
+    "mime": "text/html;charset=UTF-8",
+    "path": "by-url/afe6260ede1628bb5b06bccec3de01454326574dca6995e4c6d8e2a05c2594a5.html",
+    "status": "ok"
+  },
+  "https://www.ctan.org/pkg/minted": {
+    "bytes": 16882,
+    "mime": "text/html;charset=UTF-8",
+    "path": "by-url/2d25df602da5f526a76ad0d73d6c75a602fcd40daa463fe7b3c333eab41517fb.html",
+    "status": "ok"
+  },
+  "https://www.ctan.org/pkg/verse": {
+    "bytes": 15998,
+    "mime": "text/html;charset=UTF-8",
+    "path": "by-url/1eeabf9581ce6b614dcc2b03dd4b0940fc21408c9795fa144d2338f5318b5461.html",
+    "status": "ok"
+  },
+  "https://www.example.com/=": {
+    "reason": "not_allowlisted",
+    "status": "skipped"
+  },
+  "https://www.gnu.org/philosophy/kind-communication.html": {
+    "bytes": 18691,
+    "mime": "text/html",
+    "path": "by-url/5d1fcb660e747962e2b58b7b5c49be502e376b9160b7a47fc1d73ae150bdbd68.html",
+    "status": "ok"
+  },
+  "https://www.gnu.org/software/emacs/": {
+    "bytes": 14340,
+    "mime": "text/html",
+    "path": "by-url/d1cb8573c3371bef9fc0c6a71d8cd791c96a5a17563c0681f63ce2391bb023fb.html",
+    "status": "ok"
+  },
+  "https://www.gnu.org/software/emacs/manual/html_node/emacs/Package-Installation.html": {
+    "bytes": 18508,
+    "mime": "text/html",
+    "path": "by-url/3a632a3c99abef7f1b1f495dcc6f867c6c2a0f4eaa59158bdf04a39d4ad1e533.html",
+    "status": "ok"
+  },
+  "https://www.gnuplot.info/": {
+    "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.gnuplot.info'. (_ssl.c:1129)>",
+    "status": "error"
+  },
+  "https://www.jsdelivr.com/": {
+    "bytes": 46792,
+    "mime": "text/html; charset=utf-8",
+    "path": "by-url/ca4e59a5f8978e8b08d9ceed02569acaf2885d66187cb57a7550a8e8bcd62e79.html",
+    "status": "ok"
+  },
+  "https://www.mathjax.org": {
+    "bytes": 65983,
+    "mime": "text/html; charset=utf-8",
+    "path": "by-url/b032f0e7360f666f5a860455cbf9af55799a094e0a63105226fd3f15ed064e98.html",
+    "status": "ok"
+  }
+}

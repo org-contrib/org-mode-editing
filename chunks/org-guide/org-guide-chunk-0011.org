@@ -1,0 +1,21 @@
+#+chunk-id: org-guide-chunk-0011
+#+source-file: org-guide
+#+heading-path: Agenda Views > Commands in the Agenda Buffer > Quit and exit
+#+start-line: 1882
+#+end-line: 1895
+#+external-urls: 
+#+mirrored-urls: 
+*** Quit and exit
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+- {{{kbd(q)}}} (~org-agenda-quit~) ::
+
+  Quit agenda, remove the agenda buffer.
+
+- {{{kbd(x)}}} (~org-agenda-exit~) ::
+
+  Exit agenda, remove the agenda buffer and all buffers loaded by
+  Emacs for the compilation of the agenda.
+

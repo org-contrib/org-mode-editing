@@ -1,0 +1,64 @@
+#+chunk-id: org-manual-chunk-0171
+#+source-file: org-manual
+#+heading-path: Working with Source Code > Using Header Arguments > Code block specific header arguments
+#+start-line: 18368
+#+end-line: 18424
+#+external-urls: 
+#+mirrored-urls: 
+*** Code block specific header arguments
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+Header arguments are most commonly set at the source code block level,
+on the =#+BEGIN_SRC= line.  Arguments set at this level take
+precedence over those set in the ~org-babel-default-header-args~
+variable, and also those set as header properties.
+
+In the following example, setting =:results= to =silent= makes it
+ignore results of the code execution.  Setting =:exports= to =code=
+exports only the body of the code block to HTML or LaTeX.
+
+#+begin_example
+,#+NAME: factorial
+,#+BEGIN_SRC haskell :results silent :exports code :var n=0
+  fac 0 = 1
+  fac n = n * fac (n-1)
+,#+END_SRC
+#+end_example
+
+The same header arguments in an inline code block:
+
+: src_haskell[:exports both]{fac 5}
+
+#+cindex: @samp{HEADER}, keyword
+Code block header arguments can span multiple lines using =#+HEADER:=
+on each line.  Note that Org currently accepts the plural spelling of
+=#+HEADER:= only as a convenience for backward-compatibility.  It may
+be removed at some point.
+
+Multi-line header arguments on an unnamed code block:
+
+#+begin_example
+,#+HEADER: :var data1=1
+,#+BEGIN_SRC emacs-lisp :var data2=2
+   (message "data1:%S, data2:%S" data1 data2)
+,#+END_SRC
+
+,#+RESULTS:
+: data1:1, data2:2
+#+end_example
+
+Multi-line header arguments on a named code block:
+
+#+begin_example
+,#+NAME: named-block
+,#+HEADER: :var data=2
+,#+BEGIN_SRC emacs-lisp
+  (message "data:%S" data)
+,#+END_SRC
+
+,#+RESULTS: named-block
+  : data:2
+#+end_example
+

@@ -1,0 +1,16 @@
+#+chunk-id: org-manual-chunk-0085
+#+source-file: org-manual
+#+heading-path: Exporting > ASCII/Latin-1/UTF-8 export > Header and sectioning structure
+#+start-line: 13022
+#+end-line: 13030
+#+external-urls: 
+#+mirrored-urls: 
+*** Header and sectioning structure
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+Org converts the first three outline levels into headlines for ASCII
+export.  The remaining levels are turned into lists.  To change this
+cut-off point where levels become lists, see [[*Export Settings]].
+

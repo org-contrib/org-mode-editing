@@ -1,0 +1,529 @@
+#+chunk-id: org-manual-chunk-0054
+#+source-file: org-manual
+#+heading-path: Capture and Attachments > Capture > Capture templates
+#+start-line: 7980
+#+end-line: 8501
+#+external-urls: 
+#+mirrored-urls: 
+*** Capture templates
+:PROPERTIES:
+:DESCRIPTION: Define the outline of different note types.
+:END:
+#+cindex: templates, for Capture
+
+You can use templates for different types of capture items, and for
+different target locations.  The easiest way to create such templates
+is through the customize interface.
+
+- {{{kbd(C)}}} ::
+
+  #+kindex: C @r{(Capture menu}
+  #+vindex: org-capture-templates
+  Customize the variable ~org-capture-templates~.
+
+Before we give the formal description of template definitions, let's
+look at an example.  Say you would like to use one template to create
+general TODO entries, and you want to put these entries under the
+heading =Tasks= in your file =~/org/gtd.org=.  Also, a date tree in
+the file =journal.org= should capture journal entries.  A possible
+configuration would look like:
+
+#+begin_src emacs-lisp
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline "~/org/gtd.org" "Tasks")
+         "* TODO %?\n  %i\n  %a")
+        ("j" "Journal" entry (file+olp+datetree "~/org/journal.org")
+         "* %?\nEntered on %U\n  %i\n  %a")))
+#+end_src
+
+If you then press {{{kbd(t)}}} from the capture menu, Org will prepare
+the template for you like this:
+
+#+begin_example
+,* TODO
+  [[file:LINK TO WHERE YOU INITIATED CAPTURE]]
+#+end_example
+
+#+texinfo: @noindent
+During expansion of the template, =%a= has been replaced by a link to
+the location from where you called the capture command.  This can be
+extremely useful for deriving tasks from emails, for example.  You
+fill in the task definition, press {{{kbd(C-c C-c)}}} and Org returns
+you to the same place where you started the capture process.
+
+To define special keys to capture to a particular template without
+going through the interactive template selection, you can create your
+key binding like this:
+
+#+begin_src emacs-lisp
+(define-key global-map (kbd "C-c x")
+  (lambda () (interactive) (org-capture nil "x")))
+#+end_src
+
+**** Template elements
+:PROPERTIES:
+:DESCRIPTION: What is needed for a complete template entry.
+:END:
+
+Now lets look at the elements of a template definition.  Each entry in
+~org-capture-templates~ is a list with the following items:
+
+- keys ::
+
+  The keys that select the template, as a string, characters only,
+  for example ="a"=, for a template to be selected with a single key,
+  or ="bt"= for selection with two keys.  When using several keys,
+  keys using the same prefix key must be sequential in the list and
+  preceded by a 2-element entry explaining the prefix key, for
+  example:
+
+  #+begin_src emacs-lisp
+  ("b" "Templates for marking stuff to buy")
+  #+end_src
+
+  If you do not define a template for the {{{kbd(C)}}} key, this key
+  opens the Customize buffer for this complex variable.
+
+- description ::
+
+  A short string describing the template, shown during selection.
+
+- type ::
+
+  The type of entry, a symbol.  Valid values are:
+
+  - ~entry~ ::
+
+    An Org mode node, with a headline.  Will be filed as the child of
+    the target entry or as a top-level entry.  The target file should
+    be an Org file.
+
+  - ~item~ ::
+
+    A plain list item, placed in the first plain list at the target
+    location.  Again the target file should be an Org file.
+
+  - ~checkitem~ ::
+
+    A checkbox item.  This only differs from the plain list item by
+    the default template.
+
+  - ~table-line~ ::
+
+    A new line in the first table at the target location.  Where
+    exactly the line will be inserted depends on the properties
+    ~:prepend~ and ~:table-line-pos~ (see below).
+
+  - ~plain~ ::
+
+    Text to be inserted as it is.
+
+- target ::
+
+  #+vindex: org-default-notes-file
+  #+vindex: org-directory
+  #+cindex: date tree
+  Specification of where the captured item should be placed.  In Org
+  files, targets usually define a node.  Entries will become children
+  of this node.  Other types will be added to the table or list in the
+  body of this node.  Most target specifications contain a
+  =<file-spec>=.  If it is the empty string, it defaults to
+  ~org-default-notes-file~.  A file can also be given as a variable or
+  as a function called with no argument.  When an absolute path is not
+  specified for a target, it is taken as relative to ~org-directory~.
+
+  Valid values are:
+
+  - =(file <file-spec>)= ::
+
+    Text will be placed at the beginning or end of that file.
+
+  - =(id "id of existing org entry")= ::
+
+    Filing as child of this entry, or in the body of the entry.
+
+  - =(file+headline <file-spec> "node headline")= ::
+
+  - =(file+headline <file-spec> function-returning-string)= ::
+
+  - =(file+headline <file-spec> symbol-containing-string)= ::
+
+    Fast configuration if the target heading is unique in the file.
+
+  - =(file+olp <file-spec> "Level 1 heading" "Level 2" ...)= ::
+
+  - =(file+olp <file-spec> function-returning-list-of-strings)= ::
+
+  - =(file+olp <file-spec> symbol-containing-list-of-strings)= ::
+
+    For non-unique headings, the full path is safer.
+
+  - =(file+regexp <file-spec> "regexp to find location")= ::
+
+    Use a regular expression to position point.
+
+  - =(file+olp+datetree <file-spec> [ "Level 1 heading" ...])= ::
+
+  - =(file+olp+datetree <file-spec> function-returning-list-of-strings)= ::
+
+  - =(file+olp+datetree <file-spec> symbol-containing-list-of-strings)= ::
+
+    This target[fn:30] creates a heading in a date tree[fn:31] for
+    today's date.  If the optional outline path is given, the tree
+    will be built under the node it is pointing to, instead of at top
+    level.  Check out the ~:time-prompt~ and ~:tree-type~ properties
+    below for additional options.
+
+  - =(file+function <file-spec> function-finding-location)= ::
+
+    A function to find the right location in the file.
+
+  - =(clock)= ::
+
+    File to the entry that is currently being clocked.
+
+  - =(here)= ::
+
+    The position of =point=.
+
+  - =(function function-finding-location)= ::
+
+    Most general way: write your own function which both visits the
+    file and moves point to the right location.
+
+- template ::
+
+  The template for creating the capture item.  If you leave this
+  empty, an appropriate default template will be used.  Otherwise, this
+  is a string with escape codes, which will be replaced depending on
+  time and context of the capture call.  You may also get this
+  template string from a file[fn:: When the file name is not absolute,
+  Org assumes it is relative to ~org-directory~.], or dynamically,
+  from a function using either syntax:
+
+  : (file "/path/to/template-file")
+  : (function FUNCTION-RETURNING-THE-TEMPLATE)
+
+- properties ::
+
+  The rest of the entry is a property list of additional options.
+  Recognized properties are:
+
+  - ~:prepend~ ::
+
+    Normally new captured information will be appended at the target
+    location (last child, last table line, last list item, ...).
+    Setting this property changes that.
+
+  - ~:immediate-finish~ ::
+
+    When set, do not offer to edit the information, just file it away
+    immediately.  This makes sense if the template only needs
+    information that can be added automatically.
+
+  - ~:jump-to-captured~ ::
+
+    When set, jump to the captured entry when finished.
+
+  - ~:empty-lines~ ::
+
+    Set this to the number of lines to insert before and after the new
+    item.  Default 0, and the only other common value is 1.
+
+  - ~:empty-lines-after~ ::
+
+    Set this to the number of lines that should be inserted after the
+    new item.  Overrides ~:empty-lines~ for the number of lines
+    inserted after.
+
+  - ~:empty-lines-before~ ::
+
+    Set this to the number of lines that should be inserted before the
+    new item.  Overrides ~:empty-lines~ for the number lines inserted
+    before.
+
+  - ~:clock-in~ ::
+
+    Start the clock in this item.
+
+  - ~:clock-keep~ ::
+
+    Keep the clock running when filing the captured entry.
+
+  - ~:clock-resume~ ::
+
+    If starting the capture interrupted a clock, restart that clock
+    when finished with the capture.  Note that ~:clock-keep~ has
+    precedence over ~:clock-resume~.  When setting both to non-~nil~,
+    the current clock will run and the previous one will not be
+    resumed.
+
+  - ~:time-prompt~ ::
+
+    Prompt for a date/time to be used for date/week trees and when
+    filling the template.  Without this property, capture uses the
+    current date and time.  Even if this property has not been set,
+    you can force the same behavior by calling ~org-capture~ with
+    a {{{kbd(C-1)}}} prefix argument.
+
+  - ~:tree-type~ ::
+
+    Default is to group entries by day.  Use ~week~ to make a week
+    tree instead of the month-day tree, i.e., place the headings for
+    each day under a heading with the current ISO week.  Use ~month~
+    to group entries by month only.  Use any subset of ~(year quarter
+    month week day)~ to group by the specified levels.  In case
+    ~month~ and ~week~ are both specified, weeks are assigned to the
+    month containing Thursday, to be consistent with the ISO year-week
+    rule.  In case ~quarter~ and ~week~ but not ~month~ are specified,
+    quarters are 13-week periods; otherwise they are 3-month periods.
+
+    #+findex: org-datetree-find-create-hierarchy
+    ~:tree-type~ can also be a function, in which it should take the
+    date as an argument and generate a list of pairs for
+    ~org-datetree-find-create-hierarchy~.
+
+  - ~:unnarrowed~ ::
+
+    Do not narrow the target buffer, simply show the full buffer.
+    Default is to narrow it so that you only see the new material.
+
+  - ~:table-line-pos~ ::
+
+    Specification of the location in the table where the new line
+    should be inserted.  It should be a string like =II-3= meaning
+    that the new line should become the third line before the second
+    horizontal separator line.
+
+  - ~:kill-buffer~ ::
+
+    If the target file was not yet visited when capture was invoked,
+    kill the buffer again after capture is completed.
+
+  - ~:no-save~ ::
+
+    Do not save the target file after finishing the capture.
+
+  - ~:refile-targets~ :: Temporarily set ~org-refile-targets~ to the
+    value of this property.
+
+  - ~:hook~ ::
+
+    A nullary function or list of nullary functions run before
+    ~org-capture-mode-hook~ when the template is selected.
+
+ - ~:prepare-finalize~ ::
+
+    A nullary function or list of nullary functions run before
+    ~org-capture-prepare-finalize-hook~ when the template is selected.
+
+ - ~:before-finalize~ ::
+
+    A nullary function or list of nullary functions run before
+    ~org-capture-before-finalize-hook~ when the template is selected.
+
+ - ~:after-finalize~ ::
+
+    A nullary function or list of nullary functions run before
+    ~org-capture-after-finalize-hook~ when the template is selected.
+
+**** Template expansion
+:PROPERTIES:
+:DESCRIPTION: Filling in information about time and context.
+:END:
+
+In the template itself, special "%-escapes"[fn:: If you need one of
+these sequences literally, escape the =%= with a backslash.] allow
+dynamic insertion of content.  The templates are expanded in the order
+given here:
+
+- =%[FILE]= ::
+
+  Insert the contents of the file given by {{{var(FILE)}}}.
+
+- =%(EXP)= ::
+
+  Evaluate Elisp expression ~(EXP)~ and replace it with the result.
+  The ~(EXP)~ form must return a string.  Only placeholders
+  pre-existing within the template, or introduced with =%[file]=, are
+  expanded this way.  Since this happens after expanding
+  non-interactive "%-escapes", those can be used to fill the
+  expression.
+  Examples: =%(org-id-new)=, =%(eval default-directory)=
+
+- =%<FORMAT>= ::
+
+  The result of format-time-string on the {{{var(FORMAT)}}}
+  specification.
+
+- =%t= ::
+
+  Timestamp, date only.
+
+- =%T= ::
+
+  Timestamp, with date and time.
+
+- =%u=, =%U= ::
+
+  Like =%t=, =%T= above, but inactive timestamps.
+
+- =%i= ::
+
+  Initial content, the region when capture is called while the region
+  is active.  If there is text before =%i= on the same line, such as
+  indentation, and =%i= is not inside a =%(exp)= form, that prefix is
+  added before every line in the inserted text.
+
+- =%a= ::
+
+  Annotation, normally the link created with ~org-store-link~.
+
+- =%A= ::
+
+  Like =%a=, but prompt for the description part.
+
+- =%l= ::
+
+  Like =%a=, but only insert the literal link.
+
+- =%L= ::
+
+  Like =%l=, but without brackets (the link content itself).
+
+- =%c= ::
+
+  Current kill ring head.
+
+- =%x= ::
+
+  Content of the X clipboard.
+
+- =%k= ::
+
+  Title of the currently clocked task.
+
+- =%K= ::
+
+  Link to the currently clocked task.
+
+- =%n= ::
+
+  Username (taken from ~user-full-name~).
+
+- =%f= ::
+
+  File visited by current buffer when org-capture was called.
+
+- =%F= ::
+
+  Full path of the file or directory visited by current buffer.
+
+- =%:keyword= ::
+
+  Specific information for certain link types, see below.
+
+- =%^g= ::
+
+  Prompt for tags, with completion on tags in target file.
+
+- =%^G= ::
+
+  Prompt for tags, with completion all tags in all agenda files.
+
+- =%^t= ::
+
+  Like =%t=, but prompt for date.  Similarly, =%^T=, =%^u=, =%^U=.  You
+  may define a prompt like =%^{Birthday}t=.
+
+- =%^C= ::
+
+  Interactive selection of which kill or clip to use.
+
+- =%^L= ::
+
+  Like =%^C=, but insert as link.
+
+- =%^{PROP}p= ::
+
+  Prompt the user for a value for property {{{var(PROP)}}}.  You may
+  specify a default value with =%^{PROP|default}=.
+
+- =%^{PROMPT}X=, X is one of g,G,t,T,u,U,C,L ::
+
+  Prompt the user as in =%^X=, but use the custom prompt string.  You
+  may specify a default value and completions with
+  =%^{PROMPT|default|completion1|completion2|completion3...}X=.
+
+- =%^{PROMPT}= ::
+
+  Prompt the user for a string and replace this sequence with it.  You
+  may specify a default value and a completion table with
+  =%^{prompt|default|completion2|completion3...}=.  The arrow keys
+  access a prompt-specific history.
+
+- =%\N= ::
+
+  Insert the text entered at the {{{var(N)}}}th =%^{PROMPT}= (but not
+  =%^{PROMPT}X=), where {{{var(N)}}} is a number, starting from 1.
+
+- =%\*N= ::
+
+  Same as =%\N=, but include all the prompts.
+
+- =%?= ::
+
+  After completing the template, position point here.
+
+#+vindex: org-store-link-props
+#+vindex: org-link-store-props
+For specific link types, the following keywords are defined[fn:: If
+you define your own link types (see [[*Adding Hyperlink Types]]), any
+property you store with ~org-link-store-props~ can be accessed in
+capture templates in a similar way.]:
+
+#+vindex: org-link-from-user-regexp
+| Link type    | Available keywords                                       |
+|--------------+----------------------------------------------------------|
+| bbdb         | =%:name=, =%:company=                                    |
+| irc          | =%:server=, =%:port=, =%:nick=                           |
+| mh, rmail    | =%:type=, =%:subject=, =%:message-id=                    |
+|              | =%:from=, =%:fromname=, =%:fromaddress=                  |
+|              | =%:to=, =%:toname=, =%:toaddress=                        |
+|              | =%:date= (message date header field)                     |
+|              | =%:date-timestamp= (date as active timestamp)            |
+|              | =%:date-timestamp-inactive= (date as inactive timestamp) |
+|              | =%:fromto= (either "to NAME" or "from NAME")[fn:32]      |
+| gnus         | =%:group=, for messages also all email fields            |
+| w3, w3m      | =%:url=                                                  |
+| info         | =%:file=, =%:node=                                       |
+| calendar     | =%:date=                                                 |
+| org-protocol | =%:link=, =%:description=, =%:annotation=                |
+
+**** Templates in contexts
+:PROPERTIES:
+:DESCRIPTION: Only show a template in a specific context.
+:END:
+
+#+vindex: org-capture-templates-contexts
+To control whether a capture template should be accessible from
+a specific context, you can customize
+~org-capture-templates-contexts~.  Let's say, for example, that you
+have a capture template "p" for storing Gnus emails containing
+patches.  Then you would configure this option like this:
+
+#+begin_src emacs-lisp
+(setq org-capture-templates-contexts
+      '(("p" ((in-mode . "message-mode")))))
+#+end_src
+
+You can also tell that the command key {{{kbd(p)}}} should refer to
+another template.  In that case, add this command key like this:
+
+#+begin_src emacs-lisp
+(setq org-capture-templates-contexts
+      '(("p" "q" ((in-mode . "message-mode")))))
+#+end_src
+
+See the docstring of the variable for more information.
+

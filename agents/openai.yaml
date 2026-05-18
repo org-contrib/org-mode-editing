@@ -1,0 +1,4 @@
+---
+name: "org-mode-editing"
+description: "This skill packages the Org Mode manual and guide as offline Org sources with a chunk index."
+entrypoint: "SKILL.md"

@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2026-02-20 Fri 01:20 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Org-mode Contributed Packages</title>
+<meta name="author" content="Worg people" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" title="Standard" href="/worg/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Test" href="/worg/style/worg-test.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/worg/style/worg-classic.css" type="text/css" />
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="../index.html"> UP </a>
+ |
+ <a accesskey="H" href="https://orgmode.org/worg/"> HOME </a>
+</div><div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<div id="support">
+    <p>Support via <a href="https://liberapay.com/org-mode" title="Donations always help.">Liberapay</a></p>
+</div>
+</div>
+<div id="content" class="content">
+<header>
+<h1 class="title">Org-mode Contributed Packages</h1>
+</header><nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgd452f7e">org-contrib</a>
+<ul>
+<li><a href="#org65b9044">Exporter</a></li>
+<li><a href="#orgf6e62a1">Babel</a></li>
+</ul>
+</li>
+<li><a href="#org055a715">External</a></li>
+<li><a href="#org8b030ac">Moved to core</a></li>
+<li><a href="#orgcf88827">Moved out of Org repo</a></li>
+<li><a href="#org79a953f">Obsolete</a></li>
+<li><a href="#org6b015bb">Maintenance</a></li>
+</ul>
+</div>
+</nav>
+<p>
+This page lists some contributed packages to Org-mode, with links to
+available documentation.
+</p>
+
+<p>
+Most of these packages are located in the <a href="https://git.sr.ht/~bzg/org-contrib">org-contrib</a> repository.
+</p>
+
+<p>
+Some used to live in the <i>contrib</i> directory of the Org distribution.
+Some have made it into the core by now, but we keep the documentation
+here because it is more extensive than what is available in the
+manual.  If no documentation link is present, see the file header of
+the package &ndash; it will hopefully have some documentation.
+</p>
+<div id="outline-container-orgd452f7e" class="outline-2">
+<h2 id="orgd452f7e">org-contrib</h2>
+<div class="outline-text-2" id="text-orgd452f7e">
+<dl class="org-dl">
+<dt>docco side-by-side annotated code export to HTML</dt><dd>The <code>docco</code> tool
+(see <a href="http://ashkenas.com/docco/">http://ashkenas.com/docco/</a>) generates HTML from JavaScript
+source code providing an attractive side-by-side display of
+source code and comments.  This file (see <a href="../org-docco/index.html">org-docco.org</a>)
+generates the same type of output from Org-mode documents with
+code embedded in code blocks.  For example org-docco output see
+<a href="http://eschulte.github.io/org-docco/org-docco.html">http://eschulte.github.io/org-docco/org-docco.html</a>.</dd>
+
+<dt><i>org-annotate-file.el</i> &ndash; annotate a file with org syntax</dt><dd>The annotation is in a separate file, with links back to the
+annotated file.  Written by <i>Philip Jackson</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/org-annotate-file.el">Link to raw file</a>.</dd>
+
+<dt><i>org-bibtex-extras.el</i> &ndash; extras for working with org-bibtex entries</dt><dd>Written by <i>Eric Schulte</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/org-bibtex-extras.el">Link to raw file</a>.</dd>
+
+<dt>ol-bookmark.el/ &ndash; support for links to Emacs bookmarks</dt><dd>Written by <i>Tokuya Kameshima</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/ol-bookmark.el">Link to raw file</a>.</dd>
+
+<dt><a href="org-checklist.html"><i>org-checklist.el</i> &ndash; org functions for checklist handling</a></dt><dd>Reset checklists in repeating entries.  Written by <i>James TD Smith</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/org-checklist.el">Link to raw file</a>.</dd>
+
+<dt><a href="org-choose.html"><i>org-choose.el</i> &ndash; decision management for org-mode</a></dt><dd>Org-choose helps documenting a decision-making process by using
+TODO keywords for different degrees of <i>chosenness</i>, and by
+automatically keeping a set of alternatives in a consistent state.
+Writen by <i>Tom Breton</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/org-choose.el">Link to raw file</a>.</dd>
+
+<dt><a href="org-collector.html"><i>org-collector.el</i> &ndash; collect properties into tables</a></dt><dd>Collect and process properties into a table.
+Written by <i>Eric Schulte</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/org-collector.el">Link to raw file</a>.</dd>
+
+<dt><a href="org-depend.html"><i>org-depend.el</i> &ndash; TODO dependencies for Org-mode</a></dt><dd>Make TODO state changes in one entry trigger changes in another, or
+be blocked by the state of another entry.  Also, easily create
+chains of TODO items with exactly one active item at any time.
+Written by <i>Carsten Dominik</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/org-depend.el">Link to raw file</a>.</dd>
+
+<dt><i>ol-elisp-symbol.el</i> &ndash; Org links to emacs-lisp symbols.</dt><dd>This can create annotated links that exactly point to the definition
+location of a variable of function.  Written by <i>Bastien Guerry</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/ol-elisp-symbol.el">Link to raw file</a>.</dd>
+
+<dt><i>org-expiry.el</i> &ndash; expiry mechanism for Org entries</dt><dd>Written by <i>Bastien Guerry</i>.  <a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/org-expiry.el">Link to raw file</a>.</dd>
+
+<dt><a href="org-git-link.html"><i>ol-git-link.el</i> &ndash; link to files under git version control</a></dt><dd>This package adds new link types to link to specific versions of a
+file, which will be checked out when the link is activated.
+Written by <i>Reimar Finken</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/ol-git-link.el">Link to raw file</a>.</dd>
+
+<dt><i>org-interactive-query.el</i> &ndash; interactive modification of tags queries</dt><dd>After running a general query in Org, this package allows to narrow
+down the results by adding more tags or keywords.  Written by
+<i>Christopher League</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/org-interactive-query.el">Link to raw file</a>.</dd>
+
+<dt><i>org-invoice.el</i> &ndash; help manage client invoices</dt><dd>Written by <i>Peter Jones</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/org-invoice.el">Link to raw file</a>.</dd>
+
+<dt><i>org-learn.el</i> &ndash; Implements SuperMemo's incremental learning algorithm</dt><dd>Written by <i>John Wiegley</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/org-learn.el">Link to raw file</a>.</dd>
+
+<dt><a href="org-mac-iCal.html"><i>org-mac-iCal.el</i> &ndash; import OS X iCal.app events into Emacs diary</a></dt><dd>Written by <i>Christopher Suckling</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/org-mac-iCal.el">Link to raw file</a>.</dd>
+
+<dt><i>org-mairix.el</i> &ndash; hook mairix search into Org for different MUAs</dt><dd>Written by <i>Georg C. F. Greve</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/org-mairix.el">Link to raw file</a>.</dd>
+
+<dt><i>ol-mew.el</i> &ndash; Support for links to Mew messages from within Org-mode</dt><dd>Written by <i>Tokuya Kameshima</i>
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/ol-mew.el">Link to raw file.</a></dd>
+
+<dt><i>org-notify.el</i> &ndash; notifications for Org-mode</dt><dd><p>
+Written by <i>Peter Münster</i>.
+<a href="https://elpa.gnu.org/packages/org-notify.html">Link to ELPA page</a>.
+</p>
+
+<p>
+This package looks for todo-entries with deadline in your agenda files.
+For such entries, you can get configurable reminders:
+notification-pop-ups, emails, noise, and so on. You can define various
+notification-types, each one with its own actions and timings. Each
+todo-entry can have its own notification-type, defined by a property. For
+some notification actions (pop-ups) it's possible to mark something
+"done", or to shift the deadline just by one mouse-click.
+</p></dd>
+
+<dt><i>ol-notmuch.el</i> &ndash; support for links to notmuch messages</dt><dd>Written by <i>Matthieu Lemerre</i>.
+<a href="https://git.sr.ht/~tarsius/ol-notmuch">Link to repository.</a></dd>
+
+<dt><i>org-panel.el</i> &ndash; simplified and display-aided access to some Org commands</dt><dd>Written by <i>Lennart Borgman</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/org-panel.el">Link to raw file</a>.</dd>
+
+<dt><i>org-registry.el</i> &ndash; a registry for Org links</dt><dd>Find out from where links point to a given file or location.
+Written by <i>Bastien Guerry</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/org-registry.el">Link to raw file</a>.</dd>
+
+<dt><i>org-screen.el</i> &ndash; visit screen sessions through Org-mode links</dt><dd>Written <i>Andrew Hyatt</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/org-screen.el">Link to raw file</a>.</dd>
+
+<dt><i>org-screenshot.el</i> &ndash; Take and manage screenshots in Org-mode files</dt><dd>Written by <i>Max Mikhanosha</i>
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/org-screenshot.el">Link to raw file.</a></dd>
+
+<dt><a href="http://juanreyero.com/article/emacs/org-teams.html"><i>org-secretary.el</i> &ndash; Team management with org-mode</a></dt><dd>Written by <i>Juan Reyero</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/org-secretary.el">Link to raw file</a>.</dd>
+
+<dt><i>org-sudoku.el</i> &ndash; Create and solve SUDOKU games in Org tables</dt><dd>Written by <i>Carsten Dominik</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/org-sudoku.el">Link to raw file</a>. ::</dd>
+
+<dt><a href="https://orgmode.org/worg/org-tutorials/multitarget-tables.html"><i>orgtbl-sqlinsert.el</i> &ndash; convert Org-mode tables to SQL insertions</a></dt><dd>Written by <i>Jason Riedy</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/orgtbl-sqlinsert.el">Link to raw file</a>.</dd>
+
+<dt><i>org-toc.el</i> &ndash; table of contents in a separate buffer</dt><dd>With fast access to sections and easy visibility cycling.
+Written by <i>Bastien Guerry</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/org-toc.el">Link to raw file</a>.</dd>
+
+<dt><i>org-velocity.el</i> &ndash; something like Notational Velocity for Org</dt><dd>Written by <i>Paul M. Rodriguez</i>.
+<a href="https://github.com/ruricolist/org-velocity">Link to Git repository.</a></dd>
+
+<dt><i>ol-vm.el</i> &ndash; Support for links to VM messages from within Org-mode</dt><dd>Written by <i>Carsten Dominik</i>
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/ol-vm.el">Link to raw file.</a></dd>
+
+<dt><a href="org-wikinodes.html"><i>org-wikinodes.el</i> &ndash; CamelCase wiki-like links to nodes</a></dt><dd>Written by <i>Carsten Dominik</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/org-wikinodes.el">Link to raw file</a>.</dd>
+
+<dt><i>ol-wl.el</i> &ndash; Support for links to Wanderlust messages from within Org-mode</dt><dd>Written by <i>Tokuya Kameshima</i> and <i>David Maus</i>
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/ol-wl.el">Link to raw file.</a></dd>
+</dl>
+</div>
+<div id="outline-container-org65b9044" class="outline-3">
+<h3 id="org65b9044">Exporter</h3>
+<div class="outline-text-3" id="text-org65b9044">
+<p>
+See <a href="../exporters/index.html">Exporters</a>.
+</p>
+
+<dl class="org-dl">
+<dt><i>ox-bibtex.el</i> &ndash; Export bibtex fragments</dt><dd>Formerly known as <i>org-exp-bibtex.el</i>.
+Written by <i>Taru Karttunen</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/ox-bibtex.el">Link to raw file</a>.</dd>
+
+<dt><i>ox-confluence.el</i> &ndash; Confluence Wiki Back-End for Org Export Engine</dt><dd>Written by <i>Sébastien Delafond</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/ox-confluence.el">Link to raw file</a>.</dd>
+
+<dt><i>ox-deck.el</i> &ndash; deck.js Presentation Back-End for Org Export Engine</dt><dd>Written by <i>Rick Frankel</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/ox-deck.el">Link to raw file</a>.</dd>
+
+<dt><i>ox-freemind.el</i> &ndash; Freemind Mindmap Back-End for Org Export Engine</dt><dd>Written by <i>Jambunathan K</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/ox-freemind.el">Link to raw file</a>.</dd>
+
+<dt><a href="../exporters/ox-groff.html"><i>ox-groff.el</i> &ndash; Groff Back-End for Org Export Engine</a></dt><dd>Written by <i>Nicolas Goaziou</i> and <i>Luis R Anaya</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/ox-groff.el">Link to raw file</a>.</dd>
+
+<dt><a href="../exporters/koma-letter-export.html"><i>ox-koma-letter.el</i> &ndash; An exporter to Write KOMA</a></dt><dd>Written by Nicolas Goaziou.
+<a href="http://gpl.coulmann.de/scrlttr2.html">Scrlttr2</a> letters in Org.</dd>
+
+<dt><i>ox-rss.el</i> &ndash; RSS 2.0 Back-End for Org Export Engine</dt><dd>Written by <i>Bastien Guerry</i>.
+<a href="https://github.com/benedicthw/ox-rss">Link to git repo.</a></dd>
+
+<dt><i>ox-s5.el</i> &ndash; S5 Presentation Back-End for Org Export Engine</dt><dd>Written by <i>Rick Frankel</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/ox-s5.el">Link to raw file</a>.</dd>
+
+<dt><i>ox-taskjuggler.el</i> &ndash; TaskJuggler Back-End for Org Export Engine</dt><dd>See <a href="../org-tutorials/org-taskjuggler.html">Tutorial</a>.
+Written by <i>Christian Egli</i> and <i>Nicolas Goaziou</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/ox-taskjuggler.el">Link to raw file</a>.</dd>
+
+<dt><i>org-static-mathjax.el</i> &ndash; Muse-like tags in Org-mode</dt><dd>Written by <i>Jan Böker</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/org-static-mathjax.el">Link to raw file</a>.</dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-orgf6e62a1" class="outline-3">
+<h3 id="orgf6e62a1">Babel</h3>
+<div class="outline-text-3" id="text-orgf6e62a1">
+<dl class="org-dl">
+<dt><i>ob-eukleides.el</i> &ndash; Org-babel functions for eukleides evaluation</dt><dd>Written by <i>Luis Anaya</i>
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/ob-eukleides.el">Link to raw file.</a></dd>
+
+<dt><i>ob-fomus.el</i> &ndash; Org-babel functions for fomus evaluation</dt><dd>Written by <i>Torsten Anders</i>
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/ob-fomus.el">Link to raw file.</a></dd>
+
+<dt><i>ob-mathomatic.el</i> &ndash; Org-babel functions for mathomatic evaluation</dt><dd>Written by <i>Eric S Fraga</i> and <i>Eric Schulte</i> and <i>Luis Anaya (Mathomatic)</i>
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/ob-mathomatic.el">Link to raw file.</a></dd>
+
+<dt><i>ob-oz.el</i> &ndash; Org-babel functions for Oz evaluation</dt><dd>Written by <i>Torsten Anders</i> and <i>Eric Schulte</i>
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/ob-oz.el">Link to raw file.</a></dd>
+
+<dt><i>ob-tcl.el</i> &ndash; Org-babel functions for tcl evaluation</dt><dd>Written by <i>Dan Davison</i> and <i>Eric Schulte</i> and <i>Luis Anaya</i>
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/ob-tcl.el">Link to raw file.</a></dd>
+</dl>
+</div>
+</div>
+</div>
+<div id="outline-container-org055a715" class="outline-2">
+<h2 id="org055a715">External</h2>
+<div class="outline-text-2" id="text-org055a715">
+<dl class="org-dl">
+<dt><a href="org-drill.html"><i>org-drill.el</i> &ndash; flashcards and spaced repetition for org-mode</a></dt><dd>Items in org-mode outlines can be used as flashcards. The user can
+conduct interactive "drill sessions" to memorize the material in a
+set of flashcards; cards are scheduled for review using the spaced
+repetition algorithms popularised by <a href="http://supermemo.com/index.htm">SuperMemo</a> and similar
+programs. Numerous flashcard types are defined, and the user can add
+their own card types using elisp.  Written by <i>Paul Sexton</i>.</dd>
+
+<dt><a href="https://github.com/Neil-Smithline/org-auto-shorten-url/blob/master/org-auto-shorten-url.el">org-auto-shorten-url.el</a></dt><dd>By Neil Smithline.  Automatically shorten URLs
+in `org-mode' using Bit.ly or a link shortener of your choice.  See
+the comment in the code to make sure you load the needed dependancies.</dd>
+
+<dt><a href="org-bom.html"><i>Org-bom</i> &ndash; Bill of Materials</a></dt><dd>This add-on by <i>Christian Fortin</i> helps you build collections from
+your Org buffer and gather data in tables. Every item identified as a
+component will be totalized in a temporary database, from which you
+can extract useful information, such as the number of item per
+section. You should find here all you would expect from a BOM of a
+professionnal CAD software.
+<a href="https://github.com/Frozenlock/Org-Bill-of-materials">Link to raw file</a></dd>
+
+<dt><a href="https://github.com/suhailshergill/google-weather-el"><i>org-google-weather.el</i> &ndash; weather forecast in the agenda buffer</a></dt><dd>Allow %%(org-google-weather "New York") sexps for displaying weather
+forecast in the agenda buffer.
+Written by <i>Julien Danjou</i>.</dd>
+
+<dt><a href="https://github.com/GitoriousLispBackup/org-import-icalendar/blob/master/org-import-icalendar.el"><i>org-import-icalendar.el</i></a> &ndash; import iCal events in an Org buffer</dt><dd>Written by <i>Vagn Johansen</i>.</dd>
+
+<dt><a href="org-mac-link.html"><i>org-mac-link</i> &ndash; grab links from various mac applications</a></dt><dd>Grab the current link or selection from an open mac application and
+insert it as a hyperlink at point in an org-mode document. Written
+by <i>Anthony Lander</i>, <i>John Wiegley</i> and <i>Christopher Suckling</i>.
+This file replaces the earlier org-mac-message.el and
+org-mac-link-grabber.el.
+<a href="https://gitlab.com/aimebertrand/org-mac-link">project page</a>.</dd>
+
+<dt><a href="https://github.com/magit/orgit"><i>orgit</i></a> &ndash; support for <a href="https://github.com/magit/magit">magit</a> links</dt><dd>Written by <i>Jonas Bernoulli</i>.</dd>
+
+<dt><a href="http://www.emacswiki.org/emacs/org-occur-goto.el"><i>org-occur-goto.el</i></a> &ndash; search open org buffers with an occur interface</dt><dd>Usage: M-x oog, then start typing.  Select from the occur matches with
+up/down/pgup/pgdown and press enter (you can navigate the history with
+M-p/M-n).  The search string must be at least 3 characters long (by
+default).</dd>
+
+<dt><a href="http://www.emacswiki.org/emacs/org-search-goto.el"><i>org-search-goto.el</i></a> &ndash; Use search to go to locations in your org buffers</dt><dd>Usage: M-x osg, then start typing.  Select from the matches with
+up/down/pgup/pgdown and press enter to go that location (you can navigate
+the history with M-p/M-n).  If the search string contains several strings
+separated by spaces then these substrings can appear in any order in the
+results.  See the <a href="https://list.orgmode.org/loom.20111211T094124-814@post.gmane.org">announcement</a> on the list.</dd>
+
+<dt><a href="http://www.emacswiki.org/emacs/org-search-goto-ml.el"><i>org-search-goto-ml.el</i></a>  &ndash; Use multiline search to go to locations in your org buffers</dt><dd>Usage: M-x osg, then start typing.  Select from the matches with
+up/down/pgup/pgdown and press enter to go that location (you can navigate
+the history with M-p/M-n).  If the search string contains several strings
+separated by spaces then these substrings can appear in any order in the
+results.  The search handles an org heading and its text as one block, so
+the substrings can match in any part of an org entry.  If the heading is
+not matching, only the body, the heading is added to the results anyway
+to indicated which entry is matched.</dd>
+
+<dt><i>org-superstar.el</i> &ndash; Prettify headings and plain lists in Org mode</dt><dd>Written by <i>D. Williams</i>.
+Partially based on org-bullets, prettifying headline bullets with
+UTF-8 characters, this package also supports special headline
+bullets for TODO keywords, item bullets for plain lists and
+further options for handling leading stars, such as the ability
+to hide leading stars in the same way Org hides emphasis markers.
+Link to the github <a href="https://github.com/integral-dw/org-superstar-mode">project page</a>.</dd>
+
+<dt><i>org-link-minor-mode.el</i> &ndash; Enables Org links in non org-mode buffers</dt><dd>Written by <i>Sean O'Halpin</i>.
+<a href="https://github.com/seanohalpin/org-link-minor-mode/blob/master/org-link-minor-mode.el">Link to github file</a> and the github <a href="https://github.com/seanohalpin/org-link-minor-mode">project page</a>.</dd>
+
+<dt><i>org-impress-js.el</i> &ndash; impress.js export for Org mode</dt><dd>Written by <i>kinjo</i>.
+Link to the github <a href="https://github.com/kinjo/org-impress-js.el">project page</a>.</dd>
+
+<dt><i>org-weights.el</i> &ndash; display the "weight" of a headline, with the # of sub headlines</dt><dd>Written by <a href="http://pinard.progiciels-bpi.ca/index.html">François Pinard</a>.
+Link to the github <a href="https://github.com/pinard/org-weights">project page</a>.</dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-org8b030ac" class="outline-2">
+<h2 id="org8b030ac">Moved to core</h2>
+<div class="outline-text-2" id="text-org8b030ac">
+<dl class="org-dl">
+<dt><a href="babel/index.html"><i>Org-babel</i> &ndash; execution of source code blocks</a></dt><dd>The embedded code evaluation and literate programming subsystem
+written by <i>Eric Schulte</i> and <i>Dan Davison</i> <br>
+Org Babel is now part of the Org core and <a href="https://orgmode.org/manual/Working-with-source-code.html#Working-with-source-code">documented in the manual</a>.
+See also <a href="#orgf6e62a1">Babel</a> for contrib files regarding org-babel.</dd>
+
+<dt><i>org-element.el</i> &ndash; Parser and applications for Org syntax</dt><dd>Written by <i>Nicolas Goaziou</i>.
+<a href="https://git.savannah.nongnu.org/cgit/org-mode.git/tree/lisp/org-element.el">Link to raw file</a>.</dd>
+
+<dt><a href="org-exp-blocks.html"><i>org-exp-blocks.el</i> &ndash; pre-process blocks when exporting org files</a></dt><dd>Org-export-blocks allows for the pre-processing or blocks in
+org-mode files to create images, or specially formatted HTML or
+LaTeX output.  Written by <i>Eric Schulte</i>. <br>
+Org-exp-blocks is now part of the Org core as <a href="https://git.savannah.nongnu.org/cgit/org-mode.git/tree/lisp/ob-exp.el">ob-exp.el</a>.</dd>
+
+<dt><i>ox.el</i> &ndash; Generic Export Engine For Org</dt><dd>Generic export engine for Org built on Org Elements.
+Written by <i>Nicolas Goaziou</i>.
+<a href="https://git.savannah.nongnu.org/cgit/org-mode.git/tree/lisp/ox.el">Link to raw file.</a> <br>
+Back-ends for <i>ox.el</i> (ascii, html, latex, odt, publish) were
+previously located in the <i>EXPERIMENTAL</i> directory of the Org
+distribution. They are a part of org-mode core as ox.el and ox-&lowast;.el
+since Org 8.0.</dd>
+
+<dt><i>org-eww.el</i> &ndash; Support link/copy/paste from eww to Org-mode</dt><dd>Makes it possible to store an org-link to the url of an eww-buffer.
+The second feature is to copy a region from eww keeping the links.
+Written by <i>Marco Wahl</i>.
+<a href="https://git.savannah.nongnu.org/cgit/org-mode.git/tree/lisp/ol-eww.el">Link to raw file</a>.</dd>
+
+<dt><a href="org-feed.html"><i>org-feed.el</i> &ndash; add RSS feed items to Org files</a></dt><dd>Read RSS feeds from the web, add new items to Org files, and trigger
+actions when items have changed.
+Written by <i>Carsten Dominik</i>.
+<a href="https://git.savannah.nongnu.org/cgit/org-mode.git/tree/lisp/org-feed.el">Link to raw file</a>. <br>
+This module is part of the Org core <a href="https://orgmode.org/manual/RSS-feeds.html#RSS-feeds%22">documented in the manual</a>.</dd>
+
+<dt><a href="org-protocol.html"><i>org-protocol.el</i> &ndash; Trigger actions through URLs</a></dt><dd>org-protocol intercepts calls from emacsclient to trigger custom
+actions without external dependencies. Only one protocol has to be
+configured with your external applications or the operating
+system.<br>
+This package is part of the Org core and also <a href="https://orgmode.org/manual/Protocols.html#Protocols">documented in the manual</a>.</dd>
+
+<dt><a href="../org-tutorials/org-R/org-R.html"><i>org-R.el</i> &ndash; Computing and data visualisation in Org-mode using R</a></dt><dd>Written by <i>Dan Davison</i>.
+<a href="https://git.savannah.nongnu.org/cgit/org-mode.git/tree/contrib/lisp/org-R.el?id=470fba60861a7a2b9d5cc4251905918eba06e528">Link to legacy raw file</a>.
+This modules has been superseded by the Org Babel functionality,
+which is part of the Org core and <a href="https://orgmode.org/manual/Working-with-source-code.html#Working-with-source-code%22">documented in the manual</a>.</dd>
+
+<dt><a href="org-special-blocks.html"><i>org-special-blocks.el</i> &ndash; turn blocks into LaTeX envs and HTML divs</a></dt><dd>Written by <i>Chris Gray</i>. <br>
+This package is part of the Org core.</dd>
+
+<dt><i>ol-man.el</i> &ndash; support for links to manpages in Org-mode.</dt><dd>Written by <i>Carsten Dominik</i>.
+<a href="https://git.savannah.nongnu.org/cgit/org-mode.git/tree/lisp/ol-man.el">Link to raw file</a>.</dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-orgcf88827" class="outline-2">
+<h2 id="orgcf88827">Moved out of Org repo</h2>
+<div class="outline-text-2" id="text-orgcf88827">
+<dl class="org-dl">
+<dt><i>htmlize.el</i> &ndash; convert buffer text and decorations to HTML</dt><dd>Written by <i>Hrvoje Niksic</i>. <br>
+<a href="https://github.com/hniksic/emacs-htmlize">Repo</a>.</dd>
+
+<dt><i>org-bullets.el</i> &ndash; Show bullets in org-mode as UTF-8 characters</dt><dd>Written by <i>sabof</i> <br>
+<a href="https://github.com/sabof/org-bullets">Repo</a>.</dd>
+
+<dt><i>org-jira.el</i> &ndash; add a jira:ticket protocol to Org</dt><dd>Written by <i>Jonathan Arkell</i>, later maintained by <i>Bao Haojun</i> and
+   then <i>Matthew Carter</i>. <br>
+<a href="https://github.com/ahungry/org-jira">Repo</a>.</dd>
+
+<dt><a href="org-mime.html"><i>org-mime.el</i> &ndash; org html export for text/html MIME emails</a></dt><dd><p>
+<code>org-mime</code> can be used to send HTML email using Org-mode HTML export.
+</p>
+
+<p>
+This approximates a WYSiWYG HTML mail editor from within Emacs, and
+can be useful for sending tables, fontified source code, and inline
+images in email.  Written by <i>Eric Schulte</i>, maintained by <i>Chen Bin</i>.
+<a href="https://github.com/org-mime/org-mime">Repo</a>.
+</p></dd>
+
+<dt><i>org-contacts.el</i> &ndash; manage contacts</dt><dd>Managing contacts information, recording, searching etc in Org
+mode. As contacts database backend for mu4e etc.  Written by <i>Julien
+Danjou</i>, now maintained by <i>stardiviner</i>. Link to <a href="https://repo.or.cz/org-contacts.git">project repo page</a>.</dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-org79a953f" class="outline-2">
+<h2 id="org79a953f">Obsolete</h2>
+<div class="outline-text-2" id="text-org79a953f">
+<dl class="org-dl">
+<dt>HTML presentations from an Org file</dt><dd><p>
+Several possibilities here:
+</p>
+
+<p>
+<b>Note</b>: These were all written for the old exporter, and
+will most likely <i>not</i> work with the new export framework.
+</p>
+
+<ul class="org-ul">
+<li><a href="https://github.com/eschulte/org-S5">org-S5</a> from Eric Schulte</li>
+<li><a href="https://github.com/relevance/org-html-slideshow.git">org-html-slideshow</a> from Stuart Sierra</li>
+<li><a href="https://gist.github.com/509761">org-html5presentation.el</a> from kinjo</li>
+</ul>
+
+<p>
+For use with the new exporter, <i>ox-s5.el</i> (<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/ox-s5.el">link to raw file)</a> and
+<i>ox-deck.el</i> (<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/ox-deck.el">link to raw file</a>), both by Rick Frankel, are
+included in the <i>contrib</i> directory. The latest source and
+documentation for both are at
+<a href="https://github.com/cybercode/org-slides">https://github.com/cybercode/org-slides</a>.
+</p></dd>
+
+<dt><i>org-browser-url.el</i> &ndash;  bookmark from a browser into org links</dt><dd>Written by <i>Ross Patterson</i>.
+<a href="https://git.savannah.nongnu.org/cgit/org-mode.git/tree/contrib/lisp/org-browser-url.el?id=0b9b7d7b58a928240d3f4d4ca427d5361020c892">Link to legacy raw file</a>.
+This module has been superseded by <i>org-protocol.el</i>, part
+of the Org core, and <a href="https://orgmode.org/manual/Protocols.html#Protocols">documented in the manual</a>.</dd>
+
+<dt><i>org-colview-xemacs.el</i> &ndash; Column View in Org-mode, XEmacs-specific version</dt><dd>Written by <i>Carsten Dominik &lt;carsten at orgmode dot org&gt;</i>
+Removed in <a href="https://git.savannah.nongnu.org/cgit/org-mode.git/commit/?id=a54dd63e289f0c21ab3d5c01ac026aaf570bd45e">this commit</a>.</dd>
+
+<dt><i>org-eval.el</i> &ndash; show evaluation result of code</dt><dd>The <code>&lt;lisp&gt;</code> tag, adapted from Emacs Wiki and Emacs Muse, allows
+text to be included in a document that is the result of evaluating
+some code.  Other scripting languages like <i>perl</i> can be
+supported with this package as well.
+Written by <i>Carsten Dominik</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/org-eval.el">Link to raw file</a>. <br>
+This modules has been superseded by the Org Babel functionality,
+which is part of the Org core and <a href="https://orgmode.org/manual/Working-with-source-code.html#Working-with-source-code">documented in the manual</a>.</dd>
+
+<dt><a href="org-eval-light.html"><i>org-eval-light.el</i> &ndash; display result of evaluating code in various languages (light)</a></dt><dd>Org-eval-light allows the execution of source code embedded in an
+org-mode file.  The results of the execution are placed into the
+org-mode file.  It is a reworking of Carsten's org-eval with the
+goals of a more uniform syntax, safer default execution rules, and
+increased ease of execution.
+Written by <i>Eric Schulte</i>.
+<a href="https://git.sr.ht/~bzg/org-contrib/blob/master/lisp/org-eval-light.el">Link to raw file</a>. <br>
+This modules has been superseded by the Org Babel functionality,
+which is part of the Org core and <a href="https://orgmode.org/manual/Working-with-source-code.html#Working-with-source-code">documented in the manual</a>.</dd>
+
+<dt><a href="org-export-generic.html"><i>org-export-generic.el</i> &ndash; Export org files to user-defined output formats</a></dt><dd>Org-export-generic provides the ability to create an org file and
+then export it to any given format you desire.  This is done by
+defining a set of variables that include prefixes and suffixes for
+each line type (E.G., header, list item, etc &hellip;) and then running
+org-export-generic on the file to process it.
+Written by <i>Wes Hardaker</i>.</dd>
+
+<dt><i>org-mtags.el</i> &ndash; support for some Muse-like tags in Org-mode</dt><dd>This package allows you to write <code>&lt;example&gt;</code> and <code>&lt;src&gt;</code> and other
+syntax copied from Emacs Muse, right inside an Org file.  The goal
+here is to make it easy to publish the same file using either
+org-publish or Muse.  Written by <i>Carsten Dominik</i>.
+Removed in <a href="https://git.savannah.nongnu.org/cgit/org-mode.git/commit/?id=94939bd4736ea2b98e4260506e541aa4aadd75e8">this commit</a>.</dd>
+
+<dt><i>org2rem.el</i> &ndash; Convert org appointments into reminders for <i>remind</i></dt><dd>Written by <i>Bastien Guerry</i> and <i>Sharad Pratap</i>.</dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-org6b015bb" class="outline-2">
+<h2 id="org6b015bb">Maintenance</h2>
+<div class="outline-text-2" id="text-org6b015bb">
+<p>
+Keeping this list maintained is quite a challenge.  Here are some elisp
+functions to help with it.  They require cl-lib (Emacs 24.3) and org-mode
+with <code>contrib/</code> (git).
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><code>(<span class="org-keyword">require</span> '<span class="org-constant">cl-lib</span>)
+(<span class="org-keyword">defun</span> <span class="org-function-name">worg-parse-contrib-index.org</span> (<span class="org-type">&amp;optional</span> buffer)
+ <span class="org-doc">"Return an alist of elisp file names.
+The files are either documented, not-in-contrib, or undocumented.
+TODO: Do not check files in sections except for \"contrib/\"."</span>
+ (<span class="org-keyword">with-current-buffer</span> (<span class="org-keyword">or</span> buffer <span class="org-string">"index.org"</span>)
+   (<span class="org-keyword">let*</span> ((items
+           (cl-remove-duplicates
+            (cl-reduce
+             #'(<span class="org-keyword">lambda</span> (a b) (append a b))
+             (org-element-map
+                 (org-element-parse-buffer)
+                 'plain-list
+               #'(<span class="org-keyword">lambda</span> (e)
+                   (delq nil
+                         (mapcar
+                          (<span class="org-keyword">lambda</span> (item)
+                            (<span class="org-keyword">let</span> ((title (nth 5 item)))
+                              (<span class="org-keyword">when</span> (<span class="org-keyword">and</span> (stringp title)
+                                         (string-match <span class="org-string">"/</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">[</span><span class="org-string"><span class="org-negation-char">^</span></span><span class="org-string">/]+\\.el</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">/"</span>
+                                                       title))
+                                (match-string 1 title))))
+                          (org-element-property <span class="org-builtin">:structure</span> e))))))))
+          (org-contrib-files
+           (directory-files
+            (expand-file-name <span class="org-string">"../contrib/lisp/"</span>
+                              (file-name-directory
+                               (find-lisp-object-file-name #'org-mode
+                                                           #'org-mode)))
+            nil <span class="org-string">"\\.el\\'"</span> 'nosort)))
+     (list
+      (cons 'documented
+            (cl-union items org-contrib-files))
+      (cons 'not-in-contrib
+            (cl-set-difference items org-contrib-files <span class="org-builtin">:test</span> #'string=))
+      (cons 'undocumented
+            (cl-set-difference org-contrib-files items <span class="org-builtin">:test</span> #'string=))))))
+
+(<span class="org-keyword">require</span> '<span class="org-constant">lisp-mnt</span>)
+
+(<span class="org-keyword">defun</span> <span class="org-function-name">worg-generate-missing-contrib-index</span> (<span class="org-type">&amp;optional</span> index-buffer)
+  <span class="org-doc">"Return a string containing auto formated entries for undocumented files."</span>
+  (<span class="org-keyword">let*</span> ((parsed (worg-parse-contrib-index.org index-buffer))
+         (missing (sort (cdr (assq 'undocumented parsed))
+                        #'(<span class="org-keyword">lambda</span> (a b) (not (string&lt; a b)))))
+         (contrib-path (expand-file-name <span class="org-string">"../contrib/lisp/"</span>
+                                         (file-name-directory
+                                          (find-lisp-object-file-name #'org-mode
+                                                                      #'org-mode))))
+         misc babel ox)
+    (<span class="org-keyword">dolist</span> (i missing)
+      (<span class="org-keyword">push</span>
+       (<span class="org-keyword">ignore-errors</span>
+         (lm-with-file (expand-file-name i contrib-path)
+           (format <span class="org-string">"- /%s/ -- %s ::
+  Written by %s
+  [[contribfile:lisp/%s][Link to raw file.]]\n\n"</span>
+                   i (lm-summary)
+                   (mapconcat #'(<span class="org-keyword">lambda</span> (a) (concat <span class="org-string">"/"</span> (car a) <span class="org-string">"/"</span>))
+                              (lm-authors)
+                              <span class="org-string">" and "</span>)
+                   i)))
+       (<span class="org-keyword">cond</span>
+        ((string-prefix-p <span class="org-string">"ox-"</span> i) ox)
+        ((string-prefix-p <span class="org-string">"ob-"</span> i) babel)
+        (t misc))))
+    (concat
+     (apply #'concat misc)
+     <span class="org-string">"* Export\n"</span>
+     (apply #'concat ox)
+     <span class="org-string">"* Babel\n"</span>
+     (apply #'concat babel))))
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="license"><p>Documentation from the orgmode.org/worg/ website (either in its HTML format or in its Org format) is licensed under the <a href="http://www.gnu.org/copyleft/fdl.html">GNU Free Documentation License version 1.3</a> or later.  The code examples and css stylesheets are licensed under the <a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License v3</a> or later.</p></div>
+</div>
+</body>
+</html>

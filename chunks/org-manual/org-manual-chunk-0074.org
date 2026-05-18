@@ -1,0 +1,78 @@
+#+chunk-id: org-manual-chunk-0074
+#+source-file: org-manual
+#+heading-path: Agenda Views > Commands in the Agenda Buffer > Calendar commands
+#+start-line: 10752
+#+end-line: 10822
+#+external-urls: 
+#+mirrored-urls: 
+*** Calendar commands
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+#+cindex: calendar commands, from agenda
+
+- {{{kbd(c)}}} (~org-agenda-goto-calendar~) ::
+
+  #+kindex: c
+  #+findex: org-agenda-goto-calendar
+  Open the Emacs calendar and go to the date at point in the agenda.
+
+- {{{kbd(c)}}} (~org-calendar-goto-agenda~) ::
+
+  #+kindex: c
+  #+findex: org-calendar-goto-agenda
+  When in the calendar, compute and show the Org agenda for the date
+  at point.
+
+- {{{kbd(i)}}} (~org-agenda-diary-entry~) ::
+  #+kindex: i
+  #+findex: org-agenda-diary-entry
+
+  #+cindex: diary entries, creating from agenda
+  Insert a new entry into the diary, using the date at point and (for
+  block entries) the date at the mark.  This adds to the Emacs diary
+  file[fn:: This file is parsed for the agenda when
+  ~org-agenda-include-diary~ is set.], in a way similar to the
+  {{{kbd(i)}}} command in the calendar.  The diary file pops up in
+  another window, where you can add the entry.
+
+  #+vindex: org-agenda-diary-file
+  If you configure ~org-agenda-diary-file~ to point to an Org file,
+  Org creates entries in that file instead.  Most entries are stored
+  in a date-based outline tree that will later make it easy to archive
+  appointments from previous months/years.  The tree is built under an
+  entry with a =DATE_TREE= property, or else with years as top-level
+  entries.  Emacs prompts you for the entry text---if you specify it,
+  the entry is created in ~org-agenda-diary-file~ without further
+  interaction.  If you directly press {{{kbd(RET)}}} at the prompt
+  without typing text, the target file is shown in another window for
+  you to finish the entry there.  See also the {{{kbd(k r)}}} command.
+
+- {{{kbd(M)}}} (~org-agenda-phases-of-moon~) ::
+
+  #+kindex: M
+  #+findex: org-agenda-phases-of-moon
+  Show the phases of the moon for the three months around current
+  date.
+
+- {{{kbd(S)}}} (~org-agenda-sunrise-sunset~) ::
+
+  #+kindex: S
+  #+findex: org-agenda-sunrise-sunset
+  Show sunrise and sunset times.  The geographical location must be
+  set with calendar variables, see the documentation for the Emacs
+  calendar.
+
+- {{{kbd(C)}}} (~org-agenda-convert-date~) ::
+
+  #+kindex: C
+  #+findex: org-agenda-convert-date
+  Convert the date at point into many other cultural and historic
+  calendars.
+
+- {{{kbd(H)}}} (~org-agenda-holidays~) ::
+
+  #+kindex: H
+  #+findex: org-agenda-holidays
+  Show holidays for three months around point date.
+

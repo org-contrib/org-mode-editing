@@ -1,0 +1,4754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2026-02-20 Fri 01:20 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Org Syntax</title>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" title="Standard" href="/worg/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Test" href="/worg/style/worg-test.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/worg/style/worg-classic.css" type="text/css" />
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="index.html"> UP </a>
+ |
+ <a accesskey="H" href="https://orgmode.org/worg/"> HOME </a>
+</div><div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<div id="support">
+    <p>Support via <a href="https://liberapay.com/org-mode" title="Donations always help.">Liberapay</a></p>
+</div>
+</div>
+<div id="content" class="content">
+<header>
+<h1 class="title">Org Syntax</h1>
+<p class="subtitle" role="doc-subtitle">v2</p>
+</header><nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgd6ba807">1. Introduction</a></li>
+<li><a href="#org20bd0b0">2. Terminology and conventions</a>
+<ul>
+<li><a href="#org608d35d">2.1. Objects and Elements</a></li>
+<li><a href="#Blanks">2.2. Blank lines</a></li>
+<li><a href="#orge6f10eb">2.3. Indentation</a></li>
+<li><a href="#org96148ad">2.4. The minimal and standard sets of objects</a></li>
+<li><a href="#org1b05d32">2.5. Syntax patterns</a>
+<ul>
+<li><a href="#orgcee96ee">2.5.1. General form</a></li>
+<li><a href="#Special_Tokens">2.5.2. Special tokens</a></li>
+<li><a href="#org440871a">2.5.3. Case significance</a></li>
+<li><a href="#orgec5ee31">2.5.4. Alphabetic and alphanumerical characters</a></li>
+</ul>
+</li>
+<li><a href="#orgb9cc9fd">2.6. References to lisp variables</a></li>
+</ul>
+</li>
+<li><a href="#org3efa717">3. General structure of Org document</a></li>
+<li><a href="#Elements">4. Elements</a>
+<ul>
+<li><a href="#Headings_and_Sections">4.1. Headings and Sections</a>
+<ul>
+<li><a href="#Headings">4.1.1. Headings</a></li>
+<li><a href="#Sections">4.1.2. Sections</a></li>
+<li><a href="#Zeroth_section">4.1.3. The zeroth section</a></li>
+</ul>
+</li>
+<li><a href="#Greater_Elements">4.2. Greater Elements</a>
+<ul>
+<li><a href="#Greater_Blocks">4.2.1. Greater Blocks</a></li>
+<li><a href="#Drawers">4.2.2. Drawers and Property Drawers</a></li>
+<li><a href="#Dynamic_Blocks">4.2.3. Dynamic Blocks</a></li>
+<li><a href="#Footnote_Definitions">4.2.4. Footnote Definitions</a></li>
+<li><a href="#Inlinetasks">4.2.5. Inlinetasks</a></li>
+<li><a href="#Items">4.2.6. Items</a></li>
+<li><a href="#Plain_Lists">4.2.7. Plain Lists</a></li>
+<li><a href="#Property_Drawers">4.2.8. Property Drawers</a></li>
+<li><a href="#Tables">4.2.9. Tables</a></li>
+</ul>
+</li>
+<li><a href="#Lesser_Elements">4.3. Lesser Elements</a>
+<ul>
+<li><a href="#Blocks">4.3.1. Blocks</a></li>
+<li><a href="#Clocks">4.3.2. Clock</a></li>
+<li><a href="#Diary_Sexp">4.3.3. Diary Sexp</a></li>
+<li><a href="#Planning">4.3.4. Planning</a></li>
+<li><a href="#Comments">4.3.5. Comments</a></li>
+<li><a href="#Fixed_Width_Areas">4.3.6. Fixed Width Areas</a></li>
+<li><a href="#Horizontal_Rules">4.3.7. Horizontal Rules</a></li>
+<li><a href="#Keywords">4.3.8. Keywords</a></li>
+<li><a href="#LaTeX_Environments">4.3.9. LaTeX Environments</a></li>
+<li><a href="#Node_Properties">4.3.10. Node Properties</a></li>
+<li><a href="#Paragraphs">4.3.11. Paragraphs</a></li>
+<li><a href="#Table_Rows">4.3.12. Table Rows</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#Objects">5. Objects</a>
+<ul>
+<li><a href="#Entities">5.1. Entities</a></li>
+<li><a href="#LaTeX_Fragments">5.2. LaTeX Fragments</a></li>
+<li><a href="#Export_Snippets">5.3. Export Snippets</a></li>
+<li><a href="#Footnote_References">5.4. Footnote References</a></li>
+<li><a href="#Citations">5.5. Citations</a></li>
+<li><a href="#Citation_References">5.6. Citation references</a></li>
+<li><a href="#Inline_Babel_Calls">5.7. Inline Babel Calls</a></li>
+<li><a href="#Source_Blocks">5.8. Inline Source Blocks</a></li>
+<li><a href="#Line_Breaks">5.9. Line Breaks</a></li>
+<li><a href="#Links">5.10. Links</a>
+<ul>
+<li><a href="#org6016451">5.10.1. Radio Links</a></li>
+<li><a href="#orgcd07d9e">5.10.2. Plain links</a></li>
+<li><a href="#orgcfcaecb">5.10.3. Angle links</a></li>
+<li><a href="#orgebd89b2">5.10.4. Regular links</a></li>
+</ul>
+</li>
+<li><a href="#Macros">5.11. Macros</a></li>
+<li><a href="#Targets_and_Radio_Targets">5.12. Targets and Radio Targets</a></li>
+<li><a href="#Statistics_Cookies">5.13. Statistics Cookies</a></li>
+<li><a href="#Subscript_and_Superscript">5.14. Subscript and Superscript</a></li>
+<li><a href="#Table_Cells">5.15. Table Cells</a></li>
+<li><a href="#Timestamps">5.16. Timestamps</a></li>
+<li><a href="#Emphasis_Markers">5.17. Text Markup</a>
+<ul>
+<li><a href="#Plain_Text">5.17.1. Plain Text</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org7274eea">6. Appendix</a>
+<ul>
+<li><a href="#Entities_List">6.1. Org Entities</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+<style>
+  div.notes {
+    background-color: #587e7244;
+    position: relative;
+    padding: 0em 0.3em;
+    font-size: 0.95em;
+    font-style: italic;
+  }
+  div.notes::before {
+    content: 'Note';
+    font-style: normal;
+    font-weight: 500;
+    color: #587e72;
+    position: absolute;
+    left: -2.6em;
+  }
+</style>
+<div id="outline-container-orgd6ba807" class="outline-2">
+<h2 id="orgd6ba807"><span class="section-number-2">1.</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Org is a plaintext format composed of simple, yet versatile, forms
+which represent formatting and structural information.  It is designed
+to be both intuitive to use, and capable of representing complex
+documents.  Like Markdown (<a href="https://datatracker.ietf.org/doc/html/rfc7763">RFC7763</a>), Org may be considered a
+lightweight markup language.  However, while Markdown refers to a
+collection of similar syntaxes, Org is a single syntax.
+</p>
+
+<p>
+This document describes and comments on Org syntax as it is currently
+read by its parser (<code>org-element.el</code>) and, therefore, by the export
+framework. This is intended as a technical document for developers and
+those particularly interested in the syntax. Most users will be better
+served by <a href="https://orgmode.org/manual/">the Org manual</a>.
+</p>
+</div>
+</div>
+<div id="outline-container-org20bd0b0" class="outline-2">
+<h2 id="org20bd0b0"><span class="section-number-2">2.</span> Terminology and conventions</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org608d35d" class="outline-3">
+<h3 id="org608d35d"><span class="section-number-3">2.1.</span> Objects and Elements</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+The components of this syntax can be divided into two classes:
+&ldquo;<a href="#Objects">objects</a>&rdquo; and &ldquo;<a href="#Elements">elements</a>&rdquo;.  To better understand these classes,
+consider the paragraph as a unit of measurement.  <i>Elements</i> are
+syntactic components that exist at the same or greater scope than a
+paragraph, i.e. which could not be contained by a paragraph.
+Conversely, <i>objects</i> are syntactic components that exist with a smaller
+scope than a paragraph, and so can be contained within a paragraph.
+</p>
+
+<p>
+Elements can be stratified into &ldquo;<a href="#Headings">headings</a>&rdquo;, &ldquo;<a href="#Sections">sections</a>&rdquo;, &ldquo;<a href="#Greater_Elements">greater
+elements</a>&rdquo;, and &ldquo;<a href="#Lesser_Elements">lesser elements</a>&rdquo;, from broadest scope to
+narrowest.  Along with objects, these sub-classes define categories of
+syntactic environments.  Only <a href="#Headings">headings</a>, <a href="#Sections">sections</a>, <a href="#Property_Drawers">property drawers</a>, and
+<a href="#Planning">planning lines</a> are context-free<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup><sup>, </sup><sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>, every other syntactic
+component only exists within specific environments. This is a core
+concept of the syntax.
+</p>
+
+<p>
+Expanding on the stratification of elements, lesser elements are
+elements that cannot contain any other elements.  As such, a paragraph
+is considered a lesser element.  Greater elements can themselves
+contain greater elements or lesser elements. Sections contain both
+greater and lesser elements, and headings can contain a section and
+other headings.
+</p>
+</div>
+</div>
+<div id="outline-container-Blanks" class="outline-3">
+<h3 id="Blanks"><span class="section-number-3">2.2.</span> Blank lines</h3>
+<div class="outline-text-3" id="text-Blanks">
+<p>
+A line containing only spaces, tabs, newlines, and line feeds (<code>\t\n\r</code>)
+is considered a <i>blank line</i>.  Blank lines can be used to separate
+paragraphs and other elements.
+</p>
+
+<p>
+Blank lines are considered a part of a preceding element.
+</p>
+
+<p>
+A simple example is blank lines after a drawer:
+</p>
+
+<pre class="example" id="orgab0c13e">
+:drawer:
+Text.
+:end:
+
+
+The blank lines above are considered a part of the drawer.
+</pre>
+
+<p>
+However, in some cases, multiple Org elements may be candidates to
+&ldquo;own&rdquo; the blank lines:
+</p>
+
+<pre class="example" id="orgb867ec1">
+* Heading
+Paragraph inside heading, blank lines may be considered a part of this
+paragraph or, similarly, a part of the parent section or heading.
+
+
+* Another heading
+</pre>
+
+<p>
+By convention, with the exception of <a href="#Items">list items</a> and <a href="#Footnote_Definitions">footnote
+definitions</a> blank lines belong to the preceding element with the
+narrowest possible scope.
+</p>
+
+<p>
+In the above example, blank lines are considered a direct part of the
+paragraph, not the heading or section:
+</p>
+
+<pre class="example">
+(heading (section (paragraph &lt;blank lines&gt; ...)))
+</pre>
+
+<p>
+Blank lines at the end of <a href="#Items">list items</a> and <a href="#Footnote_Definitions">footnote definitions</a> do not
+include the containing elements because list items and footnote
+definitions are using blank lines as a part of their syntax definition:
+</p>
+
+<pre class="example" id="org690fa0c">
+- Item 1
+
+- Item 2
+  :drawer:
+  inside item 2
+  :end:
+
+
+The above list item ends with two consequative blank lines.
+So, we do not include these structurally important blank lines into
+the inner elements inside the item.
+</pre>
+</div>
+</div>
+<div id="outline-container-orge6f10eb" class="outline-3">
+<h3 id="orge6f10eb"><span class="section-number-3">2.3.</span> Indentation</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+Indentation consists of a series of space and tab characters at the
+beginning of a line.  Most elements can be indentated, with the
+exception of <a href="#Headings">headings</a>, <a href="#Inlinetasks">inlinetasks</a>, <a href="#Footnote_Definitions">footnote definitions</a>, and <a href="#Diary_Sexp">diary
+sexps</a>.  Indentation is only syntactically meaningful in plain lists,
+where indentation is calculated assuming that space characters occupy
+a single character and tab characters occupy 8 characters.
+</p>
+
+<p>
+The common indentation of all the lines within an element is
+discarded.  This also applies to single-line elements.
+</p>
+
+<p>
+<b>Examples</b>
+</p>
+
+<pre class="example" id="org077e8ee">
+    This paragraph will not contain
+    a long sequence of spaces before "a".
+
+    This paragraph does not have leading spaces according to the parser.
+
+    #+begin_src emacs-lisp
+      (+ 1 2)
+    #+end_src
+    The above source block preserves two leading spaces inside the code
+    after removing the common indentation.
+</pre>
+</div>
+</div>
+<div id="outline-container-org96148ad" class="outline-3">
+<h3 id="org96148ad"><span class="section-number-3">2.4.</span> The minimal and standard sets of objects</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+To simplify references to common collections of objects, we define two
+useful sets.  The <i><a id="orge7cba14">minimal set</a> of objects</i> refers to <a href="#Plain_Text">plain text</a>,
+<a href="#Emphasis_Markers">text markup</a>, <a href="#Entities">entities</a>, <a href="#LaTeX_Fragments">LaTeX fragments</a>, <a href="#Subscript_and_Superscript">superscripts and subscripts</a>.
+The <i><a id="org55f4f84">standard set</a> of objects</i> refers to the entire set of objects,
+excluding <a href="#Citation_References">citation references</a> and <a href="#Table_Cells">table cells</a>.
+</p>
+</div>
+</div>
+<div id="outline-container-org1b05d32" class="outline-3">
+<h3 id="org1b05d32"><span class="section-number-3">2.5.</span> Syntax patterns</h3>
+<div class="outline-text-3" id="text-2-5">
+</div>
+<div id="outline-container-orgcee96ee" class="outline-4">
+<h4 id="orgcee96ee"><span class="section-number-4">2.5.1.</span> General form</h4>
+<div class="outline-text-4" id="text-2-5-1">
+<p>
+Most elements and objects will be described with the help of syntax
+patterns, consisting of a series of named tokens written in uppercase
+and separated by a space, like so:
+</p>
+<pre class="example" id="orge55b943">
+TOKEN1 TOKEN2
+</pre>
+
+<p>
+These tokens are often named roughly according to their semantic
+meaning, For instance, &ldquo;KEY&rdquo; and &ldquo;VALUE&rdquo; when describing
+<a href="#Keywords">Keywords</a>. Tokens will be specified as either a string, or a series of
+elements or objects.
+</p>
+
+<div class="infobox" id="orgbe7da55">
+<p>
+Unless otherwise specified, a space in a pattern represents one or
+more horizontal whitespace characters.
+</p>
+
+</div>
+
+<p>
+Patterns will often also contain static structures that serve to
+differentiate a particular element or object type from others, but
+have no semantic meaning.  These are simply included in the pattern
+verbatim.  For instance, if a pattern consists of two plus signs (<code>+</code>)
+immediately followed by a TOKEN it would be written like so:
+</p>
+<pre class="example" id="org055a036">
+++TOKEN
+</pre>
+
+<p>
+Since tokens are written in uppercase, any letters in static
+structures are distinguished by being written in lowercase.
+</p>
+</div>
+</div>
+<div id="outline-container-Special_Tokens" class="outline-4">
+<h4 id="Special_Tokens"><span class="section-number-4">2.5.2.</span> Special tokens</h4>
+<div class="outline-text-4" id="text-Special_Tokens">
+<p>
+In a few cases, an instance of an element or object must be preceded
+or succeeded by a certain pattern, which is not itself part of the
+element or object.  These patterns are specified using the <i>PRE</i> and
+<i>POST</i> tokens respectively, like so:
+</p>
+<pre class="example" id="org45c26ab">
+PRE TOKEN POST
+</pre>
+
+<p>
+<i>PRE</i> and <i>POST</i> tokens are only matched against the contents of the
+containing object. For example, <i>bold</i> object within link description is
+only matched against the description text <code>*bold* description</code>, not
+against the full containing link text:
+</p>
+
+<pre class="example">
+[[https://orgmode.org][*bold* description]]
+</pre>
+</div>
+</div>
+<div id="outline-container-org440871a" class="outline-4">
+<h4 id="org440871a"><span class="section-number-4">2.5.3.</span> Case significance</h4>
+<div class="outline-text-4" id="text-2-5-3">
+<p>
+In this document, unless specified otherwise, case is insignificant.
+</p>
+</div>
+</div>
+<div id="outline-container-orgec5ee31" class="outline-4">
+<h4 id="orgec5ee31"><span class="section-number-4">2.5.4.</span> Alphabetic and alphanumerical characters</h4>
+<div class="outline-text-4" id="text-2-5-4">
+<p>
+Unless otherwise specified, alphabetic character is a character whose
+Unicode <code>General_category</code> property indicates that it is a letter
+</p>
+
+<p>
+Alphanumeric character is either an alphabetic character, or a
+character whose Unicode <code>General_category</code> property indicates that it
+is a decimal number.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb9cc9fd" class="outline-3">
+<h3 id="orgb9cc9fd"><span class="section-number-3">2.6.</span> References to lisp variables</h3>
+<div class="outline-text-3" id="text-2-6">
+<p>
+Some parts of Org syntax are configurable via special keywords in the
+file or via Elisp settings in Emacs.  This syntax document exposes
+these variable parts by referencing to Elisp variables.
+</p>
+
+<p>
+Elisp programs utilizing the syntax may directly refer to the Elisp
+variable values.  Other users of this syntax reference can use to the
+default values we provide here.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org3efa717" class="outline-2">
+<h2 id="org3efa717"><span class="section-number-2">3.</span> General structure of Org document</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Any Org document is represented by a sequence of <a href="#Elements">elements</a>, that can
+recursively contain other <a href="#Elements">elements</a> and/or <a href="#Objects">objects</a>.
+</p>
+
+<p>
+An example document below can be represented as recursive syntax tree:
+</p>
+
+<pre class="example" id="orgb4d4cd6">
+#+title: An example Org document (this line is a keyword)
+
+The document begins with optional zeroth section (everything before
+the first heading), followed by a sequence of headings. (paragraph)
+
+
+    :note:
+    Zeroth section can contain other elements - keyword, paragraph,
+    and drawer in this example.
+
+    The drawer, in turn, contains the previous and this paragraph; and
+    this paragraph consists of plain text objects, and a single *bold
+    markup*.
+    :end:
+
+* Heading
+
+Contains an optional section that is, similar to zeroth section,
+followed by other subheadings.
+
+** Sub-heading 1 with no section and no child headings
+** Sub-heading 2
+... has a section, but not child subheadings.
+
+* Another heading
+</pre>
+
+<pre class="example">
+(org-data ...
+ (zeroth-section ...
+  (keyword ...)
+  (paragraph ...)
+  (drawer
+   (paragraph ...)
+   (pragraph (plain-text) (bold (plain-text)))))
+ (heading
+  (section (paragraph ...))
+  (heading)
+  (heading (section ...)))
+ (heading))
+</pre>
+</div>
+</div>
+<div id="outline-container-Elements" class="outline-2">
+<h2 id="Elements"><span class="section-number-2">4.</span> Elements</h2>
+<div class="outline-text-2" id="text-Elements">
+<p>
+The most general representation of an Org syntax element is a sequence
+of markup defining the element itself, its contents, and the <a href="#Blanks">blank
+lines</a> after.
+</p>
+
+<pre class="example" id="orga45e4a6">
+BEGIN
+CONTENTS
+END
+BLANK
+</pre>
+
+<p>
+or
+</p>
+
+<pre class="example" id="orgcbc04ec">
+BEGIN
+VALUE
+END
+BLANK
+</pre>
+
+
+<dl class="org-dl">
+<dt>BEGIN</dt><dd>Opening markup, belong to the element.</dd>
+<dt>CONTENTS</dt><dd>Element contents - a sequence of child elements/objects.</dd>
+<dt>VALUE</dt><dd>Element value, taken verbatim, when no child
+elements/objects are allowed.</dd>
+<dt>END</dt><dd>Closing markup, belong to the element.</dd>
+<dt>BLANK</dt><dd>Blank lines after, belongs to the element.</dd>
+</dl>
+
+<p>
+Not every Org element contains all the above components.  An example
+below demonstrates structure of some common Org elements, marking the
+parts corresponding to the above structure.
+</p>
+
+<pre class="example" id="orga1b0423">
+* Heading title is a part of the headline element itself &lt;BEGIN&gt;
+
+
+Text inside heading is considered a part of its CONTENTS and can
+contain other elements recursively.  This paragraph only has CONTENTS,
+no BEGIN, no END, and a BLANK line.
+
+:drawer:
+The same works at the deeper levels, with this drawer having
+=:drawer:= line as BEGIN, this paragraph belonging to drawer CONTENTS,
+=:end:= representing END, and no BLANK after.
+:end:
+#+begin_comment
+A comment is taken verbatim, with this text not parsed recursively and
+considered a part of the comment block element itself.
+=#+begin_commend= is BEGIN, =#+end_comment= - END, and VALUE is this
+text.
+#+end_comment
+This is the end of the heading, no END exists for headings.
+</pre>
+</div>
+<div id="outline-container-Headings_and_Sections" class="outline-3">
+<h3 id="Headings_and_Sections"><span class="section-number-3">4.1.</span> Headings and Sections</h3>
+<div class="outline-text-3" id="text-Headings_and_Sections">
+</div>
+<div id="outline-container-Headings" class="outline-4">
+<h4 id="Headings"><span class="section-number-4">4.1.1.</span> Headings</h4>
+<div class="outline-text-4" id="text-Headings">
+<p>
+A Heading is an <i>unindented</i> line structured according to the following pattern:
+</p>
+
+<pre class="example" id="orge524555">
+STARS KEYWORD PRIORITY COMMENT TITLE TAGS
+</pre>
+
+<dl class="org-dl">
+<dt>STARS</dt><dd>A string consisting of one or more asterisks (up to
+<code>org-inlinetask-min-level</code><sup><a id="fnr.oiml" class="footref" href="#fn.oiml" role="doc-backlink">3</a></sup> if the <code>org-inlinetask</code> library is
+loaded) suffixed by a space character.  The number of asterisks is
+used to define the level of the heading.  Space character after
+asterisks is mandatory.</dd>
+
+<dt>KEYWORD (optional)</dt><dd>A string which is a member of
+<code>org-todo-keywords-1</code><sup><a id="fnr.otkw1" class="footref" href="#fn.otkw1" role="doc-backlink">4</a></sup>.
+Case is significant.  This is called a &ldquo;todo keyword&rdquo;. <sup><a id="fnr.5" class="footref" href="#fn.5" role="doc-backlink">5</a></sup></dd>
+
+<dt>PRIORITY (optional)</dt><dd>A capital English alphabet character A
+through Z (ASCII code 65 through 90) or an integer between 0 and 64,
+preceded by a hash sign <code>#</code> and enclosed within square brackets
+(e.g. <code>[#A], [#0],</code> or <code>[#27]</code>).  This is called a &ldquo;priority cookie&rdquo;.</dd>
+
+<dt>COMMENT (optional)</dt><dd>String &ldquo;COMMENT&rdquo;.  Case is significant.</dd>
+
+<dt>TITLE (optional)</dt><dd>A series of objects from the <a href="#org55f4f84">standard set</a>,
+excluding line break objects.  It is matched after <code>KEYWORD</code> and
+<code>PRIORITY</code>.</dd>
+
+<dt>TAGS (optional)</dt><dd>A series of colon-separated strings consisting of
+alphanumeric characters, underscores, at signs, hash signs, and
+percent signs (<code>_@#%</code>).</dd>
+</dl>
+
+<p>
+<b>Examples</b>
+</p>
+
+<pre class="example" id="org5d2a2b3">
+*
+** DONE
+*** Some e-mail
+**** TODO [#A] COMMENT Title :tag:a2%:
+</pre>
+
+<p>
+If heading has <code>COMMENT</code>, it will be considered as &ldquo;commented&rdquo;.
+</p>
+
+<p>
+If the TITLE of a heading is exactly the value of <code>org-footnote-section</code>
+(<code>Footnotes</code> by default), it will be considered as a &ldquo;footnote section&rdquo;.
+Case is significant.
+</p>
+
+<p>
+If <code>ARCHIVE</code> is one of the tags given, the heading will be considered as
+&ldquo;archived&rdquo;.  Case is significant.
+</p>
+
+<p>
+All content following a heading &mdash; up to either the next heading, or the end of the
+document, forms a section contained by the heading. This is optional, as the
+next heading may occur immediately in which case no section is formed.
+</p>
+</div>
+</div>
+<div id="outline-container-Sections" class="outline-4">
+<h4 id="Sections"><span class="section-number-4">4.1.2.</span> Sections</h4>
+<div class="outline-text-4" id="text-Sections">
+<p>
+Sections contain one or more non-heading elements.  With the exception
+of the text before the first heading in a document (which is
+considered a section), sections only occur within headings.
+</p>
+
+<p>
+<b>Example</b>
+</p>
+
+<p>
+Consider the following document:
+</p>
+
+<pre class="example" id="orgc55e912">
+An introduction.
+* A Heading
+Some text.
+** Sub-Topic 1
+** Sub-Topic 2
+*** Additional entry
+</pre>
+
+<p>
+Its internal structure could be summarized as:
+</p>
+
+<pre class="example" id="org6bea4dc">
+(document
+ (section)
+ (heading
+  (section)
+  (heading)
+  (heading
+   (heading))))
+</pre>
+
+<p>
+Sections do not include blank lines immediately following the parent
+heading.  It also means that headings containing only blank lines do
+not contain any section.
+</p>
+
+<pre class="example" id="org24a5635">
+* Heading without section, but with blank lines
+
+* Another heading with section
+
+This is a section. It includes everything from "This is" down to "Last
+heading", including the trailing blank lines.
+
+* Last heading
+</pre>
+
+<p>
+<a href="#Zeroth_section">Zeroth section</a> follows the same rule.
+</p>
+</div>
+</div>
+<div id="outline-container-Zeroth_section" class="outline-4">
+<h4 id="Zeroth_section"><span class="section-number-4">4.1.3.</span> The zeroth section</h4>
+<div class="outline-text-4" id="text-Zeroth_section">
+<p>
+All elements before the first heading in a document lie in a special
+section called the <i>zeroth section</i>.  It may be preceded by blank
+lines.  Unlike a normal section, the zeroth section can immediately
+contain a <a href="#Property_Drawers">property drawer</a>, optionally preceded by <a href="#Comments">comments</a>.  It cannot
+however, contain <a href="#Planning">planning</a>.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-Greater_Elements" class="outline-3">
+<h3 id="Greater_Elements"><span class="section-number-3">4.2.</span> Greater Elements</h3>
+<div class="outline-text-3" id="text-Greater_Elements">
+<p>
+Unless otherwise specified, greater elements can directly contain
+any greater or <a href="#Lesser_Elements">lesser element</a> except:
+</p>
+<ul class="org-ul">
+<li>Elements of their own type.</li>
+<li><a href="#Planning">Planning</a>, which may only occur in a <a href="#Headings">heading</a>.</li>
+<li><a href="#Property_Drawers">Property drawers</a>, which may only occur in a <a href="#Headings">heading</a> or the <a href="#Zeroth_section">zeroth
+section</a>.</li>
+<li><a href="#Node_Properties">Node properties</a>, which can only be found in <a href="#Property_Drawers">property drawers</a>.</li>
+<li><a href="#Items">Items</a>, which may only occur in <a href="#Plain_Lists">plain lists</a>.</li>
+<li><a href="#Table_Rows">Table rows</a>, which may only occur in <a href="#Tables">tables</a>.</li>
+</ul>
+</div>
+<div id="outline-container-Greater_Blocks" class="outline-4">
+<h4 id="Greater_Blocks"><span class="section-number-4">4.2.1.</span> Greater Blocks</h4>
+<div class="outline-text-4" id="text-Greater_Blocks">
+<p>
+Greater blocks are structured according to the following pattern:
+</p>
+<pre class="example" id="orge962c4e">
+#+begin_NAME PARAMETERS
+CONTENTS
+#+end_NAME
+</pre>
+
+<dl class="org-dl">
+<dt>NAME</dt><dd>A string consisting of any non-whitespace characters, which
+is not the NAME of a <a href="#Blocks">lesser block</a>.  Greater blocks are treated
+differently based on their subtype, which is determined by the NAME
+as follows:
+<ul class="org-ul">
+<li><code>center</code>, a &ldquo;center block&rdquo;</li>
+<li><code>quote</code>, a &ldquo;quote block&rdquo;</li>
+<li>any other value, a &ldquo;special block&rdquo;</li>
+</ul></dd>
+<dt>PARAMETERS (optional)</dt><dd>A string consisting of any characters other
+than a newline.</dd>
+<dt>CONTENTS</dt><dd>A collection of zero or more elements, subject to the
+following condition:
+<ul class="org-ul">
+<li>No line may start with <code>#+end_NAME</code>.</li>
+</ul></dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-Drawers" class="outline-4">
+<h4 id="Drawers"><span class="section-number-4">4.2.2.</span> Drawers and Property Drawers</h4>
+<div class="outline-text-4" id="text-Drawers">
+<p>
+Drawers are structured according to the following pattern:
+</p>
+<pre class="example" id="orgb66c022">
+:NAME:
+CONTENTS
+:end:
+</pre>
+
+<dl class="org-dl">
+<dt>NAME</dt><dd>A string consisting of word-constituent characters, hyphens
+and underscores (<code>-_</code>).</dd>
+<dt>CONTENTS</dt><dd>A collection of zero or more elements, except another drawer.</dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-Dynamic_Blocks" class="outline-4">
+<h4 id="Dynamic_Blocks"><span class="section-number-4">4.2.3.</span> Dynamic Blocks</h4>
+<div class="outline-text-4" id="text-Dynamic_Blocks">
+<p>
+Dynamic blocks are structured according to the following pattern:
+</p>
+<pre class="example" id="org8543b5d">
+#+begin: NAME PARAMETERS
+CONTENTS
+#+end:
+</pre>
+
+<dl class="org-dl">
+<dt>NAME</dt><dd>A string consisting of non-whitespace characters.</dd>
+<dt>PARAMETERS (optional)</dt><dd>A string consisting of any characters but a newline.</dd>
+<dt>CONTENTS</dt><dd>A collection of zero or more elements, except another
+dynamic block.</dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-Footnote_Definitions" class="outline-4">
+<h4 id="Footnote_Definitions"><span class="section-number-4">4.2.4.</span> Footnote Definitions</h4>
+<div class="outline-text-4" id="text-Footnote_Definitions">
+<p>
+Footnote definitions must occur at the start of an <i>unindented</i> line,
+and are structured according to the following pattern:
+</p>
+<pre class="example" id="org5efbb43">
+[fn:LABEL] CONTENTS
+</pre>
+
+<dl class="org-dl">
+<dt>LABEL</dt><dd>Either a number (one or more digits 0-9) or an instance of
+the pattern <code>WORD</code>, where <code>WORD</code> represents a string consisting of
+word-constituent characters, hyphens and underscores (<code>-_</code>).</dd>
+
+<dt>CONTENTS (optional)</dt><dd>A collection of zero or more elements.  It
+ends at the next footnote definition, the next heading, two
+consecutive blank lines, or the end of buffer.</dd>
+</dl>
+
+<p>
+<b>Examples</b>
+</p>
+
+<pre class="example" id="org3817b85">
+[fn:1] A short footnote.
+
+[fn:2] This is a longer footnote.
+
+It even contains a single blank line.
+</pre>
+</div>
+</div>
+<div id="outline-container-Inlinetasks" class="outline-4">
+<h4 id="Inlinetasks"><span class="section-number-4">4.2.5.</span> Inlinetasks</h4>
+<div class="outline-text-4" id="text-Inlinetasks">
+<p>
+Inlinetasks are syntactically a <a href="#Headings">heading</a> with a level of at least
+<code>org-inlinetask-min-level</code><sup><a id="fnr.oiml.3" class="footref" href="#fn.oiml" role="doc-backlink">3</a></sup>, i.e. starting with at least that
+many asterisks.
+</p>
+
+<p>
+Optionally, inlinetasks can be ended with a second heading with a
+level of at least <code>org-inlinetask-min-level</code><sup><a id="fnr.oiml.3" class="footref" href="#fn.oiml" role="doc-backlink">3</a></sup>, with no optional
+components (i.e. only STARS and TITLE provided) and the string <code>END</code> as
+the TITLE. This allows the inlinetask to contain elements.
+</p>
+
+<p>
+<b>Examples</b>
+</p>
+
+<pre class="example" id="org41b52a3">
+*************** TODO some tiny task
+This is a paragraph, it lies outside the inlinetask above.
+*************** TODO some small task
+                 DEADLINE: &lt;2009-03-30 Mon&gt;
+                 :PROPERTIES:
+                   :SOMETHING: or other
+                 :END:
+                 And here is some extra text
+*************** END
+</pre>
+
+<p>
+Inlinetasks are only recognized after the <code>org-inlinetask</code> library is
+loaded.
+</p>
+</div>
+</div>
+<div id="outline-container-Items" class="outline-4">
+<h4 id="Items"><span class="section-number-4">4.2.6.</span> Items</h4>
+<div class="outline-text-4" id="text-Items">
+<p>
+Items are structured according to the following pattern:
+</p>
+<pre class="example" id="org86f9054">
+BULLET COUNTER-SET CHECK-BOX TAG CONTENTS
+</pre>
+
+<dl class="org-dl">
+<dt>BULLET</dt><dd>One of the two forms below, followed by either a
+whitespace character or line ending.
+<ul class="org-ul">
+<li>An asterisk (<code>*</code>), hyphen (<code>-</code>), or plus sign (<code>+</code>) character.
+Note that asterisk <code>*</code> character starting at the beginning of
+line and followed by whitespace cannot be an item as it would
+match a <a href="#Headings">heading</a>.</li>
+<li>Either the pattern <code>COUNTER.</code> or <code>COUNTER)</code>.
+<dl class="org-dl">
+<dt>COUNTER</dt><dd>Either a number (one or more digits 0-9) or a single
+letter (a-z).</dd>
+</dl></li>
+</ul></dd>
+<dt>COUNTER-SET (optional)</dt><dd>An instance of the pattern <code>[@COUNTER]</code>.</dd>
+<dt>CHECK-BOX (optional)</dt><dd>A single whitespace character, an <code>X</code>
+character, or a hyphen enclosed by square brackets (i.e. <code>[ ]</code>, <code>[X]</code>, or <code>[-]</code>).</dd>
+<dt>TAG (optional)</dt><dd>An instance of the pattern <code>TAG-TEXT ::</code> where
+<code>TAG-TEXT</code> is the text up until the last occurrence of the substring
+<code>" :: "</code> (two colons surrounded by whitespace, without the quotes) on
+that line.  <code>TAG-TEXT</code> is then parsed with the <a href="#org55f4f84">standard set</a> of objects.</dd>
+<dt>CONTENTS (optional)</dt><dd>A collection of zero or more elements, ending
+at the first instance of one of the following:
+<ul class="org-ul">
+<li>The next item.</li>
+<li>The first line less or equally indented than the starting line,
+not counting lines within other non-paragraph elements or
+<a href="#Inlinetasks">inlinetask</a> boundaries.</li>
+<li>Two consecutive blank lines.</li>
+</ul></dd>
+</dl>
+
+<p>
+<b>Examples</b>
+</p>
+
+<pre class="example" id="org1f5b2c5">
+- item
+3. [@3] set to three
++ [-] tag :: item contents
+ * item, note whitespace in front
+* not an item, but heading - heading takes precedence
+</pre>
+</div>
+</div>
+<div id="outline-container-Plain_Lists" class="outline-4">
+<h4 id="Plain_Lists"><span class="section-number-4">4.2.7.</span> Plain Lists</h4>
+<div class="outline-text-4" id="text-Plain_Lists">
+<p>
+A <i>plain list</i> is a set of consecutive <a href="#Items">items</a> of the same indentation.
+</p>
+
+<div class="infobox" id="org3b89f93">
+<p>
+Note that item elements can contain other lists.  This allows creating
+nested lists.
+</p>
+
+</div>
+
+<p>
+If first item in a plain list has a COUNTER in its BULLET, the plain
+list will be an &ldquo;ordered plain-list&rdquo;.  If it contains a TAG, it will
+be a &ldquo;descriptive list&rdquo;.  Otherwise, it will be an &ldquo;unordered list&rdquo;.
+</p>
+
+<p>
+For example, consider the following excerpt of an Org document:
+</p>
+
+<pre class="example" id="org018877d">
+1. item 1
+2. [X] item 2
+   - some tag :: item 2.1
+</pre>
+
+<p>
+Its internal structure is as follows:
+</p>
+
+<pre class="example" id="org2da3682">
+(ordered-plain-list
+ (item
+   (paragraph))
+ (item
+  (paragraph)
+  (descriptive-plain-list
+   (item
+     (paragraph)))))
+</pre>
+</div>
+</div>
+<div id="outline-container-Property_Drawers" class="outline-4">
+<h4 id="Property_Drawers"><span class="section-number-4">4.2.8.</span> Property Drawers</h4>
+<div class="outline-text-4" id="text-Property_Drawers">
+<p>
+Property drawers are a special type of <a href="#Drawers">drawer</a> containing properties
+attached to a <a href="#Headings">heading</a> or <a href="#Inlinetasks">inlinetask</a>.  They are located right after a heading
+and its <a href="#Planning">planning</a> information, as shown below:
+</p>
+
+<pre class="example" id="orgcd9e615">
+HEADLINE
+PROPERTYDRAWER
+
+HEADLINE
+PLANNING
+PROPERTYDRAWER
+</pre>
+
+<p>
+Property drawer can also be present in <a href="#Zeroth_section">zeroth section</a>:
+</p>
+
+<pre class="example" id="org6c047d4">
+BEGINNING-OF-FILE
+BLANK-LINES
+COMMENT
+PROPERTYDRAWER
+</pre>
+
+<p>
+<code>BLANK-LINES</code> and <code>COMMENT</code> are optional.
+</p>
+
+<p>
+Property Drawers are structured according to the following pattern:
+</p>
+
+<pre class="example" id="orgf1fb0b9">
+:properties:
+CONTENTS
+:end:
+</pre>
+
+<dl class="org-dl">
+<dt>CONTENTS</dt><dd>A collection of zero or more <a href="#Node_Properties">node properties</a>, not
+separated by blank lines.</dd>
+</dl>
+
+<p>
+<b>Example</b>
+</p>
+
+<pre class="example" id="org17ca235">
+* Heading
+:PROPERTIES:
+:CUSTOM_ID: someid
+:END:
+</pre>
+</div>
+</div>
+<div id="outline-container-Tables" class="outline-4">
+<h4 id="Tables"><span class="section-number-4">4.2.9.</span> Tables</h4>
+<div class="outline-text-4" id="text-Tables">
+<p>
+Tables are started by a line beginning with either:
+</p>
+<ul class="org-ul">
+<li>A vertical bar (<code>|</code>), forming an &ldquo;org&rdquo; type table.</li>
+<li>The string <code>+-</code> followed by a sequence of plus (<code>+</code>) and minus (<code>-</code>)
+signs, forming a &ldquo;table.el&rdquo; type table.</li>
+</ul>
+
+<p>
+Tables cannot be immediately preceded by such lines, as the current
+line would the be part of the earlier table.
+</p>
+
+<p>
+Org tables contain <a href="#Table_Rows">table rows</a>, and end at the first line not starting
+with a vertical bar. An Org table can be followed by a number of
+<code>#+TBLFM: FORMULAS</code> lines, where <code>FORMULAS</code> represents a string consisting
+of any characters but a newline.
+</p>
+
+<p>
+Table.el tables end at the first line not starting with either
+a vertical line (<code>|</code>) or a plus sign (<code>+</code>).
+</p>
+
+<p>
+<b>Examples</b>
+</p>
+
+<pre class="example" id="orgfd8a3a4">
+Org table:
+| Name  | Phone | Age | Age - 24 |
+|-------+-------+-----+----------|
+| Peter |  1234 |  24 |       -1 |
+| Anna  |  4321 |  25 |        7 |
+| Susan |  9876 |  18 |          |
+#+TBLFM: @&lt;$4..@&gt;&gt;$4 = $3 - @+1$3
+
+Table.el table:
++------+-----+-----+
+|Name  |Phone|Age  |
++------+-----+-----+
+|Peter |1234 |24   |
++------+-----+-----+
+|Anna  |4321 |25   |
+|Turner|     |     |
++------+-----+-----+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-Lesser_Elements" class="outline-3">
+<h3 id="Lesser_Elements"><span class="section-number-3">4.3.</span> Lesser Elements</h3>
+<div class="outline-text-3" id="text-Lesser_Elements">
+<p>
+Lesser elements cannot contain any other element.
+</p>
+
+<p>
+Only <a href="#Keywords">keywords</a> which are a member of <code>org-element-parsed-keywords</code><sup><a id="fnr.oepkw" class="footref" href="#fn.oepkw" role="doc-backlink">6</a></sup>, <a href="#Blocks">verse
+blocks</a>, <a href="#Paragraphs">paragraphs</a> or <a href="#Table_Rows">table rows</a> can contain objects.
+</p>
+</div>
+<div id="outline-container-Blocks" class="outline-4">
+<h4 id="Blocks"><span class="section-number-4">4.3.1.</span> Blocks</h4>
+<div class="outline-text-4" id="text-Blocks">
+<p>
+Like <a href="#Greater_Blocks">greater blocks</a>, blocks are structured according to the following pattern:
+</p>
+
+<pre class="example" id="org958f1f4">
+#+begin_NAME DATA
+CONTENTS
+#+end_NAME
+</pre>
+
+<dl class="org-dl">
+<dt>NAME</dt><dd>A string consisting of any non-whitespace characters.  The
+type of the block is determined based on the value as follows:
+<ul class="org-ul">
+<li><code>comment</code>, a &ldquo;comment block&rdquo;,</li>
+<li><code>example</code>, an &ldquo;example block&rdquo;,</li>
+<li><code>export</code>, an &ldquo;export block&rdquo;,</li>
+<li><code>src</code>, a &ldquo;source block&rdquo;,</li>
+<li><code>verse</code>, a &ldquo;verse block&rdquo;.
+The NAME must be one of these values.  Otherwise, the pattern
+forms a greater block.</li>
+</ul></dd>
+<dt>DATA (optional)</dt><dd>A string consisting of any characters but a newline.
+<ul class="org-ul">
+<li>In the case of an export block, this is mandatory and must be a
+single word.</li>
+<li>In the case of a source block, this is mandatory and must follow
+the pattern <code>LANGUAGE SWITCHES ARGUMENTS</code> with:
+<dl class="org-dl">
+<dt>LANGUAGE</dt><dd>A string consisting of any non-whitespace characters</dd>
+<dt>SWITCHES</dt><dd>Any number of SWITCH patterns, separated by a single
+space character
+<dl class="org-dl">
+<dt>SWITCH</dt><dd>Any of the patterns <code>-l "FORMAT"</code>, <code>+n NUMBER</code>, <code>-n
+        NUMBER</code>, <code>-r</code>, <code>-i</code>, or <code>-k</code>
+<dl class="org-dl">
+<dt>FORMAT</dt><dd>a string consisting of any characters but a double
+quote (<code>"</code>) or newline.</dd>
+<dt>NUMBER (optional)</dt><dd>A non-negative integer (one or more
+digits 0-9) optionally preceded by spaces.</dd>
+</dl></dd>
+</dl></dd>
+<dt>ARGUMENTS</dt><dd>A string consisting of any character but a newline.</dd>
+</dl></li>
+</ul></dd>
+<dt>CONTENTS (optional)</dt><dd><p>
+A string consisting of any characters
+(including newlines) subject to the same two conditions of greater
+block&rsquo;s CONTENTS, i.e.
+</p>
+<ul class="org-ul">
+<li>No line may start with <code>#+end_NAME</code>.</li>
+<li>Lines beginning with an asterisk must be quoted by a comma (<code>,*</code>)
+and lines beginning with <code>#+</code> may be quoted by a comma when
+necessary (<code>#+</code>).</li>
+</ul>
+<p>
+CONTENTS will contain Org objects and not support comma-quoting when
+the block is a verse block, it is otherwise not parsed.
+</p></dd>
+</dl>
+
+<p>
+<b>Example</b>
+</p>
+
+<pre class="example" id="orgc8bcc86">
+#+begin_verse
+    There was an old man of the Cape
+   Who made himself garments of crepe.
+       When asked, “Do they tear?”
+      He replied, “Here and there,
+ But they’re perfectly splendid for shape!”
+#+end_verse
+</pre>
+
+<pre class="example" id="org1722d68">
+#+begin_src emacs-lisp
+"This string
+* has "*" escaped.
+Otherwise, '* has "*" escaped.' would be treated as a heading (which
+is context-free)."
+
+"#+ lines may or may not need to be escaped:
+#+end_src if not escaped, would be this source block.
+However,
+#+keyword: does not interfere with code block end and may be left as is.
+#+keyword may be escaped as well, optionally - parser removes all the
+commas in ,* and ,#+ lines."
+#+end_src
+</pre>
+</div>
+</div>
+<div id="outline-container-Clocks" class="outline-4">
+<h4 id="Clocks"><span class="section-number-4">4.3.2.</span> Clock</h4>
+<div class="outline-text-4" id="text-Clocks">
+<p>
+A clock element is structured according to the following pattern:
+</p>
+
+<pre class="example" id="org244643a">
+clock: INACTIVE-TIMESTAMP
+clock: INACTIVE-TIMESTAMP-RANGE DURATION
+clock: DURATION
+</pre>
+
+<dl class="org-dl">
+<dt>INACTIVE-TIMESTAMP</dt><dd>An inactive <a href="#Timestamps">timestamp</a> object.</dd>
+<dt>INACTIVE-TIMESTAMP-RANGE</dt><dd>An inactive range <a href="#Timestamps">timestamp</a> object.</dd>
+<dt>DURATION</dt><dd>An instance of the pattern <code>=&gt; HH:MM</code>.
+<dl class="org-dl">
+<dt>HH</dt><dd>A number consisting of any number of digits (0-9).</dd>
+<dt>MM</dt><dd>A two digit number.</dd>
+</dl></dd>
+</dl>
+
+<p>
+<b>Examples</b>
+</p>
+
+<pre class="example" id="org6dfd996">
+clock: [2024-10-12]
+CLOCK: [2019-03-25 Mon 10:49]--[2019-03-25 Mon 11:31] =&gt;  0:42
+clock: =&gt; 12:30
+</pre>
+</div>
+</div>
+<div id="outline-container-Diary_Sexp" class="outline-4">
+<h4 id="Diary_Sexp"><span class="section-number-4">4.3.3.</span> Diary Sexp</h4>
+<div class="outline-text-4" id="text-Diary_Sexp">
+<p>
+A diary sexp<sup><a id="fnr.7" class="footref" href="#fn.7" role="doc-backlink">7</a></sup> element is an
+<i>unindented</i> line structured according to the following pattern:
+</p>
+
+<pre class="example" id="orgbf7bbb8">
+%%SEXP
+</pre>
+
+<dl class="org-dl">
+<dt>SEXP</dt><dd>A string starting with an open parenthesis <code>(</code>, with balanced
+opening and closing parentheses.</dd>
+</dl>
+
+<p>
+<b>Example</b>
+</p>
+
+<pre class="example" id="org43a666a">
+%%(org-calendar-holiday)
+</pre>
+</div>
+</div>
+<div id="outline-container-Planning" class="outline-4">
+<h4 id="Planning"><span class="section-number-4">4.3.4.</span> Planning</h4>
+<div class="outline-text-4" id="text-Planning">
+<p>
+A planning element is structured according to the following pattern:
+</p>
+
+<pre class="example" id="org5f1fd92">
+HEADING
+PLANNING
+</pre>
+
+<dl class="org-dl">
+<dt>HEADING</dt><dd>A <a href="#Headings">heading</a> element.</dd>
+<dt>PLANNING</dt><dd>A line consisting of one or more <code>KEYWORD: TIMESTAMP</code>
+patterns (termed &ldquo;info&rdquo; patterns).
+<dl class="org-dl">
+<dt>KEYWORD</dt><dd>Either the string <code>DEADLINE</code>, <code>SCHEDULED</code>, or <code>CLOSED</code>.</dd>
+<dt>TIMESTAMP</dt><dd>A <a href="#Timestamps">timestamp</a> object.</dd>
+</dl></dd>
+</dl>
+
+<p>
+PLANNING must directly follow HEADING without any blank lines in
+between.
+</p>
+
+<p>
+When a keyword is repeated in a planning element, the last instance of it has
+priority.
+</p>
+
+<p>
+<b>Example</b>
+</p>
+
+<pre class="example" id="org49fb07f">
+*** TODO watch "The Matrix"
+    SCHEDULED: &lt;1999-03-31 Wed&gt;
+*** TODO take over the world with Org mode
+    SCHEDULED: &lt;2006-03-12 Sun&gt; DEADLINE: &lt;2034-03-22 Wed&gt;
+</pre>
+</div>
+</div>
+<div id="outline-container-Comments" class="outline-4">
+<h4 id="Comments"><span class="section-number-4">4.3.5.</span> Comments</h4>
+<div class="outline-text-4" id="text-Comments">
+<p>
+A &ldquo;comment line&rdquo; starts with a hash character (<code>#</code>) and either a whitespace
+character or the immediate end of the line.
+</p>
+
+<p>
+Comments consist of one or more consecutive comment lines.
+</p>
+
+<p>
+<b>Example</b>
+</p>
+
+<pre class="example" id="org90e1b27">
+# Just a comment
+#
+# Over multiple lines
+</pre>
+</div>
+</div>
+<div id="outline-container-Fixed_Width_Areas" class="outline-4">
+<h4 id="Fixed_Width_Areas"><span class="section-number-4">4.3.6.</span> Fixed Width Areas</h4>
+<div class="outline-text-4" id="text-Fixed_Width_Areas">
+<p>
+A &ldquo;fixed-width line&rdquo; starts with a colon character (<code>:</code>) and either a
+space character or the immediate end of the line.
+</p>
+
+<p>
+Fixed-width areas consist of one or more consecutive fixed-width lines.
+</p>
+
+<p>
+<b>Example</b>
+</p>
+
+<pre class="example" id="orgf9355ef">
+: This is a
+: fixed width area
+</pre>
+</div>
+</div>
+<div id="outline-container-Horizontal_Rules" class="outline-4">
+<h4 id="Horizontal_Rules"><span class="section-number-4">4.3.7.</span> Horizontal Rules</h4>
+<div class="outline-text-4" id="text-Horizontal_Rules">
+<p>
+A horizontal rule is formed by a line consisting of at least five
+consecutive hyphens (<code>-----</code>).
+</p>
+</div>
+</div>
+<div id="outline-container-Keywords" class="outline-4">
+<h4 id="Keywords"><span class="section-number-4">4.3.8.</span> Keywords</h4>
+<div class="outline-text-4" id="text-Keywords">
+<p>
+Keywords are structured according to the following pattern:
+</p>
+
+<pre class="example" id="org33375cb">
+#+KEY: VALUE
+</pre>
+
+<dl class="org-dl">
+<dt>KEY</dt><dd>A string consisting of any non-whitespace characters, other
+than <code>call</code> (which would forms a <a href="#Babel_Call">babel call</a> element).</dd>
+<dt>VALUE</dt><dd>A string consisting of any characters but a newline.</dd>
+</dl>
+
+<p>
+When KEY is a member of <code>org-element-parsed-keywords</code><sup><a id="fnr.oepkw.6" class="footref" href="#fn.oepkw" role="doc-backlink">6</a></sup>, VALUE can contain
+the <a href="#org55f4f84">standard set</a> objects, excluding <a href="#Footnote_References">footnote references</a>.
+</p>
+
+<p>
+Note that while instances of this pattern are preferentially parsed as
+<a href="#Affiliated_Keywords">affiliated keywords</a>, a keyword with the same KEY as an affiliated
+keyword may occur so long as it is not immediately preceding a valid
+element that can be affiliated.  For example, an instance of
+<code>#+caption: hi</code> followed by a blank line will be parsed as a keyword,
+not an affiliated keyword.
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="Babel_Call"></a>Babel Call<br>
+<div class="outline-text-5" id="text-Babel_Call">
+<p>
+Babel calls are structured according to one of the following patterns:
+</p>
+<pre class="example" id="orgd8f3e3a">
+#+call: NAME(ARGUMENTS)
+#+call: NAME[HEADER1](ARGUMENTS)
+#+call: NAME(ARGUMENTS)[HEADER2]
+#+call: NAME[HEADER1](ARGUMENTS)[HEADER2]
+</pre>
+
+<dl class="org-dl">
+<dt>NAME</dt><dd>A string consisting of any non-newline characters except for
+square brackets, or parentheses (<code>[]()</code>).</dd>
+<dt>ARGUMENTS (optional)</dt><dd>A string consisting of any non-newline
+characters.  Opening and closing parenthesis must be balanced.</dd>
+<dt>HEADER1 (optional), HEADER2 (optional)</dt><dd>A string consisting of any
+non-newline characters.  Opening and closing square brackets must be
+balanced.</dd>
+</dl>
+</div>
+</li>
+<li><a id="Affiliated_Keywords"></a>Affiliated Keywords<br>
+<div class="outline-text-5" id="text-Affiliated_Keywords">
+<p>
+With the exception of <a href="#Comments">comments</a>, <a href="#Clocks">clocks</a>, <a href="#Headings">headings</a>, <a href="#Inlinetasks">inlinetasks</a>,
+<a href="#Items">items</a>, <a href="#Node_Properties">node properties</a>, <a href="#Planning">planning</a>, <a href="#Property_Drawers">property drawers</a>, <a href="#Sections">sections</a>, and
+<a href="#Table_Rows">table rows</a>, every other element type can be assigned attributes.
+</p>
+
+<p>
+This is done by adding specific <a href="#Keywords">keywords</a>, named <i>affiliated</i> keywords,
+immediately above the element considered (a blank line cannot lie
+between the affiliated keyword and element). Structurally, affiliated
+keyword are not considered an element in their own right but a
+property of the element they apply to.
+</p>
+
+<p>
+Affiliated keywords are structured according to one of the following pattern:
+</p>
+
+<pre class="example" id="org49d1f7a">
+#+KEY: VALUE
+#+KEY[OPTVAL]: VALUE
+#+attr_BACKEND: VALUE
+</pre>
+
+<dl class="org-dl">
+<dt>KEY</dt><dd>A string which is a member of
+<code>org-element-affiliated-keywords</code><sup><a id="fnr.oeakw" class="footref" href="#fn.oeakw" role="doc-backlink">8</a></sup>.</dd>
+<dt>BACKEND</dt><dd>A string consisting of English letters (a-z, A-Z), digits
+(0-9), hyphens, or underscores (<code>-_</code>).</dd>
+<dt>OPTVAL (optional)</dt><dd>A string consisting of any characters but a
+newline.  Opening and closing square brackets must be balanced.
+This term is only valid when KEY is a member of
+<code>org-element-dual-keywords</code><sup><a id="fnr.oedkw" class="footref" href="#fn.oedkw" role="doc-backlink">9</a></sup>.</dd>
+<dt>VALUE</dt><dd>A string consisting of any characters but a newline, except
+in the case where KEY is member of
+<code>org-element-parsed-keywords</code><sup><a id="fnr.oepkw.6" class="footref" href="#fn.oepkw" role="doc-backlink">6</a></sup> in which case VALUE
+is a series of objects from the <a href="#org55f4f84">standard set</a>, excluding footnote
+references.</dd>
+</dl>
+
+<p>
+Repeating an affiliated keyword before an element will usually result
+in the prior VALUEs being overwritten by the last instance of KEY.
+The sole exception to this is <code>#+header:</code> keywords, where in the case of multiple
+<code>:opt val</code> declarations the last declaration on the first line it occurs on has
+priority.
+</p>
+
+<p>
+There are two situations under which the VALUEs will be concatenated:
+</p>
+<ol class="org-ol">
+<li>If KEY is a member of <code>org-element-dual-keywords</code><sup><a id="fnr.oedkw.9" class="footref" href="#fn.oedkw" role="doc-backlink">9</a></sup>.</li>
+<li>If the affiliated keyword is an instance of the pattern
+<code>#+attr_BACKEND: VALUE</code>.</li>
+</ol>
+
+<p>
+When no element immediately follows an instance of the &ldquo;affiliated
+keyword&rdquo; pattern, the keyword is a normal, non-affiliated keyword.
+</p>
+
+<p>
+The following example contains three affiliated keywords:
+</p>
+<pre class="example" id="orgf7043db">
+#+name: image-name
+#+caption: This is a caption for
+#+caption: the image linked below
+[[file:some/image.png]]
+</pre>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-LaTeX_Environments" class="outline-4">
+<h4 id="LaTeX_Environments"><span class="section-number-4">4.3.9.</span> LaTeX Environments</h4>
+<div class="outline-text-4" id="text-LaTeX_Environments">
+<p>
+LaTeX environments are structured according to the following pattern:
+</p>
+
+<pre class="example" id="org14e2a15">
+\begin{NAME}EXTRA
+CONTENTS
+\end{NAME}
+</pre>
+
+<dl class="org-dl">
+<dt>NAME</dt><dd>A non-empty string consisting of English letters (a-z, A-Z),
+digits (0-9) or asterisk (<code>*</code>) characters</dd>
+<dt>EXTRA (optional)</dt><dd>A string which does not contain the substring
+<code>\end{NAME}</code>.</dd>
+<dt>CONTENTS (optional)</dt><dd>A string which does not contain the substring
+<code>\end{NAME}</code>.</dd>
+</dl>
+
+<p>
+<b>Examples</b>
+</p>
+
+<pre class="example" id="org0baf436">
+\begin{align*}
+2x - 5y &amp;= 8 \\
+3x + 9y &amp;= -12
+\end{align*}
+</pre>
+</div>
+</div>
+<div id="outline-container-Node_Properties" class="outline-4">
+<h4 id="Node_Properties"><span class="section-number-4">4.3.10.</span> Node Properties</h4>
+<div class="outline-text-4" id="text-Node_Properties">
+<p>
+Node properties can only exist in <a href="#Property_Drawers">property drawers</a>, and are structured
+according to one of the following patterns:
+</p>
+
+<pre class="example" id="org57c3b4a">
+:NAME: VALUE
+:NAME:
+:NAME+: VALUE
+:NAME+:
+</pre>
+
+<dl class="org-dl">
+<dt>NAME</dt><dd>A non-empty string containing any non-whitespace characters
+which does not end in a plus characters (<code>+</code>).</dd>
+<dt>VALUE (optional)</dt><dd>A string containing any characters but a newline.</dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-Paragraphs" class="outline-4">
+<h4 id="Paragraphs"><span class="section-number-4">4.3.11.</span> Paragraphs</h4>
+<div class="outline-text-4" id="text-Paragraphs">
+<p>
+Paragraphs are the default element, which means that any
+unrecognized context is a paragraph.
+</p>
+
+<p>
+Empty lines and other elements end paragraphs.
+</p>
+
+<p>
+Paragraphs can contain the <a href="#org55f4f84">standard set</a> of objects.
+</p>
+</div>
+</div>
+<div id="outline-container-Table_Rows" class="outline-4">
+<h4 id="Table_Rows"><span class="section-number-4">4.3.12.</span> Table Rows</h4>
+<div class="outline-text-4" id="text-Table_Rows">
+<p>
+A table row consists of a vertical bar (<code>|</code>) followed by:
+</p>
+<ul class="org-ul">
+<li>Any number of <a href="#Table_Cells">table cells</a>, forming a &ldquo;standard&rdquo; type row.</li>
+<li>A hyphen (<code>-</code>), forming a &ldquo;rule&rdquo; type row.  Any non-newline characters
+can follow the hyphen and this will still be a &ldquo;rule&rdquo; type row</li>
+</ul>
+
+<p>
+Table rows can only exist in <a href="#Tables">tables</a> with Org type.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-Objects" class="outline-2">
+<h2 id="Objects"><span class="section-number-2">5.</span> Objects</h2>
+<div class="outline-text-2" id="text-Objects">
+<p>
+Objects can only be found in the following elements:
+</p>
+
+<ul class="org-ul">
+<li><a href="#Keywords">keywords</a> or <a href="#Affiliated_Keywords">affiliated keywords</a> VALUEs, when KEY is a member of
+<code>org-element-parsed-keywords</code><sup><a id="fnr.oepkw.6" class="footref" href="#fn.oepkw" role="doc-backlink">6</a></sup>,</li>
+<li><a href="#Headings">heading</a> TITLEs,</li>
+<li><a href="#Inlinetasks">inlinetask</a> TITLEs,</li>
+<li><a href="#Items">item</a> TAGs,</li>
+<li><a href="#Clocks">clock</a> INACTIVE-TIMESTAMP and INACTIVE-TIMESTAMP-RANGE, which can
+only contain inactive timestamps,</li>
+<li><a href="#Planning">planning</a> TIMESTAMPs, which can only be timestamps,</li>
+<li><a href="#Paragraphs">paragraphs</a>,</li>
+<li><a href="#Table_Cells">table cells</a>,</li>
+<li><a href="#Table_Rows">table rows</a>, which can only contain table cell objects,</li>
+<li><a href="#Blocks">verse blocks</a>.</li>
+</ul>
+
+<p>
+Org syntax objects have a similar structure to <a href="#Elements">elements</a>, except blank
+lines being replaced by trailing spaces:
+</p>
+
+<pre class="example" id="org4e608fa">
+BEGIN CONTENTS END BLANK
+BEGIN VALUE END BLANK
+</pre>
+
+<p>
+Most objects cannot contain objects.  Those which can will be
+specified.  Furthermore, while many objects may contain newlines, a
+blank line often terminates the element that the object is a part of,
+such as a paragraph.
+</p>
+
+<p>
+Trailing spaces at the end of objects are considered a part of those
+objects.
+</p>
+
+<pre class="example" id="org1bcd54d">
+This *bold markup*      also includes the subsequent trailing spaces into
+the bold object.
+
+*This is not a bold markup
+
+because the previous blank line separates the containing paragraph*.
+</pre>
+</div>
+<div id="outline-container-Entities" class="outline-3">
+<h3 id="Entities"><span class="section-number-3">5.1.</span> Entities</h3>
+<div class="outline-text-3" id="text-Entities">
+<p>
+Entities are structured according to the following patterns:
+</p>
+
+<pre class="example" id="orgc6a3dc6">
+\NAME POST
+\NAME{}
+\_SPACES
+</pre>
+
+<p>
+Where NAME and POST are not separated by a whitespace character.
+</p>
+
+<dl class="org-dl">
+<dt>NAME</dt><dd>A string with a valid association in either
+<code>org-entities</code><sup><a id="fnr.oe" class="footref" href="#fn.oe" role="doc-backlink">10</a></sup> or
+<code>org-entities-user</code>.</dd>
+<dt><a href="#Special_Tokens">POST</a></dt><dd>Either:
+<ul class="org-ul">
+<li>The end of line.</li>
+<li>A non-alphabetic character.</li>
+</ul></dd>
+<dt>SPACES</dt><dd>One or more spaces, constituting a whitespace entity with
+name <code>_SPACES</code> from <code>org-entities</code> or <code>org-entities-user</code>.</dd>
+</dl>
+
+<p>
+<b>Example</b>
+</p>
+
+<pre class="example" id="org1392e8b">
+1\cent.
+1.5em space:\_   here, all three spaces in =\_   = constitute the entity name.
+</pre>
+</div>
+</div>
+<div id="outline-container-LaTeX_Fragments" class="outline-3">
+<h3 id="LaTeX_Fragments"><span class="section-number-3">5.2.</span> LaTeX Fragments</h3>
+<div class="outline-text-3" id="text-LaTeX_Fragments">
+<p>
+LaTeX fragments are structured according to one of the following patterns:
+</p>
+
+<pre class="example" id="orgc566fd2">
+\NAME BRACKETS
+\(CONTENTS\)
+\[CONTENTS\]
+</pre>
+
+<dl class="org-dl">
+<dt>NAME</dt><dd>A string consisting of English letters (a-z, A-Z) optionally
+followed by a single <code>*</code> which does not have an association in
+either <code>org-entities</code> or <code>org-entities-user</code>.</dd>
+<dt>BRACKETS (optional)</dt><dd><p>
+An instance of one of the following patterns,
+not separated from NAME by whitespace.
+</p>
+<pre class="example" id="org7a66e22">
+[CONTENTS1]
+{CONTENTS1}
+</pre>
+<dl class="org-dl">
+<dt>CONTENTS1</dt><dd>A string consisting of any characters but <code>{</code>, <code>}</code>, <code>[</code>,
+<code>]</code>, or a newline.</dd>
+<dt>CONTENTS2</dt><dd>A string consisting of any characters but <code>{</code>, <code>}</code>, or a newline.</dd>
+</dl></dd>
+<dt>CONTENTS</dt><dd>A string consisting of any characters, so long as it does
+not contain the substring <code>\)</code> in the case of the
+second template, or <code>\]</code> in the case of the third template.</dd>
+</dl>
+
+<p>
+<b>Examples</b>
+</p>
+
+<pre class="example" id="orgc9146b0">
+\enlargethispage{2\baselineskip}
+\(e^{i \pi}\)
+</pre>
+
+
+<p>
+Org also supports TeX-style inline LaTeX fragments, structured
+according the following pattern:
+</p>
+
+<pre class="example" id="orgdcb3999">
+$$CONTENTS$$
+PRE$CHAR$POST
+PRE$BORDER1 BODY BORDER2$POST
+</pre>
+
+<dl class="org-dl">
+<dt><a href="#Special_Tokens">PRE</a></dt><dd>Either the beginning of line or a character other than <code>$</code>.</dd>
+<dt>CHAR</dt><dd>A non-whitespace character that is not <code>.</code>, <code>,</code>, <code>?</code>, <code>;</code>, or a
+double quote (<code>"</code>).</dd>
+<dt><a href="#Special_Tokens">POST</a></dt><dd>Any punctuation character (including parentheses and
+quotes), a space character, or the end of line.</dd>
+<dt>BORDER1</dt><dd>A non-whitespace character that is not <code>.</code>, <code>,</code>, <code>;</code>, or <code>$</code>.</dd>
+<dt>BODY</dt><dd>A string consisting of any characters except <code>$</code>.</dd>
+<dt>BORDER2</dt><dd>A non-whitespace character that is not <code>.</code>, <code>,</code>, or <code>$</code>.</dd>
+</dl>
+
+<p>
+<b>Example</b>
+</p>
+
+<pre class="example" id="org1c3b29e">
+$$1+1=2$$
+</pre>
+</div>
+</div>
+<div id="outline-container-Export_Snippets" class="outline-3">
+<h3 id="Export_Snippets"><span class="section-number-3">5.3.</span> Export Snippets</h3>
+<div class="outline-text-3" id="text-Export_Snippets">
+<p>
+Export snippets are structured according to the following pattern:
+</p>
+
+<pre class="example" id="org897a2f1">
+@@BACKEND:VALUE@@
+</pre>
+
+<dl class="org-dl">
+<dt>BACKEND</dt><dd>A string consisting of one or more English letters (a-z,
+A-Z), digits (0-9), and hyphens (<code>-</code>).</dd>
+<dt>VALUE (optional)</dt><dd>A string containing anything but the string <code>@@</code>.</dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-Footnote_References" class="outline-3">
+<h3 id="Footnote_References"><span class="section-number-3">5.4.</span> Footnote References</h3>
+<div class="outline-text-3" id="text-Footnote_References">
+<p>
+Footnote references are structured according to one of the following patterns:
+</p>
+
+<pre class="example" id="org31a61e4">
+[fn:LABEL]
+[fn:LABEL:DEFINITION]
+[fn::DEFINITION]
+</pre>
+
+<dl class="org-dl">
+<dt>LABEL</dt><dd>A string containing one or more word constituent characters,
+hyphens and underscores (<code>-_</code>).</dd>
+<dt>DEFINITION (optional)</dt><dd>One or more objects from the <a href="#org55f4f84">standard set</a>,
+so long as opening and closing square brackets are balanced within
+DEFINITION.</dd>
+</dl>
+
+<p>
+If the reference follows the second pattern, it is called an &ldquo;inline
+footnote&rdquo;.  If it follows the third pattern, i.e. if LABEL is omitted,
+it is called an &ldquo;anonymous footnote&rdquo;.
+</p>
+
+<p>
+Note that the first pattern may not occur on an <i>unindented</i> line, as it
+is then a <a href="#Footnote_Definitions">footnote definition</a>.
+</p>
+</div>
+</div>
+<div id="outline-container-Citations" class="outline-3">
+<h3 id="Citations"><span class="section-number-3">5.5.</span> Citations</h3>
+<div class="outline-text-3" id="text-Citations">
+<p>
+Citations are structured according to the following pattern:
+</p>
+
+<pre class="example" id="org7ee5133">
+[cite CITESTYLE: REFERENCES]
+[cite CITESTYLE: GLOBALPREFIX;REFERENCES]
+[cite CITESTYLE: REFERENCES;GLOBALSUFFIX]
+[cite CITESTYLE: GLOBALPREFIX;REFERENCES;GLOBALSUFFIX]
+</pre>
+
+<p>
+Where &ldquo;cite&rdquo; and <code>CITESTYLE</code> are <i>not</i> separated by whitespace.
+Whitespace after the leading colon or before the closing square
+bracket is not significant.
+</p>
+
+<dl class="org-dl">
+<dt>CITESTYLE (optional)</dt><dd>An instance of either the pattern <code>/STYLE</code> or <code>/STYLE/VARIANT</code>
+<dl class="org-dl">
+<dt>STYLE</dt><dd>A string made of any alphanumeric character, <code>_</code>, or <code>-</code>.</dd>
+<dt>VARIANT</dt><dd>A string made of any alphanumeric character, <code>_</code>, <code>-</code>, or <code>/</code>.</dd>
+</dl></dd>
+<dt>GLOBALPREFIX (optional)</dt><dd>One or more objects from the <a href="#org55f4f84">standard set</a>,
+so long as all square brackets are balanced within GLOBALPREFIX, and
+it does not contain any semicolons (<code>;</code>) or subsequence that matches
+<code>@KEY</code>.</dd>
+<dt>REFERENCES</dt><dd>One or more <a href="#Citation_References">citation reference</a> objects, separated by
+semicolons (<code>;</code>).</dd>
+<dt>GLOBALSUFFIX (optional)</dt><dd>One or more objects from the <a href="#org55f4f84">standard set</a>,
+so long as all square brackets are balanced within GLOBALSUFFIX, and
+it does not contain any semicolons (<code>;</code>) or subsequence that matches
+<code>@KEY</code>.</dd>
+</dl>
+
+<p>
+<b>Examples</b>
+</p>
+
+<pre class="example" id="orgdb029ca">
+[cite:@key]
+[cite/t: see;@source1;@source2;by Smith /et al./]
+</pre>
+</div>
+</div>
+<div id="outline-container-Citation_References" class="outline-3">
+<h3 id="Citation_References"><span class="section-number-3">5.6.</span> Citation references</h3>
+<div class="outline-text-3" id="text-Citation_References">
+<p>
+A reference to an individual resource is given in a <i>citation reference</i>
+object.  Citation references are only found within <a href="#Citations">citations</a>, and are
+structured according to the following pattern:
+</p>
+
+<pre class="example" id="org2925243">
+KEYPREFIX @KEY KEYSUFFIX
+</pre>
+<p>
+Where KEYPREFIX, @​KEY, and KEYSUFFIX are not separated by whitespace
+(all the whitespace is significant).
+</p>
+
+<dl class="org-dl">
+<dt>KEYPREFIX (optional)</dt><dd>One or more objects from the <a href="#orge7cba14">minimal set</a>,
+so long as all square brackets are balanced within KEYPREFIX, and
+it does not contain any semicolons (<code>;</code>) or subsequence that matches
+<code>@KEY</code>.</dd>
+<dt>KEY</dt><dd>A string made of any word-constituent character, <code>-</code>, <code>.</code>, <code>:</code>,
+<code>?</code>, <code>!</code>, <code>`</code>, <code>'</code>, <code>/</code>, <code>*</code>, <code>@</code>, <code>+</code>, <code>|</code>, <code>(</code>, <code>)</code>, <code>{</code>, <code>}</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&amp;</code>, <code>_</code>, <code>^</code>, <code>$</code>, <code>#</code>, <code>%</code>, or
+<code>~</code>.</dd>
+<dt>KEYSUFFIX (optional)</dt><dd>One or more objects from the <a href="#orge7cba14">minimal set</a>,
+so long as all square brackets are balanced within KEYPREFIX, and
+it does not contain any semicolons (<code>;</code>).</dd>
+</dl>
+
+
+<p>
+<b>Examples</b>
+</p>
+
+<pre class="example" id="org837d0af">
+[cite:@key]
+[cite/t:see;@foo p. 7;@bar pp. 4;by foo]
+[cite/a/f:c.f.;the very important @@atkey @ once;the crucial @baz vol. 3]
+</pre>
+</div>
+</div>
+<div id="outline-container-Inline_Babel_Calls" class="outline-3">
+<h3 id="Inline_Babel_Calls"><span class="section-number-3">5.7.</span> Inline Babel Calls</h3>
+<div class="outline-text-3" id="text-Inline_Babel_Calls">
+<p>
+Inline Babel calls are structured according to one of the following patterns:
+</p>
+
+<pre class="example" id="orgdbd34c2">
+call_NAME(ARGUMENTS)
+call_NAME[HEADER1](ARGUMENTS)
+call_NAME(ARGUMENTS)[HEADER2]
+call_NAME[HEADER1](ARGUMENTS)[HEADER2]
+</pre>
+
+<dl class="org-dl">
+<dt>NAME</dt><dd>A string consisting of any non-whitespace characters except
+for square brackets or parentheses (<code>[](​)</code>).</dd>
+<dt>ARGUMENTS, HEADER1 (optional), HEADER2 (optional)</dt><dd>A string
+consisting of zero or more non-newline characters.  Opening and
+closing square brackets must be balanced within HEADER1 and HEADER2,
+and opening and closing parenthesis - within ARGUMENTS.</dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-Source_Blocks" class="outline-3">
+<h3 id="Source_Blocks"><span class="section-number-3">5.8.</span> Inline Source Blocks</h3>
+<div class="outline-text-3" id="text-Source_Blocks">
+<p>
+Inline source blocks follow any of the following patterns:
+</p>
+
+<pre class="example" id="org4c365e8">
+src_LANG{BODY}
+src_LANG[HEADERS]{BODY}
+</pre>
+
+<dl class="org-dl">
+<dt>LANG</dt><dd>A string consisting of any characters other than whitespace,
+the opening square bracket (<code>[</code>), or opening curly bracket (<code>{</code>).</dd>
+<dt>HEADERS (optional), BODY</dt><dd>A string consisting of zero or more
+non-newline characters.  Opening and closing square brackets must be
+balanced within HEADERS, and opening and closing curly brackets
+within BODY.</dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-Line_Breaks" class="outline-3">
+<h3 id="Line_Breaks"><span class="section-number-3">5.9.</span> Line Breaks</h3>
+<div class="outline-text-3" id="text-Line_Breaks">
+<p>
+Line breaks must occur at the end of an otherwise non-blank line, and
+are structured according to the following pattern:
+</p>
+
+<pre class="example" id="orgec3faf1">
+PRE\\SPACE
+</pre>
+
+<dl class="org-dl">
+<dt><a href="#Special_Tokens">PRE</a></dt><dd>Anything but backslash (<code>\</code>).</dd>
+<dt>SPACE</dt><dd>Zero or more tab and space characters.</dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-Links" class="outline-3">
+<h3 id="Links"><span class="section-number-3">5.10.</span> Links</h3>
+<div class="outline-text-3" id="text-Links">
+<p>
+While links are a single object, they come in four subtypes: &ldquo;radio&rdquo;,
+&ldquo;angle&rdquo;, &ldquo;plain&rdquo;, and &ldquo;regular&rdquo; links.
+</p>
+</div>
+<div id="outline-container-org6016451" class="outline-4">
+<h4 id="org6016451"><span class="section-number-4">5.10.1.</span> Radio Links</h4>
+<div class="outline-text-4" id="text-5-10-1">
+<p>
+Radio-type links are structured according to the following pattern:
+</p>
+
+<pre class="example" id="org9094713">
+PRE RADIO POST
+</pre>
+
+<dl class="org-dl">
+<dt><a href="#Special_Tokens">PRE</a></dt><dd>A non-alphanumeric character or line breakable
+character<sup><a id="fnr.line-breakable" class="footref" href="#fn.line-breakable" role="doc-backlink">11</a></sup>.</dd>
+<dt>RADIO</dt><dd>One or more objects matched by some <a href="#Targets_and_Radio_Targets">radio target</a>.  It can
+contain the <a href="#orge7cba14">minimal set</a> of objects.</dd>
+<dt><a href="#Special_Tokens">POST</a></dt><dd>A non-alphanumeric character or line breakable character<sup><a id="fnr.line-breakable.11" class="footref" href="#fn.line-breakable" role="doc-backlink">11</a></sup>.</dd>
+</dl>
+
+<p>
+<b>Example</b>
+</p>
+
+<pre class="example" id="org1016eb8">
+This is some &lt;&lt;&lt;*important* information&gt;&gt;&gt; which we refer to lots.
+Make sure you remember the *important* information.
+</pre>
+
+<p>
+The first instance of <code>*important* information</code> defines a radio target,
+which is matched by the second instance of <code>*important* information</code>,
+forming a radio link.
+</p>
+</div>
+</div>
+<div id="outline-container-orgcd07d9e" class="outline-4">
+<h4 id="orgcd07d9e"><span class="section-number-4">5.10.2.</span> Plain links</h4>
+<div class="outline-text-4" id="text-5-10-2">
+<p>
+Plain-type links are structured according to the following pattern:
+</p>
+
+<pre class="example" id="org453f822">
+PRE LINKTYPE:PATHPLAIN POST
+</pre>
+
+<dl class="org-dl">
+<dt><a href="#Special_Tokens">PRE</a></dt><dd>A non word constituent character.</dd>
+<dt>LINKTYPE</dt><dd>A string which is one of the link type strings in
+<code>org-link-parameters</code><sup><a id="fnr.olp" class="footref" href="#fn.olp" role="doc-backlink">12</a></sup>.</dd>
+<dt>PATHPLAIN</dt><dd>A string containing non-whitespace non-bracket (<code>()[]&lt;&gt;</code>)
+characters, optionally containing parenthesis-wrapped non-whitespace
+non-bracket substrings up to a depth of two. The string must end
+with either a non-punctation non-whitespace character, a forwards
+slash, or a parenthesis-wrapped substring.<sup><a id="fnr.13" class="footref" href="#fn.13" role="doc-backlink">13</a></sup></dd>
+<dt><a href="#Special_Tokens">POST</a></dt><dd>A non word constituent character.</dd>
+</dl>
+
+<p>
+<b>Example</b>
+</p>
+
+<pre class="example" id="org75675cd">
+Be sure to look at https://orgmode.org.
+</pre>
+</div>
+</div>
+<div id="outline-container-orgcfcaecb" class="outline-4">
+<h4 id="orgcfcaecb"><span class="section-number-4">5.10.3.</span> Angle links</h4>
+<div class="outline-text-4" id="text-5-10-3">
+<p>
+Angle-type essentially provide a method to disambiguate plain links
+from surrounding text, and are structured according to the following
+pattern:
+</p>
+
+<pre class="example" id="org677e2b4">
+&lt;LINKTYPE:PATHANGLE&gt;
+</pre>
+
+<dl class="org-dl">
+<dt>LINKTYPE</dt><dd>A string which is one of the link type strings in
+<code>org-link-parameters</code><sup><a id="fnr.olp.12" class="footref" href="#fn.olp" role="doc-backlink">12</a></sup></dd>
+<dt>PATHANGLE</dt><dd>A string containing any character but <code>&gt;</code>., where newlines
+and indentation are ignored.</dd>
+</dl>
+
+<p>
+The angle brackets allow for a more permissive PATH syntax, without
+accidentally matching surrounding text.
+</p>
+</div>
+</div>
+<div id="outline-container-orgebd89b2" class="outline-4">
+<h4 id="orgebd89b2"><span class="section-number-4">5.10.4.</span> Regular links</h4>
+<div class="outline-text-4" id="text-5-10-4">
+<p>
+Plain-type links are structured according to one of the following two patterns:
+</p>
+
+<pre class="example" id="org902e210">
+[[PATHREG]]
+[[PATHREG][DESCRIPTION]]
+</pre>
+
+<dl class="org-dl">
+<dt>PATHREG</dt><dd><p>
+An instance of one of the seven following annotated patterns:
+</p>
+<pre class="example" id="orgf2ea07a">
+FILENAME               ("file" type)
+LINKTYPE:PATHINNER     ("LINKTYPE" type)
+LINKTYPE://PATHINNER   ("LINKTYPE" type)
+id:ID                  ("id" type)
+#CUSTOM-ID             ("custom-id" type)
+(CODEREF)              ("coderef" type)
+FUZZY                  ("fuzzy" type)
+</pre>
+<p>
+Any sequence of spaces, tabs, and newlines inside PATHREG is treated
+as a single space.<sup><a id="fnr.14" class="footref" href="#fn.14" role="doc-backlink">14</a></sup>
+</p>
+<dl class="org-dl">
+<dt>FILENAME</dt><dd>A string representing an absolute or relative file path.</dd>
+<dt>LINKTYPE</dt><dd>A string which is one of the link type strings in
+<code>org-link-parameters</code><sup><a id="fnr.olp.12" class="footref" href="#fn.olp" role="doc-backlink">12</a></sup></dd>
+<dt>PATHINNER</dt><dd>A string consisting of any character besides square brackets.</dd>
+<dt>ID</dt><dd>A string consisting of any character besides square brackets.</dd>
+<dt>CUSTOM-ID</dt><dd>A string consisting of any character besides square brackets.</dd>
+<dt>CODEREF</dt><dd>A string consisting of any character besides square brackets.</dd>
+<dt>FUZZY</dt><dd>A string consisting of any character besides square brackets.</dd>
+</dl>
+<p>
+Square brackets and backslashes can be present in PATHREG so long as
+they are escaped by a backslash (i.e. <code>\]</code>, <code>\\</code>).
+</p></dd>
+<dt>DESCRIPTION (optional)</dt><dd>One or more objects enclosed by square
+brackets.  It can contain the <a href="#orge7cba14">minimal set</a> of objects as well as
+<a href="#Export_Snippets">export snippets</a>, <a href="#Inline_Babel_Calls">inline babel calls</a>, <a href="#Source_Blocks">inline source blocks</a>, <a href="#Macros">macros</a>,
+and <a href="#Statistics_Cookies">statistics cookies</a>.  It can also contain another link, but only
+when it is a plain or angle link.  It can contain square brackets,
+but not <code>]]</code>.</dd>
+</dl>
+
+<p>
+<b>Examples</b>
+</p>
+
+<pre class="example" id="org54b27f6">
+[[https://orgmode.org][The Org project homepage]]
+[[file:orgmanual.org]]
+[[Regular links]]
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-Macros" class="outline-3">
+<h3 id="Macros"><span class="section-number-3">5.11.</span> Macros</h3>
+<div class="outline-text-3" id="text-Macros">
+<p>
+Macros are structured according to one of the following patterns:
+</p>
+
+<pre class="example" id="orgf735167">
+{{{NAME}}}
+{{{NAME(ARGUMENTS)}}}
+</pre>
+
+<dl class="org-dl">
+<dt>NAME</dt><dd>A string starting with a English letter (a-z, A-Z) followed
+by any number of English letters, digits (0-9), hyphens and
+underscores (<code>-_</code>).</dd>
+<dt>ARGUMENTS (optional)</dt><dd>A string consisting of any characters, so
+long as it does not contain the substring <code>}}}</code>.  Values within
+ARGUMENTS are separated by commas.  Non-separating commas have to be
+escaped with a backslash character.</dd>
+</dl>
+
+<p>
+<b>Examples</b>
+</p>
+
+<pre class="example" id="org8c24919">
+{{{title}}}
+{{{one_arg_macro(1)}}}
+{{{two_arg_macro(1, 2)}}}
+{{{two_arg_macro(1\,a, 2)}}}
+</pre>
+</div>
+</div>
+<div id="outline-container-Targets_and_Radio_Targets" class="outline-3">
+<h3 id="Targets_and_Radio_Targets"><span class="section-number-3">5.12.</span> Targets and Radio Targets</h3>
+<div class="outline-text-3" id="text-Targets_and_Radio_Targets">
+<p>
+Targets are structured according to the following pattern:
+</p>
+
+<pre class="example" id="orgb019296">
+&lt;&lt;TARGET&gt;&gt;
+</pre>
+
+<dl class="org-dl">
+<dt>TARGET</dt><dd>A string containing any character but <code>&lt;</code>, <code>&gt;</code>, or <code>\n</code>.  It
+cannot start or end with a whitespace character.</dd>
+</dl>
+
+<p>
+Radio targets are structured according to the following pattern:
+</p>
+
+<pre class="example" id="org3963b7e">
+&lt;&lt;&lt;CONTENTS&gt;&gt;&gt;
+</pre>
+
+<dl class="org-dl">
+<dt>CONTENTS</dt><dd>One or more objects from the <a href="#orge7cba14">minimal set</a>, starting and
+ending with a non-whitespace character, and containing any character
+but <code>&lt;</code>, <code>&gt;</code>, or <code>\n</code>.</dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-Statistics_Cookies" class="outline-3">
+<h3 id="Statistics_Cookies"><span class="section-number-3">5.13.</span> Statistics Cookies</h3>
+<div class="outline-text-3" id="text-Statistics_Cookies">
+<p>
+Statistics cookies are structured according to one of the following patterns:
+</p>
+
+<pre class="example" id="org2de0dee">
+[PERCENT%]
+[NUM1/NUM2]
+</pre>
+
+<dl class="org-dl">
+<dt>PERCENT (optional)</dt><dd>A non-negative integer (one or more digits 0-9).</dd>
+<dt>NUM1 (optional)</dt><dd>A non-negative integer.</dd>
+<dt>NUM2 (optional)</dt><dd>A non-negative integer.</dd>
+</dl>
+</div>
+</div>
+<div id="outline-container-Subscript_and_Superscript" class="outline-3">
+<h3 id="Subscript_and_Superscript"><span class="section-number-3">5.14.</span> Subscript and Superscript</h3>
+<div class="outline-text-3" id="text-Subscript_and_Superscript">
+<p>
+Subscripts are structured according to the following pattern:
+</p>
+
+<pre class="example" id="orgbe963dd">
+CHAR_SCRIPT
+</pre>
+
+<p>
+Superscripts are structured according to the following pattern:
+</p>
+
+<pre class="example" id="org73f0f83">
+CHAR^SCRIPT
+</pre>
+
+<dl class="org-dl">
+<dt>CHAR</dt><dd>Any non-whitespace character.</dd>
+<dt>SCRIPT</dt><dd>One of the following constructs:
+<ul class="org-ul">
+<li>A single asterisk character (<code>*</code>).</li>
+<li>An expression enclosed in curly brackets (<code>{</code>, <code>}</code>) or in round braces
+(<code>(</code>, <code>)</code>), which may itself contain balanced curly or round brackets
+and the <a href="#org55f4f84">standard set</a> of objects.</li>
+<li><p>
+An instance of the pattern:
+</p>
+<pre class="example" id="orge7b8a9c">
+SIGN CHARS FINAL
+</pre>
+<p>
+With no whitespace between SIGN, CHARS and FINAL.
+</p>
+<dl class="org-dl">
+<dt>SIGN (optional)</dt><dd>Either a plus sign character (<code>+</code>), a minus sign
+character (<code>-</code>), or the empty string.</dd>
+<dt>CHARS</dt><dd>Either the empty string, or a string consisting of any
+number of alphanumeric characters, commas (<code>,</code>), backslashes
+<code>\</code>), and dots (<code>.</code>).</dd>
+<dt>FINAL</dt><dd>An alphanumeric character.</dd>
+</dl></li>
+</ul></dd>
+</dl>
+
+
+<p>
+Examples:
+</p>
+
+<pre class="example" id="org68559e9">
+pecularity^*
+x^2
+x^-2
+y_(i^th, i is odd)
+x^{y^{z}}
+A_i,j
+</pre>
+
+<p>
+In rare occasions, subscript syntax clashes with <a href="#Emphasis_Markers">underline markup</a>:
+</p>
+
+<pre class="example" id="org556216e">
+(_text_)
+</pre>
+
+<p>
+<a href="#Emphasis_Markers">Underline markup</a> takes priority in such case, to keep consistency with
+other types of markup:
+</p>
+
+<pre class="example" id="org26483d9">
+(_text_)
+(*text*)
+(/text/)
+...
+</pre>
+</div>
+</div>
+<div id="outline-container-Table_Cells" class="outline-3">
+<h3 id="Table_Cells"><span class="section-number-3">5.15.</span> Table Cells</h3>
+<div class="outline-text-3" id="text-Table_Cells">
+<p>
+Table cells are structured according to the following patterns:
+</p>
+
+<pre class="example" id="org631bc73">
+CONTENTS SPACES|
+CONTENTS SPACES END-OF-LINE
+</pre>
+
+<dl class="org-dl">
+<dt>CONTENTS</dt><dd>Zero or more objects not containing the vertical bar
+character (<code>|</code>).  It can contain the <a href="#orge7cba14">minimal set</a> of objects,
+<a href="#Citations">citations</a>, <a href="#Export_Snippets">export snippets</a>, <a href="#Footnote_References">footnote references</a>, <a href="#Links">links</a>, <a href="#Macros">macros</a>,
+<a href="#Targets_and_Radio_Targets">radio targets</a>, <a href="#Targets_and_Radio_Targets">targets</a>, and <a href="#Timestamps">timestamps</a>.</dd>
+<dt>SPACES</dt><dd>A string consisting of zero or more of space characters,
+used to align the table columns.</dd>
+<dt>END-OF-LINE</dt><dd>Line ending.</dd>
+</dl>
+
+<p>
+The final vertical bar (<code>|</code>) may be omitted in the last cell of a <a href="#Table_Rows">table row</a>.
+</p>
+</div>
+</div>
+<div id="outline-container-Timestamps" class="outline-3">
+<h3 id="Timestamps"><span class="section-number-3">5.16.</span> Timestamps</h3>
+<div class="outline-text-3" id="text-Timestamps">
+<p>
+Timestamps are structured according to one of the seven following patterns:
+</p>
+
+<pre class="example" id="org067eeaa">
+&lt;%%(SEXP)&gt;                                                     (diary)
+&lt;%%(SEXP) TIME&gt;                                                (diary)
+&lt;%%(SEXP) TIME-TIME&gt;                                           (diary)
+&lt;DATE TIME REPEATER-OR-DELAY&gt;                                  (active)
+[DATE TIME REPEATER-OR-DELAY]                                  (inactive)
+&lt;DATE TIME REPEATER-OR-DELAY&gt;--&lt;DATE TIME REPEATER-OR-DELAY&gt;   (active range)
+&lt;DATE TIME-TIME REPEATER-OR-DELAY&gt;                             (active range)
+[DATE TIME REPEATER-OR-DELAY]--[DATE TIME REPEATER-OR-DELAY]   (inactive range)
+[DATE TIME-TIME REPEATER-OR-DELAY]                             (inactive range)
+</pre>
+
+<dl class="org-dl">
+<dt>SEXP</dt><dd>A string consisting of any characters but <code>&gt;</code> and <code>\n</code>.</dd>
+<dt>DATE</dt><dd><p>
+An instance of the pattern:
+</p>
+<pre class="example" id="orgbbbb4b4">
+YYYY-MM-DD DAYNAME
+</pre>
+<dl class="org-dl">
+<dt>Y, M, D</dt><dd>A digit.</dd>
+<dt>DAYNAME (optional)</dt><dd>A string consisting of non-whitespace
+characters except <code>+</code>, <code>-</code>, <code>]</code>, <code>&gt;</code>, a digit, or <code>\n</code>.</dd>
+</dl></dd>
+<dt>TIME (optional)</dt><dd>An instance of the pattern <code>H:MM</code> where <code>H</code>
+represents a one to two digit number (and can start with <code>0</code>), and <code>M</code>
+represents a single digit.</dd>
+<dt>REPEATER-OR-DELAY (optional)</dt><dd>An instance of a single <code>REPEATER</code> and/or an
+instance of a single <code>DELAY</code> in any order.</dd>
+<dt>REPEATER (optional)</dt><dd><p>
+An instance of the following pattern:
+</p>
+<pre class="example" id="orgafeaa25">
+MARK VALUE UNIT
+MARK VALUE UNIT/VALUE UNIT
+</pre>
+<p>
+Where MARK, VALUE and UNIT are not separated by whitespace characters.
+</p>
+<dl class="org-dl">
+<dt>MARK</dt><dd>Either the string <code>+</code> (cumulative type), <code>++</code> (catch-up type),
+or <code>.+</code> (restart type).</dd>
+<dt>VALUE</dt><dd>A number (one or more digits 0-9).</dd>
+<dt>UNIT</dt><dd>Either the character <code>h</code> (hour), <code>d</code> (day), <code>w</code> (week), <code>m</code>
+(month), or <code>y</code> (year).</dd>
+</dl></dd>
+<dt>DELAY (optional)</dt><dd><p>
+An instance of the following pattern:
+</p>
+<pre class="example" id="org3314f58">
+MARK VALUE UNIT
+</pre>
+<p>
+Where MARK, VALUE and UNIT are not separated by whitespace characters.
+</p>
+<dl class="org-dl">
+<dt>MARK</dt><dd>Either  <code>-</code> (all type) or <code>--</code> (first type).</dd>
+<dt>VALUE</dt><dd>A number (one or more digits 0-9).</dd>
+<dt>UNIT</dt><dd>Either the character <code>h</code> (hour), <code>d</code> (day), <code>w</code> (week), <code>m</code>
+(month), or <code>y</code> (year).</dd>
+</dl></dd>
+</dl>
+
+<p>
+<b>Examples</b>
+</p>
+
+<pre class="example" id="org2657d4f">
+&lt;1997-11-03 Mon 19:15&gt;
+&lt;%%(diary-float t 4 2)&gt;
+&lt;%%(diary-float t 4 2) 12:00-14:00&gt;
+[2004-08-24 Tue]--[2004-08-26 Thu]
+&lt;2012-02-08 Wed 20:00 ++1d&gt;
+&lt;2030-10-05 Sat +1m -3d&gt;
+&lt;2012-03-29 Thu ++1y/2y&gt;
+</pre>
+</div>
+</div>
+<div id="outline-container-Emphasis_Markers" class="outline-3">
+<h3 id="Emphasis_Markers"><span class="section-number-3">5.17.</span> Text Markup</h3>
+<div class="outline-text-3" id="text-Emphasis_Markers">
+<p>
+There are six text markup objects, which are all structured according
+to the following pattern:
+</p>
+
+<pre class="example" id="orgcab681f">
+PRE MARKER CONTENTS MARKER POST
+</pre>
+
+<p>
+Where PRE, MARKER, CONTENTS, MARKER and POST are not separated by
+whitespace characters.
+</p>
+
+<dl class="org-dl">
+<dt><a href="#Special_Tokens">PRE</a></dt><dd>Either a whitespace character, <code>-</code>, <code>(</code>, <code>{</code>, <code>'</code>, <code>"</code>, or the beginning
+of a line.</dd>
+<dt>MARKER</dt><dd>A character that determines the object type, as follows:
+<ul class="org-ul">
+<li><code>*</code>, a <i>bold</i> object,</li>
+<li><code>/</code>, an <i>italic</i> object,</li>
+<li><code>_</code> an <i>underline</i> object,</li>
+<li><code>=</code>, a <i>verbatim</i> object,</li>
+<li><code>~</code>, a <i>code</i> object</li>
+<li><code>+</code>, a <i>strike-through</i> object.</li>
+</ul></dd>
+<dt>CONTENTS</dt><dd>Either a string (when MARKER represents code or
+verbatim) or a series of objects from the <a href="#org55f4f84">standard set</a>. In both
+cases, CONTENTS may not begin or end with whitespace.</dd>
+<dt><a href="#Special_Tokens">POST</a></dt><dd>Either a whitespace character, <code>-</code>, <code>.</code>, <code>,</code>, <code>;</code>, <code>:</code>, <code>!</code>, <code>?</code>, <code>'</code>, <code>)</code>, <code>}</code>,
+<code>[</code>, <code>"</code>, <code>\</code> (backslash), or the end of a line.</dd>
+</dl>
+
+<p>
+<b>Examples</b>
+</p>
+
+<pre class="example" id="org2d25eb7">
+Org is a /plaintext markup syntax/ developed with *Emacs* in 2003.
+The canonical parser is =org-element.el=, which provides a number of
+functions starting with ~org-element-~.
+</pre>
+</div>
+<div id="outline-container-Plain_Text" class="outline-4">
+<h4 id="Plain_Text"><span class="section-number-4">5.17.1.</span> Plain Text</h4>
+<div class="outline-text-4" id="text-Plain_Text">
+<p>
+Any string that doesn&rsquo;t match any other object can be considered a
+plain text object.<sup><a id="fnr.15" class="footref" href="#fn.15" role="doc-backlink">15</a></sup>
+Within a plain text object, all whitespace is collapsed to a single
+space. For instance, <code>hello\n there</code> is equivalent to <code>hello there</code>.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org7274eea" class="outline-2">
+<h2 id="org7274eea"><span class="section-number-2">6.</span> Appendix</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-Entities_List" class="outline-3">
+<h3 id="Entities_List"><span class="section-number-3">6.1.</span> Org Entities</h3>
+<div class="outline-text-3" id="text-Entities_List">
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Name</th>
+<th scope="col" class="org-left">Character</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><i>Letters</i></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">LATIN</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Agrave</code></td>
+<td class="org-left">&Agrave;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>agrave</code></td>
+<td class="org-left">&agrave;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Aacute</code></td>
+<td class="org-left">&Aacute;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>aacute</code></td>
+<td class="org-left">&aacute;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Acirc</code></td>
+<td class="org-left">&Acirc;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>acirc</code></td>
+<td class="org-left">&acirc;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Amacr</code></td>
+<td class="org-left">&Amacr;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>amacr</code></td>
+<td class="org-left">&amacr;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Atilde</code></td>
+<td class="org-left">&Atilde;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>atilde</code></td>
+<td class="org-left">&atilde;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Auml</code></td>
+<td class="org-left">&Auml;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>auml</code></td>
+<td class="org-left">&auml;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Aring</code></td>
+<td class="org-left">&Aring;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>AA</code></td>
+<td class="org-left">&Aring;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>aring</code></td>
+<td class="org-left">&aring;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>AElig</code></td>
+<td class="org-left">&AElig;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>aelig</code></td>
+<td class="org-left">&aelig;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Ccedil</code></td>
+<td class="org-left">&Ccedil;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ccedil</code></td>
+<td class="org-left">&ccedil;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Egrave</code></td>
+<td class="org-left">&Egrave;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>egrave</code></td>
+<td class="org-left">&egrave;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Eacute</code></td>
+<td class="org-left">&Eacute;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>eacute</code></td>
+<td class="org-left">&eacute;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Ecirc</code></td>
+<td class="org-left">&Ecirc;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ecirc</code></td>
+<td class="org-left">&ecirc;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Euml</code></td>
+<td class="org-left">&Euml;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>euml</code></td>
+<td class="org-left">&euml;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Igrave</code></td>
+<td class="org-left">&Igrave;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>igrave</code></td>
+<td class="org-left">&igrave;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Iacute</code></td>
+<td class="org-left">&Iacute;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>iacute</code></td>
+<td class="org-left">&iacute;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Idot</code></td>
+<td class="org-left">&idot;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>inodot</code></td>
+<td class="org-left">&inodot;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Icirc</code></td>
+<td class="org-left">&Icirc;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>icirc</code></td>
+<td class="org-left">&icirc;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Iuml</code></td>
+<td class="org-left">&Iuml;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>iuml</code></td>
+<td class="org-left">&iuml;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Ntilde</code></td>
+<td class="org-left">&Ntilde;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ntilde</code></td>
+<td class="org-left">&ntilde;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Ograve</code></td>
+<td class="org-left">&Ograve;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ograve</code></td>
+<td class="org-left">&ograve;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Oacute</code></td>
+<td class="org-left">&Oacute;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>oacute</code></td>
+<td class="org-left">&oacute;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Ocirc</code></td>
+<td class="org-left">&Ocirc;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ocirc</code></td>
+<td class="org-left">&ocirc;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Otilde</code></td>
+<td class="org-left">&Otilde;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>otilde</code></td>
+<td class="org-left">&otilde;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Ouml</code></td>
+<td class="org-left">&Ouml;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ouml</code></td>
+<td class="org-left">&ouml;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Oslash</code></td>
+<td class="org-left">&Oslash;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>oslash</code></td>
+<td class="org-left">&oslash;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>OElig</code></td>
+<td class="org-left">&OElig;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>oelig</code></td>
+<td class="org-left">&oelig;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Scaron</code></td>
+<td class="org-left">&Scaron;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>scaron</code></td>
+<td class="org-left">&scaron;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>szlig</code></td>
+<td class="org-left">&szlig;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Ugrave</code></td>
+<td class="org-left">&Ugrave;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ugrave</code></td>
+<td class="org-left">&ugrave;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Uacute</code></td>
+<td class="org-left">&Uacute;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>uacute</code></td>
+<td class="org-left">&uacute;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Ucirc</code></td>
+<td class="org-left">&Ucirc;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ucirc</code></td>
+<td class="org-left">&ucirc;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Uuml</code></td>
+<td class="org-left">&Uuml;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>uuml</code></td>
+<td class="org-left">&uuml;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Yacute</code></td>
+<td class="org-left">&Yacute;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>yacute</code></td>
+<td class="org-left">&yacute;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Yuml</code></td>
+<td class="org-left">&Yuml;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>yuml</code></td>
+<td class="org-left">&yuml;</td>
+</tr>
+
+<tr>
+<td class="org-left">LATIN (SPECIAL FACE)</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>fnof</code></td>
+<td class="org-left">&fnof;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>real</code></td>
+<td class="org-left">&real;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>image</code></td>
+<td class="org-left">&image;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>weierp</code></td>
+<td class="org-left">&weierp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ell</code></td>
+<td class="org-left">&ell;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>imath</code></td>
+<td class="org-left">&imath;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>jmath</code></td>
+<td class="org-left">&jmath;</td>
+</tr>
+
+<tr>
+<td class="org-left">GREEK</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Alpha</code></td>
+<td class="org-left">&Alpha;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>alpha</code></td>
+<td class="org-left">&alpha;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Beta</code></td>
+<td class="org-left">&Beta;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>beta</code></td>
+<td class="org-left">&beta;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Gamma</code></td>
+<td class="org-left">&Gamma;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gamma</code></td>
+<td class="org-left">&gamma;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Delta</code></td>
+<td class="org-left">&Delta;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>delta</code></td>
+<td class="org-left">&delta;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Epsilon</code></td>
+<td class="org-left">&Epsilon;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>epsilon</code></td>
+<td class="org-left">&epsilon;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>varepsilon</code></td>
+<td class="org-left">&epsilon;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Zeta</code></td>
+<td class="org-left">&Zeta;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>zeta</code></td>
+<td class="org-left">&zeta;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Eta</code></td>
+<td class="org-left">&Eta;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>eta</code></td>
+<td class="org-left">&eta;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Theta</code></td>
+<td class="org-left">&Theta;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>theta</code></td>
+<td class="org-left">&theta;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>thetasym</code></td>
+<td class="org-left">&thetasym;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>vartheta</code></td>
+<td class="org-left">&thetasym;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Iota</code></td>
+<td class="org-left">&Iota;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>iota</code></td>
+<td class="org-left">&iota;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Kappa</code></td>
+<td class="org-left">&Kappa;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>kappa</code></td>
+<td class="org-left">&kappa;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Lambda</code></td>
+<td class="org-left">&Lambda;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>lambda</code></td>
+<td class="org-left">&lambda;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Mu</code></td>
+<td class="org-left">&Mu;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>mu</code></td>
+<td class="org-left">&mu;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>nu</code></td>
+<td class="org-left">&nu;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Nu</code></td>
+<td class="org-left">&Nu;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Xi</code></td>
+<td class="org-left">&Xi;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>xi</code></td>
+<td class="org-left">&xi;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Omicron</code></td>
+<td class="org-left">&Omicron;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>omicron</code></td>
+<td class="org-left">&omicron;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Pi</code></td>
+<td class="org-left">&Pi;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>pi</code></td>
+<td class="org-left">&pi;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Rho</code></td>
+<td class="org-left">&Rho;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>rho</code></td>
+<td class="org-left">&rho;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Sigma</code></td>
+<td class="org-left">&Sigma;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>sigma</code></td>
+<td class="org-left">&sigma;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>sigmaf</code></td>
+<td class="org-left">&sigmaf;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>varsigma</code></td>
+<td class="org-left">&sigmaf;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Tau</code></td>
+<td class="org-left">&Tau;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Upsilon</code></td>
+<td class="org-left">&Upsilon;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>upsih</code></td>
+<td class="org-left">&upsih;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>upsilon</code></td>
+<td class="org-left">&upsilon;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Phi</code></td>
+<td class="org-left">&Phi;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>phi</code></td>
+<td class="org-left">&phi;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>varphi</code></td>
+<td class="org-left">&varphi;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Chi</code></td>
+<td class="org-left">&Chi;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>chi</code></td>
+<td class="org-left">&chi;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>acutex</code></td>
+<td class="org-left">&acute;x</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Psi</code></td>
+<td class="org-left">&Psi;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>psi</code></td>
+<td class="org-left">&psi;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>tau</code></td>
+<td class="org-left">&tau;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Omega</code></td>
+<td class="org-left">&Omega;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>omega</code></td>
+<td class="org-left">&omega;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>piv</code></td>
+<td class="org-left">&piv;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>varpi</code></td>
+<td class="org-left">&piv;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>partial</code></td>
+<td class="org-left">&part;</td>
+</tr>
+
+<tr>
+<td class="org-left">HEBREW</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>alefsym</code></td>
+<td class="org-left">&alefsym;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>aleph</code></td>
+<td class="org-left">&aleph;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gimel</code></td>
+<td class="org-left">&gimel;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>beth</code></td>
+<td class="org-left">&beth;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>dalet</code></td>
+<td class="org-left">&daleth;</td>
+</tr>
+
+<tr>
+<td class="org-left">ICELANDIC</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ETH</code></td>
+<td class="org-left">&ETH;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>eth</code></td>
+<td class="org-left">&eth;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>THORN</code></td>
+<td class="org-left">&THORN;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>thorn</code></td>
+<td class="org-left">&thorn;</td>
+</tr>
+
+<tr>
+<td class="org-left"><i>Punctuation</i></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">DOTS AND MARKS</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>dots</code></td>
+<td class="org-left">&hellip;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>cdots</code></td>
+<td class="org-left">&ctdot;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>hellip</code></td>
+<td class="org-left">&hellip;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>middot</code></td>
+<td class="org-left">&middot;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>iexcl</code></td>
+<td class="org-left">&iexcl;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>iquest</code></td>
+<td class="org-left">&iquest;</td>
+</tr>
+
+<tr>
+<td class="org-left">DASH-LIKE</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>shy</code></td>
+<td class="org-left">&shy;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ndash</code></td>
+<td class="org-left">&ndash;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>mdash</code></td>
+<td class="org-left">&mdash;</td>
+</tr>
+
+<tr>
+<td class="org-left">QUOTATIONS</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>quot</code></td>
+<td class="org-left">&quot;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>acute</code></td>
+<td class="org-left">&acute;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ldquo</code></td>
+<td class="org-left">&ldquo;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>rdquo</code></td>
+<td class="org-left">&rdquo;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>bdquo</code></td>
+<td class="org-left">&bdquo;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>lsquo</code></td>
+<td class="org-left">&lsquo;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>rsquo</code></td>
+<td class="org-left">&rsquo;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>sbquo</code></td>
+<td class="org-left">&sbquo;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>laquo</code></td>
+<td class="org-left">&laquo;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>raquo</code></td>
+<td class="org-left">&raquo;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>lsaquo</code></td>
+<td class="org-left">&lsaquo;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>rsaquo</code></td>
+<td class="org-left">&rsaquo;</td>
+</tr>
+
+<tr>
+<td class="org-left"><i>Other</i></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">MISC. (OFTEN USED)</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>circ</code></td>
+<td class="org-left">&circ;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>vert</code></td>
+<td class="org-left">&vert;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>vbar</code></td>
+<td class="org-left">|</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>brvbar</code></td>
+<td class="org-left">&brvbar;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>S</code></td>
+<td class="org-left">&sect;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>sect</code></td>
+<td class="org-left">&sect;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>amp</code></td>
+<td class="org-left">&amp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>lt</code></td>
+<td class="org-left">&lt;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gt</code></td>
+<td class="org-left">&gt;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>tilde</code></td>
+<td class="org-left">~</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>slash</code></td>
+<td class="org-left">/</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>plus</code></td>
+<td class="org-left">+</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>under</code></td>
+<td class="org-left">_</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>equal</code></td>
+<td class="org-left">=</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>asciicirc</code></td>
+<td class="org-left">^</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>dagger</code></td>
+<td class="org-left">&dagger;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>dag</code></td>
+<td class="org-left">&dagger;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Dagger</code></td>
+<td class="org-left">&Dagger;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ddag</code></td>
+<td class="org-left">&Dagger;</td>
+</tr>
+
+<tr>
+<td class="org-left">WHITESPACE</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>nbsp</code></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ensp</code></td>
+<td class="org-left">&ensp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>emsp</code></td>
+<td class="org-left">&emsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>thinsp</code></td>
+<td class="org-left">&thinsp;</td>
+</tr>
+
+<tr>
+<td class="org-left">CURRENCY</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>curren</code></td>
+<td class="org-left">&curren;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>cent</code></td>
+<td class="org-left">&cent;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>pound</code></td>
+<td class="org-left">&pound;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>yen</code></td>
+<td class="org-left">&yen;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>euro</code></td>
+<td class="org-left">&euro;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>EUR</code></td>
+<td class="org-left">&euro;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>dollar</code></td>
+<td class="org-left">$</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>USD</code></td>
+<td class="org-left">$</td>
+</tr>
+
+<tr>
+<td class="org-left">PROPERTY MARKS</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>copy</code></td>
+<td class="org-left">&copy;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>reg</code></td>
+<td class="org-left">&reg;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>trade</code></td>
+<td class="org-left">&trade;</td>
+</tr>
+
+<tr>
+<td class="org-left">SCIENCE ET AL.</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>minus</code></td>
+<td class="org-left">&minus;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>pm</code></td>
+<td class="org-left">&plusmn;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>plusmn</code></td>
+<td class="org-left">&plusmn;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>times</code></td>
+<td class="org-left">&times;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>frasl</code></td>
+<td class="org-left">&frasl;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>colon</code></td>
+<td class="org-left">:</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>div</code></td>
+<td class="org-left">&divide;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>frac12</code></td>
+<td class="org-left">&frac12;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>frac14</code></td>
+<td class="org-left">&frac14;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>frac34</code></td>
+<td class="org-left">&frac34;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>permil</code></td>
+<td class="org-left">&permil;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>sup1</code></td>
+<td class="org-left">&sup1;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>sup2</code></td>
+<td class="org-left">&sup2;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>sup3</code></td>
+<td class="org-left">&sup3;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>radic</code></td>
+<td class="org-left">&radic;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>sum</code></td>
+<td class="org-left">&sum;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>prod</code></td>
+<td class="org-left">&prod;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>micro</code></td>
+<td class="org-left">&micro;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>macr</code></td>
+<td class="org-left">&macr;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>deg</code></td>
+<td class="org-left">&deg;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>prime</code></td>
+<td class="org-left">&prime;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Prime</code></td>
+<td class="org-left">&Prime;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>infin</code></td>
+<td class="org-left">&infin;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>infty</code></td>
+<td class="org-left">&infin;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>prop</code></td>
+<td class="org-left">&prop;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>propto</code></td>
+<td class="org-left">&prop;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>not</code></td>
+<td class="org-left">&not;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>neg</code></td>
+<td class="org-left">&not;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>land</code></td>
+<td class="org-left">&and;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>wedge</code></td>
+<td class="org-left">&and;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>lor</code></td>
+<td class="org-left">&or;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>vee</code></td>
+<td class="org-left">&or;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>cap</code></td>
+<td class="org-left">&cap;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>cup</code></td>
+<td class="org-left">&cup;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>smile</code></td>
+<td class="org-left">&smile;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>frown</code></td>
+<td class="org-left">&frown;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>int</code></td>
+<td class="org-left">&int;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>therefore</code></td>
+<td class="org-left">&there4;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>there4</code></td>
+<td class="org-left">&there4;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>because</code></td>
+<td class="org-left">&because;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>sim</code></td>
+<td class="org-left">&sim;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>cong</code></td>
+<td class="org-left">&cong;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>simeq</code></td>
+<td class="org-left">&cong;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>asymp</code></td>
+<td class="org-left">&asymp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>approx</code></td>
+<td class="org-left">&asymp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ne</code></td>
+<td class="org-left">&ne;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>neq</code></td>
+<td class="org-left">&ne;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>equiv</code></td>
+<td class="org-left">&equiv;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>triangleq</code></td>
+<td class="org-left">&triangleq;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>le</code></td>
+<td class="org-left">&le;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>leq</code></td>
+<td class="org-left">&le;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ge</code></td>
+<td class="org-left">&ge;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>geq</code></td>
+<td class="org-left">&ge;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>lessgtr</code></td>
+<td class="org-left">&lessgtr;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>lesseqgtr</code></td>
+<td class="org-left">&lesseqgtr;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ll</code></td>
+<td class="org-left">&Lt;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Ll</code></td>
+<td class="org-left">&Ll;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>lll</code></td>
+<td class="org-left">&Ll;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gg</code></td>
+<td class="org-left">&Gt;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Gg</code></td>
+<td class="org-left">&Gg;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ggg</code></td>
+<td class="org-left">&Gg;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>prec</code></td>
+<td class="org-left">&pr;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>preceq</code></td>
+<td class="org-left">&prcue;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>preccurlyeq</code></td>
+<td class="org-left">&prcue;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>succ</code></td>
+<td class="org-left">&sc;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>succeq</code></td>
+<td class="org-left">&sccue;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>succcurlyeq</code></td>
+<td class="org-left">&sccue;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>sub</code></td>
+<td class="org-left">&sub;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>subset</code></td>
+<td class="org-left">&sub;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>sup</code></td>
+<td class="org-left">&sup;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>supset</code></td>
+<td class="org-left">&sup;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>nsub</code></td>
+<td class="org-left">&nsub;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>sube</code></td>
+<td class="org-left">&sube;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>nsup</code></td>
+<td class="org-left">&nsup;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>supe</code></td>
+<td class="org-left">&supe;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>setminus</code></td>
+<td class="org-left">&setminus;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>forall</code></td>
+<td class="org-left">&forall;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>exist</code></td>
+<td class="org-left">&exist;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>exists</code></td>
+<td class="org-left">&exist;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>nexist</code></td>
+<td class="org-left">&exist;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>nexists</code></td>
+<td class="org-left">&exist;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>empty</code></td>
+<td class="org-left">&empty;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>emptyset</code></td>
+<td class="org-left">&empty;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>isin</code></td>
+<td class="org-left">&isin;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>in</code></td>
+<td class="org-left">&isin;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>notin</code></td>
+<td class="org-left">&notin;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ni</code></td>
+<td class="org-left">&ni;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>nabla</code></td>
+<td class="org-left">&nabla;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ang</code></td>
+<td class="org-left">&ang;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>angle</code></td>
+<td class="org-left">&ang;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>perp</code></td>
+<td class="org-left">&perp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>parallel</code></td>
+<td class="org-left">&parallel;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>sdot</code></td>
+<td class="org-left">&sdot;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>cdot</code></td>
+<td class="org-left">&sdot;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>lceil</code></td>
+<td class="org-left">&lceil;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>rceil</code></td>
+<td class="org-left">&rceil;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>lfloor</code></td>
+<td class="org-left">&lfloor;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>rfloor</code></td>
+<td class="org-left">&rfloor;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>lang</code></td>
+<td class="org-left">&lang;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>rang</code></td>
+<td class="org-left">&rang;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>langle</code></td>
+<td class="org-left">&lang;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>rangle</code></td>
+<td class="org-left">&rang;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>hbar</code></td>
+<td class="org-left">&hbar;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>mho</code></td>
+<td class="org-left">&mho;</td>
+</tr>
+
+<tr>
+<td class="org-left">ARROWS</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>larr</code></td>
+<td class="org-left">&larr;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>leftarrow</code></td>
+<td class="org-left">&larr;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gets</code></td>
+<td class="org-left">&larr;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>lArr</code></td>
+<td class="org-left">&lArr;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Leftarrow</code></td>
+<td class="org-left">&lArr;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>uarr</code></td>
+<td class="org-left">&uarr;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>uparrow</code></td>
+<td class="org-left">&uarr;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>uArr</code></td>
+<td class="org-left">&uArr;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Uparrow</code></td>
+<td class="org-left">&uArr;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>rarr</code></td>
+<td class="org-left">&rarr;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>to</code></td>
+<td class="org-left">&rarr;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>rightarrow</code></td>
+<td class="org-left">&rarr;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>rArr</code></td>
+<td class="org-left">&rArr;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Rightarrow</code></td>
+<td class="org-left">&rArr;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>darr</code></td>
+<td class="org-left">&darr;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>downarrow</code></td>
+<td class="org-left">&darr;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>dArr</code></td>
+<td class="org-left">&dArr;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Downarrow</code></td>
+<td class="org-left">&dArr;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>harr</code></td>
+<td class="org-left">&harr;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>leftrightarrow</code></td>
+<td class="org-left">&harr;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>hArr</code></td>
+<td class="org-left">&hArr;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Leftrightarrow</code></td>
+<td class="org-left">&hArr;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>crarr</code></td>
+<td class="org-left">&crarr;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>hookleftarrow</code></td>
+<td class="org-left">&crarr;</td>
+</tr>
+
+<tr>
+<td class="org-left">FUNCTION NAMES</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>arccos</code></td>
+<td class="org-left">arccos</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>arcsin</code></td>
+<td class="org-left">arcsin</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>arctan</code></td>
+<td class="org-left">arctan</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>arg</code></td>
+<td class="org-left">arg</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>cos</code></td>
+<td class="org-left">cos</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>cosh</code></td>
+<td class="org-left">cosh</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>cot</code></td>
+<td class="org-left">cot</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>coth</code></td>
+<td class="org-left">coth</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>csc</code></td>
+<td class="org-left">csc</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>deg</code></td>
+<td class="org-left">&deg;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>det</code></td>
+<td class="org-left">det</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>dim</code></td>
+<td class="org-left">dim</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>exp</code></td>
+<td class="org-left">exp</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gcd</code></td>
+<td class="org-left">gcd</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>hom</code></td>
+<td class="org-left">hom</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>inf</code></td>
+<td class="org-left">inf</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ker</code></td>
+<td class="org-left">ker</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>lg</code></td>
+<td class="org-left">lg</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>lim</code></td>
+<td class="org-left">lim</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>liminf</code></td>
+<td class="org-left">liminf</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>limsup</code></td>
+<td class="org-left">limsup</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ln</code></td>
+<td class="org-left">ln</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>log</code></td>
+<td class="org-left">log</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>max</code></td>
+<td class="org-left">max</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>min</code></td>
+<td class="org-left">min</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Pr</code></td>
+<td class="org-left">Pr</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>sec</code></td>
+<td class="org-left">sec</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>sin</code></td>
+<td class="org-left">sin</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>sinh</code></td>
+<td class="org-left">sinh</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>sup</code></td>
+<td class="org-left">&sup;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>tan</code></td>
+<td class="org-left">tan</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>tanh</code></td>
+<td class="org-left">tanh</td>
+</tr>
+
+<tr>
+<td class="org-left">SIGNS &amp; SYMBOLS</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>bull</code></td>
+<td class="org-left">&bull;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>bullet</code></td>
+<td class="org-left">&bull;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>star</code></td>
+<td class="org-left">*</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>lowast</code></td>
+<td class="org-left">&lowast;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ast</code></td>
+<td class="org-left">&lowast;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>odot</code></td>
+<td class="org-left">o</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>oplus</code></td>
+<td class="org-left">&oplus;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>otimes</code></td>
+<td class="org-left">&otimes;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>check</code></td>
+<td class="org-left">&checkmark;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>checkmark</code></td>
+<td class="org-left">&check;</td>
+</tr>
+
+<tr>
+<td class="org-left">MISCELLANEOUS (SELDOM USED)</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>para</code></td>
+<td class="org-left">&para;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ordf</code></td>
+<td class="org-left">&ordf;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ordm</code></td>
+<td class="org-left">&ordm;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>cedil</code></td>
+<td class="org-left">&cedil;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>oline</code></td>
+<td class="org-left">&oline;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>uml</code></td>
+<td class="org-left">&uml;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>zwnj</code></td>
+<td class="org-left">&zwnj;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>zwj</code></td>
+<td class="org-left">&zwj;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>lrm</code></td>
+<td class="org-left">&lrm;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>rlm</code></td>
+<td class="org-left">&rlm;</td>
+</tr>
+
+<tr>
+<td class="org-left">SMILIES</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>smiley</code></td>
+<td class="org-left">&#9786;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>blacksmile</code></td>
+<td class="org-left">&#9787;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>sad</code></td>
+<td class="org-left">&#9785;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>frowny</code></td>
+<td class="org-left">&#9785;</td>
+</tr>
+
+<tr>
+<td class="org-left">SUITS</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>clubs</code></td>
+<td class="org-left">&clubs;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>clubsuit</code></td>
+<td class="org-left">&clubs;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>spades</code></td>
+<td class="org-left">&spades;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>spadesuit</code></td>
+<td class="org-left">&spades;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>hearts</code></td>
+<td class="org-left">&hearts;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>heartsuit</code></td>
+<td class="org-left">&heartsuit;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>diams</code></td>
+<td class="org-left">&diams;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>diamondsuit</code></td>
+<td class="org-left">&diams;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>diamond</code></td>
+<td class="org-left">&diamond;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Diamond</code></td>
+<td class="org-left">&diamond;</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>loz</code></td>
+<td class="org-left">&loz;</td>
+</tr>
+
+<tr>
+<td class="org-left">=_ =</td>
+<td class="org-left">&ensp;{}</td>
+</tr>
+
+<tr>
+<td class="org-left">=_  =</td>
+<td class="org-left">&ensp;&ensp;{}</td>
+</tr>
+
+<tr>
+<td class="org-left">=_   =</td>
+<td class="org-left">&ensp;&ensp;&ensp;{}</td>
+</tr>
+
+<tr>
+<td class="org-left">=_    =</td>
+<td class="org-left">&ensp;&ensp;&ensp;&ensp;{}</td>
+</tr>
+
+<tr>
+<td class="org-left">=_     =</td>
+<td class="org-left">&ensp;&ensp;&ensp;&ensp;&ensp;{}</td>
+</tr>
+
+<tr>
+<td class="org-left">=_      =</td>
+<td class="org-left">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;{}</td>
+</tr>
+
+<tr>
+<td class="org-left">=_       =</td>
+<td class="org-left">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;{}</td>
+</tr>
+
+<tr>
+<td class="org-left">=_        =</td>
+<td class="org-left">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;{}</td>
+</tr>
+
+<tr>
+<td class="org-left">=_         =</td>
+<td class="org-left">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;{}</td>
+</tr>
+
+<tr>
+<td class="org-left">=_          =</td>
+<td class="org-left">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;{}</td>
+</tr>
+
+<tr>
+<td class="org-left">=_           =</td>
+<td class="org-left">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;{}</td>
+</tr>
+
+<tr>
+<td class="org-left">=_            =</td>
+<td class="org-left">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;{}</td>
+</tr>
+
+<tr>
+<td class="org-left">=_             =</td>
+<td class="org-left">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;{}</td>
+</tr>
+
+<tr>
+<td class="org-left">=_              =</td>
+<td class="org-left">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;{}</td>
+</tr>
+
+<tr>
+<td class="org-left">=_               =</td>
+<td class="org-left">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;{}</td>
+</tr>
+
+<tr>
+<td class="org-left">=_                =</td>
+<td class="org-left">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;{}</td>
+</tr>
+
+<tr>
+<td class="org-left">=_                 =</td>
+<td class="org-left">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;{}</td>
+</tr>
+
+<tr>
+<td class="org-left">=_                  =</td>
+<td class="org-left">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;{}</td>
+</tr>
+
+<tr>
+<td class="org-left">=_                   =</td>
+<td class="org-left">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;{}</td>
+</tr>
+
+<tr>
+<td class="org-left">=_                    =</td>
+<td class="org-left">&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;{}</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+In particular, the parser requires stars at column 0 to be
+quoted by a comma when they do not define a heading.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+It also means that only headings and sections can be recognized
+just by looking at the beginning of the line.  Planning lines and
+property drawers can be recognized by looking at one or two lines
+above.
+</p>
+
+<p class="footpara">
+As a consequence, using <code>org-element-at-point</code> or <code>org-element-context</code>
+will move up to the parent heading, and parse top-down from there
+until context around the original location is found.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.oiml" class="footnum" href="#fnr.oiml" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">The default value of
+<code>org-inlinetask-min-level</code> is <code>15</code>.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.otkw1" class="footnum" href="#fnr.otkw1" role="doc-backlink">4</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">By default, <code>org-todo-keywords-1</code> only
+contains <code>TODO</code> and <code>DONE</code>, however <code>org-todo-keywords-1</code> is set on a
+per-document basis.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5" role="doc-backlink">5</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">Implementation note:
+todo keywords cannot be hardcoded in a tokenizer, the tokenizer must
+be configurable at runtime so that in-file todo keywords are properly
+interpreted.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.oepkw" class="footnum" href="#fnr.oepkw" role="doc-backlink">6</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">By default,
+  <code>org-element-parsed-keywords</code> contains <code>CAPTION</code>.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.7" class="footnum" href="#fnr.7" role="doc-backlink">7</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">A common abbreviation for S-expression</p></div></div>
+
+<div class="footdef"><sup><a id="fn.oeakw" class="footnum" href="#fnr.oeakw" role="doc-backlink">8</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">By default,
+<code>org-element-affiliated-keywords</code> contains <code>CAPTION</code>, <code>DATA</code>, <code>HEADER</code>,
+<code>NAME</code>, <code>PLOT</code>, and <code>RESULTS</code>.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.oedkw" class="footnum" href="#fnr.oedkw" role="doc-backlink">9</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">By default,
+<code>org-element-dual-keywords</code> contains <code>CAPTION</code> and <code>RESULTS</code>.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.oe" class="footnum" href="#fnr.oe" role="doc-backlink">10</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">See the <a href="#Entities_List">appendix</a> for a list of entities.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.line-breakable" class="footnum" href="#fnr.line-breakable" role="doc-backlink">11</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">Line breakable characters are
+characters defined in <code>?|</code> (line breakable) character category
+defined in
+<a href="https://cgit.git.savannah.gnu.org/cgit/emacs.git/tree/lisp/international/characters.el">https://cgit.git.savannah.gnu.org/cgit/emacs.git/tree/lisp/international/characters.el</a>.
+These characters include some punctuation and letters from languages
+like Chinese that do not use spaces to separate words.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.olp" class="footnum" href="#fnr.olp" role="doc-backlink">12</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">By default, <code>org-link-parameters</code> defines
+links of type <code>shell</code>, <code>news</code>, <code>mailto</code>, <code>https</code>, <code>http</code>, <code>ftp</code>, <code>help</code>, <code>file</code>, and
+<code>elisp</code>.</p></div></div>
+
+<div class="footdef"><sup><a id="fn.13" class="footnum" href="#fnr.13" role="doc-backlink">13</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">This overall pattern
+may be matched with the following regexp: <code>(?:[^
+  \t\n\[\]&lt;&gt;()]|\((?:[^ \t\n\[\]&lt;&gt;()]|\([^
+  \t\n\[\]&lt;&gt;()]*\))*\))+(?:[^[:punct:] \t\n]|\/|\((?:[^
+  \t\n\[\]&lt;&gt;()]|\([^ \t\n\[\]&lt;&gt;()]*\))*\))</code></p></div></div>
+
+<div class="footdef"><sup><a id="fn.14" class="footnum" href="#fnr.14" role="doc-backlink">14</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">This is not compatible with RFC 3986, which
+requires to ignore them altogether.  However, doing so would require
+users to encode spaces on the fly when writing links (e.g., insert
+<code>[[shell:ls%20*.org]]</code> instead of <a href="shell:ls%20*.org">shell:ls%20*.org</a>, which defeats Org&rsquo;s
+focus on simplicity.)</p></div></div>
+
+<div class="footdef"><sup><a id="fn.15" class="footnum" href="#fnr.15" role="doc-backlink">15</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">In <code>org-element.el</code> plain text objects are
+abstracted away to strings for performance reasons.</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<div id="license"><p>Documentation from the orgmode.org/worg/ website (either in its HTML format or in its Org format) is licensed under the <a href="http://www.gnu.org/copyleft/fdl.html">GNU Free Documentation License version 1.3</a> or later.  The code examples and css stylesheets are licensed under the <a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License v3</a> or later.</p></div>
+</div>
+</body>
+</html>

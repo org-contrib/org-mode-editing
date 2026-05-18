@@ -1,0 +1,120 @@
+#+chunk-id: org-manual-chunk-0132
+#+source-file: org-manual
+#+heading-path: Exporting > OpenDocument Text Export > Images in ODT export
+#+start-line: 15332
+#+end-line: 15444
+#+external-urls: https://orgmode.org
+#+mirrored-urls: https://orgmode.org
+*** Images in ODT export
+:PROPERTIES:
+:DESCRIPTION: Inserting images.
+:END:
+#+cindex: images, embedding in ODT
+#+cindex: embedding images in ODT
+
+**** Embedding images
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+The ODT export backend processes image links in Org files that do not
+have descriptions, such as these links =[[file:img.jpg]]= or =[[./img.jpg]]=,
+as direct image insertions in the final output.  Either of these
+examples works:
+
+: [[file:img.png]]
+
+: [[./img.png]]
+
+**** Embedding clickable images
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+For clickable images, provide a link whose description is another link
+to an image file.  For example, to embed an image
+=org-mode-unicorn.png= which when clicked jumps to ../../mirror/by-url/8f1099ddb6d95a5a3d22e4d5fb5cf198457425bd218d3581a8c4a02e753cefd1.html
+website, do the following
+
+: [[../../mirror/by-url/8f1099ddb6d95a5a3d22e4d5fb5cf198457425bd218d3581a8c4a02e753cefd1.html][./org-mode-unicorn.png]]
+
+**** Sizing and scaling of embedded images
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+#+cindex: @samp{ATTR_ODT}, keyword
+
+Control the size and scale of the embedded images with the =ATTR_ODT=
+attribute.
+
+#+cindex: identify, ImageMagick
+#+vindex: org-odt-pixels-per-inch
+The ODT export backend starts with establishing the size of the image
+in the final document.  The dimensions of this size are measured in
+centimeters.  The backend then queries the image file for its
+dimensions measured in pixels.  For this measurement, the backend
+relies on ImageMagick's identify program or Emacs ~create-image~ and
+~image-size~ API.  ImageMagick is the preferred choice for large file
+sizes or frequent batch operations.  The backend then converts the
+pixel dimensions using ~org-odt-pixels-per-inch~ into the familiar 72
+dpi or 96 dpi.  The default value for this is in
+~display-pixels-per-inch~, which can be tweaked for better results
+based on the capabilities of the output device.  Here are some common
+image scaling operations:
+
+- Explicitly size the image ::
+
+  To embed =img.png= as a 10 cm x 10 cm image, do the following:
+
+  #+begin_example
+  ,#+ATTR_ODT: :width 10 :height 10
+  [[./img.png]]
+  #+end_example
+
+- Scale the image ::
+
+  To embed =img.png= at half its size, do the following:
+
+  #+begin_example
+  ,#+ATTR_ODT: :scale 0.5
+  [[./img.png]]
+  #+end_example
+
+- Scale the image to a specific width ::
+
+  To embed =img.png= with a width of 10 cm while retaining the
+  original height:width ratio, do the following:
+
+  #+begin_example
+  ,#+ATTR_ODT: :width 10
+  [[./img.png]]
+  #+end_example
+
+- Scale the image to a specific height ::
+
+  To embed =img.png= with a height of 10 cm while retaining the
+  original height:width ratio, do the following:
+
+  #+begin_example
+  ,#+ATTR_ODT: :height 10
+  [[./img.png]]
+  #+end_example
+
+**** Anchoring of images
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+#+cindex: @samp{ATTR_ODT}, keyword
+The ODT export backend can anchor images to =as-char=, =paragraph=,
+or =page=.  Set the preferred anchor using the =:anchor= property of
+the =ATTR_ODT= line.
+
+To create an image that is anchored to a page:
+
+#+begin_example
+,#+ATTR_ODT: :anchor page
+[[./img.png]]
+#+end_example
+

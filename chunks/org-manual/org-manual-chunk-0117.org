@@ -1,0 +1,29 @@
+#+chunk-id: org-manual-chunk-0117
+#+source-file: org-manual
+#+heading-path: Exporting > LaTeX Export > Example blocks in LaTeX export
+#+start-line: 14785
+#+end-line: 14806
+#+external-urls: 
+#+mirrored-urls: 
+*** Example blocks in LaTeX export
+:PROPERTIES:
+:DESCRIPTION: Attributes specific to example blocks.
+:END:
+#+cindex: example blocks, in @LaTeX{} export
+#+cindex: verbatim blocks, in @LaTeX{} export
+#+cindex: @samp{ATTR_LATEX}, keyword
+
+The LaTeX export backend wraps the contents of example blocks in
+a =verbatim= environment.  To change this behavior to use another
+environment globally, specify an appropriate export filter (see
+[[*Advanced Export Configuration]]).  To change this behavior to use
+another environment for each block, use the =:environment= parameter
+to specify a custom environment.
+
+#+begin_example
+,#+ATTR_LATEX: :environment myverbatim
+,#+BEGIN_EXAMPLE
+  This sentence is false.
+,#+END_EXAMPLE
+#+end_example
+

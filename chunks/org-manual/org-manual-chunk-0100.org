@@ -1,0 +1,31 @@
+#+chunk-id: org-manual-chunk-0100
+#+source-file: org-manual
+#+heading-path: Exporting > HTML Export > Quoting HTML tags
+#+start-line: 13656
+#+end-line: 13679
+#+external-urls: 
+#+mirrored-urls: 
+*** Quoting HTML tags
+:PROPERTIES:
+:DESCRIPTION: Using direct HTML in Org files.
+:END:
+
+The HTML export backend transforms =<= and =>= to =&lt;= and =&gt;=.
+To include raw HTML code in the Org file, so the HTML export backend
+can insert that HTML code in the output, use this inline syntax:
+=@@html:...@@=.  For example:
+
+: @@html:<b>@@bold text@@html:</b>@@
+
+#+cindex: @samp{HTML}, keyword
+#+cindex: @samp{BEGIN_EXPORT html}
+For larger raw HTML code blocks, use these HTML export code blocks:
+
+#+begin_example
+,#+HTML: Literal HTML code for export
+
+,#+BEGIN_EXPORT html
+  All lines between these markers are exported literally
+,#+END_EXPORT
+#+end_example
+

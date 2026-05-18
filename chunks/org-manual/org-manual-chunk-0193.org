@@ -1,0 +1,46 @@
+#+chunk-id: org-manual-chunk-0193
+#+source-file: org-manual
+#+heading-path: Miscellaneous > Protocols for External Access > The ~store-link~ protocol
+#+start-line: 21494
+#+end-line: 21532
+#+external-urls: 
+#+mirrored-urls: 
+*** The ~store-link~ protocol
+:PROPERTIES:
+:DESCRIPTION: Store a link, push URL to kill-ring.
+:END:
+#+cindex: store-link protocol
+#+cindex: protocol, store-link
+
+Using the ~store-link~ handler, you can copy links, to that they can
+be inserted using {{{kbd(M-x org-insert-link)}}} or yanking.  More
+precisely, the command
+
+: emacsclient "org-protocol://store-link?url=URL&title=TITLE"
+
+#+texinfo: @noindent
+stores the following link:
+
+: [[URL][TITLE]]
+
+In addition, {{{var(URL)}}} is pushed on the kill-ring for yanking.
+You need to encode {{{var(URL)}}} and {{{var(TITLE)}}} if they contain
+slashes, and probably quote those for the shell.
+
+To use this feature from a browser, add a bookmark with an arbitrary
+name, e.g., =Org: store-link= and enter this as /Location/:
+
+#+begin_example
+javascript:location.href='org-protocol://store-link?' +
+      new URLSearchParams({url:location.href, title:document.title});void(0);
+#+end_example
+
+Title is an optional parameter.  Another expression was recommended earlier:
+
+#+begin_example
+javascript:location.href='org-protocol://store-link?url='+
+      encodeURIComponent(location.href);void(0);
+#+end_example
+
+The latter form is compatible with older Org versions from 9.0 to 9.4.
+

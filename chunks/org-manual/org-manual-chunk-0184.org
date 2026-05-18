@@ -1,0 +1,74 @@
+#+chunk-id: org-manual-chunk-0184
+#+source-file: org-manual
+#+heading-path: Working with Source Code > Results of Evaluation > Post-processing
+#+start-line: 19424
+#+end-line: 19490
+#+external-urls: 
+#+mirrored-urls: 
+*** Post-processing
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+#+cindex: @samp{post}, header argument
+#+cindex: @samp{*this*}, in @samp{post} header argument
+The =post= header argument is for post-processing results from block
+evaluation.  When =post= has any value, Org binds the results to
+~*this*~ variable for easy passing to =var= header argument
+specifications (see [[*Environment of a Code Block]]).  That makes results
+available to other code blocks, or even for direct Emacs Lisp code
+execution.
+
+The following two examples illustrate =post= header argument in
+action.  The first one shows how to attach an =ATTR_LATEX= keyword
+using =post=.
+
+#+begin_example
+,#+NAME: attr_wrap
+,#+BEGIN_SRC sh :var data="" :var width="\\textwidth" :results output
+  echo "#+ATTR_LATEX: :width $width"
+  echo "$data"
+,#+END_SRC
+
+,#+HEADER: :file /tmp/it.png
+,#+BEGIN_SRC dot :post attr_wrap(width="5cm", data=*this*) :results drawer
+  digraph{
+          a -> b;
+          b -> c;
+          c -> a;
+  }
+,#+end_src
+
+,#+RESULTS:
+:RESULTS:
+,#+ATTR_LATEX :width 5cm
+[[file:/tmp/it.png]]
+:END:
+#+end_example
+
+The second example shows use of =colnames= header argument in =post=
+to pass data between code blocks.
+
+#+begin_example
+,#+NAME: round-tbl
+,#+BEGIN_SRC emacs-lisp :var tbl="" fmt="%.3f"
+  (mapcar (lambda (row)
+            (mapcar (lambda (cell)
+                      (if (numberp cell)
+                          (format fmt cell)
+                        cell))
+                    row))
+          tbl)
+,#+end_src
+
+,#+BEGIN_SRC R :colnames yes :post round-tbl[:colnames yes](*this*)
+  set.seed(42)
+  data.frame(foo=rnorm(1))
+,#+END_SRC
+
+,#+RESULTS:
+|   foo |
+|-------|
+| 1.371 |
+#+end_example
+

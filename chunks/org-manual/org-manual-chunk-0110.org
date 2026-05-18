@@ -1,0 +1,120 @@
+#+chunk-id: org-manual-chunk-0110
+#+source-file: org-manual
+#+heading-path: Exporting > LaTeX Export > LaTeX specific export settings
+#+start-line: 14190
+#+end-line: 14302
+#+external-urls: 
+#+mirrored-urls: 
+*** LaTeX specific export settings
+:PROPERTIES:
+:DESCRIPTION: Unique to this @LaTeX{} backend.
+:END:
+
+The LaTeX export backend has several additional keywords for
+customizing LaTeX output.  Setting these keywords works similar to the
+general options (see [[*Export Settings]]).
+
+#+attr_texinfo: :sep ,
+- =DESCRIPTION= ::
+  #+cindex: @samp{DESCRIPTION}, keyword
+  #+vindex: org-latex-hyperref-template
+  #+vindex: org-latex-title-command
+  The document's description.  The description along with author name,
+  keywords, and related file metadata are inserted in the output file
+  by the hyperref package.  See ~org-latex-hyperref-template~ for
+  customizing metadata items.  See ~org-latex-title-command~ for
+  typesetting description into the document's front matter.  Use
+  multiple =DESCRIPTION= keywords for long descriptions.
+
+- =LANGUAGE= ::
+  #+cindex: @samp{LANGUAGE}, keyword
+  #+vindex: org-latex-packages-alist
+  #+vindex: org-latex-language-alist
+  #+vindex: org-export-default-language
+
+  Language code of the primary document language.  When =LANGUAGE=
+  keyword is not specified use the value of
+  ~org-export-default-language~ (by default - =en=, American English)
+
+  The list of language codes supported by Org is stored in the
+  variable ~org-latex-language-alist~.
+
+  In order to be effective, the =babel= or =polyglossia=
+  packages---according to the LaTeX compiler used---must be loaded
+  with the appropriate language as argument.  This can be accomplished
+  by modifying the ~org-latex-packages-alist~ variable, e.g., with the
+  following snippet (note that =polyglossia= does not work with
+  pdfLaTeX):
+
+  #+begin_src emacs-lisp
+  (add-to-list 'org-latex-packages-alist
+               '("AUTO" "babel" t ("pdflatex" "xelatex" "lualatex")))
+  (add-to-list 'org-latex-packages-alist
+               '("AUTO" "polyglossia" t ("xelatex" "lualatex")))
+  #+end_src
+
+- =LATEX_CLASS= ::
+
+  #+cindex: @samp{LATEX_CLASS}, keyword
+  #+vindex: org-latex-default-class
+  #+vindex: org-latex-classes
+  This is LaTeX document class, such as /article/, /report/, /book/,
+  and so on, which contain predefined preamble and headline level
+  mapping that the LaTeX export backend needs.  The backend reads
+  the default class name from the ~org-latex-default-class~ variable.
+  Org has /article/ as the default class.  A valid default class must
+  be an element of ~org-latex-classes~.
+
+- =LATEX_CLASS_OPTIONS= ::
+
+  #+cindex: @samp{LATEX_CLASS_OPTIONS}, keyword
+  Options the LaTeX export backend uses when calling the LaTeX
+  document class.
+
+- =LATEX_COMPILER= ::
+
+  #+cindex: @samp{LATEX_COMPILER}, keyword
+  #+vindex: org-latex-compiler
+  The compiler, such as =pdflatex=, =xelatex=, =lualatex=, for
+  producing the PDF.  See ~org-latex-compiler~.
+
+- =LATEX_HEADER=, =LATEX_HEADER_EXTRA= ::
+
+  #+cindex: @samp{LATEX_HEADER}, keyword
+  #+cindex: @samp{LATEX_HEADER_EXTRA}, keyword
+  #+vindex: org-latex-classes
+  Arbitrary lines to add to the document's preamble, before the
+  hyperref settings.  See ~org-latex-classes~ for adjusting the
+  structure and order of the LaTeX headers.
+
+- =LATEX_CLASS_PRE= ::
+
+  #+cindex: @samp{LATEX_CLASS_PRE}, keyword
+  Arbitrary lines to prepend before the LaTeX preamble.
+
+- =KEYWORDS= ::
+
+  #+cindex: @samp{KEYWORDS}, keyword
+  #+vindex: org-latex-hyperref-template
+  #+vindex: org-latex-title-command
+  The keywords for the document.  The description along with author
+  name, keywords, and related file metadata are inserted in the output
+  file by the hyperref package.  See ~org-latex-hyperref-template~ for
+  customizing metadata items.  See ~org-latex-title-command~ for
+  typesetting description into the document's front matter.  Use
+  multiple =KEYWORDS= lines if necessary.
+
+- =SUBTITLE= ::
+
+  #+cindex: @samp{SUBTITLE}, keyword
+  #+vindex: org-latex-subtitle-separate
+  #+vindex: org-latex-subtitle-format
+  The document's subtitle.  It is typeset as per
+  ~org-latex-subtitle-format~.  If ~org-latex-subtitle-separate~ is
+  non-~nil~, it is typed outside the ~\title~ macro.  See
+  ~org-latex-hyperref-template~ for customizing metadata items.  See
+  ~org-latex-title-command~ for typesetting description into the
+  document's front matter.
+
+The following sections have further details.
+

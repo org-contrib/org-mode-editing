@@ -1,0 +1,348 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TeX and LaTeX in HTML documents &mdash; MathJax 4.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=35eb64d3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.mathjax.org/en/latest/input/tex/html.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=9f5556dd"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Defining TeX macros" href="macros.html" />
+    <link rel="prev" title="TeX and LaTeX math delimiters" href="delimiters.html" /> 
+<script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="mathjax" /><meta name="readthedocs-version-slug" content="latest" /><meta name="readthedocs-resolver-filename" content="/input/tex/html.html" /><meta name="readthedocs-http-status" content="200" /></head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            MathJax
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">The Basics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../basic/mathjax.html">What is MathJax?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic/accessibility.html">MathJax Accessibility Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic/mathematics.html">Writing Mathematics for MathJax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic/community.html">The MathJax Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic/bugs.html">Reporting Issues with MathJax</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MathJax in Web Pages</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web/start.html"> Getting Started with Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../web/configuration.html"> Configuring MathJax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../web/loading.html"> Loading MathJax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../web/actions.html"> Performing Startup Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../web/components/index.html"> The MathJax Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../web/typeset.html"> Typesetting Mathematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../web/convert.html"> Converting Math Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../web/errors.html"> Detecting Typeset Errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../web/retry.html"> The &quot;MathJax Retry&quot; Error</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../web/hosting.html"> Hosting Your Own Copy of MathJax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../web/examples.html"> Examples in a Browser</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MathJax in Node Applications</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../server/start.html">Getting Started with Node</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/main.html">Experimenting with MathJax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/components.html">Using MathJax Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/preload.html">Using Components Synchronously</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/direct.html">Linking to MathJax Directly</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/adaptor.html">The DOM Adaptor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/examples.html">Examples in Node</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MathJax Input</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">TeX and LaTeX Support</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="differences.html">Differences from Actual TeX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="delimiters.html">TeX and LaTeX math delimiters</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">TeX and LaTeX in HTML documents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#html-special-characters">HTML Special Characters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interactions-with-content-management-systems">Interactions with Content-Management Systems</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="macros.html">Defining TeX macros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eqnumbers.html">Automatic Equation Numbering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extensions.html">TeX and LaTeX extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extensions/index.html">The TeX/LaTeX Extension List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="macros/index.html">Supported TeX/LaTeX commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../mathml.html">MathML Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../asciimath.html">AsciiMath Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html.html">HTML in Mathematics</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MathJax Output</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../output/index.html">Output Formats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../output/lazy.html">Lazy Typesetting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../output/linebreaks.html">Line Breaking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../output/fonts.html">Font Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../output/browser.html">Browser Support</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration Options</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../options/index.html">Configuring MathJax</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced topics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/typeset.html">MathJax in Dynamic Content</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/webpack.html">Making a Custom Build of MathJax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/model.html">The MathJax Processing Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advanced/synchronize.html">Synchronizing Your Code with MathJax</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Miscellaneous</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/faq.html">MathJax FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/badges.html">MathJax Badges and Logo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../misc/articles.html">Articles and Presentations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">MathJax Updates</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../upgrading/v3.html">Upgrading from Version 3.x</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../upgrading/v2.html">Upgrading from Version 2.x</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../upgrading/index.html">What's New in MathJax</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">MathJax</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">TeX and LaTeX Support</a></li>
+      <li class="breadcrumb-item active">TeX and LaTeX in HTML documents</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/input/tex/html.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tex-and-latex-in-html-documents">
+<span id="tex-in-html"></span><h1>TeX and LaTeX in HTML documents<a class="headerlink" href="#tex-and-latex-in-html-documents" title="Link to this heading"></a></h1>
+<section id="html-special-characters">
+<span id="html-special-chars"></span><h2>HTML Special Characters<a class="headerlink" href="#html-special-characters" title="Link to this heading"></a></h2>
+<p>Keep in mind that your mathematics is part of an HTML document, so you
+need to be aware of the special characters used by HTML as part of its
+markup.  There cannot be HTML tags within the math delimiters (other
+than <code class="docutils literal notranslate"><span class="pre">&lt;br&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;wbr&gt;</span></code>, and HTML comments) as TeX-formatted math
+does not include HTML tags.</p>
+<p>New in version 4, however, is a <cite>texhtml</cite> extension that allows you to
+embed HTML tags within a TeX expression.  This allows you to include
+form input elements or images in your mathematics, for example.  See
+the <a class="reference internal" href="extensions/texhtml.html#tex-texhtml"><span class="std std-ref">texhtml</span></a> page for more details.</p>
+<p>Since the mathematics is initially given as text in the page, you need
+to be careful that your mathematics doesn’t look like HTML tags to the
+browser, which parses the page before MathJax gets to see it.  In
+particular, that means that you have to be careful about things like
+less-than and greater-than signs (<code class="docutils literal notranslate"><span class="pre">&lt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>), and ampersands
+(<code class="docutils literal notranslate"><span class="pre">&amp;</span></code>), which have special meaning to web browsers.  For example,</p>
+<div class="highlight-latex notranslate"><div class="highlight"><pre><span></span>... when <span class="s">$</span><span class="nb">x&lt;y</span><span class="s">$</span> we have ...
+</pre></div>
+</div>
+<p>will cause a problem, because the browser will think <code class="docutils literal notranslate"><span class="pre">&lt;y</span></code> is the
+beginning of a tag named <code class="docutils literal notranslate"><span class="pre">y</span></code> (even though there is no such tag in
+HTML).  When this happens, the browser will think the tag continues up
+to the next <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> in the document (typically the end of the next
+actual tag in the HTML file), and you may notice that you are missing
+part of the text of the document.  In the example above, the “<code class="docutils literal notranslate"><span class="pre">&lt;y</span></code>”
+and “<code class="docutils literal notranslate"><span class="pre">we</span> <span class="pre">have</span> <span class="pre">...</span></code>” will not be displayed because the browser thinks
+it is part of the tag starting at <code class="docutils literal notranslate"><span class="pre">&lt;y</span></code>.  This is one indication you
+can use to spot this problem; it is a common error and should be
+avoided.</p>
+<p>Usually, it is sufficient simply to put spaces around these symbols to
+cause the browser to avoid them, so</p>
+<div class="highlight-latex notranslate"><div class="highlight"><pre><span></span>... when <span class="s">$</span><span class="nb">x &lt; y</span><span class="s">$</span> we have ...
+</pre></div>
+</div>
+<p>should work.  Alternatively, you can use the HTML entities <code class="docutils literal notranslate"><span class="pre">&amp;lt;</span></code>,
+<code class="docutils literal notranslate"><span class="pre">&amp;gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&amp;amp;</span></code> to encode these characters so that the browser
+will not interpret them, but MathJax will.  E.g.,</p>
+<div class="highlight-latex notranslate"><div class="highlight"><pre><span></span>... when <span class="s">$</span><span class="nb">x &amp;lt; y</span><span class="s">$</span> we have ...
+</pre></div>
+</div>
+<p>Finally, there are <code class="docutils literal notranslate"><span class="pre">\lt</span></code> and <code class="docutils literal notranslate"><span class="pre">\gt</span></code> macros defined to make it
+easier to enter <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> using TeX-like syntax:</p>
+<div class="highlight-latex notranslate"><div class="highlight"><pre><span></span>... when <span class="s">$</span><span class="nb">x </span><span class="nv">\lt</span><span class="nb"> y</span><span class="s">$</span> we have ...
+</pre></div>
+</div>
+<p>Again, keep in mind that the browser interprets your text before
+MathJax does.</p>
+</section>
+<section id="interactions-with-content-management-systems">
+<span id="tex-markdown"></span><h2>Interactions with Content-Management Systems<a class="headerlink" href="#interactions-with-content-management-systems" title="Link to this heading"></a></h2>
+<p>Another source of difficulty is when MathJax is used in
+content-management systems that have their own document processing
+commands that are interpreted before the HTML page is created.  For
+example, many blogs and wikis use formats like Markdown to allow you
+to create the content of your pages.  In Markdown, the underscore is
+used to indicate italics, and this usage will conflict with MathJax’s
+use of the underscore to indicate a subscript.</p>
+<p>Since Markdown is applied to the page first, it may convert your
+subscript markers into italics (inserting <code class="docutils literal notranslate"><span class="pre">&lt;i&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;em&gt;</span></code> tags
+into your mathematics, which will cause MathJax to ignore the math).
+If expressions with two or more subscripts aren’t being displayed
+properly, and especially if you see the intervening text appearing in
+italics, that is a good sign that Markdown is processing the
+underscores before MathJax runs.</p>
+<p>Such systems need to be told not to modify the mathematics that
+appears between math delimiters.  That usually involves modifying the
+content-management system itself, which is beyond the means of most
+page authors.  If you are lucky, someone else will already have done
+this for you, and you may be able to find a MathJax plugin for your
+system using a web search.</p>
+<p>If there is no plugin for your system, or if the plugin doesn’t handle
+the subtleties of isolating the mathematics from the other markup that
+it supports, then you may have to “trick” the content-management
+system into leaving your mathematics untouched.  Most
+content-management systems provide some means of indicating text that
+should not be modified (“verbatim” text), often for giving code
+snippets for computer languages.  You may be able use that to enclose
+your mathematics so that the system leaves it unchanged and MathJax
+can process it.  For example, in Markdown, the back-tick (<code class="docutils literal notranslate"><span class="pre">`</span></code>) is
+used to mark verbatim text, so</p>
+<div class="highlight-latex notranslate"><div class="highlight"><pre><span></span>... we have `<span class="s">\(</span><span class="nb">x_</span><span class="m">1</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="m">132</span><span class="s">\)</span>` and `<span class="s">\(</span><span class="nb">x_</span><span class="m">2</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="m">370</span><span class="s">\)</span>` and so ...
+</pre></div>
+</div>
+<p>may be able to protect the underscores from being processed by
+Markdown.  Note, however, that this may put the TeX expression and its
+delimiters inside a <code class="docutils literal notranslate"><span class="pre">&lt;code&gt;</span></code> tag in the page, and MathJax usually
+ignores the contents of those.  In that case, you will need to
+configure MathJax to not skip <code class="docutils literal notranslate"><span class="pre">&lt;code&gt;</span></code> tags.  For example, use</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nb">window</span><span class="p">.</span><span class="nx">MathJax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">options</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">skipHtmlTags</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="s1">&#39;[-]&#39;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">]}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>to remove the <code class="docutils literal notranslate"><span class="pre">&lt;code&gt;</span></code> tag from the list of those that are skipped
+when looking for math delimiters.</p>
+<p>Alternatively, some content-management systems, including those based
+on Markdown, use the backslash (<code class="docutils literal notranslate"><span class="pre">\</span></code>) as a special character for
+“escaping” other characters, and you may be able to use that to
+prevent it from converting underscores to italics.  That is, you might
+be able to use</p>
+<div class="highlight-latex notranslate"><div class="highlight"><pre><span></span>... we have <span class="s">$</span><span class="nb">x</span><span class="nv">\_</span><span class="m">1</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="m">132</span><span class="s">$</span> and <span class="s">$</span><span class="nb">x</span><span class="nv">\_</span><span class="m">2</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="m">370</span><span class="s">$</span> and so ...
+</pre></div>
+</div>
+<p>to avoid the underscores from making <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">=</span> <span class="pre">132$</span> <span class="pre">and</span> <span class="pre">$x</span></code> into italics.</p>
+<p>If your system uses backslashes in this way, that can help with
+italics, but it also causes difficulties in other ways.  Because TeX
+uses this character to indicate a macro name, you need to be able to
+pass a backslash along to the page so that MathJax will be able to
+identify macro names; but if the content-management system is using
+them as escapes, it will remove the backslashes as part of its
+processing, and they won’t make it into the final web page.  In such
+systems, you may have to double the backslashes in order to obtain a
+single backslash in your HTML page.  For example, you may have to do</p>
+<div class="highlight-latex notranslate"><div class="highlight"><pre><span></span><span class="k">\\</span>begin<span class="nb">{</span>array<span class="nb">}{</span>cc<span class="nb">}</span>
+  a <span class="nb">&amp;</span> b <span class="k">\\\\</span>
+  c <span class="nb">&amp;</span> c
+<span class="k">\\</span>end<span class="nb">{</span>array<span class="nb">}</span>
+</pre></div>
+</div>
+<p>to get an array with the four entries <em>a</em>, <em>b</em>, <em>c</em>, and <em>d</em> in two
+rows.  Note in particular that if you want <code class="docutils literal notranslate"><span class="pre">\\</span></code> you will have to
+double <em>both</em> backslashes, giving <code class="docutils literal notranslate"><span class="pre">\\\\</span></code>.</p>
+<p>That may also affect how you enter the math delimiters.  Since the
+defaults are <code class="docutils literal notranslate"><span class="pre">\(...\)</span></code> and <code class="docutils literal notranslate"><span class="pre">\[...\]</span></code>, if your system uses <code class="docutils literal notranslate"><span class="pre">\</span></code> as
+an escape of its own, you may need to use <code class="docutils literal notranslate"><span class="pre">\\(...\\)</span></code> and
+<code class="docutils literal notranslate"><span class="pre">\\[...\\]</span></code> instead in order to get <code class="docutils literal notranslate"><span class="pre">\(...\)</span></code> and <code class="docutils literal notranslate"><span class="pre">\[...\]</span></code> into
+the page where MathJax can process it.</p>
+<p>Finally, if you have enabled single dollar signs as math delimiters
+and you want to include a literal dollar sign in your web page (one
+that doesn’t represent a math delimiter), you will need to prevent
+MathJax from using it as a math delimiter.  If you also enable the
+<code class="docutils literal notranslate"><span class="pre">processEscapes</span></code> configuration parameter (it is enabled by default),
+then you can use <code class="docutils literal notranslate"><span class="pre">\$</span></code> in the text of your page to get a dollar sign
+(without the backslash) in the end.  Alternatively, you can use
+something like <code class="docutils literal notranslate"><span class="pre">&lt;span&gt;$&lt;/span&gt;</span></code> to isolate the dollar sign so that
+MathJax will not use it as a delimiter.</p>
+<p><hr></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="delimiters.html" class="btn btn-neutral float-left" title="TeX and LaTeX math delimiters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="macros.html" class="btn btn-neutral float-right" title="Defining TeX macros" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024 The MathJax Consortium.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

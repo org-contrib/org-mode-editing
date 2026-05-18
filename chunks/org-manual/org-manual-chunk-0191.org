@@ -1,0 +1,96 @@
+#+chunk-id: org-manual-chunk-0191
+#+source-file: org-manual
+#+heading-path: Miscellaneous > Interaction with Other Packages > Packages that Org cooperates with
+#+start-line: 21204
+#+end-line: 21292
+#+external-urls: https://github.com/cdominik/constants-for-Emacs
+#+mirrored-urls: https://github.com/cdominik/constants-for-Emacs
+*** Packages that Org cooperates with
+:PROPERTIES:
+:DESCRIPTION: Packages Org cooperates with.
+:ALT_TITLE: Cooperation
+:END:
+
+- =calc.el= by Dave Gillespie ::
+  #+cindex: @file{calc.el}
+
+  Org uses the Calc package for implementing spreadsheet functionality
+  in its tables (see [[*The Spreadsheet]]).  Org also uses Calc for
+  embedded calculations.  See [[info:calc::Embedded Mode][GNU Emacs Calc Manual]].
+
+- =constants.el= by Carsten Dominik ::
+  #+cindex: @file{constants.el}
+  #+vindex: org-table-formula-constants
+
+  Org can use names for constants in formulas in tables.  Org can also
+  use calculation suffixes for units, such as =M= for =Mega=.  For a
+  standard collection of such constants, install the =constants=
+  package.  Install version 2.0 of this package, available at
+  [[../../mirror/by-url/bf4dbcad97fae3e6f87c6afccfbf6a2ae6d8bc5f633573ff909593a4392bf178.html]].  Org checks if the
+  function ~constants-get~ has been autoloaded.  Installation
+  instructions are in the file =constants.el=.
+
+- =cdlatex.el= by Carsten Dominik ::
+  #+cindex: @file{cdlatex.el}
+
+  Org mode can make use of the CDLaTeX package to efficiently enter
+  LaTeX fragments into Org files.  See [[*Using CDLaTeX to enter math]].
+
+- =imenu.el= by Ake Stenhoff and Lars Lindberg ::
+  #+cindex: @file{imenu.el}
+
+  Imenu creates dynamic menus based on an index of items in a file.
+  Org mode supports Imenu menus.  Enable it with a mode hook as
+  follows:
+
+  #+begin_src emacs-lisp
+  (add-hook 'org-mode-hook
+            (lambda () (imenu-add-to-menubar "Imenu")))
+  #+end_src
+
+  #+vindex: org-imenu-depth
+  By default the index is two levels deep---you can modify the
+  depth using the option ~org-imenu-depth~.
+
+  Org activates Imenu support only in the buffers opened after loading
+  Imenu library.  To enable Imenu support in an already opened Org
+  buffer, reload Org.
+
+- =speedbar.el= by Eric\nbsp{}M.\nbsp{}Ludlam ::
+  #+cindex: @file{speedbar.el}
+
+  Speedbar package creates a special Emacs frame for displaying files
+  and index items in files.  Org mode supports Speedbar; users can
+  drill into Org files directly from the Speedbar.  The {{{kbd(<)}}}
+  in the Speedbar frame tweaks the agenda commands to that file or to
+  a subtree.
+
+- =table.el= by Takaaki Ota ::
+  #+cindex: table editor, @file{table.el}
+  #+cindex: @file{table.el}
+
+  Complex ASCII tables with automatic line wrapping, column- and
+  row-spanning, and alignment can be created using the Emacs table
+  package by Takaaki Ota.  Org mode recognizes such tables and exports
+  them properly.  {{{kbd(C-c ')}}} to edit these tables in a special
+  buffer, much like Org's code blocks.  Because of interference with
+  other Org mode functionality, Takaaki Ota tables cannot be edited
+  directly in the Org buffer.
+
+  - {{{kbd(C-c ')}}} (~org-edit-special~) ::
+
+    #+kindex: C-c '
+    #+findex: org-edit-special
+    Edit a =table.el= table.  Works when point is in a =table.el=
+    table.
+
+  - {{{kbd(C-c ~​)}}} (~org-table-create-with-table.el~) ::
+
+    #+kindex: C-c ~
+    #+findex: org-table-create-with-table.el
+    Insert a =table.el= table.  If there is already a table at point,
+    this command converts it between the =table.el= format and the Org
+    mode format.  See the documentation string of the command
+    ~org-convert-table~ for the restrictions under which this is
+    possible.
+

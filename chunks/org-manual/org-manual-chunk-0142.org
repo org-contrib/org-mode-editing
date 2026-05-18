@@ -1,0 +1,33 @@
+#+chunk-id: org-manual-chunk-0142
+#+source-file: org-manual
+#+heading-path: Exporting > Texinfo Export > Info directory file
+#+start-line: 16141
+#+end-line: 16166
+#+external-urls: 
+#+mirrored-urls: 
+*** Info directory file
+:PROPERTIES:
+:DESCRIPTION: Installing a manual in Info file hierarchy.
+:END:
+
+#+cindex: @samp{dir} file, in Texinfo export
+#+cindex: Info directory file, in Texinfo export
+#+cindex: @code{install-info}, in Texinfo export
+
+#+cindex: @samp{TEXINFO_DIR_CATEGORY}, keyword
+#+cindex: @samp{TEXINFO_DIR_NAME}, keyword
+#+cindex: @samp{TEXINFO_DIR_DESC}, keyword
+The end result of the Texinfo export process is the creation of an
+Info file.  This Info file's metadata has variables for category,
+title, and description: =TEXINFO_DIR_CATEGORY=, =TEXINFO_DIR_NAME=,
+and =TEXINFO_DIR_DESC= keywords that establish where in the Info
+hierarchy the file fits.
+
+Here is an example that writes to the Info directory file:
+
+#+begin_example
+,#+TEXINFO_DIR_CATEGORY: Emacs
+,#+TEXINFO_DIR_NAME: Org Mode
+,#+TEXINFO_DIR_DESC: Outline-based notes management and organizer
+#+end_example
+

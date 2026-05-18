@@ -1,0 +1,62 @@
+#+chunk-id: org-manual-chunk-0105
+#+source-file: org-manual
+#+heading-path: Exporting > HTML Export > Math formatting in HTML export
+#+start-line: 13847
+#+end-line: 13901
+#+external-urls: https://docs.mathjax.org/en/latest/web/start.html, https://www.jsdelivr.com/, https://www.mathjax.org
+#+mirrored-urls: https://docs.mathjax.org/en/latest/web/start.html, https://www.jsdelivr.com/, https://www.mathjax.org
+*** Math formatting in HTML export
+:PROPERTIES:
+:DESCRIPTION: Beautiful math also on the web.
+:END:
+#+cindex: MathJax
+#+cindex: dvipng
+#+cindex: dvisvgm
+#+cindex: ImageMagick
+
+#+vindex: org-html-mathjax-options
+LaTeX math snippets (see [[*LaTeX fragments]]) can be displayed in two
+different ways on HTML pages.  The default is to use the
+[[../../mirror/by-url/b032f0e7360f666f5a860455cbf9af55799a094e0a63105226fd3f15ed064e98.html][MathJax]], which should work out of the box
+with Org[fn:: By default, Org loads MathJax from
+[[../../mirror/by-url/ca4e59a5f8978e8b08d9ceed02569acaf2885d66187cb57a7550a8e8bcd62e79.html][jsDelivr]], as recommended in
+[[../../mirror/by-url/ab430165cc8a5811d7cb98775f8da8bfe346c2d6625933e30e5130b81458d214.html][Getting Started
+with MathJax Components]].][fn:47].  Some MathJax options can be
+configured via ~org-html-mathjax-options~, or in the buffer.  For
+example, with the following settings,
+
+#+begin_example
+,#+HTML_MATHJAX: align: left indent: 5em tagside: left
+#+end_example
+
+#+texinfo: @noindent
+equation labels are displayed on the left margin and equations are
+five ems from the left margin.
+
+To use a local copy of MathJax, use =path= option:
+
+#+begin_example
+,#+HTML_MATHJAX: path:the/path/to/mathjax.js
+#+end_example
+
+#+vindex: org-html-mathjax-template
+See the docstring of ~org-html-mathjax-options~ for all supported
+variables.  The MathJax template can be configured via
+~org-html-mathjax-template~.
+
+If you prefer, you can also request that LaTeX fragments are processed
+into small images that will be inserted into the browser page.  Before
+the availability of MathJax, this was the default method for Org
+files.  This method requires that the dvipng program, dvisvgm or
+ImageMagick suite is available on your system.  You can still get this
+processing with
+
+: #+OPTIONS: tex:dvipng
+
+: #+OPTIONS: tex:dvisvgm
+
+#+texinfo: @noindent
+or
+
+: #+OPTIONS: tex:imagemagick
+

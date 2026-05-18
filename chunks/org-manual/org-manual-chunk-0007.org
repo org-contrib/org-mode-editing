@@ -1,0 +1,38 @@
+#+chunk-id: org-manual-chunk-0007
+#+source-file: org-manual
+#+heading-path: Introduction > Typesetting Conventions Used in this Manual > TODO keywords, tags, properties, etc.
+#+start-line: 438
+#+end-line: 468
+#+external-urls: 
+#+mirrored-urls: 
+*** TODO keywords, tags, properties, etc.
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+Org uses various syntactic elements: TODO keywords, tags, property
+names, keywords, blocks, etc.  In this manual we use the following
+conventions:
+
+#+attr_texinfo: :sep ,
+- =TODO=, =WAITING= ::
+
+  TODO keywords are written with all capitals, even if they are
+  user-defined.
+
+- =boss=, =ARCHIVE= ::
+
+  Tags are case-sensitive.  User-defined tags are usually written in
+  lowercase; built-in tags with special meaning are written as they
+  should appear in the document, usually with all capitals.
+
+- =Release=, =PRIORITY= ::
+
+  User-defined properties are capitalized; built-in properties with
+  special meaning are written with all capitals.
+
+- =TITLE=, =BEGIN= ... =END= ::
+
+  Keywords and blocks are written in uppercase to enhance their
+  readability, but you can use lowercase in your Org files.
+

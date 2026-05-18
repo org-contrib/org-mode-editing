@@ -1,0 +1,238 @@
+#+chunk-id: org-manual-chunk-0072
+#+source-file: org-manual
+#+heading-path: Agenda Views > Commands in the Agenda Buffer > Remote editing
+#+start-line: 10390
+#+end-line: 10620
+#+external-urls: 
+#+mirrored-urls: 
+*** Remote editing
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+#+cindex: remote editing, from agenda
+
+- {{{kbd(0--9)}}} ::
+
+  Digit argument.
+
+- {{{kbd(C-_)}}} (~org-agenda-undo~) ::
+
+  #+kindex: C-_
+  #+findex: org-agenda-undo
+  #+cindex: undoing remote-editing events
+  #+cindex: remote editing, undo
+  Undo a change due to a remote editing command.  The change is undone
+  both in the agenda buffer and in the remote buffer.
+
+- {{{kbd(t)}}} (~org-agenda-todo~) ::
+
+  #+kindex: t
+  #+findex: org-agenda-todo
+  Change the TODO state of the item, both in the agenda and in the
+  original Org file.  A prefix argument is passed through to the
+  ~org-todo~ command, so for example a {{{kbd(C-u)}}} prefix are will
+  trigger taking a note to document the state change.
+
+- {{{kbd(C-S-RIGHT)}}} (~org-agenda-todo-nextset~) ::
+
+  #+kindex: C-S-RIGHT
+  #+findex: org-agenda-todo-nextset
+  Switch to the next set of TODO keywords.
+
+- {{{kbd(C-S-LEFT)}}}, ~org-agenda-todo-previousset~ ::
+
+  #+kindex: C-S-LEFT
+  Switch to the previous set of TODO keywords.
+
+- {{{kbd(C-k)}}} (~org-agenda-kill~) ::
+
+  #+kindex: C-k
+  #+findex: org-agenda-kill
+  #+vindex: org-agenda-confirm-kill
+  Delete the current agenda item along with the entire subtree
+  belonging to it in the original Org file.  If the text to be deleted
+  remotely is longer than one line, the kill needs to be confirmed by
+  the user.  See variable ~org-agenda-confirm-kill~.
+
+- {{{kbd(C-c C-w)}}} (~org-agenda-refile~) ::
+
+  #+kindex: C-c C-w
+  #+findex: org-agenda-refile
+  Refile the entry at point.
+
+- {{{kbd(C-c C-x C-a)}}} or short {{{kbd(a)}}} (~org-agenda-archive-default-with-confirmation~) ::
+
+  #+kindex: C-c C-x C-a
+  #+kindex: a
+  #+findex: org-agenda-archive-default-with-confirmation
+  #+vindex: org-archive-default-command
+  Archive the subtree corresponding to the entry at point using the
+  default archiving command set in ~org-archive-default-command~.
+  When using the {{{kbd(a)}}} key, confirmation is required.
+
+- {{{kbd(C-c C-x a)}}} (~org-agenda-toggle-archive-tag~) ::
+
+  #+kindex: C-c C-x a
+  #+findex: org-agenda-toggle-archive-tag
+  Toggle the archive tag (see [[*Internal archiving]]) for the current
+  headline.
+
+- {{{kbd(C-c C-x A)}}} (~org-agenda-archive-to-archive-sibling~) ::
+
+  #+kindex: C-c C-x A
+  #+findex: org-agenda-archive-to-archive-sibling
+  Move the subtree corresponding to the current entry to its /archive
+  sibling/.
+
+- {{{kbd(C-c C-x C-s)}}} or short {{{kbd($)}}} (~org-agenda-archive~) ::
+
+  #+kindex: C-c C-x C-s
+  #+kindex: $
+  #+findex: org-agenda-archive
+  Archive the subtree corresponding to the current headline.  This
+  means the entry is moved to the configured archive location, most
+  likely a different file.
+
+- {{{kbd(T)}}} (~org-agenda-show-tags~) ::
+
+  #+kindex: T
+  #+findex: org-agenda-show-tags
+  #+vindex: org-agenda-show-inherited-tags
+  Show all tags associated with the current item.  This is useful if
+  you have turned off ~org-agenda-show-inherited-tags~, but still want
+  to see all tags of a headline occasionally.
+
+- {{{kbd(:)}}} (~org-agenda-set-tags~) ::
+
+  #+kindex: :
+  #+findex: org-agenda-set-tags
+  Set tags for the current headline.  If there is an active region in
+  the agenda, change a tag for all headings in the region.
+
+- {{{kbd(\,)}}} (~org-agenda-priority~) ::
+
+  #+kindex: ,
+  #+findex: org-agenda-priority
+  Set the priority for the current item.  Org mode prompts for the
+  priority character.  If you reply with {{{kbd(SPC)}}}, the priority
+  cookie is removed from the entry.
+
+- {{{kbd(+)}}} or {{{kbd(S-UP)}}} (~org-agenda-priority-up~) ::
+
+  #+kindex: +
+  #+kindex: S-UP
+  #+findex: org-agenda-priority-up
+  Increase the priority of the current item.  The priority is changed
+  in the original buffer, but the agenda is not resorted.  Use the
+  {{{kbd(r)}}} key for this.
+
+- {{{kbd(-)}}} or {{{kbd(S-DOWN)}}} (~org-agenda-priority-down~) ::
+
+  #+kindex: -
+  #+kindex: S-DOWN
+  #+findex: org-agenda-priority-down
+  Decrease the priority of the current item.
+
+- {{{kbd(C-c C-x e)}}} or short {{{kbd(e)}}} (~org-agenda-set-effort~) ::
+
+  #+kindex: e
+  #+kindex: C-c C-x e
+  #+findex: org-agenda-set-effort
+  Set the effort property for the current item.
+
+- {{{kbd(C-c C-z)}}} or short {{{kbd(z)}}} (~org-agenda-add-note~) ::
+
+  #+kindex: z
+  #+kindex: C-c C-z
+  #+findex: org-agenda-add-note
+  #+vindex: org-log-into-drawer
+  Add a note to the entry.  This note is recorded, and then filed to
+  the same location where state change notes are put.  Depending on
+  ~org-log-into-drawer~, this may be inside a drawer.
+
+- {{{kbd(C-c C-a)}}} (~org-attach~) ::
+
+  #+kindex: C-c C-a
+  #+findex: org-attach
+  Dispatcher for all command related to attachments.
+
+- {{{kbd(C-c C-s)}}} (~org-agenda-schedule~) ::
+
+  #+kindex: C-c C-s
+  #+findex: org-agenda-schedule
+  Schedule this item.  With a prefix argument, remove the
+  scheduling timestamp
+
+- {{{kbd(C-c C-d)}}} (~org-agenda-deadline~) ::
+
+  #+kindex: C-c C-d
+  #+findex: org-agenda-deadline
+  Set a deadline for this item.  With a prefix argument, remove the
+  deadline.
+
+- {{{kbd(S-RIGHT)}}} (~org-agenda-do-date-later~) ::
+
+  #+kindex: S-RIGHT
+  #+findex: org-agenda-do-date-later
+  Change the timestamp associated with the current line by one day
+  into the future.  If the date is in the past, the first call to this
+  command moves it to today.  With a numeric prefix argument, change
+  it by that many days.  For example, {{{kbd(3 6 5 S-RIGHT)}}} changes
+  it by a year.  With a {{{kbd(C-u)}}} prefix, change the time by one
+  hour.  If you immediately repeat the command, it will continue to
+  change hours even without the prefix argument.  With a double
+  {{{kbd(C-u C-u)}}} prefix, do the same for changing minutes.  The
+  stamp is changed in the original Org file, but the change is not
+  directly reflected in the agenda buffer.  Use {{{kbd(r)}}} or
+  {{{kbd(g)}}} to update the buffer.
+
+- {{{kbd(S-LEFT)}}} (~org-agenda-do-date-earlier~) ::
+
+  #+kindex: S-LEFT
+  #+findex: org-agenda-do-date-earlier
+  Change the timestamp associated with the current line by one day
+  into the past.
+
+- {{{kbd(>)}}} (~org-agenda-date-prompt~) ::
+
+  #+kindex: >
+  #+findex: org-agenda-date-prompt
+  Change the timestamp associated with the current line.  The key
+  {{{kbd(>)}}} has been chosen, because it is the same as
+  {{{kbd(S-.)}}}  on my keyboard.
+
+- {{{kbd(I)}}} (~org-agenda-clock-in~) ::
+
+  #+kindex: I
+  #+findex: org-agenda-clock-in
+  Start the clock on the current item.  If a clock is running already,
+  it is stopped first.
+
+- {{{kbd(O)}}} (~org-agenda-clock-out~) ::
+
+  #+kindex: O
+  #+findex: org-agenda-clock-out
+  Stop the previously started clock.
+
+- {{{kbd(X)}}} (~org-agenda-clock-cancel~) ::
+
+  #+kindex: X
+  #+findex: org-agenda-clock-cancel
+  Cancel the currently running clock.
+
+- {{{kbd(J)}}} (~org-agenda-clock-goto~) ::
+
+  #+kindex: J
+  #+findex: org-agenda-clock-goto
+  Jump to the running clock in another window.
+
+- {{{kbd(k)}}} (~org-agenda-capture~) ::
+
+  #+kindex: k
+  #+findex: org-agenda-capture
+  #+cindex: capturing, from agenda
+  #+vindex: org-capture-use-agenda-date
+  Like ~org-capture~, but use the date at point as the default date
+  for the capture template.  See ~org-capture-use-agenda-date~ to make
+  this the default behavior of ~org-capture~.
+

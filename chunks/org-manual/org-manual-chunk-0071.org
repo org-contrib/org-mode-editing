@@ -1,0 +1,273 @@
+#+chunk-id: org-manual-chunk-0071
+#+source-file: org-manual
+#+heading-path: Agenda Views > Commands in the Agenda Buffer > Change display
+#+start-line: 10124
+#+end-line: 10389
+#+external-urls: 
+#+mirrored-urls: 
+*** Change display
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+#+cindex: change agenda display
+#+cindex: display changing, in agenda
+
+#+attr_texinfo: :sep ,
+- {{{kbd(A)}}} ::
+
+  #+kindex: A
+  Interactively select another agenda view and append it to the
+  current view.
+
+- {{{kbd(o)}}} ::
+
+  #+kindex: o
+  Delete other windows.
+
+- {{{kbd(v d)}}} or short {{{kbd(d)}}} (~org-agenda-day-view~) ::
+
+  #+kindex: v d
+  #+kindex: d
+  #+findex: org-agenda-day-view
+  Switch to day view.  When switching to day view, this setting
+  becomes the default for subsequent agenda refreshes.  A numeric
+  prefix argument may be used to jump directly to a specific day of
+  the year.  For example, {{{kbd(32 d)}}} jumps to February 1st.  When
+  setting day view, a year may be encoded in the prefix argument as
+  well.  For example, {{{kbd(200712 d)}}} jumps to January 12, 2007.
+  If such a year specification has only one or two digits, it is
+  expanded into one of the 30 next years or the last 69 years.
+
+- {{{kbd(v w)}}} or short {{{kbd(w)}}} (~org-agenda-week-view~) ::
+
+  #+kindex: v w
+  #+kindex: w
+  #+findex: org-agenda-week-view
+  Switch to week view.  When switching week view, this setting becomes
+  the default for subsequent agenda refreshes.  A numeric prefix
+  argument may be used to jump directly to a specific day of the ISO
+  week.  For example {{{kbd(9 w)}}} to ISO week number 9.  When
+  setting week view, a year may be encoded in the prefix argument as
+  well.  For example, {{{kbd(200712 w)}}} jumps to week 12 in 2007.
+  If such a year specification has only one or two digits, it is
+  expanded into one of the 30 next years or the last 69 years.
+
+- {{{kbd(v m)}}} (~org-agenda-month-view~) ::
+
+  #+kindex: v m
+  #+findex: org-agenda-month-view
+  Switch to month view.  Because month views are slow to create, they
+  do not become the default for subsequent agenda refreshes.
+  A numeric prefix argument may be used to jump directly to a specific
+  day of the month.  When setting month view, a year may be encoded in
+  the prefix argument as well.  For example, {{{kbd(200712 m)}}} jumps
+  to December 2007.  If such a year specification has only one or two
+  digits, it is expanded into one of the 30 next years or the last 69
+  years.
+
+- {{{kbd(v y)}}} (~org-agenda-year-view~) ::
+
+  #+kindex: v y
+  #+findex: org-agenda-year-view
+  Switch to year view.  Because year views are slow to create, they do
+  not become the default for subsequent agenda refreshes.  A numeric
+  prefix argument may be used to jump directly to a specific day of
+  the year.
+
+- {{{kbd(v SPC)}}} (~org-agenda-reset-view~) ::
+
+  #+kindex: v SPC
+  #+findex: org-agenda-reset-view
+  #+vindex: org-agenda-span
+  Reset the current view to ~org-agenda-span~.
+
+- {{{kbd(f)}}} (~org-agenda-later~) ::
+
+  #+kindex: f
+  #+findex: org-agenda-later
+  Go forward in time to display the span following the current one.
+  For example, if the display covers a week, switch to the following
+  week.  With a prefix argument, repeat that many times.
+
+- {{{kbd(b)}}} (~org-agenda-earlier~) ::
+
+  #+kindex: b
+  #+findex: org-agenda-earlier
+  Go backward in time to display earlier dates.
+
+- {{{kbd(.)}}} (~org-agenda-goto-today~) ::
+
+  #+kindex: .
+  #+findex: org-agenda-goto-today
+  Go to today.
+
+- {{{kbd(j)}}} (~org-agenda-goto-date~) ::
+
+  #+kindex: j
+  #+findex: org-agenda-goto-date
+  Prompt for a date and go there.
+
+- {{{kbd(J)}}} (~org-agenda-clock-goto~) ::
+
+  #+kindex: J
+  #+findex: org-agenda-clock-goto
+  Go to the currently clocked-in task /in the agenda buffer/.
+
+- {{{kbd(D)}}} (~org-agenda-toggle-diary~) ::
+
+  #+kindex: D
+  #+findex: org-agenda-toggle-diary
+  Toggle the inclusion of diary entries.  See [[*Weekly/daily agenda]].
+
+- {{{kbd(v l)}}} or {{{kbd(v L)}}} or short {{{kbd(l)}}} (~org-agenda-log-mode~) ::
+
+  #+kindex: v l
+  #+kindex: l
+  #+kindex: v L
+  #+findex: org-agenda-log-mode
+  #+vindex: org-log-done
+  #+vindex: org-agenda-log-mode-items
+  Toggle Logbook mode.  In Logbook mode, entries that were marked as
+  done while logging was on (see the variable ~org-log-done~) are
+  shown in the agenda, as are entries that have been clocked on that
+  day.  You can configure the entry types that should be included in
+  log mode using the variable ~org-agenda-log-mode-items~.  When
+  called with a {{{kbd(C-u)}}} prefix argument, show all possible
+  logbook entries, including state changes.  When called with two
+  prefix arguments {{{kbd(C-u C-u)}}}, show only logging information,
+  nothing else.  {{{kbd(v L)}}} is equivalent to {{{kbd(C-u v l)}}}.
+
+- {{{kbd(v [)}}} or short {{{kbd([)}}} (~org-agenda-manipulate-query-add~) ::
+
+  #+kindex: v [
+  #+kindex: [
+  #+findex: org-agenda-manipulate-query-add
+  Include inactive timestamps into the current view.  Only for
+  weekly/daily agenda.
+
+- {{{kbd(v a)}}} (~org-agenda-archives-mode~) ::
+
+  #+kindex: v a
+  #+findex: org-agenda-archives-mode
+  #+vindex: org-agenda-start-with-archives-mode
+  Toggle Archives mode.  In Archives mode, trees that are archived
+  (see [[*Internal archiving]]) are also scanned when producing the
+  agenda.  To exit archives mode, press {{{kbd(v a)}}} again.  The
+  initial setting for this mode in new agenda buffers can set with the
+  variable ~org-agenda-start-with-archives-mode~, which can be set
+  with the same values as ~org-agenda-archives-mode~.
+
+- {{{kbd(v A)}}} ::
+
+  #+kindex: v A
+  Toggle Archives mode.  Include all archive files as well.
+
+- {{{kbd(v R)}}} or short {{{kbd(R)}}} (~org-agenda-clockreport-mode~) ::
+
+  #+kindex: v R
+  #+kindex: R
+  #+findex: org-agenda-clockreport-mode
+  #+vindex: org-agenda-start-with-clockreport-mode
+  #+vindex: org-clock-report-include-clocking-task
+  Toggle Clockreport mode.  In Clockreport mode, the daily/weekly
+  agenda always shows a table with the clocked times for the time span
+  and file scope covered by the current agenda view.  The initial
+  setting for this mode in new agenda buffers can be set with the
+  variable ~org-agenda-start-with-clockreport-mode~.  By using a
+  prefix argument when toggling this mode (i.e., {{{kbd(C-u R)}}}),
+  the clock table does not show contributions from entries that are
+  hidden by agenda filtering[fn:: Only tags filtering is respected
+  here, effort filtering is ignored.].  See also the variables
+  ~org-clock-report-include-clocking-task~ and
+  ~org-agenda-clock-report-header~.
+
+- {{{kbd(v c)}}} ::
+
+  #+kindex: v c
+  #+vindex: org-agenda-clock-consistency-checks
+  Show overlapping clock entries, clocking gaps, and other clocking
+  problems in the current agenda range.  You can then visit clocking
+  lines and fix them manually.  See the variable
+  ~org-agenda-clock-consistency-checks~ for information on how to
+  customize the definition of what constituted a clocking problem.  To
+  return to normal agenda display, press {{{kbd(l)}}} to exit Logbook
+  mode.
+
+- {{{kbd(v E)}}} or short {{{kbd(E)}}} (~org-agenda-entry-text-mode~) ::
+
+  #+kindex: v E
+  #+kindex: E
+  #+findex: org-agenda-entry-text-mode
+  #+vindex: org-agenda-start-with-entry-text-mode
+  #+vindex: org-agenda-entry-text-maxlines
+  Toggle entry text mode.  In entry text mode, a number of lines from
+  the Org heading referenced by an agenda line are displayed below the
+  line.  The maximum number of lines is given by the variable
+  ~org-agenda-entry-text-maxlines~.  Calling this command with a
+  numeric prefix argument temporarily modifies that number to the
+  prefix value.
+
+- {{{kbd(G)}}} (~org-agenda-toggle-time-grid~) ::
+
+  #+kindex: G
+  #+vindex: org-agenda-use-time-grid
+  #+vindex: org-agenda-time-grid
+  Toggle the time grid on and off.  See also the variables
+  ~org-agenda-use-time-grid~ and ~org-agenda-time-grid~.
+
+- {{{kbd(r)}}} (~org-agenda-redo~), {{{kbd(g)}}} ::
+
+  #+kindex: r
+  #+kindex: g
+  #+findex: org-agenda-redo
+  Recreate the agenda buffer, for example to reflect the changes after
+  modification of the timestamps of items with {{{kbd(S-LEFT)}}} and
+  {{{kbd(S-RIGHT)}}}.  When the buffer is the global TODO list,
+  a prefix argument is interpreted to create a selective list for
+  a specific TODO keyword.
+
+- {{{kbd(C-x C-s)}}} or short {{{kbd(s)}}} (~org-save-all-org-buffers~) ::
+
+  #+kindex: C-x C-s
+  #+findex: org-save-all-org-buffers
+  #+kindex: s
+  Save all Org buffers in the current Emacs session, and also the
+  locations of IDs.
+
+- {{{kbd(C-c C-x C-c)}}} (~org-agenda-columns~) ::
+
+  #+kindex: C-c C-x C-c
+  #+findex: org-agenda-columns
+  #+vindex: org-columns-default-format
+  Invoke column view (see [[*Column View]]) in the agenda buffer.  The
+  column view format is taken from the entry at point, or, if there is
+  no entry at point, from the first entry in the agenda view.  So
+  whatever the format for that entry would be in the original buffer
+  (taken from a property, from a =COLUMNS= keyword, or from the
+  default variable ~org-columns-default-format~) is used in the
+  agenda.
+
+- {{{kbd(C-c C-x >)}}} (~org-agenda-remove-restriction-lock~) ::
+
+  #+kindex: C-c C-x >
+  #+findex: org-agenda-remove-restriction-lock
+  Remove the restriction lock on the agenda, if it is currently
+  restricted to a file or subtree (see [[*Agenda Files]]).
+
+- {{{kbd(M-UP)}}} (~org-agenda-drag-line-backward~) ::
+
+  #+kindex: M-UP
+  #+findex: org-agenda-drag-line-backward
+  Drag the line at point backward one line.  With a numeric prefix
+  argument, drag backward by that many lines.
+
+  Moving agenda lines does not persist after an agenda refresh and
+  does not modify the contributing Org files.
+
+- {{{kbd(M-DOWN)}}} (~org-agenda-drag-line-forward~) ::
+
+  #+kindex: M-DOWN
+  #+findex: org-agenda-drag-line-forward
+  Drag the line at point forward one line.  With a numeric prefix
+  argument, drag forward by that many lines.
+

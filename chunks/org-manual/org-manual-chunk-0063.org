@@ -1,0 +1,52 @@
+#+chunk-id: org-manual-chunk-0063
+#+source-file: org-manual
+#+heading-path: Agenda Views > The Built-in Agenda Views > Search view
+#+start-line: 9573
+#+end-line: 9617
+#+external-urls: 
+#+mirrored-urls: 
+*** Search view
+:PROPERTIES:
+:DESCRIPTION: Find entries by searching for text.
+:END:
+#+cindex: search view
+#+cindex: text search
+#+cindex: searching, for text
+
+This agenda view is a general text search facility for Org mode
+entries.  It is particularly useful to find notes.
+
+- {{{kbd(M-x org-agenda s)}}} (~org-search-view~) ::
+
+  #+kindex: s @r{(Agenda dispatcher)}
+  #+findex: org-search-view
+  This is a special search that lets you select entries by matching
+  a substring or specific words using a boolean logic.
+
+For example, the search string =computer equipment= matches entries
+that contain =computer equipment= as a substring, even if the two
+words are separated by more space or a line break.
+
+Search view can also search for specific keywords in the entry, using
+Boolean logic.  The search string =+computer
++wifi -ethernet -{8\.11[bg]}= matches note entries that contain the
+keywords =computer= and =wifi=, but not the keyword =ethernet=, and
+which are also not matched by the regular expression =8\.11[bg]=,
+meaning to exclude both =8.11b= and =8.11g=.  The first =+= is
+necessary to turn on boolean search, other =+= characters are
+optional.  For more details, see the docstring of the command
+~org-search-view~.
+
+You can incrementally and conveniently adjust a boolean search from
+the agenda search view with the following keys
+
+#+attr_texinfo: :columns 0.1 0.6
+| {{{kbd([)}}} | Add a positive search word        |
+| {{{kbd(])}}} | Add a negative search word        |
+| {{{kbd({)}}} | Add a positive regular expression |
+| {{{kbd(})}}} | Add a negative regular expression |
+
+#+vindex: org-agenda-text-search-extra-files
+Note that in addition to the agenda files, this command also searches
+the files listed in ~org-agenda-text-search-extra-files~.
+

@@ -1,0 +1,42 @@
+#+chunk-id: org-manual-chunk-0180
+#+source-file: org-manual
+#+heading-path: Working with Source Code > Results of Evaluation > Collection
+#+start-line: 19124
+#+end-line: 19158
+#+external-urls: 
+#+mirrored-urls: 
+*** Collection
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+Collection options specify the results.  Choose one of the options;
+they are mutually exclusive.
+
+- =value= ::
+
+  Default for most Babel libraries[fn:49].  Functional mode.  Org
+  gets the value by wrapping the code in a function definition in the
+  language of the source block.  That is why when using =:results
+  value=, code should execute like a function and return a value.  For
+  languages like Python, an explicit ~return~ statement is mandatory
+  when using =:results value=.  Result is the value returned by the
+  last statement in the code block.
+
+  When evaluating the code block in a session (see [[*Environment of
+  a Code Block]]), Org passes the code to an interpreter running as an
+  interactive Emacs inferior process.  Org gets the value from the
+  source code interpreter's last statement output.  Org has to use
+  language-specific methods to obtain the value.  For example, from
+  the variable ~_~ in Ruby, and the value of ~.Last.value~ in R.
+
+- =output= ::
+
+  Scripting mode.  Org passes the code to an external process running
+  the interpreter.  Org returns the contents of the standard output
+  stream as text results.
+
+  When using a session, Org passes the code to the interpreter running
+  as an interactive Emacs inferior process.  Org concatenates any text
+  output from the interpreter and returns the collection as a result.
+

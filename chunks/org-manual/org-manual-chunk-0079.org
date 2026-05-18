@@ -1,0 +1,64 @@
+#+chunk-id: org-manual-chunk-0079
+#+source-file: org-manual
+#+heading-path: Markup for Rich Contents > Embedded LaTeX > LaTeX fragments
+#+start-line: 11531
+#+end-line: 11587
+#+external-urls: https://www.mathjax.org
+#+mirrored-urls: https://www.mathjax.org
+*** LaTeX fragments
+:PROPERTIES:
+:DESCRIPTION: Complex formulas made easy.
+:END:
+#+cindex: @LaTeX{} fragments
+
+#+vindex: org-format-latex-header
+Org mode can contain LaTeX math fragments, and it supports ways to
+process these for several export backends.  When exporting to LaTeX,
+the code is left as it is.  When exporting to HTML, Org can use either
+[[../../mirror/by-url/b032f0e7360f666f5a860455cbf9af55799a094e0a63105226fd3f15ed064e98.html][MathJax]] (see [[*Math formatting in HTML export]]) or transcode the math
+into images (see [[*Previewing LaTeX fragments]]).
+
+LaTeX fragments do not need any special marking at all.  The following
+snippets are identified as LaTeX source code:
+
+- Environments of any kind[fn:38].  The only requirement is that the
+  =\begin= statement appears on a new line, preceded by only
+  whitespace.
+
+- Text within the usual LaTeX math delimiters.  Prefer =\(...\)= for
+  inline fragments.  The =$...$= alternative has some restrictions and
+  may be a source of confusion.  To avoid conflicts with currency
+  specifications, single =$= characters are only recognized as math
+  delimiters if the enclosed text contains at most two line breaks, is
+  directly attached to the =$= characters with no whitespace in
+  between, and if the closing =$= is followed by whitespace or
+  punctuation (but not a dash).
+
+  Sometimes, it may be necessary to have a literal dollar symbol even
+  when it is recognized as LaTeX math delimiter.  Org provides =\dollar= and
+  =\USD= entities (see [[*Special Symbols]]) that are rendered as =$= for
+  such scenarios.  Also, see [[*Escape Character]].
+
+#+texinfo: @noindent
+For example:
+
+#+begin_example
+\begin{equation}                        % arbitrary environments,
+x=\sqrt{b}                              % even tables, figures, etc
+\end{equation}
+
+If $a^2=b$ and \( b=2 \), then the solution must be
+either $$ a=+\sqrt{2} $$ or \[ a=-\sqrt{2} \].
+#+end_example
+
+#+vindex: org-export-with-latex
+LaTeX processing can be configured with the variable
+~org-export-with-latex~.  The default setting is ~t~ which means
+MathJax for HTML, and no processing for ASCII and LaTeX backends.
+You can also set this variable on a per-file basis using one of these
+lines:
+
+| =#+OPTIONS: tex:t=        | Do the right thing automatically (MathJax) |
+| =#+OPTIONS: tex:nil=      | Do not process LaTeX fragments at all      |
+| =#+OPTIONS: tex:verbatim= | Verbatim export, for jsMath or so          |
+

@@ -1,0 +1,52 @@
+#+chunk-id: org-manual-chunk-0183
+#+source-file: org-manual
+#+heading-path: Working with Source Code > Results of Evaluation > Handling
+#+start-line: 19379
+#+end-line: 19423
+#+external-urls: 
+#+mirrored-urls: 
+*** Handling
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+Handling options after collecting the results.  Choose one of the
+options; they are mutually exclusive.
+
+- =replace= ::
+
+  Default.  Insert results in the Org buffer.  Remove previous
+  results.  Usage example: =:results output replace=.
+
+- =silent= ::
+
+  Do not insert results in the Org mode buffer, but echo them in the
+  minibuffer.  Usage example: =:results output silent=.
+
+- =none= ::
+
+  Compute results, but do not do anything with them.  No inserting in
+  the Org mode buffer nor echo them in the minibuffer.  The results
+  can still be used when referenced from another code block.
+  Usage example: =:results none=.
+
+- =discard= ::
+
+  Ignore the results completely.  This option is similar to =none=,
+  but no processing is performed on the return value.  Calling the
+  code block programmatically (see [[*How to evaluate source code]]) or by
+  reference (see [[*Passing arguments]] and [[*Noweb Reference Syntax]]) will
+  always yield ~nil~.
+
+- =append= ::
+
+  Append results to the Org buffer.  Latest results are at the bottom.
+  Does not remove previous results.  Usage example: =:results output
+  append=.
+
+- =prepend= ::
+
+  Prepend results to the Org buffer.  Latest results are at the top.
+  Does not remove previous results.  Usage example: =:results output
+  prepend=.
+

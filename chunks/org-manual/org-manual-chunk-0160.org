@@ -1,0 +1,38 @@
+#+chunk-id: org-manual-chunk-0160
+#+source-file: org-manual
+#+heading-path: Publishing > Configuration > Selecting files
+#+start-line: 17264
+#+end-line: 17294
+#+external-urls: 
+#+mirrored-urls: 
+*** Selecting files
+:PROPERTIES:
+:DESCRIPTION: What files are part of the project?
+:END:
+#+cindex: files, selecting for publishing
+
+By default, all files with extension =.org= in the base directory are
+considered part of the project.  This can be modified by setting the
+following properties
+
+- ~:base-extension~ ::
+
+  Extension---without the dot---of source files.  This actually is
+  a regular expression.  Set this to the symbol ~any~ if you want to
+  get all files in ~:base-directory~, even without extension.
+
+- ~:exclude~ ::
+
+  Regular expression to match file names that should not be published,
+  even though they have been selected on the basis of their extension.
+
+- ~:include~ ::
+
+  List of files to be included regardless of ~:base-extension~ and
+  ~:exclude~.
+
+- ~:recursive~ ::
+
+  Non-~nil~ means, check base-directory recursively for files to
+  publish.
+

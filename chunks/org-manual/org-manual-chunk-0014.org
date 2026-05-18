@@ -1,0 +1,116 @@
+#+chunk-id: org-manual-chunk-0014
+#+source-file: org-manual
+#+heading-path: Tables > Built-in Table Editor > Column and row editing
+#+start-line: 1541
+#+end-line: 1649
+#+external-urls: 
+#+mirrored-urls: 
+*** Column and row editing
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+- {{{kbd(M-LEFT)}}} (~org-table-move-column-left~) ::
+
+  #+kindex: M-LEFT
+  #+findex: org-table-move-column-left
+  Move the current column left.
+
+- {{{kbd(M-RIGHT)}}} (~org-table-move-column-right~) ::
+
+  #+kindex: M-RIGHT
+  #+findex: org-table-move-column-right
+  Move the current column right.
+
+- {{{kbd(M-S-LEFT)}}} (~org-table-delete-column~) ::
+
+  #+kindex: M-S-LEFT
+  #+findex: org-table-delete-column
+  Kill the current column.
+
+- {{{kbd(M-S-RIGHT)}}} (~org-table-insert-column~) ::
+
+  #+kindex: M-S-RIGHT
+  #+findex: org-table-insert-column
+  Insert a new column at point position.  Move the current column and
+  all cells to the right of this column to the right.
+
+- {{{kbd(M-UP)}}} (~org-table-move-row-up~) ::
+
+  #+kindex: M-UP
+  #+findex: org-table-move-row-up
+  Move the current row up.
+
+- {{{kbd(M-DOWN)}}} (~org-table-move-row-down~) ::
+
+  #+kindex: M-DOWN
+  #+findex: org-table-move-row-down
+  Move the current row down.
+
+- {{{kbd(M-S-UP)}}} (~org-table-kill-row~) ::
+
+  #+kindex: M-S-UP
+  #+findex: org-table-kill-row
+  Kill the current row or horizontal line.
+
+- {{{kbd(S-UP)}}} (~org-table-move-cell-up~) ::
+
+  #+kindex: S-UP
+  #+findex: org-table-move-cell-up
+  Move cell up by swapping with adjacent cell.
+
+- {{{kbd(S-DOWN)}}} (~org-table-move-cell-down~) ::
+
+  #+kindex: S-DOWN
+  #+findex: org-table-move-cell-down
+  Move cell down by swapping with adjacent cell.
+
+- {{{kbd(S-LEFT)}}} (~org-table-move-cell-left~) ::
+
+  #+kindex: S-LEFT
+  #+findex: org-table-move-cell-left
+  Move cell left by swapping with adjacent cell.
+
+- {{{kbd(S-RIGHT)}}} (~org-table-move-cell-right~) ::
+
+  #+kindex: S-RIGHT
+  #+findex: org-table-move-cell-right
+  Move cell right by swapping with adjacent cell.
+
+- {{{kbd(M-S-DOWN)}}} (~org-table-insert-row~) ::
+
+  #+kindex: M-S-DOWN
+  #+findex: org-table-insert-row
+  Insert a new row above the current row.  With a prefix argument, the
+  line is created below the current one.
+
+- {{{kbd(C-c -)}}} (~org-table-insert-hline~) ::
+
+  #+kindex: C-c -
+  #+findex: org-table-insert-hline
+  Insert a horizontal line below current row.  With a prefix argument,
+  the line is created above the current line.
+
+- {{{kbd(C-c RET)}}} (~org-table-hline-and-move~) ::
+
+  #+kindex: C-c RET
+  #+findex: org-table-hline-and-move
+  Insert a horizontal line below current row, and move point into the
+  row below that line.
+
+- {{{kbd(C-c ^)}}} (~org-table-sort-lines~) ::
+
+  #+kindex: C-c ^
+  #+findex: org-table-sort-lines
+  Sort the table lines in the region.  The position of point indicates
+  the column to be used for sorting, and the range of lines is the
+  range between the nearest horizontal separator lines, or the entire
+  table.  If point is before the first column, you are prompted for
+  the sorting column.  If there is an active region, the mark
+  specifies the first line and the sorting column, while point should
+  be in the last line to be included into the sorting.  The command
+  prompts for the sorting type, alphabetically, numerically, or by
+  time.  You can sort in normal or reverse order.  You can also supply
+  your own key extraction and comparison functions.  When called with
+  a prefix argument, alphabetic sorting is case-sensitive.
+

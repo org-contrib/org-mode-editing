@@ -1,0 +1,30 @@
+#+chunk-id: org-manual-chunk-0176
+#+source-file: org-manual
+#+heading-path: Working with Source Code > Environment of a Code Block > Inserting headers and footers
+#+start-line: 18864
+#+end-line: 18886
+#+external-urls: 
+#+mirrored-urls: 
+*** Inserting headers and footers
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+#+cindex: headers, in code blocks
+#+cindex: footers, in code blocks
+#+cindex: @samp{prologue}, header argument
+The =prologue= header argument is for appending to the top of the code
+block for execution, like a reset instruction.  For example, you may
+use =:prologue "reset"= in a Gnuplot code block or, for every such
+block:
+
+#+begin_src emacs-lisp
+(add-to-list 'org-babel-default-header-args:gnuplot
+             '((:prologue . "reset")))
+
+#+end_src
+
+#+cindex: @samp{epilogue}, header argument
+Likewise, the value of the =epilogue= header argument is for appending
+to the end of the code block for execution.
+

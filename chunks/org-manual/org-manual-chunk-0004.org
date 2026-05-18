@@ -1,0 +1,22 @@
+#+chunk-id: org-manual-chunk-0004
+#+source-file: org-manual
+#+heading-path: Introduction > Installation > Installing Org's contributed packages
+#+start-line: 169
+#+end-line: 183
+#+external-urls: https://elpa.nongnu.org/nongnu/org-contrib.html, https://git.sr.ht/~bzg/org-contrib, https://orgmode.org/worg/org-contrib/index.html
+#+mirrored-urls: https://elpa.nongnu.org/nongnu/org-contrib.html, https://git.sr.ht/~bzg/org-contrib, https://orgmode.org/worg/org-contrib/index.html
+*** Installing Org's contributed packages
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+Org's repository used to contain the =contrib/= directory for add-ons
+contributed by others.  As of Org 9.5, the directory has been moved to
+the dedicated org-contrib [[../../mirror/by-url/e814b9d63570809010ffea2f16c1eb2dc552e0625d25308de4c9fe6cdf81031a.html][repository]], which you can install
+separately as a [[../../mirror/by-url/1d4d1deaeb40333e40e8be40fc0f1d5141a452014a9dab7d4e2f2ec5f64350c2.html][package]] from NonGNU ELPA.
+
+There are many valuable packages maintained outside the Org
+repository.  Worg has a list of
+[[../../mirror/by-url/849588f5aeb82019f2dad5d5a729ec4db3bdd05fe75a71e09b0f636803513279.html][org-contrib and
+external packages]]; it is certainly not exhaustive.
+

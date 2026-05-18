@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC>
+<html lang="en" xml:lang="en">
+    <head>
+        <title>GNU ELPA - engrave-faces</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="shortcut icon" type="image/png" href="../favicon.png">
+        <link rel="stylesheet" href="//code.cdn.mozilla.net/fonts/fira.css">
+        <link rel="stylesheet" type="text/css" href="../layout.css"><link href="engrave-faces.atom" type="application/atom+xml" rel="alternate" />
+        <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,width=device-width" />
+    </head>
+    <body>
+
+        <div class="wrapper">
+
+            <header class="small">
+                <div class="container">
+                    <h1><a href="index.html">GNU ELPA</a> - engrave-faces</h1>
+                </div>
+            </header>
+
+            <main class="container">
+<h2 class="package">engrave-faces</h2><dl><dt>Description</dt><dd>Convert font-lock faces to other formats</dd>
+<dt>Latest</dt> <dd><a href="engrave-faces-0.3.1.tar">engrave-faces-0.3.1.tar</a> (<a href="engrave-faces-0.3.1.tar.sig">.sig</a>), 2024-Mar-31, 90.0&nbsp;KiB</dd>
+<dt>Maintainer</dt> <dd>TEC &lt;tec@tecosaur.com&gt;</dd>
+<dt>Atom feed</dt><dd><a href="engrave-faces.xml">engrave-faces.xml</a></dd><dt>Website</dt> <dd><a href="https://github.com/tecosaur/engrave-faces">https://github.com/tecosaur/engrave-faces</a></dd>
+<dt>Browse ELPA's repository</dt> <dd><a href="https://git.savannah.gnu.org/cgit/emacs/elpa.git/?h=externals/engrave-faces">CGit</a> or <a href="https://git.savannah.gnu.org/gitweb/?p=emacs/elpa.git;a=shortlog;h=refs/heads/externals/engrave-faces">Gitweb</a></dd>
+<dt>Badge</dt><dd><img src="engrave-faces.svg"/></dd>
+</dl><p>To install this package from Emacs, use <code>package-install</code> or <code>list-packages</code>.</p><h2>Full description</h2>
+<div class="splice fulldescription">
+<p><a href="http://elpa.gnu.org/packages/engrave-faces.html"><img alt="GNU ELPA" src="https://elpa.gnu.org/packages/engrave-faces.svg"/></a>
+<img src="https://img.shields.io/badge/stage-%CE%B2,%20refinement-orange?style=flat-square">
+<a href="http://elpa.gnu.org/devel/engrave-faces.html"><img alt="GNU-devel ELPA" src="https://elpa.gnu.org/devel/engrave-faces.svg"/></a></p>
+
+<p>
+There are some great packages for Exporting buffers to particular formats, but
+each one seems to reinvent the core mechanism of processing the font-lock in a
+buffer such that it can be exported to a particular format.
+</p>
+
+<p>
+This package aims to produce a versatile generic core which can process a
+fontified buffer and elegantly pass the data to any number of backends which can
+deal with specific output formats.
+</p>
+
+<p>
+This is very much a work in progress, a rough plan can be seen below.
+I fully expect some important items to have been forgotten.
+</p>
+
+<p>
+<b>Font lock processing</b>
+</p>
+<ul class="org-ul">
+<li class="on"><code>[X]</code> Single faces</li>
+<li class="on"><code>[X]</code> Merge multiple faces</li>
+<li class="off"><code>[&#xa0;]</code> Process overlays</li>
+</ul>
+
+<p>
+<b>Included backends</b>
+</p>
+<ul class="org-ul">
+<li class="on"><code>[X]</code> LaTeX</li>
+<li class="on"><code>[X]</code> HTML</li>
+<li class="on"><code>[X]</code> ANSI</li>
+</ul>
+
+</div>
+<h2>Old versions</h2><table>
+<tr><td><a href="engrave-faces-0.3.0.tar.lz">engrave-faces-0.3.0.tar.lz</a></td><td>2022-May-08</td><td>20.9&nbsp;KiB</td>
+<tr><td><a href="engrave-faces-0.2.0.tar.lz">engrave-faces-0.2.0.tar.lz</a></td><td>2021-Sep-05</td><td>19.1&nbsp;KiB</td>
+</table>
+</main>
+
+
+        <footer>
+            <div class="container">
+                <p>Last refreshed on 2024-Mar-31 09:23 GMT</p>
+                <p>Copyright 2016-2024 <a href="https://fsf.org">Free Software Foundation</a>, Inc.</p>
+                <p>Design provided by <a href="https://nicolas.petton.fr">Nicolas Petton</a></p>
+                <p>
+                  This website is licensed under the
+                  <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+                  International License.
+                </p>
+                <p><a href="/jslicense.html" data-jslicense="1">JavaScript Licenses</a></p>
+            </div>
+        </footer>
+
+</body>

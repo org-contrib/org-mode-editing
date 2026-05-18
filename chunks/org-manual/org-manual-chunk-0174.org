@@ -1,0 +1,43 @@
+#+chunk-id: org-manual-chunk-0174
+#+source-file: org-manual
+#+heading-path: Working with Source Code > Environment of a Code Block > Using sessions
+#+start-line: 18769
+#+end-line: 18804
+#+external-urls: 
+#+mirrored-urls: 
+*** Using sessions
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+#+cindex: using sessions in code blocks
+#+cindex: @samp{session}, header argument
+Two code blocks can share the same environment.  The =session= header
+argument is for running multiple source code blocks under one session.
+Org runs code blocks with the same session name in the same
+interpreter process.
+
+- =none= ::
+
+  Default.  Each code block gets a new interpreter process to execute.
+  The process terminates once the block is evaluated.
+
+- {{{var(STRING)}}} ::
+
+  Any string besides =none= turns that string into the name of that
+  session.  For example, =:session STRING= names it =STRING=.  If
+  =session= has no value, then the session name is derived from the
+  source language identifier.  Subsequent blocks with the same source
+  code language use the same session.  Depending on the language,
+  state variables, code from other blocks, and the overall interpreted
+  environment may be shared.  Some interpreted languages support
+  concurrent sessions when subsequent source code language blocks
+  change session names.
+
+Only languages that provide interactive evaluation can have session
+support.  Not all languages provide this support, such as C and ditaa.
+Even languages, such as Python and Haskell, that do support
+interactive evaluation impose limitations on allowable language
+constructs that can run interactively.  Org inherits those limitations
+for those code blocks running in a session.
+

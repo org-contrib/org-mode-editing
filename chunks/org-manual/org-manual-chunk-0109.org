@@ -1,0 +1,60 @@
+#+chunk-id: org-manual-chunk-0109
+#+source-file: org-manual
+#+heading-path: Exporting > LaTeX Export > LaTeX/PDF export commands
+#+start-line: 14137
+#+end-line: 14189
+#+external-urls: 
+#+mirrored-urls: 
+*** LaTeX/PDF export commands
+:PROPERTIES:
+:DESCRIPTION: For producing @LaTeX{} and PDF documents.
+:END:
+
+- {{{kbd(C-c C-e l l)}}} (~org-latex-export-to-latex~) ::
+
+  #+kindex: C-c C-e l l
+  #+findex: org-latex-export-to-latex~
+  Export to a LaTeX file with a =.tex= extension.  For =myfile.org=,
+  Org exports to =myfile.tex=, overwriting without warning.
+
+- {{{kbd(C-c C-e l L)}}} (~org-latex-export-as-latex~) ::
+
+  #+kindex: C-c C-e l L
+  #+findex: org-latex-export-as-latex
+  Export to a temporary buffer.  Do not create a file.
+
+- {{{kbd(C-c C-e l p)}}} (~org-latex-export-to-pdf~) ::
+
+  #+kindex: C-c C-e l p
+  #+findex: org-latex-export-to-pdf
+  Export as LaTeX file and convert it to PDF file.
+
+- {{{kbd(C-c C-e l o)}}} ::
+
+  #+kindex: C-c C-e l o
+  Export as LaTeX file and convert it to PDF, then open the PDF using
+  the default viewer.
+
+- {{{kbd(M-x org-export-region-as-latex)}}} ::
+
+  Convert the region to LaTeX under the assumption that it was in Org
+  mode syntax before.  This is a global command that can be invoked in
+  any buffer.
+
+#+vindex: org-latex-compiler
+#+vindex: org-latex-bib-compiler
+#+vindex: org-latex-default-packages-alist
+#+cindex: pdflatex
+#+cindex: xelatex
+#+cindex: lualatex
+#+cindex: @samp{LATEX_COMPILER}, keyword
+The LaTeX export backend can use any of these LaTeX engines:
+=pdflatex=, =xelatex=, and =lualatex=.  These engines compile LaTeX
+files with different compilers, packages, and output options.  The
+LaTeX export backend finds the compiler version to use from
+~org-latex-compiler~ variable or the =#+LATEX_COMPILER= keyword in the
+Org file.  See the docstring for the
+~org-latex-default-packages-alist~ for loading packages with certain
+compilers.  Also see ~org-latex-bib-compiler~ to set the
+bibliography compiler[fn:48].
+

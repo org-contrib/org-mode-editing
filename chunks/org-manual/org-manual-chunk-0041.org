@@ -1,0 +1,157 @@
+#+chunk-id: org-manual-chunk-0041
+#+source-file: org-manual
+#+heading-path: Properties and Columns > Column View > Using column view
+#+start-line: 5879
+#+end-line: 6028
+#+external-urls: 
+#+mirrored-urls: 
+*** Using column view
+:PROPERTIES:
+:DESCRIPTION: How to create and use column view.
+:END:
+
+**** Turning column view on or off
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+- {{{kbd(C-c C-x C-c)}}} (~org-columns~) ::
+
+  #+kindex: C-c C-x C-c
+  #+vindex: org-columns
+  #+vindex: org-columns-default-format
+  Turn on column view.  If point is before the first headline in the
+  file, column view is turned on for the entire file, using the
+  =#+COLUMNS= definition.  If point is somewhere inside the outline,
+  this command searches the hierarchy, up from point, for a =COLUMNS=
+  property that defines a format.  When one is found, the column view
+  table is established for the tree starting at the entry that
+  contains the =COLUMNS= property.  If no such property is found, the
+  format is taken from the =#+COLUMNS= line or from the variable
+  ~org-columns-default-format~, and column view is established for the
+  current entry and its subtree.
+
+- {{{kbd(r)}}} or {{{kbd(g)}}} on a columns view line (~org-columns-redo~) ::
+
+  #+kindex: r
+  #+kindex: g
+  #+findex: org-columns-redo
+  Recreate the column view, to include recent changes made in the
+  buffer.
+
+- {{{kbd(C-c C-c)}}} or {{{kbd(q)}}} on a columns view line (~org-columns-quit~) ::
+
+  #+kindex: q
+  #+kindex: C-c C-c
+  #+findex: org-columns-quit
+  Exit column view.
+
+**** Editing values
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+#+attr_texinfo: :sep and
+- {{{kbd(LEFT)}}}, {{{kbd(RIGHT)}}}, {{{kbd(UP)}}}, {{{kbd(DOWN)}}} ::
+
+  Move through the column view from field to field.
+
+- {{{kbd(1..9\,0)}}} ::
+
+  #+kindex: 1..9,0
+  Directly select the Nth allowed value, {{{kbd(0)}}} selects the
+  10th value.
+
+- {{{kbd(n)}}} or {{{kbd(S-RIGHT)}}} (~org-columns-next-allowed-value~) and {{{kbd(p)}}} or {{{kbd(S-LEFT)}}} (~org-columns-previous-allowed-value~) ::
+
+  #+kindex: n
+  #+kindex: S-RIGHT
+  #+kindex: p
+  #+kindex: S-LEFT
+  #+findex: org-columns-next-allowed-value
+  #+findex: org-columns-previous-allowed-value
+  Switch to the next/previous allowed value of the field.  For this,
+  you have to have specified allowed values for a property.
+
+- {{{kbd(e)}}} (~org-columns-edit-value~) ::
+
+  #+kindex: e
+  #+findex: org-columns-edit-value
+  Edit the property at point.  For the special properties, this
+  invokes the same interface that you normally use to change that
+  property.  For example, the tag completion or fast selection
+  interface pops up when editing a =TAGS= property.
+
+- {{{kbd(C-c C-c)}}} (~org-columns-toggle-or-columns-quit~) ::
+
+  #+kindex: C-c C-c
+  #+findex: org-columns-toggle-or-columns-quit
+  When there is a checkbox at point, toggle it.  Else exit column
+  view.
+
+- {{{kbd(v)}}} (~org-columns-show-value~) ::
+
+  #+kindex: v
+  #+findex: org-columns-show-value
+  View the full value of this property.  This is useful if the width
+  of the column is smaller than that of the value.
+
+- {{{kbd(a)}}} (~org-columns-edit-allowed~) ::
+
+  #+kindex: a
+  #+findex: org-columns-edit-allowed
+  Edit the list of allowed values for this property.  If the list is
+  found in the hierarchy, the modified values are stored there.  If no
+  list is found, the new value is stored in the first entry that is
+  part of the current column view.
+
+**** Modifying column view on-the-fly
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+#+attr_texinfo: :sep and
+- {{{kbd(<)}}} (~org-columns-narrow~) and {{{kbd(>)}}} (~org-columns-widen~) ::
+
+  #+kindex: <
+  #+kindex: >
+  #+findex: org-columns-narrow
+  #+findex: org-columns-widen
+  Make the column narrower/wider by one character.
+
+- {{{kbd(S-M-RIGHT)}}} (~org-columns-new~) ::
+
+  #+kindex: S-M-RIGHT
+  #+findex: org-columns-new
+  Insert a new column, to the left of the current column.
+
+- {{{kbd(S-M-LEFT)}}} (~org-columns-delete~) ::
+
+  #+kindex: S-M-LEFT
+  #+findex: org-columns-delete
+  Delete the current column.
+
+- {{{kbd(M-LEFT)}}} (~org-columns-move-left~) ::
+
+  #+kindex: M-LEFT
+  #+findex: org-columns-move-left
+  Move the current column left.
+
+- {{{kbd(M-RIGHT)}}} (~org-columns-move-right~) ::
+
+  #+kindex: M-RIGHT
+  #+findex: org-columns-move-right
+  Move the current column right.
+
+- {{{kbd(M-UP)}}} (~org-columns-move-row-up~) ::
+
+  #+kindex: M-UP
+  #+findex: org-columns-move-row-up
+  Move the current row up.
+
+- {{{kbd(M-DOWN)}}} (~org-columns-move-row-down~) ::
+
+  #+kindex: M-DOWN
+  #+findex: org-columns-move-row-down
+  Move the current row down.
+

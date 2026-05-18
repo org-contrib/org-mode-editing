@@ -1,0 +1,23 @@
+#+chunk-id: org-manual-chunk-0058
+#+source-file: org-manual
+#+heading-path: Capture and Attachments > Attachments > Automatic version-control with Git
+#+start-line: 8766
+#+end-line: 8781
+#+external-urls: 
+#+mirrored-urls: 
+*** Automatic version-control with Git
+:PROPERTIES:
+:DESCRIPTION: Everything safely stored away
+:END:
+
+If the directory attached to a heading is a Git repository, Org
+can be configured to automatically commit changes to that repository
+when it sees them.
+
+To make Org mode take care of versioning of attachments for you, add
+the following to your Emacs config:
+
+#+begin_src emacs-lisp
+(require 'org-attach-git)
+#+end_src
+

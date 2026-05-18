@@ -1,0 +1,26 @@
+#+chunk-id: org-manual-chunk-0011
+#+source-file: org-manual
+#+heading-path: Document Structure > Visibility Cycling > Catching invisible edits
+#+start-line: 713
+#+end-line: 731
+#+external-urls: 
+#+mirrored-urls: 
+*** Catching invisible edits
+:PROPERTIES:
+:DESCRIPTION: Preventing mistakes when editing invisible parts.
+:END:
+#+cindex: edits, catching invisible
+
+#+vindex: org-fold-catch-invisible-edits
+#+vindex: org-fold-catch-invisible-edits-commands
+Sometimes you may inadvertently edit an invisible part of the buffer
+and be confused about what has been edited and how to undo the mistake.
+By default, Org prevents such edits for a limited set of user
+commands.  Users can control which commands are affected by
+customizing ~org-fold-catch-invisible-edits-commands~.
+
+The strategy used to decide if a given edit is dangerous is controlled
+by ~org-fold-catch-invisible-edits~.  See the docstring of this option
+for the available strategies.  Set the option to ~nil~ to disable
+catching invisible edits completely.
+

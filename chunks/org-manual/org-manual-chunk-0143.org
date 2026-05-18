@@ -1,0 +1,58 @@
+#+chunk-id: org-manual-chunk-0143
+#+source-file: org-manual
+#+heading-path: Exporting > Texinfo Export > Headings and sectioning structure
+#+start-line: 16167
+#+end-line: 16217
+#+external-urls: 
+#+mirrored-urls: 
+*** Headings and sectioning structure
+:PROPERTIES:
+:DESCRIPTION: Building document structure.
+:END:
+
+#+vindex: org-texinfo-classes
+#+vindex: org-texinfo-default-class
+#+cindex: @samp{TEXINFO_CLASS}, keyword
+The Texinfo export backend uses a pre-defined scheme to convert Org
+headlines to equivalent Texinfo structuring commands.  A scheme like
+this maps top-level headlines to numbered chapters tagged as
+~@chapter~ and lower-level headlines to unnumbered chapters tagged as
+~@unnumbered~.  To override such mappings to introduce ~@part~ or
+other Texinfo structuring commands, define a new class in
+~org-texinfo-classes~.  Activate the new class with the
+=TEXINFO_CLASS= keyword.  When no new class is defined and activated,
+the Texinfo export backend defaults to the
+~org-texinfo-default-class~.
+
+If an Org headline's level has no associated Texinfo structuring
+command, or is below a certain threshold (see [[*Export Settings]]), then
+the Texinfo export backend makes it into a list item.
+
+#+cindex: @samp{APPENDIX}, property
+The Texinfo export backend makes any headline with a non-~nil~
+=APPENDIX= property into an appendix.  This happens independent of the
+Org headline level or the =TEXINFO_CLASS= keyword.
+
+#+cindex: @samp{ALT_TITLE}, property
+#+cindex: @samp{DESCRIPTION}, property
+The Texinfo export backend creates a menu entry after the Org
+headline for each regular sectioning structure.  To override this with
+a shorter menu entry, use the =ALT_TITLE= property (see [[*Table of
+Contents]]).  Texinfo menu entries also have an option for a longer
+=DESCRIPTION= property.  Here's an example that uses both to override
+the default menu entry:
+
+#+begin_example
+,* Controlling Screen Display
+  :PROPERTIES:
+  :ALT_TITLE: Display
+  :DESCRIPTION: Controlling Screen Display
+  :END:
+#+end_example
+
+#+cindex: Top node, in Texinfo export
+The text before the first headline belongs to the /Top/ node, i.e.,
+the node in which a reader enters an Info manual.  As such, it is
+expected not to appear in printed output generated from the =.texi=
+file.  See [[info:texinfo::The Top Node]], for more information.
+

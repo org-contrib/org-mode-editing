@@ -1,0 +1,34 @@
+#+chunk-id: org-manual-chunk-0002
+#+source-file: org-manual
+#+heading-path: Introduction > Installation > Using Emacs packaging system
+#+start-line: 108
+#+end-line: 134
+#+external-urls: 
+#+mirrored-urls: 
+*** Using Emacs packaging system
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+Recent Emacs distributions include a packaging system which lets you
+install Elisp libraries.  You can install Org from the "package menu",
+with {{{kbd(M-x list-packages)}}}.  See [[info:emacs::Package Menu][Package Menu]].
+
+#+attr_texinfo: :tag Important
+#+begin_quote
+You need to do this in a session where no =.org= file has been
+visited, i.e., where no Org built-in functions have been loaded.
+Otherwise, autoloaded Org functions will mess up the installation.
+#+end_quote
+
+To avoid interference with the built-in Org mode, you can use the
+command line (you need Emacs 30 or later):
+
+#+begin_src sh
+emacs -Q -batch -eval "(progn (require 'package) (package-initialize) (package-refresh-contents) (package-upgrade 'org))"
+#+end_src
+
+This approach has the advantage of isolating the upgrade process from
+a running Emacs session, ensuring that version conflicts cannot
+arise.
+

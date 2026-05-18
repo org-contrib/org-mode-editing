@@ -1,0 +1,115 @@
+#+chunk-id: org-manual-chunk-0133
+#+source-file: org-manual
+#+heading-path: Exporting > OpenDocument Text Export > Math formatting in ODT export
+#+start-line: 15445
+#+end-line: 15552
+#+external-urls: https://dlmf.nist.gov/LaTeXML/, https://mathtoweb.sourceforge.io/
+#+mirrored-urls: https://dlmf.nist.gov/LaTeXML/, https://mathtoweb.sourceforge.io/
+*** Math formatting in ODT export
+:PROPERTIES:
+:DESCRIPTION: Formatting @LaTeX{} fragments.
+:END:
+
+The ODT exporter has special support for handling math.
+
+**** LaTeX math snippets
+:PROPERTIES:
+:DESCRIPTION: Embedding in @LaTeX{} format.
+:END:
+
+LaTeX math snippets (see [[*LaTeX fragments]]) can be embedded in the ODT
+document in one of the following ways:
+
+- MathML ::
+
+  #+cindex: MathML
+  Add this line to the Org file.  This option is activated on
+  a per-file basis.
+
+  : #+OPTIONS: tex:t
+
+  With this option, LaTeX fragments are first converted into MathML
+  fragments using an external LaTeX-to-MathML converter program.  The
+  resulting MathML fragments are then embedded as an OpenDocument
+  Formula in the exported document.
+
+  #+vindex: org-latex-to-mathml-convert-command
+  #+vindex: org-latex-to-mathml-jar-file
+  You can specify the LaTeX-to-MathML converter by customizing the
+  variables ~org-latex-to-mathml-convert-command~ and
+  ~org-latex-to-mathml-jar-file~.
+
+  If you prefer to use MathToWeb[fn:: See
+  [[../../mirror/by-url/be5d1dcabb422beb4fe143d0cff9cbb022543828cb3776e45fdcf4255fb07c6c.html][MathToWeb]].]
+  as your converter, you can configure the above variables as shown
+  below.
+
+  #+begin_src emacs-lisp
+  (setq org-latex-to-mathml-convert-command
+        "java -jar %j -unicode -force -df %o %I"
+        org-latex-to-mathml-jar-file
+        "/path/to/mathtoweb.jar")
+  #+end_src
+
+  #+texinfo: @noindent
+  or, to use LaTeX​ML[fn:: See [[../../mirror/by-url/27c9e90553250704e72d79f37cb80df5a60feec59df73e52db4a521ec9aa55c0.html]].]
+  instead,
+
+  #+begin_src emacs-lisp
+  (setq org-latex-to-mathml-convert-command
+        "latexmlmath %i --presentationmathml=%o")
+  #+end_src
+
+  To quickly verify the reliability of the LaTeX-to-MathML
+  converter, use the following commands:
+
+  - {{{kbd(M-x org-export-as-odf)}}} ::
+
+    Convert a LaTeX math snippet to an OpenDocument formula (=.odf=)
+    file.
+
+  - {{{kbd(M-x org-export-as-odf-and-open)}}} ::
+
+    Convert a LaTeX math snippet to an OpenDocument formula (=.odf=)
+    file and open the formula file with the system-registered
+    application.
+
+- PNG images ::
+
+  #+cindex: dvipng
+  #+cindex: dvisvgm
+  #+cindex: ImageMagick
+  Add this line to the Org file.  This option is activated on
+  a per-file basis.
+
+  : #+OPTIONS: tex:dvipng
+
+  : #+OPTIONS: tex:dvisvgm
+
+  #+texinfo: @noindent
+  or
+
+  : #+OPTIONS: tex:imagemagick
+
+  Under this option, LaTeX fragments are processed into PNG or SVG
+  images and the resulting images are embedded in the exported
+  document.  This method requires dvipng program, dvisvgm or
+  ImageMagick programs.
+
+**** MathML and OpenDocument formula files
+:PROPERTIES:
+:DESCRIPTION: Embedding in native format.
+:END:
+
+When embedding LaTeX math snippets in ODT documents is not reliable,
+there is one more option to try.  Embed an equation by linking to its
+MathML (=.mml=) source or its OpenDocument formula (=.odf=) file as
+shown below:
+
+: [[./equation.mml]]
+
+#+texinfo: @noindent
+or
+
+: [[./equation.odf]]
+

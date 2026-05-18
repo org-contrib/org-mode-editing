@@ -1,0 +1,66 @@
+#+chunk-id: org-manual-chunk-0169
+#+source-file: org-manual
+#+heading-path: Working with Source Code > Using Header Arguments > System-wide header arguments
+#+start-line: 18245
+#+end-line: 18303
+#+external-urls: https://orgmode.org/worg/org-contrib/babel/.
+#+mirrored-urls: https://orgmode.org/worg/org-contrib/babel/.
+*** System-wide header arguments
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+#+vindex: org-babel-default-header-args
+
+#+vindex: org-babel-default-header-args
+System-wide values of header arguments can be specified by customizing
+the ~org-babel-default-header-args~ variable, which defaults to the
+following values:
+
+#+begin_example
+:session    => "none"
+:results    => "replace"
+:exports    => "code"
+:cache      => "no"
+:noweb      => "no"
+:hlines     => "no"
+:tangle     => "no"
+#+end_example
+
+#+vindex: org-babel-default-inline-header-args
+Inline source blocks (see [[*Structure of Code Blocks]]) use slightly
+different default header arguments defined in
+~org-babel-default-inline-header-args~:
+
+#+begin_example
+:session    => "none"
+:results    => "replace"
+:exports    => "results"
+:hlines     => "yes"
+#+end_example
+
+The most notable difference between default header arguments for
+inline and normal source blocks is =:exports= argument.  For inline
+source blocks, results of evaluation are exported by default; not the
+code.
+
+Unlike the default values, header arguments set using Org mode
+properties (see [[*Header arguments in Org mode properties]]) do apply to
+both the normal source blocks and inline source blocks.
+
+The example below sets =:noweb= header arguments to =yes=, which makes
+Org expand =:noweb= references by default.
+
+#+begin_src emacs-lisp
+(setq org-babel-default-header-args
+      (cons '(:noweb . "yes")
+            (assq-delete-all :noweb org-babel-default-header-args)))
+#+end_src
+
+#+cindex: language-specific default header arguments
+#+cindex: default header arguments per language
+Each language can have separate default header arguments by
+customizing the variable ~org-babel-default-header-args:<LANG>~, where
+{{{var(<LANG>)}}} is the name of the language.  For details, see the
+language-specific online documentation at
+../../mirror/by-url/6a76481e24739e8d373353548f25cc2edf033df2bf93b88a487b93e20c800077.html
+

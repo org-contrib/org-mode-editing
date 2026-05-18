@@ -1,0 +1,29 @@
+#+chunk-id: org-manual-chunk-0145
+#+source-file: org-manual
+#+heading-path: Exporting > Texinfo Export > Quoting Texinfo code
+#+start-line: 16258
+#+end-line: 16279
+#+external-urls: 
+#+mirrored-urls: 
+*** Quoting Texinfo code
+:PROPERTIES:
+:DESCRIPTION: Incorporating literal Texinfo code.
+:END:
+
+Use any of the following three methods to insert or escape raw Texinfo
+code:
+
+#+cindex: @samp{TEXINFO}, keyword
+#+cindex: @samp{BEGIN_EXPORT texinfo}
+#+begin_example
+Richard @@texinfo:@sc{@@Stallman@@texinfo:}@@ commence' GNU.
+
+,#+TEXINFO: @need800
+This paragraph is preceded by...
+
+,#+BEGIN_EXPORT texinfo
+  @auindex Johnson, Mark
+  @auindex Lakoff, George
+,#+END_EXPORT
+#+end_example
+

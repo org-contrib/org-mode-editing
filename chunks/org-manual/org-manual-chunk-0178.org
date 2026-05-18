@@ -1,0 +1,45 @@
+#+chunk-id: org-manual-chunk-0178
+#+source-file: org-manual
+#+heading-path: Working with Source Code > Evaluating Code Blocks > Limit code block evaluation
+#+start-line: 18986
+#+end-line: 19023
+#+external-urls: 
+#+mirrored-urls: 
+*** Limit code block evaluation
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+#+cindex: @samp{eval}, header argument
+#+cindex: control code block evaluation
+The =eval= header argument can limit evaluation of specific code
+blocks and =CALL= keyword.  It is useful for protection against
+evaluating untrusted code blocks by prompting for a confirmation.
+
+- =yes= ::
+
+  Org evaluates the source code, possibly asking permission according
+  to ~org-confirm-babel-evaluate~.
+
+- =never= or =no= ::
+
+  Org never evaluates the source code.
+
+- =query= ::
+
+  Org prompts the user for permission to evaluate the source code.
+
+- =never-export= or =no-export= ::
+
+  Org does not evaluate the source code when exporting, yet the user
+  can evaluate it interactively.
+
+- =query-export= ::
+
+  Org prompts the user for permission to evaluate the source code
+  during export.
+
+If =eval= header argument is not set, then Org determines whether to
+evaluate the source code from the ~org-confirm-babel-evaluate~
+variable (see [[*Code Evaluation and Security Issues]]).
+

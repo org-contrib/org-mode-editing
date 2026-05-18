@@ -1,0 +1,29 @@
+#+chunk-id: org-manual-chunk-0155
+#+source-file: org-manual
+#+heading-path: Exporting > Advanced Export Configuration > Defining filters for individual files
+#+start-line: 16883
+#+end-line: 16904
+#+external-urls: 
+#+mirrored-urls: 
+*** Defining filters for individual files
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+The Org export can filter not just for backends, but also for
+specific files through the =BIND= keyword.  Here is an example with
+two filters; one removes brackets from time stamps, and the other
+removes strike-through text.  The filter functions are defined in
+a code block in the same Org file, which is a handy location for
+debugging.
+
+#+begin_example
+,#+BIND: org-export-filter-timestamp-functions (tmp-f-timestamp)
+,#+BIND: org-export-filter-strike-through-functions (tmp-f-strike-through)
+,#+BEGIN_SRC emacs-lisp :exports results :results none
+  (defun tmp-f-timestamp (s backend info)
+    (replace-regexp-in-string "&[lg]t;\\|[][]" "" s))
+  (defun tmp-f-strike-through (s backend info) "")
+,#+END_SRC
+#+end_example
+

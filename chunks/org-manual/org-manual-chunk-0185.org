@@ -1,0 +1,137 @@
+#+chunk-id: org-manual-chunk-0185
+#+source-file: org-manual
+#+heading-path: Working with Source Code > Extracting Source Code > Header arguments
+#+start-line: 19612
+#+end-line: 19741
+#+external-urls: 
+#+mirrored-urls: 
+*** Header arguments
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+#+cindex: @samp{tangle}, header argument
+The =tangle= header argument specifies if the code block is exported
+to source file(s).
+
+- =yes= ::
+
+  Export the code block to source file.  The file name for the source
+  file is derived from the name of the Org file, and the file
+  extension is derived from the source code language identifier.
+  Example: =:tangle yes=.
+
+- =no= ::
+
+  The default.  Do not extract the code in a source code file.
+  Example: =:tangle no=.
+
+- {{{var(FILENAME)}}} ::
+
+  Export the code block to source file whose file name is derived from
+  any string passed to the =tangle= header argument.  Org derives the
+  file name as being relative to the directory of the Org file's
+  location.  Example: =:tangle FILENAME=.
+
+#+cindex: comment trees
+Additionally, code blocks inside commented subtrees (see [[*Comment
+Lines]]) are never exported.
+
+#+cindex: @samp{mkdirp}, header argument
+The =mkdirp= header argument creates parent directories for tangled
+files if the directory does not exist.  A =yes= value enables
+directory creation whereas =no= inhibits it.
+
+#+cindex: @samp{comments}, header argument
+The =comments= header argument controls inserting comments into
+tangled files.  These are above and beyond whatever comments may
+already exist in the code block.
+
+- =no= ::
+
+  The default.  Do not insert any extra comments during tangling.
+
+- =link= ::
+
+  Wrap the code block in comments.  Include links pointing back to the
+  place in the Org file from where the code was tangled.
+
+  #+findex: org-store-link
+  #+vindex: org-id-link-to-org-use-id
+  Do note that Org will use ~org-store-link~ ([[*Handling Links]]) to
+  store link to code block.  Such link may not be unique if the parent
+  heading title is a duplicate of earlier heading or changes after
+  tangling.  We recommend setting ~org-id-link-to-org-use-id~ to t to
+  make sure that the link points to the correct heading.
+
+- =yes= ::
+
+  Kept for backward compatibility; same as =link=.
+
+- =org= ::
+
+  Nearest headline text from Org file is inserted as comment.  The
+  exact text that is inserted is picked from the leading context of
+  the source block.
+
+- =both= ::
+
+  Includes both =link= and =org= options.
+
+- =noweb= ::
+
+  Includes =link= option, expands noweb references (see [[*Noweb
+  Reference Syntax]]), and wraps them in link comments inside the body
+  of the code block.
+
+#+cindex: @samp{padline}, header argument
+The =padline= header argument controls insertion of newlines to pad
+source code in the tangled file.
+
+- =yes= ::
+
+  Default.  Insert a newline before and after each code block in the
+  tangled file.
+
+- =no= ::
+
+  Do not insert newlines to pad the tangled code blocks.
+
+#+cindex: @samp{shebang}, header argument
+The =shebang= header argument can turn results into executable script
+files.  By setting it to a string value---for example, =:shebang
+"#!/bin/bash"=---Org inserts that string as the first line of the
+tangled file that the code block is extracted to.  Org then turns on
+the tangled file's executable permission.
+
+#+cindex: @samp{tangle-mode}, header argument
+The =tangle-mode= header argument specifies what permissions to set
+for tangled files by ~set-file-modes~.  Permissions are given by an
+octal value, which can be provided calling the ~identity~ function on
+an elisp octal value.  For instance, to create a read-only file one may
+use =:tangle-mode (identity #o444)=.  To reduce the verbosity required,
+a octal shorthand is defined, =oXXX= (=o= for octal).  Using this, our
+read-only example is =:tangle-mode o444=.  Omitting the =o= prefix will
+cause the argument to be interpreted as an integer, which can lead to
+unexpected results (=444= is the same as =o674=).
+Two other shorthands are recognized, ls-style strings like
+=rw-r--r--=, and chmod-style permissions like =g+w=.
+Note that chmod-style permissions are based on
+~org-babel-tangle-default-file-mode~, which is =#o644= by default.
+
+When =:tangle-mode= and =:shebang= are both specified, the give
+=:tangle-mode= will override the permissions from =:shebang=.  When
+multiple source code blocks tangle to a single file with conflicting
+=:tangle-mode= header arguments, Org's behavior is undefined.
+
+#+cindex: @samp{no-expand}, header argument
+By default Org expands code blocks during tangling.  The =no-expand=
+header argument turns off such expansions.  Note that one side effect
+of expansion by ~org-babel-expand-src-block~ also assigns values (see
+[[*Environment of a Code Block]]) to variables.  Expansions also replace
+noweb references with their targets (see [[*Noweb Reference Syntax]]).
+Some of these expansions may cause premature assignment, hence this
+option.  This option makes a difference only for tangling.  It has no
+effect when exporting since code blocks for execution have to be
+expanded anyway.
+

@@ -1,0 +1,77 @@
+#+chunk-id: org-manual-chunk-0139
+#+source-file: org-manual
+#+heading-path: Exporting > Texinfo Export > Texinfo specific export settings
+#+start-line: 16004
+#+end-line: 16073
+#+external-urls: 
+#+mirrored-urls: 
+*** Texinfo specific export settings
+:PROPERTIES:
+:DESCRIPTION: Setting the environment.
+:END:
+
+The Texinfo export backend has several additional keywords for
+customizing Texinfo output.  Setting these keywords works similar to
+the general options (see [[*Export Settings]]).
+
+- =SUBTITLE= ::
+
+  #+cindex: @samp{SUBTITLE}, keyword
+  The document subtitle.
+
+- =SUBAUTHOR= ::
+
+  #+cindex: @samp{SUBAUTHOR}, keyword
+  Additional authors for the document.
+
+- =TEXINFO_FILENAME= ::
+
+  #+cindex: @samp{TEXINFO_FILENAME}, keyword
+  The Texinfo filename.
+
+- =TEXINFO_CLASS= ::
+
+  #+cindex: @samp{TEXINFO_CLASS}, keyword
+  #+vindex: org-texinfo-default-class
+  The default document class (~org-texinfo-default-class~), which must
+  be a member of ~org-texinfo-classes~.
+
+- =TEXINFO_HEADER= ::
+
+  #+cindex: @samp{TEXINFO_HEADER}, keyword
+  Arbitrary lines inserted at the end of the header.
+
+- =TEXINFO_POST_HEADER= ::
+
+  #+cindex: @samp{TEXINFO_POST_HEADER}, keyword
+  Arbitrary lines inserted after the end of the header.
+
+- =TEXINFO_DIR_CATEGORY= ::
+
+  #+cindex: @samp{TEXINFO_DIR_CATEGORY}, keyword
+  The directory category of the document.  Defaults to ~Misc~.
+
+- =TEXINFO_DIR_NAME= ::
+
+  #+cindex: @samp{TEXINFO_DIR_NAME}, keyword
+  The directory name of the document.
+  This is the short name under which the ~m~ command will find your
+  manual in the main Info directory.  It defaults to the base name of
+  the Texinfo file.
+
+  The full form of the Texinfo entry is ~* DIRNAME: NODE.~ where ~NODE~
+  is usually just ~(FILENAME)~.  Normally this option only provides the
+  ~DIRNAME~ part, but if you need more control, it can also be the full
+  entry (recognized by the presence of parentheses or a leading ~* ~).
+
+- =TEXINFO_DIR_DESC= ::
+
+  #+cindex: @samp{TEXINFO_DIR_DESC}, keyword
+  The directory description of the document.
+  Defaults to the title of the document.
+
+- =TEXINFO_PRINTED_TITLE= ::
+
+  #+cindex: @samp{TEXINFO_PRINTED_TITLE}, keyword
+  The printed title of the document.
+

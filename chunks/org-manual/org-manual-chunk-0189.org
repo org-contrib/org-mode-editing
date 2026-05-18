@@ -1,0 +1,38 @@
+#+chunk-id: org-manual-chunk-0189
+#+source-file: org-manual
+#+heading-path: Miscellaneous > A Cleaner Outline View > Org Indent Mode
+#+start-line: 20552
+#+end-line: 20582
+#+external-urls: 
+#+mirrored-urls: 
+*** Org Indent Mode
+
+#+cindex: Indent mode
+#+findex: org-indent-mode
+To display the buffer in the indented view, activate Org Indent minor
+mode, using {{{kbd(M-x org-indent-mode)}}}.  Text lines that are not
+headlines are prefixed with virtual spaces to vertically align with
+the headline text[fn:51].
+
+#+vindex: org-indent-indentation-per-level
+To make more horizontal space, the headlines are shifted by two
+characters.  Configure ~org-indent-indentation-per-level~ variable for
+a different number.
+
+#+vindex: org-indent-mode-turns-on-hiding-stars
+#+vindex: org-indent-mode-turns-off-org-adapt-indentation
+By default, Org Indent mode turns off ~org-adapt-indentation~ and does
+hide leading stars by locally setting ~org-hide-leading-stars~ to ~t~:
+only one star on each headline is visible, the rest are masked with
+the same font color as the background.  If you want to customize this
+default behavior, see ~org-indent-mode-turns-on-hiding-stars~ and
+~org-indent-mode-turns-off-org-adapt-indentation~.
+
+#+vindex: org-startup-indented
+To globally turn on Org Indent mode for all files, customize the
+variable ~org-startup-indented~.  To control it for individual files,
+use =STARTUP= keyword as follows:
+
+: #+STARTUP: indent
+: #+STARTUP: noindent
+

@@ -1,0 +1,62 @@
+#+chunk-id: org-manual-chunk-0129
+#+source-file: org-manual
+#+heading-path: Exporting > OpenDocument Text Export > Applying custom styles
+#+start-line: 15212
+#+end-line: 15266
+#+external-urls: 
+#+mirrored-urls: 
+*** Applying custom styles
+:PROPERTIES:
+:DESCRIPTION: Styling the output.
+:END:
+#+cindex: styles, custom
+#+cindex: template, custom
+
+The ODT export backend comes with many OpenDocument styles (see
+[[*Working with OpenDocument style files]]).  To expand or further
+customize these built-in style sheets, either edit the style sheets
+directly or generate them using an application such as LibreOffice.
+The example here shows creating a style using LibreOffice.
+
+**** Applying custom styles: the easy way
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+1. Create a sample =example.org= file with settings as shown below,
+   and export it to ODT format.
+
+   : #+OPTIONS: H:10 num:t
+
+2. Open the above =example.odt= using LibreOffice.  Use the /Stylist/
+   to locate the target styles, which typically have the "Org" prefix.
+   Open one, modify, and save as either OpenDocument Text (ODT) or
+   OpenDocument Template (OTT) file.
+
+3.
+   #+vindex: org-odt-styles-file
+   Customize the variable ~org-odt-styles-file~ and point it to the
+   newly created file.  For additional configuration options, see
+   [[x-overriding-factory-styles][Overriding factory styles]].
+
+   #+cindex: @samp{ODT_STYLES_FILE}, keyword
+   To apply an ODT style to a particular file, use the
+   =ODT_STYLES_FILE= keyword as shown in the example below:
+
+   : #+ODT_STYLES_FILE: "/path/to/example.ott"
+
+   #+texinfo: @noindent
+   or
+
+   : #+ODT_STYLES_FILE: ("/path/to/file.ott" ("styles.xml" "image/hdr.png"))
+
+**** Using third-party styles and templates
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+The ODT export backend relies on many templates and style names.
+Using third-party styles and templates can lead to mismatches.
+Templates derived from built-in ODT templates and styles seem to have
+fewer problems.
+

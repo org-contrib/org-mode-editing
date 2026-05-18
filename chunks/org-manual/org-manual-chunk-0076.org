@@ -1,0 +1,109 @@
+#+chunk-id: org-manual-chunk-0076
+#+source-file: org-manual
+#+heading-path: Agenda Views > Custom Agenda Views > Storing searches
+#+start-line: 10856
+#+end-line: 10957
+#+external-urls: 
+#+mirrored-urls: 
+*** Storing searches
+:PROPERTIES:
+:DESCRIPTION: Type once, use often.
+:END:
+
+The first application of custom searches is the definition of keyboard
+shortcuts for frequently used searches, either creating an agenda
+buffer, or a sparse tree (the latter covering of course only the
+current buffer).
+
+#+kindex: C @r{(Agenda dispatcher)}
+#+vindex: org-agenda-custom-commands
+#+cindex: agenda views, main example
+#+cindex: agenda, as an agenda views
+#+cindex: agenda*, as an agenda views
+#+cindex: tags, as an agenda view
+#+cindex: todo, as an agenda view
+#+cindex: tags-todo
+#+cindex: todo-tree
+#+cindex: occur-tree
+#+cindex: tags-tree
+Custom commands are configured in the variable
+~org-agenda-custom-commands~.  You can customize this variable, for
+example by pressing {{{kbd(C)}}} from the agenda dispatcher (see [[*The
+Agenda Dispatcher]]).  You can also directly set it with Emacs Lisp in
+the Emacs init file.  The following example contains all valid agenda
+views:
+
+#+begin_src emacs-lisp
+(setq org-agenda-custom-commands
+      '(("x" agenda)
+        ("y" agenda*)
+        ("w" todo "WAITING")
+        ("W" todo-tree "WAITING")
+        ("u" tags "+boss-urgent")
+        ("v" tags-todo "+boss-urgent")
+        ("U" tags-tree "+boss-urgent")
+        ("f" occur-tree "\\<FIXME\\>")
+        ("h" . "HOME+Name tags searches") ;description for "h" prefix
+        ("hl" tags "+home+Lisa")
+        ("hp" tags "+home+Peter")
+        ("hk" tags "+home+Kim")))
+#+end_src
+
+The initial string in each entry defines the keys you have to press
+after the dispatcher command in order to access the command.  Usually
+this is just a single character, but if you have many similar
+commands, you can also define two-letter combinations where the first
+character is the same in several combinations and serves as a prefix
+key[fn:: You can provide a description for a prefix key by inserting a
+cons cell with the prefix and the description.].  The second parameter
+is the search type, followed by the string or regular expression to be
+used for the matching.  The example above will therefore define:
+
+- {{{kbd(x)}}} ::
+
+  as a global search for agenda entries planned[fn:35] this week/day.
+
+- {{{kbd(y)}}} ::
+
+  as the same search, but only for entries with an hour specification
+  like =[h]h:mm=---think of them as appointments.
+
+- {{{kbd(w)}}} ::
+
+  as a global search for TODO entries with =WAITING= as the TODO
+  keyword.
+
+- {{{kbd(W)}}} ::
+
+  as the same search, but only in the current buffer and displaying
+  the results as a sparse tree.
+
+- {{{kbd(u)}}} ::
+
+  as a global tags search for headlines tagged =boss= but not
+  =urgent=.
+
+- {{{kbd(v)}}} ::
+
+  The same search, but limiting it to headlines that are also TODO
+  items.
+
+- {{{kbd(U)}}} ::
+
+  as the same search, but only in the current buffer and displaying
+  the result as a sparse tree.
+
+- {{{kbd(f)}}} ::
+
+  to create a sparse tree (again, current buffer only) with all
+  entries containing the word =FIXME=.
+
+- {{{kbd(h)}}} ::
+
+  as a prefix command for a =HOME= tags search where you have to press
+  an additional key ({{{kbd(l)}}}, {{{kbd(p)}}} or {{{kbd(k)}}}) to
+  select a name (Lisa, Peter, or Kim) as additional tag to match.
+
+Note that ~*-tree~ agenda views need to be called from an Org buffer
+as they operate on the current buffer only.
+

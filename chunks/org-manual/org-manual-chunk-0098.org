@@ -1,0 +1,37 @@
+#+chunk-id: org-manual-chunk-0098
+#+source-file: org-manual
+#+heading-path: Exporting > HTML Export > HTML preamble and postamble
+#+start-line: 13600
+#+end-line: 13629
+#+external-urls: 
+#+mirrored-urls: 
+*** HTML preamble and postamble
+:PROPERTIES:
+:DESCRIPTION: Inserting preamble and postamble.
+:END:
+#+vindex: org-html-preamble
+#+vindex: org-html-postamble
+#+vindex: org-html-preamble-format
+#+vindex: org-html-postamble-format
+#+vindex: org-html-validation-link
+#+vindex: org-export-creator-string
+#+vindex: org-export-time-stamp-file
+
+The HTML exporter has delineations for preamble and postamble.  The
+default value for ~org-html-preamble~ is ~t~, which makes the HTML
+exporter insert the preamble.  See the variable
+~org-html-preamble-format~ for the format string.
+
+Set ~org-html-preamble~ to a string to override the default format
+string.  If set to a function, the HTML exporter expects the function
+to return a string upon execution.  The HTML exporter inserts this
+string in the preamble.  The HTML exporter does not insert a preamble
+if ~org-html-preamble~ is set ~nil~.
+
+The above also applies to ~org-html-postamble~ and
+~org-html-postamble-format~.  In addition, ~org-html-postamble~ can be
+set to ~auto~ (its default value), which makes the HTML exporter build
+a postamble from looking up author's name, email address, creator's
+name, and date.
+
+

@@ -1,0 +1,46 @@
+#+chunk-id: org-manual-chunk-0029
+#+source-file: org-manual
+#+heading-path: Tables > Org Plot > ASCII bar plots
+#+start-line: 3103
+#+end-line: 3141
+#+external-urls: 
+#+mirrored-urls: 
+*** ASCII bar plots
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+While point is on a column, typing {{{kbd(C-c " a)}}} or {{{kbd(M-x
+orgtbl-ascii-plot)}}} create a new column containing an ASCII-art bars
+plot.  The plot is implemented through a regular column formula.  When
+the source column changes, the bar plot may be updated by refreshing
+the table, for example typing {{{kbd(C-u C-c *)}}}.
+
+#+begin_example
+| Sede          | Max cites |              |
+|---------------+-----------+--------------|
+| Chile         |    257.72 | WWWWWWWWWWWW |
+| Leeds         |    165.77 | WWWWWWWh     |
+| Sao Paolo     |     71.00 | WWW;         |
+| Stockholm     |    134.19 | WWWWWW:      |
+| Morelia       |    257.56 | WWWWWWWWWWWH |
+| Rochefourchat |      0.00 |              |
+,#+TBLFM: $3='(orgtbl-ascii-draw $2 0.0 257.72 12)
+#+end_example
+
+The formula is an Elisp call.
+
+#+attr_texinfo: :options orgtbl-ascii-draw value min max &optional width
+#+begin_defun
+Draw an ASCII bar in a table.
+
+{{{var(VALUE)}}} is the value to plot.
+
+{{{var(MIN)}}} is the value displayed as an empty bar.  {{{var(MAX)}}}
+is the value filling all the {{{var(WIDTH)}}}.  Source values outside
+this range are displayed as =too small= or =too large=.
+
+{{{var(WIDTH)}}} is the number of characters of the bar plot.  It
+defaults to =12=.
+#+end_defun
+

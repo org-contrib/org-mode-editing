@@ -1,0 +1,357 @@
+<html><head><title>Noweb home page</title></head><body>
+
+
+<a name="top"><h1>Noweb &mdash; A Simple, Extensible Tool for Literate Programming</h1></a>
+
+<em><a href="http://en.wikipedia.org/wiki/Literate_programming">Literate programming</a></em> is the art of preparing programs for
+human readers.
+<!--
+<A href="http://www-cs-faculty.Stanford.EDU/~knuth/">Don Knuth</a>
+wrote
+<blockquote>
+???
+</blockquote>
+-->
+<p>
+
+<tt>noweb</tt> is designed to meet the needs of literate programmers while
+remaining as simple as possible.  Its primary advantages are
+simplicity, extensibility, and language-independence&mdash;especially
+noticeable when compared with other literate-programming tools.  <tt>noweb</tt> uses 5
+control sequences to WEB's 27.  The <tt>noweb</tt> manual is only 4&nbsp;pages; an
+additional page explains how to customize its LaTeX output.  <tt>noweb</tt>
+works ``out of the box'' with any programming language, and supports
+TeX, latex, HTML, and troff back ends.  A back end to support full
+hypertext or indexing takes about 250 lines; a simpler one can be
+written in 40 lines of awk.  The primary sacrifice relative to WEB is
+that code is seldom prettyprinted.
+Noweb is distributed from <a href="https://www.ctan.org/pkg/noweb">CTAN</a>.
+<p>
+<tt>noweb</tt> has been used for thirty-five (!) years at many universities and
+industrial sites.
+It has been used for tens of thousands of lines of code in such
+languages as awk, C, C++, Haskell, Icon, Modula-3, Objective Caml, PAL, perl, Promela, 
+R, Turing, and Standard ML.
+I  maintain a <a href="users">list of people and projects that
+use <tt>noweb</tt></a>.
+<p>
+The articles
+<ul>
+<li>Andrew L. Johnson and Brad C. Johnson.
+<a href="johnson-lj.pdf">
+Literate programming using <tt>noweb</tt></a>.
+<i><a href="http://www.linuxjournal.com/article/2188">Linux Journal</a></i>, 64-69, October 1997.
+<li>Norman Ramsey. <a href="../pubs/lpsimp-abstract.html">Literate programming simplified</a>.
+<i>IEEE Software</i>, 11(5):97-105, September 1994.
+</ul>
+ introduce literate programming with <tt>noweb</tt>.
+The article from <i>Linux Journal</i> is more elementary; 
+the article in <i>Software</i> explains what makes
+<tt>noweb</tt> simple and extensible (and why those are important).
+
+<p>
+The original <i>Linux Journal</i> article is marred by a serious
+<em><b>printing error</b></em>&mdash;the chunk syntax is 
+<code>&lt;&lt;name&gt;&gt;</code>
+and <em>not</em> <code>&lt;&lt;name&gt;</code> as shown in the
+article.
+This error is corrected in the Web version.
+The <i>Software</i> article is riddled with minor errors; send me
+a <a href="#postcard">postcard</a> and I'll happily send you a reprint
+with errors corrected.
+<p>
+This site is a member of the
+ <a href="http://www.webring.org/cgi-bin/webring?home&ring=litprog"
+target=_top>Literate Programming Web Ring</a>: 
+<table border>
+<tr><td>
+<a href="http://www.webring.org/cgi-bin/webring?ring=litprog;id=1;prev" target=_top>Previous</a>
+</td><td><a href="http://www.webring.org/cgi-bin/webring?ring=litprog;id=1;next" target=_top>Next</a>
+</td><td><a href="http://www.webring.org/cgi-bin/webring?ring=litprog;id=1;next5" target=_top>Next 5 Sites</a>
+</td><td><a href="http://www.webring.org/cgi-bin/webring?ring=litprog;random" target=_top>Random Site</a>
+</td><td><a href="http://www.webring.org/cgi-bin/webring?ring=litprog;list" target=_top>List Sites</a>
+</td></tr>
+</table>
+<!-- <script language=javascript
+src="http://ss.webring.yahoo.com/navbar?f=j&y=norman_ramsey&u=99669440410062471"></script> -->
+
+
+
+
+
+<h2>What's new?</h2>
+
+In 2012, I learned that there is no longer any Emacs mode that
+supports Noweb and really works with Emacs 23 or Emacs 24.
+The closest is Dave Love's mode, but it suffers from some serious
+problems related to "indirect buffers."
+Dave himself seems to have vanished from the Net.
+<p>
+In 2018, I finally got my act together and released version&nbsp;2.12.
+As&nbsp;part of that release, I&nbsp;put noweb on
+<A href="https://github.com/nrnrnr/noweb">github</a>. 
+<p>
+I&nbsp;am using
+<strong><a href="nwalphacur.zip">Noweb&nbsp;3</a></strong>
+every day, but I think the rationale for Noweb&nbsp;3 has come and gone,
+and I&nbsp;doubt I&nbsp;will ever take it out of ``alpha'' stage or 
+port it to
+<a href="http://www.lua.org/">Lua</a> version&nbsp;5.x, which it
+richly deserves.
+
+<!--
+<a href="todo3.html">Please help</a> by volunteering to convert version&nbsp;2 code and
+documentation to version&nbsp;3.
+There is <a href="todo3.html">lots to do</a>!
+ <p>
+-->
+<p>
+Newcomers should know that versions numbered 2.x are mature and may
+be preferred to version&nbsp;3.
+As of 28&nbsp;June 2018, the current supported version is version 2.12.
+
+
+
+<h2>WWW resources</h2>
+Details and examples are available via WWW:
+<ul>
+
+<li>Noweb <a href="FAQ.html">Frequently Asked Questions</a>.
+
+<li>The user documentation takes the form of Unix <a
+href="http://www.cs.virginia.edu/cgi-bin/manpage?section=1&topic=notangle">man <!--UVA OK-->
+pages</a>, which are online.
+
+<li>The <a href="onepage.ps">One-Page Guide to Using Noweb with
+LaTeX</a> is the place to go if you don't like reading documentation,
+or if you have trouble remembering what you've read.
+
+
+<li><A href="examples/index.html">Example programs</a> rendered in HTML,
+  including hypertext links  created
+  automatically from the <tt>noweb</tt> source.
+  Most have had their documentation chunks automatically converted
+  from latex.
+
+				   
+<li>Many kind people have sent <a href="gallery/">postcards</a>, which
+have been viewable online since April, 1998.
+
+
+<li>One of <tt>noweb</tt>'s greatest strengths is that you can begin by
+  using a vanilla system, then gradually add extensions and
+  customizations as needed, all without even recompiling.
+  The <a href="guide.ps">Noweb Hacker's Guide</a> explains how
+  <tt>noweb</tt> works in sufficient detail for you to add new
+  features.  (An <a href="guide.html">HTML version</a> of the guide is
+  available, but because it is converted automatically from latex
+  source, it is not authoritative.)
+  The extensibility strategy is sketched 
+  <a href="extensibility.html">here</a>.
+
+<li><tt>noweb</tt>'s custom extensions include the ability to parse
+  and manipulate nuweb files, and the ability to convert LaTeX to
+  HTML.  This <a href="nuweb.html">nuweb program</a> formatted with
+  noweb tools shows off both.
+
+<li>A separate page discusses
+  <tt>noweb</tt>'s <a href="indexing.html">indexing</a> capability.
+  Several idiosyncrasies arise because <tt>noweb</tt> is
+  language-independent. 
+
+<li>The <a href="http://www.lyx.org">Lyx document processor</a>, which
+provides a WYSIWYG interface but is compatible with LaTeX, has
+supported Noweb since March, 1999.
+
+<li>Since Version 2.8a, the distribution has included Thorsten Ohl's <tt>noweb-mode</tt>
+for Emacs.
+Joe Kelsey has written a promising class for emacs mmm-mode, 
+but it doesn't quite work out of the box yet.
+
+<li>Felix Gaertner has built <a
+href="http://www.informatik.tu-darmstadt.de/BS/Gaertner/pretzel/">Pretzel</a>,
+a prettyprinter generator that works with <tt>noweb</tt>.
+
+<li>Sven Kloppenburg, a student of Felix's, has built 
+<a href="https://github.com/svnk/noerr/">Noerr</a>, 
+which rewrites error messages so that language implementations without
+<tt>#line</tt> can work nicely with noweb.
+
+<li><a href="http://www.dfan.org/index.html">Dan
+Schmidt</a> has built 
+<a href="http://www.dfan.org/real/noweb.html">dpp and fu</A>,
+which help make noweb output look like CWEB, as well as a nifty
+<a href="http://www.dfan.org/real/noweb.html">outline
+mode</A> for GNU emacs.
+
+<!--
+<li>Marcus Speh has created a WWW-based
+   <a href="http://info.desy.de/gna/html/cc/index.html">C++ course</a>,
+   which uses <tt>noweb</tt> to present
+   an <a href="http://info.desy.de/gna/html/cc/work/noweb/concom.cc.html">
+		example C++ program</a>.
+-->
+
+<li>Some <a href="#ftp-sites">ftp sites</a> for <tt>noweb</tt> are
+  listed <a href="#ftp-sites">below</a>.
+
+<li>Here are my <a href="wish.html">near-term plans and wish list</a> for
+improvements to <tt>noweb</tt>.
+You can also look at the <a href="plans3.html">plans for Noweb&nbsp;3</a>,
+or you can look at an  <a
+href="why3.html">older white paper on Noweb&nbsp;3</a>.
+
+<li>Rob Partington has done some work on supporting 
+   <a href="http://browser.org/rp/noweb/">cross-references
+   in plain TeX</a>.
+
+<li><tt>Noweb</tt>'s liberal <a href="#copyright">copyright</a> is given
+  <a href="#copyright">below</a>. 
+
+<!--
+<li>Matthias Neeracher's <a href="ftp://err.ethz.ch/pub/neeri/Misc/">Mac
+  port</a> is available.  He warns that it is rather unpolished.
+-->
+
+</ul>
+
+
+  
+
+<h2>Literate programming and prettyprinting</h2>
+
+As originally conceived by Don Knuth, literate programming involves
+<em>prettyprinting</em> code: displaying it using several fonts,
+mathematical symbols, and with stylized indentation
+and line breaks.
+I believe this treatment was inspired by the ``publication syntax'' of
+Algol&nbsp;60.
+For three reasons, however, I myself seldom use prettyprinting:
+<ul>
+<li>Most of my programs are edited at least as often as they are read,
+and it is distracting to have to switch between plain ASCII for
+editing and fancy fonts and symbols for reading.
+It is much better for the literate-programming tool to display the
+code almost exactly as written. 
+(I do believe in typographical distinction for chunk names.)
+
+<li>Prettyprinting is necessarily a language-dependent function, and I
+haven't got time to create pretty printers for each of the many
+languages I use.
+
+<li>My experience with prettyprinting is that it tends to distract
+people from the real work of programming and writing.
+People spend lots of time tinkering with prettyprinters, trying to get
+the output just right.
+
+</ul>
+I do see a place for prettyprinting&mdash;prettyprinting can be helpful
+for archival programs that are read much more often than they are
+edited, e.g., if they appear in published books or journals.
+<tt>noweb</tt> supports prettyprinting through the use of
+``prettyprinting filters,'' and there are several such filters in
+<tt>noweb</tt>'s <tt>contrib</tt> directory, including one that I
+wrote, so this had better quash all rumors that I will never use a
+prettyprinter.
+
+
+
+<h2><A name=postcard>Getting in touch</a></h2>
+I enjoy hearing from <tt>noweb</tt> users; if you have enjoyed <tt>noweb</tt>, why not
+send me a local postcard for <a href="gallery/">my collection</a>?  My address is:
+<address>
+&nbsp;&nbsp;Norman Ramsey<br>
+&nbsp;&nbsp;Department of Computer Science, Halligan Hall<br>
+<!--&nbsp;&nbsp;Maxwell Dworkin 231<br>-->
+&nbsp;&nbsp;161 College Ave<br>
+&nbsp;&nbsp;Tufts University<br>
+&nbsp;&nbsp;Medford, MA 02155<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;USA
+</address>
+You can also send electronic mail to 
+<a href="mailto:nr@cs.tufts.edu"><tt>nr@cs.tufts.edu</tt></a>.
+
+<h2><a name="ftp-sites">Where to get <tt>noweb</tt></a></h2>
+
+The canonical sources are on 
+<A href="https://github.com/nrnrnr/noweb">github</a>.
+Bugs should be reported using the issue tracker.
+
+<p>
+
+For Linux users, 
+I recommend getting the <a
+href="http://packages.debian.org/noweb">Debian package</a>.
+For others, 
+try <a href="https://www.ctan.org/pkg/noweb">CTAN</a>.
+I&nbsp;also tried to make a 
+<a href="nowebm-2.11a-2.i386.rpm">Red Hat RPM</a>; I'd appreciate
+hearing if it works.
+
+<p>
+(Note to old-timers: noweb is still mirrored on CTAN, but
+since I first started distributing noweb in the early 1990s, our ideas
+of how to get things have changed&mdash;as have our ideas of what's big.
+In the bad old days, CTAN built zipped tar files on the fly to save
+disk space.  Since the collapse of this service circa 2003, I no
+longer recommend getting noweb from CTAN.)
+
+<a
+href="ftp://ftp.netbsd.org/pub/NetBSD/packages/pkgsrc/devel/noweb/README.html">Precompiled
+binaries</a> for
+ <a
+href="http://packages.debian.org/noweb">Debian</a> and
+ <a href="http://www.netbsd.org">NetBSD 1.3.x (g)</a>
+are available.
+
+<p><a href="http://www.jim-pettigrew.com/">Jim Pettigrew</a> has
+written <a
+href="http://www.jim-pettigrew.com/noweb/install/">installation
+instructions for Windows 7</a> (on top of mingw).</p> 
+
+<a name="thanks"><h2>Acknowledgements</h2></a>
+<ul>
+  <li>Thanks to Preston Briggs for the Aho-Corasick recognizer, and for
+		helpful discussions.
+  <li>Thanks to <a href="http://www.cs.princeton.edu/~drh">Dave Hanson</a> for cpif.
+  <li>Thanks to Dave Love for LaTeX wizardry.
+  <li>Thanks to Joseph Reynolds for prodding me to fix <code>[[...]]</code>.
+  <li>Thanks to Aharon Robbins for making troff work (finally!).
+  <li>Thanks to Bill Trost for the original HTML back end.
+  <li>Thanks to Lee Wittenberg and Phil Miller for DOS binaries.
+  <li>Thanks to Lee Wittenberg and Carl Gregory for the nucleus of the
+      <a href="onepage.ps">One-Page Guide</a>.
+  <li>Thanks to Garret Prestwood for the initial pipeline and buffer
+      interfaces used in Version&nbsp;3.
+</ul>
+
+<a name=copyright>
+<h2>Copyright</h2>
+</a>
+
+<Tt>Noweb</Tt> is copyright 1989&ndash;2024 by 
+<a href="../index.html">Norman Ramsey</a>.  All rights reserved.
+<p>
+
+You may use and distribute <tt>noweb</tt> for any purpose, for free.  You may
+modify <tt>noweb</tt> and create derived works, provided you retain the
+copyright notice, but the result may not be called <tt>noweb</tt> without my
+written consent.  You may do
+anything you like with programs created with <tt>noweb</tt>.
+You may even sell <tt>noweb</tt> itself, for example, as part of a
+CD-ROM distribution, provided that what you sell is the true,
+complete, and unmodified <tt>noweb</tt>.
+
+<hr>
+<blockquote><em>
+Without wanting to be elitist, the thing that will prevent literate
+programming from becoming a mainstream method is that it requires
+thought and discipline.  The mainstream is established by people who
+want fast results while using roughly the same methods that everyone
+else seems to be using, and literate programming is never going to have that kind of
+appeal.  This doesn't take away from its usefulness as an approach.
+</em>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&mdash;Patrick&nbsp;TJ&nbsp;McPhee
+</blockquote>
+
+</body></html>

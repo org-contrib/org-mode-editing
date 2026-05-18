@@ -1,0 +1,60 @@
+#+chunk-id: org-manual-chunk-0024
+#+source-file: org-manual
+#+heading-path: Tables > The Spreadsheet > Lookup functions
+#+start-line: 2517
+#+end-line: 2569
+#+external-urls: https://orgmode.org/worg/org-tutorials/org-lookups.html
+#+mirrored-urls: https://orgmode.org/worg/org-tutorials/org-lookups.html
+*** Lookup functions
+:PROPERTIES:
+:DESCRIPTION: Lookup functions for searching tables.
+:END:
+#+cindex: lookup functions in tables
+#+cindex: table lookup functions
+
+Org has three predefined Emacs Lisp functions for lookups in tables.
+
+- =(org-lookup-first VAL S-LIST R-LIST &optional PREDICATE)= ::
+
+  #+findex: org-lookup-first
+  Searches for the first element {{{var(S)}}} in list
+  {{{var(S-LIST)}}} for which
+  #+begin_src emacs-lisp
+  (PREDICATE VAL S)
+  #+end_src
+  is non-~nil~; returns the value from the corresponding position in
+  list {{{var(R-LIST)}}}.  The default {{{var(PREDICATE)}}} is
+  ~equal~.  Note that the parameters {{{var(VAL)}}} and {{{var(S)}}}
+  are passed to {{{var(PREDICATE)}}} in the same order as the
+  corresponding parameters are in the call to ~org-lookup-first~,
+  where {{{var(VAL)}}} precedes {{{var(S-LIST)}}}.  If
+  {{{var(R-LIST)}}} is ~nil~, the matching element {{{var(S)}}} of
+  {{{var(S-LIST)}}} is returned.
+
+- =(org-lookup-last VAL S-LIST R-LIST &optional PREDICATE)= ::
+
+  #+findex: org-lookup-last
+  Similar to ~org-lookup-first~ above, but searches for the /last/
+  element for which {{{var(PREDICATE)}}} is non-~nil~.
+
+- =(org-lookup-all VAL S-LIST R-LIST &optional PREDICATE)= ::
+
+  #+findex: org-lookup-all
+  Similar to ~org-lookup-first~, but searches for /all/ elements for
+  which {{{var(PREDICATE)}}} is non-~nil~, and returns /all/
+  corresponding values.  This function cannot be used by itself in
+  a formula, because it returns a list of values.  However, powerful
+  lookups can be built when this function is combined with other Emacs
+  Lisp functions.
+
+If the ranges used in these functions contain empty fields, the =E=
+mode for the formula should usually be specified: otherwise empty
+fields are not included in {{{var(S-LIST)}}} and/or {{{var(R-LIST)}}}
+which can, for example, result in an incorrect mapping from an element
+of {{{var(S-LIST)}}} to the corresponding element of
+{{{var(R-LIST)}}}.
+
+These three functions can be used to implement associative arrays,
+count matching cells, rank results, group data, etc.  For practical
+examples see [[../../mirror/by-url/f713f9d951fa80f79ecd08755d7c5b639efda81e8c8ce4bdfb22d4c9561c4026.html][this tutorial on Worg]].
+

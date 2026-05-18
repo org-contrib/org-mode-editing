@@ -1,0 +1,29 @@
+#+chunk-id: org-manual-chunk-0166
+#+source-file: org-manual
+#+heading-path: Publishing > Sample Configuration > Example: simple publishing configuration
+#+start-line: 17651
+#+end-line: 17672
+#+external-urls: 
+#+mirrored-urls: 
+*** Example: simple publishing configuration
+:PROPERTIES:
+:DESCRIPTION: One-component publishing.
+:ALT_TITLE: Simple example
+:END:
+
+This example publishes a set of Org files to the =public_html=
+directory on the local machine.
+
+#+begin_src emacs-lisp
+(setq org-publish-project-alist
+      '(("org"
+         :base-directory "~/org/"
+         :publishing-function org-html-publish-to-html
+         :publishing-directory "~/public_html"
+         :section-numbers nil
+         :with-toc nil
+         :html-head "<link rel=\"stylesheet\"
+                    href=\"../other/mystyle.css\"
+                    type=\"text/css\"/>")))
+#+end_src
+

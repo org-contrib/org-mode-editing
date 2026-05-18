@@ -1,0 +1,44 @@
+#+chunk-id: org-manual-chunk-0134
+#+source-file: org-manual
+#+heading-path: Exporting > OpenDocument Text Export > Labels and captions in ODT export
+#+start-line: 15553
+#+end-line: 15589
+#+external-urls: 
+#+mirrored-urls: 
+*** Labels and captions in ODT export
+:PROPERTIES:
+:DESCRIPTION: Rendering objects.
+:END:
+
+ODT format handles labeling and captioning of objects based on their
+types.  Inline images, tables, LaTeX fragments, and Math formulas are
+numbered and captioned separately.  Each object also gets a unique
+sequence number based on its order of first appearance in the Org
+file.  Each category has its own sequence.  A caption is just a label
+applied to these objects.
+
+#+begin_example
+,#+CAPTION: Bell curve
+,#+NAME:   fig:SED-HR4049
+[[./img/a.png]]
+#+end_example
+
+When rendered, it may show as follows in the exported document:
+
+: Figure 2: Bell curve
+
+#+vindex: org-odt-category-map-alist
+To modify the category component of the caption, customize the option
+~org-odt-category-map-alist~.  For example, to tag embedded images
+with the string "Illustration" instead of the default string "Figure",
+use the following setting:
+
+#+begin_src emacs-lisp
+(setq org-odt-category-map-alist
+      '(("__Figure__" "Illustration" "value" "Figure" org-odt--enumerable-image-p)))
+#+end_src
+
+With the above modification, the previous example changes to:
+
+: Illustration 2: Bell curve
+

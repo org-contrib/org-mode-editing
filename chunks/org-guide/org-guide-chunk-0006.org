@@ -1,0 +1,44 @@
+#+chunk-id: org-guide-chunk-0006
+#+source-file: org-guide
+#+heading-path: Capture, Refile, Archive > Capture > Capture templates
+#+start-line: 1392
+#+end-line: 1428
+#+external-urls: 
+#+mirrored-urls: 
+*** Capture templates
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+You can use templates for different types of capture items, and for
+different target locations.  Say you would like to use one template to
+create general TODO entries, and you want to put these entries under
+the heading =Tasks= in your file =~/org/gtd.org=.  Also, a date tree
+in the file =journal.org= should capture journal entries.  A possible
+configuration would look like:
+
+#+begin_src emacs-lisp
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline "~/org/gtd.org" "Tasks")
+         "* TODO %?\n  %i\n  %a")
+        ("j" "Journal" entry (file+datetree "~/org/journal.org")
+         "* %?\nEntered on %U\n  %i\n  %a")))
+#+end_src
+
+If you then press {{{kbd(t)}}} from the capture menu, Org will prepare
+the template for you like this:
+
+: * TODO
+:   [[file:LINK TO WHERE YOU INITIATED CAPTURE]]
+
+#+texinfo: @noindent
+During expansion of the template, special %-escapes[fn:10] allow
+dynamic insertion of content.  Here is a small selection of the
+possibilities, consult the [[info:org][manual]] for more.
+
+| =%a=       | annotation, normally the link created with ~org-store-link~            |
+| =%i=       | initial content, the region when capture is called with {{{kbd(C-u)}}} |
+| =%t=, =%T= | timestamp, date only, or date and time                                 |
+| =%u=, =%U= | like above, but inactive timestamps                                    |
+| =%?=       | after completing the template, position point here                                                                       |
+

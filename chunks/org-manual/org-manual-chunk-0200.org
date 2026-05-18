@@ -1,0 +1,109 @@
+#+chunk-id: org-manual-chunk-0200
+#+source-file: org-manual
+#+heading-path: Hacking > Tables in Arbitrary Syntax > A LaTeX example of radio tables
+#+start-line: 22263
+#+end-line: 22364
+#+external-urls: https://www.ctan.org/pkg/comment
+#+mirrored-urls: https://www.ctan.org/pkg/comment
+*** A LaTeX example of radio tables
+:PROPERTIES:
+:DESCRIPTION: Step by step, almost a tutorial.
+:ALT_TITLE: A LaTeX example
+:END:
+#+cindex: @LaTeX{}, and Orgtbl mode
+
+To wrap a source table in LaTeX, use the =comment= environment
+provided by =comment.sty=[fn:: ../../mirror/by-url/681f6180993f3207f958bb8bdbc55bf4698a0433f4fa98a2f4be9fd5d9fe540b.html].  To
+activate it, put ~\usepackage{comment}~ in the document header.
+Orgtbl mode inserts a radio table skeleton[fn:55] with the command
+{{{kbd(M-x orgtbl-insert-radio-table)}}}, which prompts for a table
+name.  For example, if =salesfigures= is the name, the template
+inserts:
+
+#+begin_example
+% BEGIN RECEIVE ORGTBL salesfigures
+% END RECEIVE ORGTBL salesfigures
+\begin{comment}
+,#+ORGTBL: SEND salesfigures orgtbl-to-latex
+| | |
+\end{comment}
+#+end_example
+
+#+vindex: LaTeX-verbatim-environments
+#+texinfo: @noindent
+The line =#+ORGTBL: SEND= tells Orgtbl mode to use the function
+~orgtbl-to-latex~ to convert the table to LaTeX format, then insert
+the table at the target (receive) location named =salesfigures=.  Now
+the table is ready for data entry.  It can even use spreadsheet
+features[fn:56]:
+
+#+begin_example
+% BEGIN RECEIVE ORGTBL salesfigures
+% END RECEIVE ORGTBL salesfigures
+\begin{comment}
+,#+ORGTBL: SEND salesfigures orgtbl-to-latex
+| Month | Days | Nr sold | per day |
+|-------+------+---------+---------|
+| Jan   |   23 |      55 |     2.4 |
+| Feb   |   21 |      16 |     0.8 |
+| March |   22 |     278 |    12.6 |
+,#+TBLFM: $4=$3/$2;%.1f
+% $ (optional extra dollar to keep Font Lock happy, see footnote)
+\end{comment}
+#+end_example
+
+After editing, {{{kbd(C-c C-c)}}} inserts the translated table at the
+target location, between the two marker lines.
+
+For hand-made custom tables, note that the translator needs to skip
+the first two lines of the source table.  Also, the command has to
+/splice/ out the target table without the header and footer.
+
+#+begin_example
+\begin{tabular}{lrrr}
+Month & \multicolumn{1}{c}{Days} & Nr.\ sold & per day\\
+% BEGIN RECEIVE ORGTBL salesfigures
+% END RECEIVE ORGTBL salesfigures
+\end{tabular}
+%
+\begin{comment}
+,#+ORGTBL: SEND salesfigures orgtbl-to-latex :splice t :skip 2
+| Month | Days | Nr sold | per day |
+|-------+------+---------+---------|
+| Jan   |   23 |      55 |     2.4 |
+| Feb   |   21 |      16 |     0.8 |
+| March |   22 |     278 |    12.6 |
+,#+TBLFM: $4=$3/$2;%.1f
+\end{comment}
+#+end_example
+
+The LaTeX translator function ~orgtbl-to-latex~ is already part of
+Orgtbl mode and uses a =tabular= environment to typeset the table and
+marks horizontal lines with ~\hline~.  For additional parameters to
+control output, see [[*Translator functions]]:
+
+- =:splice BOOLEAN= ::
+
+  When {{{var(BOOLEAN}}} is non-~nil~, return only table body lines;
+  i.e., not wrapped in =tabular= environment.  Default is ~nil~.
+
+- =:fmt FMT= ::
+
+  Format string to warp each field.  It should contain =%s= for the
+  original field value.  For example, to wrap each field value in
+  dollar symbol, you could use =:fmt "$%s$"=.  Format can also wrap
+  a property list with column numbers and formats, for example =:fmt
+  (2 "$%s$" 4 "%s\\%%")=.  In place of a string, a function of one
+  argument can be used; the function must return a formatted string.
+
+- =:efmt EFMT= ::
+
+  Format numbers as exponentials.  The spec should have =%s= twice for
+  inserting mantissa and exponent, for example ="%s\\times10^{%s}"=.  This
+  may also be a property list with column numbers and formats, for
+  example =:efmt (2 "$%s\\times10^{%s}$" 4 "$%s\\cdot10^{%s}$")=.  After
+  {{{var(EFMT)}}} has been applied to a value, {{{var(FMT)}}}---see
+  above---is also applied.  Functions with two arguments can be
+  supplied instead of strings.  By default, no special formatting is
+  applied.
+

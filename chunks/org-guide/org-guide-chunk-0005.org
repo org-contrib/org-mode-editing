@@ -1,0 +1,33 @@
+#+chunk-id: org-guide-chunk-0005
+#+source-file: org-guide
+#+heading-path: Capture, Refile, Archive > Capture > Using capture
+#+start-line: 1366
+#+end-line: 1391
+#+external-urls: 
+#+mirrored-urls: 
+*** Using capture
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+- {{{kbd(M-x org-capture)}}} (~org-capture~) ::
+
+  Start a capture process, placing you into a narrowed indirect buffer
+  to edit.
+
+- {{{kbd(C-c C-c)}}} (~org-capture-finalize~) ::
+
+  Once you have finished entering information into the capture buffer,
+  {{{kbd(C-c C-c)}}} returns you to the window configuration before
+  the capture process, so that you can resume your work without
+  further distraction.
+
+- {{{kbd(C-c C-w)}}} (~org-capture-refile~) ::
+
+  Finalize the capture process by refiling the note to a different
+  place (see [[*Refile and Copy]]).
+
+- {{{kbd(C-c C-k)}}} (~org-capture-kill~) ::
+
+  Abort the capture process and return to the previous state.
+

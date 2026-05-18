@@ -1,0 +1,43 @@
+#+chunk-id: org-manual-chunk-0122
+#+source-file: org-manual
+#+heading-path: Exporting > LaTeX Export > Controlling the way the table of contents is generated
+#+start-line: 14973
+#+end-line: 15008
+#+external-urls: 
+#+mirrored-urls: 
+*** Controlling the way the table of contents is generated
+#+cindex: LaTeX ToC export
+
+When exporting your document to LaTeX, only numbered sections will be
+included. This is closer to LaTeX and different to how other exporters
+work (see [[*Table of Contents]]). If you need an unnumbered section
+to appear in the table of contents, use the property =UNNUMBERED= and
+set it to =toc=:
+
+#+begin_example
+:PROPERTIES:
+:UNNUMBERED: toc
+:END:
+#+end_example
+
+#+cindex: LaTeX ToC export a la ~org~
+#+cindex: @samp{org-latex-toc-include-unnumbered}
+If you want the LaTeX exporter to behave like other exporters,
+customise the variable ~org-latex-toc-include-unnumbered~ and
+set it to ~t~:
+
+#+begin_example
+(setq org-latex-toc-include-unnumbered t)
+#+end_example
+
+or add this setting in the local variables.
+
+In this case, unnumbered sections will be included in the table of
+contents, unless you set the =UNNUMBERED= property to =notoc=:
+
+#+begin_example
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+#+end_example
+

@@ -1,0 +1,27 @@
+#+chunk-id: org-manual-chunk-0086
+#+source-file: org-manual
+#+heading-path: Exporting > ASCII/Latin-1/UTF-8 export > Quoting ASCII text
+#+start-line: 13031
+#+end-line: 13050
+#+external-urls: 
+#+mirrored-urls: 
+*** Quoting ASCII text
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+To insert text within the Org file by the ASCII backend, use one the
+following constructs, inline, keyword, or export block:
+
+#+cindex: @samp{ASCII}, keyword
+#+cindex: @samp{BEGIN_EXPORT ascii}
+#+begin_example
+Inline text @@ascii:and additional text@@ within a paragraph.
+
+,#+ASCII: Some text
+
+,#+BEGIN_EXPORT ascii
+Org exports text in this block only when using ASCII backend.
+,#+END_EXPORT
+#+end_example
+

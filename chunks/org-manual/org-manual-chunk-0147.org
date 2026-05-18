@@ -1,0 +1,23 @@
+#+chunk-id: org-manual-chunk-0147
+#+source-file: org-manual
+#+heading-path: Exporting > Texinfo Export > Tables in Texinfo export
+#+start-line: 16426
+#+end-line: 16441
+#+external-urls: 
+#+mirrored-urls: 
+*** Tables in Texinfo export
+:PROPERTIES:
+:DESCRIPTION: Table attributes.
+:END:
+
+#+cindex: @samp{ATTR_TEXINFO}, keyword
+When exporting tables, the Texinfo export backend uses the widest
+cell width in each column.  To override this and instead specify as
+fractions of line length, use the =:columns= attribute.  See example
+below.
+
+#+begin_example
+,#+ATTR_TEXINFO: :columns .5 .5
+| a cell | another cell |
+#+end_example
+

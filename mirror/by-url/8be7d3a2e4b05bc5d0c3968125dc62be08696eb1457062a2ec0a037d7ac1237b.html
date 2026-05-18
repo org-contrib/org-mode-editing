@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2026-02-20 Fri 01:20 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Library of Babel</title>
+<meta name="author" content="Org-mode People" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" title="Standard" href="/worg/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Test" href="/worg/style/worg-test.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/worg/style/worg-classic.css" type="text/css" />
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<div id="support">
+    <p>Support via <a href="https://liberapay.com/org-mode" title="Donations always help.">Liberapay</a></p>
+</div>
+</div>
+<div id="content" class="content">
+<header>
+<h1 class="title">The Library of Babel</h1>
+</header><nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgabb4e5a">1. Introduction</a></li>
+<li><a href="#org9a2d1fb">2. Simple</a></li>
+<li><a href="#orge5256b8">3. File I/O</a>
+<ul>
+<li><a href="#org3198057">3.1. Reading and writing files</a></li>
+<li><a href="#org7e66888">3.2. Remote files</a>
+<ul>
+<li><a href="#orga7bcefa">3.2.1. json</a></li>
+<li><a href="#org4f48f30">3.2.2. Google docs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org4b2e78f">4. Plotting code</a>
+<ul>
+<li><a href="#orged55215">4.1. R</a></li>
+<li><a href="#org6931123">4.2. Gnuplot</a></li>
+</ul>
+</li>
+<li><a href="#org3a2338b">5. Org reference</a>
+<ul>
+<li><a href="#org996b98f">5.1. Headline references</a></li>
+</ul>
+</li>
+<li><a href="#orgc507db8">6. Tables</a>
+<ul>
+<li><a href="#orgceeb246">6.1. LaTeX Table Export</a>
+<ul>
+<li><a href="#orgda5055e">6.1.1. booktabs</a></li>
+<li><a href="#org4a44560">6.1.2. longtable</a></li>
+<li><a href="#orgc9fa8c0">6.1.3. booktabs-notes</a></li>
+</ul>
+</li>
+<li><a href="#org966d4f0">6.2. Elegant lisp for transposing a matrix</a></li>
+<li><a href="#org88f671b">6.3. Convert every element of a table to a string</a></li>
+</ul>
+</li>
+<li><a href="#org1d479f7">7. Misc</a>
+<ul>
+<li><a href="#orgb82248f">7.1. File-specific Version Control logging</a></li>
+<li><a href="#org482d29d">7.2. Trivial python code blocks</a></li>
+<li><a href="#orga932241">7.3. Arithmetic</a></li>
+</ul>
+</li>
+<li><a href="#org8041ecf">8. GANTT Charts</a>
+<ul>
+<li><a href="#org86c11ad">8.1. Example table of tasks and milestones for GANTT chart generation</a></li>
+<li><a href="#org5b3d0a1">8.2. elispgantt</a></li>
+</ul>
+</li>
+<li><a href="#org9222c3b">9. Available languages</a></li>
+<li><a href="#org2f2bb49">10. Default result for block execution</a></li>
+</ul>
+</div>
+</nav>
+<div id="outline-container-orgabb4e5a" class="outline-2">
+<h2 id="orgabb4e5a"><span class="section-number-2">1.</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+The Library of Babel is an extensible collection of ready-made and
+easily-shortcut-callable source-code blocks for handling common tasks.
+Org-babel comes pre-populated with the source-code blocks located in
+this file.  It is possible to add source-code blocks from any org-mode
+file to the library by calling <code>(org-babel-lob-ingest
+"path/to/file.org")</code>.
+</p>
+
+<p>
+This file is included in worg mainly less for viewing through the web
+interface, and more for contribution through the worg git repository.
+If you have code snippets that you think others may find useful please
+add them to this file and <a href="worg-about.html#git">How to use git for Worg</a> to worg.
+</p>
+
+<p>
+The raw Org-mode text of this file can be downloaded at
+<a href="https://orgmode.org/worg/library-of-babel.org">library-of-babel.org</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org9a2d1fb" class="outline-2">
+<h2 id="org9a2d1fb"><span class="section-number-2">2.</span> Simple</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+A collection of simple utility functions:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp" id="org6d7f9ba"><code>input
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge5256b8" class="outline-2">
+<h2 id="orge5256b8"><span class="section-number-2">3.</span> File I/O</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org3198057" class="outline-3">
+<h3 id="org3198057"><span class="section-number-3">3.1.</span> Reading and writing files</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Read the contents of the file at <code>file</code>.  The <code>:results vector</code> and
+<code>:results scalar</code> header arguments can be used to read the contents of
+file as either a table or a string.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp" id="org0307c0b"><code>(<span class="org-keyword">if</span> (string= format <span class="org-string">"csv"</span>)
+    (<span class="org-keyword">with-temp-buffer</span>
+      (org-table-import (expand-file-name file) nil)
+      (org-table-to-lisp))
+  (<span class="org-keyword">with-temp-buffer</span>
+    (insert-file-contents (expand-file-name file))
+    (buffer-string)))
+</code></pre>
+</div>
+
+<p>
+Write <code>data</code> to a file at <code>file</code>.  If <code>data</code> is a list, then write it
+as a table in traditional Org-mode table syntax.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp" id="org8f48266"><code>(<span class="org-keyword">cl-flet</span> ((echo (r) (<span class="org-keyword">if</span> (stringp r) r (format <span class="org-string">"%S"</span> r))))
+  (<span class="org-keyword">with-temp-file</span> file
+    (case (<span class="org-keyword">and</span> (listp data)
+               (<span class="org-keyword">or</span> ext (intern (file-name-extension file))))
+      ('tsv (insert (orgtbl-to-tsv data '(<span class="org-builtin">:fmt</span> echo))))
+      ('csv (insert (orgtbl-to-csv data '(<span class="org-builtin">:fmt</span> echo))))
+      (t    (org-babel-insert-result data)))))
+nil
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org7e66888" class="outline-3">
+<h3 id="org7e66888"><span class="section-number-3">3.2.</span> Remote files</h3>
+<div class="outline-text-3" id="text-3-2">
+</div>
+<div id="outline-container-orga7bcefa" class="outline-4">
+<h4 id="orga7bcefa"><span class="section-number-4">3.2.1.</span> json</h4>
+<div class="outline-text-4" id="text-3-2-1">
+<p>
+Read local or remote file in <a href="http://www.json.org/">json</a> format into emacs-lisp objects.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp" id="orgb183179"><code>(<span class="org-keyword">require</span> '<span class="org-constant">json</span>)
+(<span class="org-keyword">cond</span>
+ (file
+  (<span class="org-keyword">org-babel-with-temp-filebuffer</span> file
+    (goto-char (point-min))
+    (json-read)))
+ (url
+  (<span class="org-keyword">require</span> '<span class="org-constant">w3m</span>)
+  (<span class="org-keyword">with-temp-buffer</span>
+    (w3m-retrieve url)
+    (goto-char (point-min))
+    (json-read))))
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4f48f30" class="outline-4">
+<h4 id="org4f48f30"><span class="section-number-4">3.2.2.</span> Google docs</h4>
+<div class="outline-text-4" id="text-3-2-2">
+<p>
+The following code blocks make use of the <a href="http://code.google.com/p/googlecl/">googlecl</a> Google command line
+tool.  This tool provides functionality for accessing Google services
+from the command line, and the following code blocks use <i>googlecl</i>
+for reading from and writing to Google docs with Org-mode code blocks.
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="org27ffc39"></a>Read a document from Google docs<br>
+<div class="outline-text-5" id="text-3-2-2-1">
+<p>
+The <code>google</code> command seems to be throwing "Moved Temporarily" errors
+when trying to download textual documents, but this is working fine
+for spreadsheets.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp" id="org6212b32"><code>(<span class="org-keyword">let*</span> ((file (concat title <span class="org-string">"."</span> format))
+       (cmd (format <span class="org-string">"google docs get --format %S --title %S"</span> format title)))
+  (message cmd) (message (shell-command-to-string cmd))
+  (<span class="org-keyword">prog1</span> (<span class="org-keyword">if</span> (string= format <span class="org-string">"csv"</span>)
+             (<span class="org-keyword">with-temp-buffer</span>
+               (org-table-import (shell-quote-argument file) '(4))
+               (org-table-to-lisp))
+           (<span class="org-keyword">with-temp-buffer</span>
+             (insert-file-contents (shell-quote-argument file))
+             (buffer-string)))
+    (delete-file file)))
+</code></pre>
+</div>
+
+<p>
+For example, a line like the following can be used to read the
+contents of a spreadsheet named <code>num-cells</code> into a table.
+</p>
+<pre class="example">
+#+call: gdoc-read(title="num-cells"")
+</pre>
+
+<p>
+A line like the following can be used to read the contents of a
+document as a string.
+</p>
+
+<pre class="example">
+#+call: gdoc-read(title="loremi", :format "txt")
+</pre>
+</div>
+</li>
+<li><a id="org5818dc6"></a>Write a document to a Google docs<br>
+<div class="outline-text-5" id="text-3-2-2-2">
+<p>
+Write <code>data</code> to a google document named <code>title</code>.  If <code>data</code> is tabular
+it will be saved to a spreadsheet, otherwise it will be saved as a
+normal document.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp" id="org7bfa7a0"><code>(<span class="org-keyword">let*</span> ((format (<span class="org-keyword">if</span> (listp data) <span class="org-string">"csv"</span> <span class="org-string">"txt"</span>))
+       (tmp-file (make-temp-file <span class="org-string">"org-babel-google-doc"</span> nil (concat <span class="org-string">"."</span> format)))
+       (cmd (format <span class="org-string">"google docs upload --title %S %S"</span> title tmp-file)))
+  (<span class="org-keyword">with-temp-file</span> tmp-file
+    (insert
+     (<span class="org-keyword">if</span> (listp data)
+         (orgtbl-to-csv
+          data '(<span class="org-builtin">:fmt</span> (<span class="org-keyword">lambda</span> (el) (<span class="org-keyword">if</span> (stringp el) el (format <span class="org-string">"%S"</span> el)))))
+       (<span class="org-keyword">if</span> (stringp data) data (format <span class="org-string">"%S"</span> data)))))
+  (message cmd)
+  (<span class="org-keyword">prog1</span> (shell-command-to-string cmd) (delete-file tmp-file)))
+</code></pre>
+</div>
+
+<p>
+example usage
+</p>
+
+<pre class="example" id="org846df84">
+#+name: fibs
+#+begin_src emacs-lisp :var n=8
+(cl-flet ((fib (m) (if (&lt; m 2) 1 (+ (fib (- m 1)) (fib (- m 2))))))
+  (mapcar (lambda (el) (list el (fib el))) (number-sequence 0 (- n 1))))
+#+end_src
+
+#+call: gdoc-write(title="fibs", data=fibs(n=10))
+</pre>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org4b2e78f" class="outline-2">
+<h2 id="org4b2e78f"><span class="section-number-2">4.</span> Plotting code</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-orged55215" class="outline-3">
+<h3 id="orged55215"><span class="section-number-3">4.1.</span> R</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Plot column 2 (y axis) against column 1 (x axis). Columns 3 and
+beyond, if present, are ignored.
+</p>
+
+<p>
+Running this code will create a file <code>Rplots.pdf</code> in the current working directory.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R" id="org25030b3"><code>plot(data)
+</code></pre>
+</div>
+
+<table id="orga3fd6da">
+
+
+<colgroup>
+<col  class="org-right">
+
+<col  class="org-right">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-right">4</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-right">9</td>
+</tr>
+
+<tr>
+<td class="org-right">4</td>
+<td class="org-right">16</td>
+</tr>
+
+<tr>
+<td class="org-right">5</td>
+<td class="org-right">25</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org6931123" class="outline-3">
+<h3 id="org6931123"><span class="section-number-3">4.2.</span> Gnuplot</h3>
+</div>
+</div>
+<div id="outline-container-org3a2338b" class="outline-2">
+<h2 id="org3a2338b"><span class="section-number-2">5.</span> Org reference</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-org996b98f" class="outline-3">
+<h3 id="org996b98f"><span class="section-number-3">5.1.</span> Headline references</h3>
+<div class="outline-text-3" id="text-5-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp" id="org099bdb9"><code>(<span class="org-keyword">save-excursion</span>
+  (<span class="org-keyword">when</span> file (get-file-buffer file))
+  (org-open-link-from-string (org-make-link-string headline))
+  (<span class="org-keyword">save-restriction</span>
+    (org-narrow-to-subtree)
+    (buffer-string)))
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc507db8" class="outline-2">
+<h2 id="orgc507db8"><span class="section-number-2">6.</span> Tables</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-orgceeb246" class="outline-3">
+<h3 id="orgceeb246"><span class="section-number-3">6.1.</span> LaTeX Table Export</h3>
+<div class="outline-text-3" id="text-6-1">
+</div>
+<div id="outline-container-orgda5055e" class="outline-4">
+<h4 id="orgda5055e"><span class="section-number-4">6.1.1.</span> booktabs</h4>
+<div class="outline-text-4" id="text-6-1-1">
+<p>
+This source block can be used to wrap a table in the latex <code>booktabs</code>
+environment. The source block adds a <code>toprule</code> and <code>bottomrule</code> (so
+don't use <code>hline</code> at the top or bottom of the table).  The <code>hline</code>
+after the header is replaced with a <code>midrule</code>.
+</p>
+
+<p>
+Note that this function bypasses the Org-mode LaTeX exporter and calls
+<code>orgtbl-to-generic</code> to create the output table.  This means that the
+entries in the table are not translated from Org-mode to LaTeX.
+</p>
+
+<p>
+It takes the following arguments &ndash; all but the first two are
+optional.
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">arg</th>
+<th scope="col" class="org-left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">table</td>
+<td class="org-left">a reference to the table</td>
+</tr>
+
+<tr>
+<td class="org-left">align</td>
+<td class="org-left">alignment string</td>
+</tr>
+
+<tr>
+<td class="org-left">env</td>
+<td class="org-left">optional environment, default to "tabular"</td>
+</tr>
+
+<tr>
+<td class="org-left">width</td>
+<td class="org-left">optional width specification string</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp" id="org072b1af"><code>(<span class="org-keyword">cl-flet</span> ((to-tab (tab)
+               (orgtbl-to-generic
+                (mapcar (<span class="org-keyword">lambda</span> (lis)
+                          (<span class="org-keyword">if</span> (listp lis)
+                              (mapcar (<span class="org-keyword">lambda</span> (el)
+                                        (<span class="org-keyword">if</span> (stringp el)
+                                            el
+                                          (format <span class="org-string">"%S"</span> el))) <span class="org-warning">lis)</span>
+                            lis)) <span class="org-warning">tab)</span>
+                (list <span class="org-builtin">:lend</span> <span class="org-string">" \\\\"</span> <span class="org-builtin">:sep</span> <span class="org-string">" &amp; "</span> <span class="org-builtin">:hline</span> <span class="org-string">"\\hline"</span>))))
+  (org-fill-template
+   <span class="org-string">"
+\\begin{%env}%width%align
+\\toprule
+%table
+\\bottomrule
+\\end{%env}\n"</span>
+   (list
+    (cons <span class="org-string">"env"</span>       (<span class="org-keyword">or</span> env <span class="org-string">"table"</span>))
+    (cons <span class="org-string">"width"</span>     (<span class="org-keyword">if</span> width (format <span class="org-string">"{%s}"</span> width) <span class="org-string">""</span>))
+    (cons <span class="org-string">"align"</span>     (<span class="org-keyword">if</span> align (format <span class="org-string">"{%s}"</span> align) <span class="org-string">""</span>))
+    (cons <span class="org-string">"table"</span>
+          <span class="org-comment-delimiter">;; </span><span class="org-comment">only use \midrule if it looks like there are column headers
+</span>          (<span class="org-keyword">if</span> (equal 'hline (second table))
+              (concat (to-tab (list (first table)))
+                      <span class="org-string">"\n\\midrule\n"</span>
+                      (to-tab (cddr table)))
+            (to-tab table))))))
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org4a44560" class="outline-4">
+<h4 id="org4a44560"><span class="section-number-4">6.1.2.</span> longtable</h4>
+<div class="outline-text-4" id="text-6-1-2">
+<p>
+This block can be used to wrap a table in the latex <code>longtable</code>
+environment, it takes the following arguments &ndash; all but the first two
+are optional.
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">arg</th>
+<th scope="col" class="org-left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">table</td>
+<td class="org-left">a reference to the table</td>
+</tr>
+
+<tr>
+<td class="org-left">align</td>
+<td class="org-left">optional alignment string</td>
+</tr>
+
+<tr>
+<td class="org-left">width</td>
+<td class="org-left">optional width specification string</td>
+</tr>
+
+<tr>
+<td class="org-left">hline</td>
+<td class="org-left">the string to use as hline separator, defaults to "\\hline"</td>
+</tr>
+
+<tr>
+<td class="org-left">head</td>
+<td class="org-left">optional "head" string</td>
+</tr>
+
+<tr>
+<td class="org-left">firsthead</td>
+<td class="org-left">optional "firsthead" string</td>
+</tr>
+
+<tr>
+<td class="org-left">foot</td>
+<td class="org-left">optional "foot" string</td>
+</tr>
+
+<tr>
+<td class="org-left">lastfoot</td>
+<td class="org-left">optional "lastfoot" string</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp" id="org2f37966"><code>(org-fill-template
+ <span class="org-string">"
+\\begin{longtable}%width%align
+%firsthead
+%head
+%foot
+%lastfoot
+
+%table
+\\end{longtable}\n"</span>
+ (list
+  (cons <span class="org-string">"width"</span>     (<span class="org-keyword">if</span> width (format <span class="org-string">"{%s}"</span> width) <span class="org-string">""</span>))
+  (cons <span class="org-string">"align"</span>     (<span class="org-keyword">if</span> align (format <span class="org-string">"{%s}"</span> align) <span class="org-string">""</span>))
+  (cons <span class="org-string">"firsthead"</span> (<span class="org-keyword">if</span> firsthead (concat firsthead <span class="org-string">"\n\\endfirsthead\n"</span>) <span class="org-string">""</span>))
+  (cons <span class="org-string">"head"</span>      (<span class="org-keyword">if</span> head (concat head <span class="org-string">"\n\\endhead\n"</span>) <span class="org-string">""</span>))
+  (cons <span class="org-string">"foot"</span>      (<span class="org-keyword">if</span> foot (concat foot <span class="org-string">"\n\\endfoot\n"</span>) <span class="org-string">""</span>))
+  (cons <span class="org-string">"lastfoot"</span>  (<span class="org-keyword">if</span> lastfoot (concat lastfoot <span class="org-string">"\n\\endlastfoot\n"</span>) <span class="org-string">""</span>))
+  (cons <span class="org-string">"table"</span> (orgtbl-to-generic
+                 (mapcar (<span class="org-keyword">lambda</span> (lis)
+                           (<span class="org-keyword">if</span> (listp lis)
+                               (mapcar (<span class="org-keyword">lambda</span> (el)
+                                         (<span class="org-keyword">if</span> (stringp el)
+                                             el
+                                           (format <span class="org-string">"%S"</span> el))) <span class="org-warning">lis)</span>
+                             lis)) <span class="org-warning">table)</span>
+                 (list <span class="org-builtin">:lend</span> <span class="org-string">" \\\\"</span> <span class="org-builtin">:sep</span> <span class="org-string">" &amp; "</span> <span class="org-builtin">:hline</span> hline)))))
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc9fa8c0" class="outline-4">
+<h4 id="orgc9fa8c0"><span class="section-number-4">6.1.3.</span> booktabs-notes</h4>
+<div class="outline-text-4" id="text-6-1-3">
+<p>
+This source block builds on <a href="#org072b1af">No description for this link</a>.  It accepts two additional
+arguments, both of which are optional.
+</p>
+
+<table id="orgbb433f4">
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">arg</th>
+<th scope="col" class="org-left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">notes</td>
+<td class="org-left">an org-mode table with footnotes</td>
+</tr>
+
+<tr>
+<td class="org-left">lspace</td>
+<td class="org-left">if non-nil, insert <code>addlinespace</code> after <code>bottomrule</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>
+An example footnote to the <code>arguments</code> table specifies the column
+span. Note the use of LaTeX, rather than Org-mode, markup.
+</p>
+
+<table id="org2065c73">
+
+
+<colgroup>
+<col  class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">\multicolumn{2}{l}{This is a footnote to the \emph{arguments} table.}</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp" id="orgbafb439"><code>(<span class="org-keyword">cl-flet</span> ((to-tab (tab)
+               (orgtbl-to-generic
+                (mapcar (<span class="org-keyword">lambda</span> (lis)
+                          (<span class="org-keyword">if</span> (listp lis)
+                              (mapcar (<span class="org-keyword">lambda</span> (el)
+                                        (<span class="org-keyword">if</span> (stringp el)
+                                            el
+                                          (format <span class="org-string">"%S"</span> el))) <span class="org-warning">lis)</span>
+                            lis)) <span class="org-warning">tab)</span>
+                (list <span class="org-builtin">:lend</span> <span class="org-string">" \\\\"</span> <span class="org-builtin">:sep</span> <span class="org-string">" &amp; "</span> <span class="org-builtin">:hline</span> <span class="org-string">"\\hline"</span>))))
+  (org-fill-template
+   <span class="org-string">"
+  \\begin{%env}%width%align
+  \\toprule
+  %table
+  \\bottomrule%spacer
+  %notes
+  \\end{%env}\n"</span>
+   (list
+    (cons <span class="org-string">"env"</span>       (<span class="org-keyword">or</span> env <span class="org-string">"table"</span>))
+    (cons <span class="org-string">"width"</span>     (<span class="org-keyword">if</span> width (format <span class="org-string">"{%s}"</span> width) <span class="org-string">""</span>))
+    (cons <span class="org-string">"align"</span>     (<span class="org-keyword">if</span> align (format <span class="org-string">"{%s}"</span> align) <span class="org-string">""</span>))
+    (cons <span class="org-string">"spacer"</span>    (<span class="org-keyword">if</span> lspace <span class="org-string">"\\addlinespace"</span> <span class="org-string">""</span>))
+    (cons <span class="org-string">"table"</span>
+          <span class="org-comment-delimiter">;; </span><span class="org-comment">only use \midrule if it looks like there are column headers
+</span>          (<span class="org-keyword">if</span> (equal 'hline (second table))
+              (concat (to-tab (list (first table)))
+                      <span class="org-string">"\n\\midrule\n"</span>
+                      (to-tab (cddr table)))
+            (to-tab table)))
+    (cons <span class="org-string">"notes"</span> (<span class="org-keyword">if</span> notes (to-tab notes) <span class="org-string">""</span>))
+    )))
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org966d4f0" class="outline-3">
+<h3 id="org966d4f0"><span class="section-number-3">6.2.</span> Elegant lisp for transposing a matrix</h3>
+<div class="outline-text-3" id="text-6-2">
+<table id="orgc7159f0">
+
+
+<colgroup>
+<col  class="org-right">
+
+<col  class="org-right">
+
+<col  class="org-right">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+</tr>
+
+<tr>
+<td class="org-right">4</td>
+<td class="org-right">5</td>
+<td class="org-right">6</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp" id="org938bd19"><code>(apply #'mapcar* #'list table)
+</code></pre>
+</div>
+
+<table id="org1199d8f">
+
+
+<colgroup>
+<col  class="org-right">
+
+<col  class="org-right">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">4</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-right">5</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-right">6</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org88f671b" class="outline-3">
+<h3 id="org88f671b"><span class="section-number-3">6.3.</span> Convert every element of a table to a string</h3>
+<div class="outline-text-3" id="text-6-3">
+<table id="org62809c8">
+
+
+<colgroup>
+<col  class="org-right">
+
+<col  class="org-right">
+
+<col  class="org-right">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+</tr>
+
+<tr>
+<td class="org-right">a</td>
+<td class="org-right">b</td>
+<td class="org-right">c</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp" id="orgdd7517f"><code>(<span class="org-keyword">defun</span> <span class="org-function-name">all-to-string</span> (tbl)
+  (<span class="org-keyword">if</span> (listp tbl)
+      (mapcar #'all-to-string tbl)
+    (<span class="org-keyword">if</span> (stringp tbl)
+        tbl
+      (format <span class="org-string">"%s"</span> tbl))))
+(all-to-string tbl)
+</code></pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><code>(mapcar (<span class="org-keyword">lambda</span> (row) (mapcar (<span class="org-keyword">lambda</span> (cell) (stringp cell)) row)) tbl)
+</code></pre>
+</div>
+
+<table id="orgbea3712">
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">nil</td>
+<td class="org-left">nil</td>
+<td class="org-left">nil</td>
+</tr>
+
+<tr>
+<td class="org-left">t</td>
+<td class="org-left">t</td>
+<td class="org-left">t</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><code>(mapcar (<span class="org-keyword">lambda</span> (row) (mapcar (<span class="org-keyword">lambda</span> (cell) (stringp cell)) row)) tbl)
+</code></pre>
+</div>
+
+<table id="org534a083">
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">t</td>
+<td class="org-left">t</td>
+<td class="org-left">t</td>
+</tr>
+
+<tr>
+<td class="org-left">t</td>
+<td class="org-left">t</td>
+<td class="org-left">t</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="outline-container-org1d479f7" class="outline-2">
+<h2 id="org1d479f7"><span class="section-number-2">7.</span> Misc</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-orgb82248f" class="outline-3">
+<h3 id="orgb82248f"><span class="section-number-3">7.1.</span> File-specific Version Control logging</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+This function will attempt to retrieve the entire commit log for the
+file associated with the current buffer and insert this log into the
+export. The function uses the Emacs VC commands to interface to the
+local version control system, but has only been tested to work with
+Git. 'limit' is currently unsupported.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp" id="org78519a5"><code><span class="org-comment-delimiter">;; </span><span class="org-comment">Most of this code is copied from vc.el vc-print-log
+</span>(<span class="org-keyword">require</span> '<span class="org-constant">vc</span>)
+(<span class="org-keyword">when</span> (vc-find-backend-function
+       (vc-backend (buffer-file-name (get-buffer buf))) 'print-log)
+  (<span class="org-keyword">let</span> ((limit -1)
+        (vc-fileset nil)
+        (backend nil)
+        (files nil))
+    (<span class="org-keyword">with-current-buffer</span> (get-buffer buf)
+      (<span class="org-keyword">setq</span> vc-fileset (vc-deduce-fileset t)) <span class="org-comment-delimiter">; </span><span class="org-comment">FIXME: Why t? --Stef
+</span>      (<span class="org-keyword">setq</span> backend (car vc-fileset))
+      (<span class="org-keyword">setq</span> files (cadr vc-fileset)))
+    (<span class="org-keyword">with-temp-buffer</span>
+      (<span class="org-keyword">let</span> ((status (vc-call-backend
+                     backend 'print-log files (current-buffer))))
+        (<span class="org-keyword">when</span> (<span class="org-keyword">and</span> (processp status)   <span class="org-comment-delimiter">; </span><span class="org-comment">Make sure status is a process
+</span>                   (= 0 (process-exit-status status))) <span class="org-comment-delimiter">; </span><span class="org-comment">which has not terminated
+</span>          (<span class="org-keyword">while</span> (not (eq 'exit (process-status status)))
+            (sit-for 1 t)))
+        (buffer-string)))))
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org482d29d" class="outline-3">
+<h3 id="org482d29d"><span class="section-number-3">7.2.</span> Trivial python code blocks</h3>
+<div class="outline-text-3" id="text-7-2">
+<div class="org-src-container">
+<pre class="src src-python" id="org1ef6a10"><code>a
+</code></pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-python" id="orgc59f370"><code>a <span class="org-operator">+</span> b
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orga932241" class="outline-3">
+<h3 id="orga932241"><span class="section-number-3">7.3.</span> Arithmetic</h3>
+<div class="outline-text-3" id="text-7-3">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp" id="org120265c"><code>(+ a b)
+</code></pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp" id="org0d30f19"><code>(- a b)
+</code></pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp" id="org9d33a7f"><code>(* a b)
+</code></pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp" id="orgc6e27dc"><code>(/ a b)
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org8041ecf" class="outline-2">
+<h2 id="org8041ecf"><span class="section-number-2">8.</span> GANTT Charts</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+The <code>elispgantt</code> source block was sent to the mailing list by Eric
+Fraga.  It was modified slightly by Tom Dye.
+</p>
+</div>
+<div id="outline-container-org86c11ad" class="outline-3">
+<h3 id="org86c11ad"><span class="section-number-3">8.1.</span> Example table of tasks and milestones for GANTT chart generation</h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+The following table describes the tasks and other relevant information for a project.  Each line is an <i>entry</i> and there are three types of entry allowed in this table:
+</p>
+
+<dl class="org-dl">
+<dt>task</dt><dd>an actual task that has a start time, a duration and an end time.</dd>
+<dt>milestone</dt><dd>a specific milestone in the project that has a start time alone</dd>
+<dt>date</dt><dd>a point in time that will be drawn as a vertical line in the GANTT chart (e.g. start of each year).</dd>
+</dl>
+
+<p>
+Each element of the chart will be annotated with the content of the <i>label</i> column of each entry.  The first column of the table is ignored but I use it to number the entries.  The last column, titled <i>align</i>, is used to determine where to place the <i>activity</i> text for tasks, whether to the left or right of the bar or, if nothing is specified, centred within the bar itself.
+</p>
+
+<table id="org7814b40">
+
+
+<colgroup>
+<col  class="org-right">
+
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-right">
+
+<col  class="org-right">
+
+<col  class="org-right">
+
+<col  class="org-right">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">&nbsp;</th>
+<th scope="col" class="org-left">type</th>
+<th scope="col" class="org-left">label</th>
+<th scope="col" class="org-left">activity</th>
+<th scope="col" class="org-right">depends</th>
+<th scope="col" class="org-right">start</th>
+<th scope="col" class="org-right">duration</th>
+<th scope="col" class="org-right">end</th>
+<th scope="col" class="org-left">align</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-left">date</td>
+<td class="org-left">Start</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-right">&nbsp;</td>
+<td class="org-right">0</td>
+<td class="org-right">&nbsp;</td>
+<td class="org-right">0</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-left">task</td>
+<td class="org-left">1.1</td>
+<td class="org-left">Lit survey</td>
+<td class="org-right">&nbsp;</td>
+<td class="org-right">0</td>
+<td class="org-right">3</td>
+<td class="org-right">3</td>
+<td class="org-left">right</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-left">task</td>
+<td class="org-left">1.2</td>
+<td class="org-left">Develop model</td>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+<td class="org-right">9</td>
+<td class="org-right">12</td>
+<td class="org-left">right</td>
+</tr>
+
+<tr>
+<td class="org-right">4</td>
+<td class="org-left">milestone</td>
+<td class="org-left">M1</td>
+<td class="org-left">model</td>
+<td class="org-right">3</td>
+<td class="org-right">12</td>
+<td class="org-right">&nbsp;</td>
+<td class="org-right">12</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-right">5</td>
+<td class="org-left">task</td>
+<td class="org-left">1.3</td>
+<td class="org-left">Implement</td>
+<td class="org-right">3</td>
+<td class="org-right">12</td>
+<td class="org-right">6</td>
+<td class="org-right">18</td>
+<td class="org-left">left</td>
+</tr>
+
+<tr>
+<td class="org-right">6</td>
+<td class="org-left">date</td>
+<td class="org-left">Y1</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-right">&nbsp;</td>
+<td class="org-right">12</td>
+<td class="org-right">&nbsp;</td>
+<td class="org-right">12</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-right">7</td>
+<td class="org-left">milestone</td>
+<td class="org-left">M2</td>
+<td class="org-left">software</td>
+<td class="org-right">5</td>
+<td class="org-right">18</td>
+<td class="org-right">&nbsp;</td>
+<td class="org-right">18</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">8</td>
+<td class="org-left">task</td>
+<td class="org-left">2.1</td>
+<td class="org-left">Surrogate</td>
+<td class="org-right">3</td>
+<td class="org-right">15</td>
+<td class="org-right">6</td>
+<td class="org-right">21</td>
+<td class="org-left">left</td>
+</tr>
+
+<tr>
+<td class="org-right">9</td>
+<td class="org-left">task</td>
+<td class="org-left">2.2</td>
+<td class="org-left">Implement</td>
+<td class="org-right">7</td>
+<td class="org-right">21</td>
+<td class="org-right">3</td>
+<td class="org-right">24</td>
+<td class="org-left">left</td>
+</tr>
+
+<tr>
+<td class="org-right">10</td>
+<td class="org-left">milestone</td>
+<td class="org-left">M3</td>
+<td class="org-left">software</td>
+<td class="org-right">8</td>
+<td class="org-right">24</td>
+<td class="org-right">&nbsp;</td>
+<td class="org-right">24</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-right">11</td>
+<td class="org-left">date</td>
+<td class="org-left">End</td>
+<td class="org-left">&nbsp;</td>
+<td class="org-right">&nbsp;</td>
+<td class="org-right">24</td>
+<td class="org-right">&nbsp;</td>
+<td class="org-right">24</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org5b3d0a1" class="outline-3">
+<h3 id="org5b3d0a1"><span class="section-number-3">8.2.</span> elispgantt</h3>
+<div class="outline-text-3" id="text-8-2">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp" id="orgbc12cf6"><code>(<span class="org-keyword">let</span> ((dates <span class="org-string">""</span>)
+      (entries (nthcdr 2 table))
+      (milestones <span class="org-string">""</span>)
+      (nmilestones 0)
+      (ntasks 0)
+      (projecttime 0)
+      (tasks <span class="org-string">""</span>)
+      (xlength 1))
+  (message <span class="org-string">"Initial: %s\n"</span> table)
+  (message <span class="org-string">"Entries: %s\n"</span> entries)
+  (<span class="org-keyword">while</span> entries
+    (<span class="org-keyword">let</span> ((entry (first entries)))
+      (<span class="org-keyword">if</span> (listp entry)
+          (<span class="org-keyword">let</span> ((id (first entry))
+                (type (nth 1 entry))
+                (label (nth 2 entry))
+                (task (nth 3 entry))
+                (dependencies (nth 4 entry))
+                (start (nth 5 entry))
+                (duration (nth 6 entry))
+                (end (nth 7 entry))
+                (alignment (nth 8 entry)))
+            (<span class="org-keyword">if</span> (&gt; start projecttime) (<span class="org-keyword">setq</span> projecttime start))
+            (<span class="org-keyword">if</span> (string= type <span class="org-string">"task"</span>)
+                (<span class="org-keyword">let</span> ((end (+ start duration))
+                      (textposition (+ start (/ duration 2)))
+                      (flush <span class="org-string">""</span>))
+                  (<span class="org-keyword">if</span> (string= alignment <span class="org-string">"left"</span>)
+                      (<span class="org-keyword">progn</span>
+                        (<span class="org-keyword">setq</span> textposition start)
+                        (<span class="org-keyword">setq</span> flush <span class="org-string">"[left]"</span>))
+                    (<span class="org-keyword">if</span> (string= alignment <span class="org-string">"right"</span>)
+                        (<span class="org-keyword">progn</span>
+                          (<span class="org-keyword">setq</span> textposition end)
+                          (<span class="org-keyword">setq</span> flush <span class="org-string">"[right]"</span>))))
+                  (<span class="org-keyword">setq</span> tasks
+                        (format <span class="org-string">"%s  \\gantttask{%s}{%s}{%d}{%d}{%d}{%s}\n"</span>
+                                tasks label task start end textposition flush))
+                  (<span class="org-keyword">setq</span> ntasks (+ 1 ntasks))
+                  (<span class="org-keyword">if</span> (&gt; end projecttime)
+                      (<span class="org-keyword">setq</span> projecttime end)))
+              (<span class="org-keyword">if</span> (string= type <span class="org-string">"milestone"</span>)
+                  (<span class="org-keyword">progn</span>
+                    (<span class="org-keyword">setq</span> milestones
+                          (format
+                           <span class="org-string">"%s  \\ganttmilestone{$\\begin{array}{c}\\mbox{%s}\\\\ \\mbox{%s}\\end{array}$}{%d}\n"</span>
+                           milestones label task start))
+                    (<span class="org-keyword">setq</span> nmilestones (+ 1 nmilestones)))
+                (<span class="org-keyword">if</span> (string= type <span class="org-string">"date"</span>)
+                    (<span class="org-keyword">setq</span> dates (format <span class="org-string">"%s  \\ganttdateline{%s}{%d}\n"</span>
+                                        dates label start))
+                  (message <span class="org-string">"Ignoring entry with type %s\n"</span> type)))))
+        (message <span class="org-string">"Ignoring non-list entry %s\n"</span> entry)) <span class="org-comment-delimiter">; </span><span class="org-comment">end if list entry
+</span>      (<span class="org-keyword">setq</span> entries (cdr entries))))  <span class="org-comment-delimiter">; </span><span class="org-comment">end while entries left
+</span>  (format <span class="org-string">"\\pgfdeclarelayer{background}
+\\pgfdeclarelayer{foreground}
+\\pgfsetlayers{background,foreground}
+\\renewcommand{\\ganttprojecttime}{%d}
+\\renewcommand{\\ganttntasks}{%d}
+\\noindent
+\\begin{tikzpicture}[y=-0.75cm,x=0.75\\textwidth]
+  \\begin{pgfonlayer}{background}
+    \\draw[very thin, red!10!white] (0,1+\\ganttntasks) grid [ystep=0.75cm,xstep=1/\\ganttprojecttime] (1,0);
+    \\draw[\\ganttdatelinecolour] (0,0) -- (1,0);
+    \\draw[\\ganttdatelinecolour] (0,1+\\ganttntasks) -- (1,1+\\ganttntasks);
+  \\end{pgfonlayer}
+%s
+%s
+%s
+\\end{tikzpicture}"</span> projecttime ntasks tasks milestones dates))
+</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org9222c3b" class="outline-2">
+<h2 id="org9222c3b"><span class="section-number-2">9.</span> Available languages</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+See <a href="org-contrib/babel/languages/index.html#langs">this page</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org2f2bb49" class="outline-2">
+<h2 id="org2f2bb49"><span class="section-number-2">10.</span> Default result for block execution</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+When a source code block has no <code>:result</code> parameter, the default
+behavior is to use the <i>functional value</i> of the execution as the
+result.  However, some languages use an option to deviate from this
+default behavior.  Below is a list of such options:
+</p>
+
+<table>
+
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Org Babel file</th>
+<th scope="col" class="org-left">Default result</th>
+<th scope="col" class="org-left">Option</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">ob-shell.el</td>
+<td class="org-left">output</td>
+<td class="org-left">org-babel-shell-results-defaults-to-output</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="license"><p>Documentation from the orgmode.org/worg/ website (either in its HTML format or in its Org format) is licensed under the <a href="http://www.gnu.org/copyleft/fdl.html">GNU Free Documentation License version 1.3</a> or later.  The code examples and css stylesheets are licensed under the <a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License v3</a> or later.</p></div>
+</div>
+</body>
+</html>

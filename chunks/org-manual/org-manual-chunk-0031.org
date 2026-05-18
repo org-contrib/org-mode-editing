@@ -1,0 +1,48 @@
+#+chunk-id: org-manual-chunk-0031
+#+source-file: org-manual
+#+heading-path: TODO Items > Extended Use of TODO Keywords > TODO keywords as types
+#+start-line: 4077
+#+end-line: 4117
+#+external-urls: 
+#+mirrored-urls: 
+*** TODO keywords as types
+:PROPERTIES:
+:DESCRIPTION: I do this, Fred does the rest.
+:ALT_TITLE: TODO types
+:END:
+#+cindex: TODO types
+#+cindex: names as TODO keywords
+#+cindex: types as TODO keywords
+
+The second possibility is to use TODO keywords to indicate different
+/types/ of action items.  For example, you might want to indicate that
+items are for "work" or "home".  Or, when you work with several people
+on a single project, you might want to assign action items directly to
+persons, by using their names as TODO keywords.  This type of
+functionality is actually much better served by using tags (see
+[[*Tags]]), so the TODO implementation is kept just for backward
+compatibility.
+
+Using TODO types, it would be set up like this:
+
+#+begin_src emacs-lisp
+(setq org-todo-keywords '((type "Fred" "Sara" "Lucy" "|" "DONE")))
+#+end_src
+
+In this case, different keywords do not indicate states, but rather
+different types.  So the normal workflow would be to assign a task to
+a person, and later to mark it DONE.  Org mode supports this style by
+adapting the working of the command {{{kbd(C-c C-t)}}}[fn:: This is
+also true for the {{{kbd(t)}}} command in the agenda buffer.].  When
+used several times in succession, it still cycles through all names,
+in order to first select the right type for a task.  But when you
+return to the item after some time and execute {{{kbd(C-c C-t)}}}
+again, it will switch from any name directly to =DONE=.  Use prefix
+arguments or completion to quickly select a specific name.  You can
+also review the items of a specific TODO type in a sparse tree by
+using a numeric prefix to {{{kbd(C-c / t)}}}.  For example, to see all
+things Lucy has to do, you would use {{{kbd(C-3 C-c / t)}}}.  To
+collect Lucy's items from all agenda files into a single buffer, you
+would use the numeric prefix argument as well when creating the global
+TODO list: {{{kbd(C-3 M-x org-agenda t)}}}.
+

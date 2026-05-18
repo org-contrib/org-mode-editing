@@ -1,0 +1,28 @@
+#+chunk-id: org-manual-chunk-0138
+#+source-file: org-manual
+#+heading-path: Exporting > Texinfo Export > Texinfo export commands
+#+start-line: 15983
+#+end-line: 16003
+#+external-urls: 
+#+mirrored-urls: 
+*** Texinfo export commands
+:PROPERTIES:
+:DESCRIPTION: Invoking commands.
+:END:
+
+- {{{kbd(C-c C-e i t)}}} (~org-texinfo-export-to-texinfo~) ::
+
+  #+kindex: C-c C-e i t
+  #+findex: org-texinfo-export-to-texinfo
+  Export as a Texinfo file with =.texi= extension.  For =myfile.org=,
+  Org exports to =myfile.texi=, overwriting without warning.
+
+- {{{kbd(C-c C-e i i)}}} (~org-texinfo-export-to-info~) ::
+
+  #+kindex: C-c C-e i i
+  #+findex: org-texinfo-export-to-info
+  #+vindex: org-texinfo-info-process
+  Export to Texinfo format first and then process it to make an Info
+  file.  To generate other formats, such as DocBook, customize the
+  ~org-texinfo-info-process~ variable.
+

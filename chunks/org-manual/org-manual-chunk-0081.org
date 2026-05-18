@@ -1,0 +1,84 @@
+#+chunk-id: org-manual-chunk-0081
+#+source-file: org-manual
+#+heading-path: Markup for Rich Contents > Embedded LaTeX > Using CDLaTeX to enter math
+#+start-line: 11631
+#+end-line: 11707
+#+external-urls: https://elpa.nongnu.org/nongnu/cdlatex.html, https://www.gnu.org/software/emacs/manual/html_node/emacs/Package-Installation.html
+#+mirrored-urls: https://elpa.nongnu.org/nongnu/cdlatex.html, https://www.gnu.org/software/emacs/manual/html_node/emacs/Package-Installation.html
+*** Using CDLaTeX to enter math
+:PROPERTIES:
+:DESCRIPTION: Speed up entering of formulas.
+:ALT_TITLE: CDLaTeX mode
+:END:
+#+cindex: CD@LaTeX{}
+
+CDLaTeX mode is a minor mode that is normally used in combination with
+a major LaTeX mode like AUCTeX in order to speed-up insertion of
+environments and math templates.  Inside Org mode, you can make use of
+some of the features of CDLaTeX mode.  You need to install
+=cdlatex.el= and =texmathp.el= (the latter comes also with AUCTeX).
+The =cdlatex= package can be installed from
+[[../../mirror/by-url/897bace2af2375b90d2924b999122b03abc063d884d4a8d7c4dd85122e5e5118.html][NonGNU ELPA]] with the
+[[../../mirror/by-url/3a632a3c99abef7f1b1f495dcc6f867c6c2a0f4eaa59158bdf04a39d4ad1e533.html][Emacs
+packaging system]].  Do not use CDLaTeX mode itself under Org mode,
+but use the special version Org CDLaTeX minor mode that comes as part
+of Org.  Turn it on for the current buffer with {{{kbd(M-x
+org-cdlatex-mode)}}}, or for all Org files with
+
+#+begin_src emacs-lisp
+(add-hook 'org-mode-hook #'turn-on-org-cdlatex)
+#+end_src
+
+When this mode is enabled, the following features are present (for
+more details see the documentation of CDLaTeX mode):
+
+#+attr_texinfo: :sep ,
+- {{{kbd(C-c {)}}} ::
+  #+kindex: C-c @{
+
+  Insert an environment template.
+
+- {{{kbd(TAB)}}} ::
+  #+kindex: TAB
+
+  The {{{kbd(TAB)}}} key expands the template if point is inside a
+  LaTeX fragment[fn:: Org mode has a method to test if point is inside
+  such a fragment, see the documentation of the function
+  ~org-inside-LaTeX-fragment-p~.].  For example, {{{kbd(TAB)}}}
+  expands =fr= to =\frac{}{}= and position point correctly inside the
+  first brace.  Another {{{kbd(TAB)}}} gets you into the second brace.
+
+  Even outside fragments, {{{kbd(TAB)}}} expands environment
+  abbreviations at the beginning of a line.  For example, if you write
+  =equ= at the beginning of a line and press {{{kbd(TAB)}}}, this
+  abbreviation is expanded to an =equation= environment.  To get
+  a list of all abbreviations, type {{{kbd(M-x
+  cdlatex-command-help)}}}.
+
+- {{{kbd(^)}}}, {{{kbd(_)}}} ::
+  #+kindex: _
+  #+kindex: ^
+  #+vindex: cdlatex-simplify-sub-super-scripts
+
+  Pressing {{{kbd(_)}}} and {{{kbd(^)}}} inside a LaTeX fragment
+  inserts these characters together with a pair of braces.  If you use
+  {{{kbd(TAB)}}} to move out of the braces, and if the braces surround
+  only a single character or macro, they are removed again (depending
+  on the variable ~cdlatex-simplify-sub-super-scripts~).
+
+- {{{kbd(`)}}} ::
+  #+kindex: `
+
+  Pressing the backquote followed by a character inserts math macros,
+  also outside LaTeX fragments.  If you wait more than 1.5 seconds
+  after the backquote, a help window pops up.
+
+- {{{kbd(')}}} ::
+  #+kindex: '
+
+  Pressing the single-quote followed by another character modifies the
+  LaTeX symbol before point with an accent or a font.  If you wait
+  more than 1.5 seconds after the single-quote, a help window pops up.
+  Character modification works only inside LaTeX fragments; outside
+  the quote is normal.
+

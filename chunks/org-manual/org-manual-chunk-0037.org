@@ -1,0 +1,40 @@
+#+chunk-id: org-manual-chunk-0037
+#+source-file: org-manual
+#+heading-path: TODO Items > Progress Logging > Closing items
+#+start-line: 4375
+#+end-line: 4407
+#+external-urls: 
+#+mirrored-urls: 
+*** Closing items
+:PROPERTIES:
+:DESCRIPTION: When was this entry marked as done?
+:END:
+
+The most basic automatic logging is to keep track of /when/ a certain
+TODO item was marked as done.  This can be achieved with[fn:: The
+corresponding in-buffer setting is: =#+STARTUP: logdone=.]
+
+#+begin_src emacs-lisp
+(setq org-log-done 'time)
+#+end_src
+
+#+vindex: org-closed-keep-when-no-todo
+#+texinfo: @noindent
+Then each time you turn an entry from a TODO (not-done) state into any
+of the DONE states, a line =CLOSED: [timestamp]= is inserted just
+after the headline.  If you turn the entry back into a TODO item
+through further state cycling, that line is removed again.  If you
+turn the entry back to a non-TODO state (by pressing {{{kbd(C-c C-t
+SPC)}}}, for example), that line is also removed, unless you set
+~org-closed-keep-when-no-todo~ to non-~nil~.  If you want to record a
+note along with the timestamp, use[fn:: The corresponding in-buffer
+setting is: =#+STARTUP: lognotedone=.]
+
+#+begin_src emacs-lisp
+(setq org-log-done 'note)
+#+end_src
+
+#+texinfo: @noindent
+You are then prompted for a note, and that note is stored below the
+entry with a =Closing Note= heading.
+

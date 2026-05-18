@@ -1,0 +1,57 @@
+#+chunk-id: org-manual-chunk-0044
+#+source-file: org-manual
+#+heading-path: Dates and Times > Creating Timestamps > Custom time format
+#+start-line: 6532
+#+end-line: 6581
+#+external-urls: 
+#+mirrored-urls: 
+*** Custom time format
+:PROPERTIES:
+:DESCRIPTION: Making dates look different.
+:END:
+#+cindex: custom date/time format
+#+cindex: time format, custom
+#+cindex: date format, custom
+
+#+vindex: org-display-custom-times
+#+vindex: org-time-stamp-custom-formats
+#+vindex: org-timestamp-custom-formats
+Org mode uses the standard ISO notation for dates and times as it is
+defined in ISO 8601.  If you cannot get used to this and require
+another representation of date and time to keep you happy, you can get
+it by customizing the variables ~org-display-custom-times~ and
+~org-timestamp-custom-formats~.
+
+- {{{kbd(C-c C-x C-t)}}} (~org-toggle-timestamp-overlays~) ::
+
+  #+kindex: C-c C-x C-t
+  #+findex: org-toggle-time-stamp-overlays
+  #+findex: org-toggle-timestamp-overlays
+  Toggle the display of custom formats for dates and times.
+
+Org mode needs the default format for scanning, so the custom
+date/time format does not /replace/ the default format.  Instead, it
+is put /over/ the default format using text properties.  This has the
+following consequences:
+
+- You cannot place point onto a timestamp anymore, only before or
+  after.
+
+- The {{{kbd(S-UP)}}} and {{{kbd(S-DOWN)}}} keys can no longer be used
+  to adjust each component of a timestamp.  If point is at the
+  beginning of the stamp, {{{kbd(S-UP)}}} and {{{kbd(S-DOWN)}}} change
+  the stamp by one day, just like {{{kbd(S-LEFT)}}}
+  {{{kbd(S-RIGHT)}}}.  At the end of the stamp, change the time by one
+  minute.
+
+- If the timestamp contains a range of clock times or a repeater,
+  these are not overlaid, but remain in the buffer as they were.
+
+- When you delete a timestamp character-by-character, it only
+  disappears from the buffer after /all/ (invisible) characters
+  belonging to the ISO timestamp have been removed.
+
+- If the custom timestamp format is longer than the default, and you
+  are using dates in tables, table alignment will be messed up.  If
+  the custom format is shorter, things do work as expected.
+

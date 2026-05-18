@@ -1,0 +1,35 @@
+#+chunk-id: org-manual-chunk-0165
+#+source-file: org-manual
+#+heading-path: Publishing > Configuration > Generating an index
+#+start-line: 17577
+#+end-line: 17604
+#+external-urls: 
+#+mirrored-urls: 
+*** Generating an index
+:PROPERTIES:
+:DESCRIPTION: An index that reaches across pages.
+:END:
+#+cindex: index, in a publishing project
+
+Org mode can generate an index across the files of a publishing project.
+
+- ~:makeindex~ ::
+
+  When non-~nil~, generate in index in the file =theindex.org= and
+  publish it as =theindex.html=.
+
+The file is created when first publishing a project with the
+~:makeindex~ set.  The file only contains a statement =#+INCLUDE:
+"theindex.inc"=.  You can then build around this include statement by
+adding a title, style information, etc.
+
+#+cindex: @samp{INDEX}, keyword
+Index entries are specified with =INDEX= keyword.  An entry that
+contains an exclamation mark creates a sub item.
+
+#+begin_example
+,*** Curriculum Vitae
+,#+INDEX: CV
+,#+INDEX: Application!CV
+#+end_example
+

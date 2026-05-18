@@ -1,0 +1,22 @@
+#+chunk-id: org-manual-chunk-0052
+#+source-file: org-manual
+#+heading-path: Capture and Attachments > Capture > Setting up capture
+#+start-line: 7897
+#+end-line: 7911
+#+external-urls: 
+#+mirrored-urls: 
+*** Setting up capture
+:PROPERTIES:
+:DESCRIPTION: Where notes will be stored.
+:END:
+
+The following customization sets a default target file for notes.
+
+#+vindex: org-default-notes-file
+#+begin_src emacs-lisp
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+#+end_src
+
+You may also define a global key for capturing new material (see
+[[*Activation]]).
+

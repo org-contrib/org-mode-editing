@@ -1,0 +1,72 @@
+#+chunk-id: org-manual-chunk-0017
+#+source-file: org-manual
+#+heading-path: Tables > Built-in Table Editor > Miscellaneous
+#+start-line: 1725
+#+end-line: 1789
+#+external-urls: 
+#+mirrored-urls: 
+*** Miscellaneous
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+- {{{kbd(C-c `)}}} (~org-table-edit-field~) ::
+
+  #+kindex: C-c `
+  #+findex: org-table-edit-field
+  Edit the current field in a separate window.  This is useful for
+  fields that are not fully visible (see [[*Column Width and Alignment]]).
+  When called with a {{{kbd(C-u)}}} prefix, just make the full field
+  visible, so that it can be edited in place.  When called with two
+  {{{kbd(C-u)}}} prefixes, make the editor window follow point through
+  the table and always show the current field.  The follow mode exits
+  automatically when point leaves the table, or when you repeat this
+  command with {{{kbd(C-u C-u C-c `)}}}.
+
+- {{{kbd(M-x org-table-import)}}} ::
+
+  #+findex: org-table-import
+  Import a file as a table.  The table should be TAB- or
+  whitespace-separated.  Use, for example, to import a spreadsheet
+  table or data from a database, because these programs generally can
+  write TAB-separated text files.  This command works by inserting the
+  file into the buffer and then converting the region to a table.  Any
+  prefix argument is passed on to the converter, which uses it to
+  determine the separator.
+
+- {{{kbd(C-c |)}}} (~org-table-create-or-convert-from-region~) ::
+
+  #+kindex: C-c |
+  #+findex: org-table-create-or-convert-from-region
+  Tables can also be imported by pasting tabular text into the Org
+  buffer, selecting the pasted text with {{{kbd(C-x C-x)}}} and then
+  using the {{{kbd(C-c |)}}} command (see [[*Creation and conversion]]).
+
+- {{{kbd(M-x org-table-export)}}} ::
+
+  #+findex: org-table-export
+  #+vindex: org-table-export-default-format
+  Export the table, by default as a TAB-separated file.  Use for data
+  exchange with, for example, spreadsheet or database programs.  The
+  format used to export the file can be configured in the variable
+  ~org-table-export-default-format~.  You may also use properties
+  =TABLE_EXPORT_FILE= and =TABLE_EXPORT_FORMAT= to specify the file
+  name and the format for table export in a subtree.  Org supports
+  quite general formats for exported tables.  The exporter format is
+  the same as the format used by Orgtbl radio tables, see [[*Translator
+  functions]], for a detailed description.
+
+- {{{kbd(M-x org-table-header-line-mode)}}} ::
+
+  #+findex: org-table-header-line-mode
+  #+vindex: org-table-header-line-p
+  Turn on the display of the first data row of the table at point in
+  the window header line when this first row is not visible anymore in
+  the buffer.  You can activate this minor mode by default by setting
+  the option ~org-table-header-line-p~ to ~t~.
+
+- {{{kbd(M-x org-table-transpose-table-at-point)}}} ::
+
+  #+findex: org-table-transpose-table-at-point
+  Transpose the table at point and eliminate hlines.
+

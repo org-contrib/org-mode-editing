@@ -1,0 +1,93 @@
+#+chunk-id: org-manual-chunk-0108
+#+source-file: org-manual
+#+heading-path: Exporting > HTML Export > JavaScript supported display of web pages
+#+start-line: 14021
+#+end-line: 14106
+#+external-urls: https://orgmode.org,, https://orgmode.org/org-info.js, https://orgmode.org/worg/code/org-info-js/.
+#+mirrored-urls: https://orgmode.org/org-info.js, https://orgmode.org/worg/code/org-info-js/.
+*** JavaScript supported display of web pages
+:PROPERTIES:
+:DESCRIPTION: Info and folding in a web browser.
+:ALT_TITLE: JavaScript support
+:END:
+
+Sebastian Rose has written a JavaScript program especially designed to
+allow two different ways of viewing HTML files created with Org.  One
+is an /Info/-like mode where each section is displayed separately and
+navigation can be done with the {{{kbd(n)}}} and {{{kbd(p)}}} keys, and some other
+keys as well, press {{{kbd(?)}}} for an overview of the available keys.  The
+second one has a /folding/ view, much like Org provides inside Emacs.
+The script is available at ../../mirror/by-url/00c3cae6fa149097541fbfab67b0f2cf722e11332ac52f177babf9f1efbf3bbc.js and the
+documentation at ../../mirror/by-url/4c4b65213bd34acd0ba0edf97b02201d96562684bd3db9a94b85b4542009bbb2.html  The
+script is hosted on https://orgmode.org, but for reliability, prefer
+installing it on your own web server.
+
+To use this program, just add this line to the Org file:
+
+#+cindex: @samp{INFOJS_OPT}, keyword
+: #+INFOJS_OPT: view:info toc:nil
+
+#+texinfo: @noindent
+The HTML header now has the code needed to automatically invoke the
+script.  For setting options, use the syntax from the above line for
+options described below:
+
+- =path:= ::
+
+  The path to the script.  The default is to grab the script from
+  [[../../mirror/by-url/00c3cae6fa149097541fbfab67b0f2cf722e11332ac52f177babf9f1efbf3bbc.js]], but you might want to have a local
+  copy and use a path like =../scripts/org-info.js=.
+
+- =view:= ::
+
+  Initial view when the website is first shown.  Possible values are:
+
+  | =info=     | Info-like interface with one section per page          |
+  | =overview= | Folding interface, initially showing only top-level    |
+  | =content=  | Folding interface, starting with all headlines visible |
+  | =showall=  | Folding interface, all headlines and text visible      |
+
+- =sdepth:= ::
+
+  Maximum headline level still considered as an independent section
+  for info and folding modes.  The default is taken from
+  ~org-export-headline-levels~, i.e., the =H= switch in =OPTIONS=.  If
+  this is smaller than in ~org-export-headline-levels~, each
+  info/folding section can still contain child headlines.
+
+- =toc:= ::
+
+  Should the table of contents /initially/ be visible?  Even when
+  =nil=, you can always get to the "toc" with {{{kbd(i)}}}.
+
+- =tdepth:= ::
+
+  The depth of the table of contents.  The defaults are taken from the
+  variables ~org-export-headline-levels~ and ~org-export-with-toc~.
+
+- =ftoc:= ::
+
+  Does the CSS of the page specify a fixed position for the "toc"?  If
+  yes, the TOC is displayed as a section.
+
+- =ltoc:= ::
+
+  Should there be short contents (children) in each section?  Make
+  this =above= if the section should be above initial text.
+
+- =mouse:= ::
+
+  Headings are highlighted when the mouse is over them.  Should be
+  =underline= (default) or a background color like =#cccccc=.
+
+- =buttons:= ::
+
+  Should view-toggle buttons be everywhere?  When =nil= (the default),
+  only one such button is present.
+
+#+vindex: org-infojs-options
+#+vindex: org-export-html-use-infojs
+You can choose default values for these options by customizing the
+variable ~org-infojs-options~.  If you always want to apply the script
+to your pages, configure the variable ~org-export-html-use-infojs~.
+

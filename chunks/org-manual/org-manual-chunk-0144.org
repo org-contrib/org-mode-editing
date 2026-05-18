@@ -1,0 +1,47 @@
+#+chunk-id: org-manual-chunk-0144
+#+source-file: org-manual
+#+heading-path: Exporting > Texinfo Export > Indices
+#+start-line: 16218
+#+end-line: 16257
+#+external-urls: 
+#+mirrored-urls: 
+*** Indices
+:PROPERTIES:
+:DESCRIPTION: Creating indices.
+:END:
+
+#+cindex: @samp{CINDEX}, keyword
+#+cindex: concept index, in Texinfo export
+#+cindex: @samp{FINDEX}, keyword
+#+cindex: function index, in Texinfo export
+#+cindex: @samp{KINDEX}, keyword
+#+cindex: keystroke index, in Texinfo export
+#+cindex: @samp{PINDEX}, keyword
+#+cindex: program index, in Texinfo export
+#+cindex: @samp{TINDEX}, keyword
+#+cindex: data type index, in Texinfo export
+#+cindex: @samp{VINDEX}, keyword
+#+cindex: variable index, in Texinfo export
+The Texinfo export backend recognizes these indexing keywords if used
+in the Org file: =CINDEX=, =FINDEX=, =KINDEX=, =PINDEX=, =TINDEX= and
+=VINDEX=.  Write their value as verbatim Texinfo code; in particular,
+={=, =}= and =@= characters need to be escaped with =@= if they do not
+belong to a Texinfo command.
+
+: #+CINDEX: Defining indexing entries
+
+#+cindex: @samp{INDEX}, property
+For the backend to generate an index entry for a headline, set the
+=INDEX= property to =cp= or =vr=.  These abbreviations come from
+Texinfo that stand for concept index and variable index.  The Texinfo
+manual has abbreviations for all other kinds of indexes.  The backend
+exports the headline as an unnumbered chapter or section command, and
+then inserts the index after its contents.
+
+#+begin_example
+,* Concept Index
+  :PROPERTIES:
+  :INDEX: cp
+  :END:
+#+end_example
+

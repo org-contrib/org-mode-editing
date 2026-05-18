@@ -1,0 +1,34 @@
+#+chunk-id: org-guide-chunk-0002
+#+source-file: org-guide
+#+heading-path: TODO Items > Progress Logging > Closing items
+#+start-line: 739
+#+end-line: 765
+#+external-urls: 
+#+mirrored-urls: 
+*** Closing items
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+The most basic logging is to keep track of /when/ a certain TODO item
+was marked as done.  This can be achieved with[fn:4]
+
+#+begin_src emacs-lisp
+(setq org-log-done 'time)
+#+end_src
+
+#+texinfo: @noindent
+Then each time you turn an entry from a TODO (not-done) state into any
+of the DONE states, a line =CLOSED: [timestamp]= is inserted just
+after the headline.
+
+If you want to record a note along with the timestamp, use[fn:5]
+
+#+begin_src emacs-lisp
+(setq org-log-done 'note)
+#+end_src
+
+#+texinfo: @noindent
+You are then be prompted for a note, and that note is stored below the
+entry with a =Closing Note= heading.
+

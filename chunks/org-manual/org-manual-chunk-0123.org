@@ -1,0 +1,30 @@
+#+chunk-id: org-manual-chunk-0123
+#+source-file: org-manual
+#+heading-path: Exporting > Markdown Export > Markdown export commands
+#+start-line: 15028
+#+end-line: 15050
+#+external-urls: 
+#+mirrored-urls: 
+*** Markdown export commands
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+- {{{kbd(C-c C-e m m)}}} (~org-md-export-to-markdown~) ::
+
+  #+kindex: C-c C-c m m
+  #+findex: org-md-export-to-markdown
+  Export to a text file with Markdown syntax.  For =myfile.org=, Org
+  exports to =myfile.md=, overwritten without warning.
+
+- {{{kbd(C-c C-e m M)}}} (~org-md-export-as-markdown~) ::
+
+  #+kindex: C-c C-c m M
+  #+findex: org-md-export-as-markdown
+  Export to a temporary buffer.  Does not create a file.
+
+- {{{kbd(C-c C-e m o)}}} ::
+
+  #+kindex: C-c C-e m o
+  Export as a text file with Markdown syntax, then open it.
+

@@ -1,0 +1,23 @@
+#+chunk-id: org-manual-chunk-0188
+#+source-file: org-manual
+#+heading-path: Working with Source Code > Extracting Source Code > Jumping between code and Org
+#+start-line: 19791
+#+end-line: 19806
+#+external-urls: 
+#+mirrored-urls: 
+*** Jumping between code and Org
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+#+findex: org-babel-tangle-jump-to-org
+Debuggers normally link errors and messages back to the source code.
+But for tangled files, we want to link back to the Org file, not to
+the tangled source file.  To make this extra jump, Org uses
+~org-babel-tangle-jump-to-org~ function with two additional source
+code block header arguments:
+
+1. Set =padline= to true---this is the default setting.
+2. Set =comments= to =link=, which makes Org insert links to the Org
+   file.
+

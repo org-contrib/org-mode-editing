@@ -1,0 +1,164 @@
+#+chunk-id: org-manual-chunk-0047
+#+source-file: org-manual
+#+heading-path: Dates and Times > Clocking Work Time > Clocking commands
+#+start-line: 6877
+#+end-line: 7033
+#+external-urls: 
+#+mirrored-urls: 
+*** Clocking commands
+:PROPERTIES:
+:DESCRIPTION: Starting and stopping a clock.
+:END:
+
+#+attr_texinfo: :sep ,
+- {{{kbd(C-c C-x C-i)}}} (~org-clock-in~) ::
+
+  #+kindex: C-c C-x C-i
+  #+findex: org-clock-in
+  #+vindex: org-clock-into-drawer
+  #+vindex: org-clock-continuously
+  #+cindex: @samp{LOG_INTO_DRAWER}, property
+  Start the clock on the current item (clock-in).  This inserts the
+  =CLOCK= keyword together with a timestamp.  If this is not the first
+  clocking of this item, the multiple =CLOCK= lines are wrapped into
+  a =LOGBOOK= drawer (see also the variable ~org-clock-into-drawer~).
+  You can also overrule the setting of this variable for a subtree by
+  setting a =CLOCK_INTO_DRAWER= or =LOG_INTO_DRAWER= property.  When
+  called with a {{{kbd(C-u)}}} prefix argument, select the task from
+  a list of recently clocked tasks.  With two {{{kbd(C-u C-u)}}}
+  prefixes, clock into the task at point and mark it as the default
+  task; the default task is always be available with letter
+  {{{kbd(d)}}} when selecting a clocking task.  With three {{{kbd(C-u
+  C-u C-u)}}} prefixes, force continuous clocking by starting the
+  clock when the last clock stopped.
+
+  #+cindex: @samp{CLOCK_MODELINE_TOTAL}, property
+  #+cindex: @samp{LAST_REPEAT}, property
+  #+vindex: org-clock-mode-line-total
+  #+vindex: org-clock-in-prepare-hook
+  While the clock is running, Org shows the current clocking time in
+  the mode line, along with the title of the task.  The clock time
+  shown is all time ever clocked in for this task and its children.
+  If the task has an effort estimate (see [[*Effort Estimates]]), the
+  mode line displays the current clocking time against it[fn:: To add
+  an effort estimate "on the fly", hook a function doing this to
+  ~org-clock-in-prepare-hook~.].  If the task is a repeating one (see
+  [[*Repeated tasks]]), show only the time since the last reset of the
+  task[fn:: The last reset of the task is recorded by the
+  =LAST_REPEAT= property.].  You can exercise more control over show
+  time with the =CLOCK_MODELINE_TOTAL= property.  It may have the
+  values =current= to show only the current clocking instance, =today=
+  to show all time clocked on this task today---see also the variable
+  ~org-extend-today-until~, ~all~ to include all time, or ~auto~ which
+  is the default[fn:: See also the variable
+  ~org-clock-mode-line-total~.].  Clicking with {{{kbd(mouse-1)}}}
+  onto the mode line entry pops up a menu with clocking options.
+
+- {{{kbd(C-c C-x C-o)}}} (~org-clock-out~) ::
+
+  #+kindex: C-c C-x C-o
+  #+findex: org-clock-out
+  #+vindex: org-log-note-clock-out
+  Stop the clock (clock-out).  This inserts another timestamp at the
+  same location where the clock was last started.  It also directly
+  computes the resulting time in inserts it after the time range as
+  ==>HH:MM=.  See the variable ~org-log-note-clock-out~ for the
+  possibility to record an additional note together with the clock-out
+  timestamp[fn:: The corresponding in-buffer setting is: =#+STARTUP:
+  lognoteclock-out=.].
+
+- {{{kbd(C-c C-x C-x)}}} (~org-clock-in-last~) ::
+
+  #+kindex: C-c C-x C-x
+  #+findex: org-clock-in-last
+  #+vindex: org-clock-continuously
+  Re-clock the last clocked task.  With one {{{kbd(C-u)}}} prefix
+  argument, select the task from the clock history.  With two
+  {{{kbd(C-u)}}} prefixes, force continuous clocking by starting the
+  clock when the last clock stopped.
+
+- {{{kbd(C-c C-x C-e)}}} (~org-clock-modify-effort-estimate~) ::
+
+  #+kindex: C-c C-x C-e
+  #+findex: org-clock-modify-effort-estimate
+  Update the effort estimate for the current clock task.
+
+- {{{kbd(C-c C-c)}}} or {{{kbd(C-c C-y)}}} (~org-evaluate-time-range~) ::
+
+  #+kindex: C-c C-c
+  #+kindex: C-c C-y
+  #+findex: org-evaluate-time-range
+  Recompute the time interval after changing one of the timestamps.
+  This is only necessary if you edit the timestamps directly.  If you
+  change them with {{{kbd(S-<cursor>)}}} keys, the update is
+  automatic.
+
+- {{{kbd(C-S-UP)}}} (~org-clock-timestamps-up~), {{{kbd(C-S-DOWN)}}} (~org-clock-timestamps-down~) ::
+
+  #+kindex: C-S-UP
+  #+findex: org-clock-timestamps-up
+  #+findex: org-shiftcontrolup
+  #+kindex: C-S-DOWN
+  #+findex: org-clock-timestamps-down
+  #+findex: org-shiftcontroldown
+  On CLOCK log lines, increase/decrease both timestamps so that the
+  clock duration keeps the same value.
+
+- {{{kbd(S-M-UP)}}} (~org-timestamp-up~), {{{kbd(S-M-DOWN)}}} (~org-timestamp-down~) ::
+
+  #+kindex: S-M-UP
+  #+findex: org-timestamp-up
+  #+findex: org-shiftmetaup
+  #+kindex: S-M-DOWN
+  #+findex: org-timestamp-down
+  #+findex: org-shiftmetadown
+  On =CLOCK= log lines, increase/decrease the timestamp at point and
+  the one of the previous, or the next, clock timestamp by the same
+  duration.  For example, if you hit {{{kbd(S-M-UP)}}} to increase
+  a clocked-out timestamp by five minutes, then the clocked-in
+  timestamp of the next clock is increased by five minutes.
+
+  Only =CLOCK= logs created during current Emacs session are
+  considered when adjusting next/previous timestamp.
+
+- {{{kbd(C-c C-t)}}} (~org-todo~) ::
+
+  #+kindex: C-c C-t
+  #+findex: org-todo
+  Changing the TODO state of an item to DONE automatically stops the
+  clock if it is running in this same item.
+
+- {{{kbd(C-c C-x C-q)}}} (~org-clock-cancel~) ::
+
+  #+kindex: C-c C-x C-q
+  #+findex: org-clock-cancel
+  Cancel the current clock.  This is useful if a clock was started by
+  mistake, or if you ended up working on something else.
+
+- {{{kbd(C-c C-x C-j)}}} (~org-clock-goto~) ::
+
+  #+kindex: C-c C-x C-j
+  #+findex: or-clock-goto
+  Jump to the headline of the currently clocked-in task.  With
+  a {{{kbd(C-u)}}} prefix argument, select the target task from a list
+  of recently clocked tasks.
+
+- {{{kbd(C-c C-x C-d)}}} (~org-clock-display~) ::
+
+  #+kindex: C-c C-x C-d
+  #+findex: org-clock-display
+  #+vindex: org-remove-highlights-with-change
+  Display time summaries for each subtree in the current buffer.  This
+  puts overlays at the end of each headline, showing the total time
+  recorded under that heading, including the time of any subheadings.
+  You can use visibility cycling to study the tree, but the overlays
+  disappear when you change the buffer (see variable
+  ~org-remove-highlights-with-change~) or press {{{kbd(C-c C-c)}}}.
+
+The {{{kbd(l)}}} key may be used in the agenda (see [[*Weekly/daily
+agenda]]) to show which tasks have been worked on or closed during
+a day.
+
+*Important:* note that both ~org-clock-out~ and ~org-clock-in-last~
+can have a global key binding and do not modify the window disposition.
+

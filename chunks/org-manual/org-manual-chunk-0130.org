@@ -1,0 +1,24 @@
+#+chunk-id: org-manual-chunk-0130
+#+source-file: org-manual
+#+heading-path: Exporting > OpenDocument Text Export > Links in ODT export
+#+start-line: 15267
+#+end-line: 15283
+#+external-urls: 
+#+mirrored-urls: 
+*** Links in ODT export
+:PROPERTIES:
+:DESCRIPTION: Handling and formatting links.
+:END:
+#+cindex: links, in ODT export
+
+ODT exporter creates native cross-references for internal links.  It
+creates Internet-style links for all other links.
+
+A link with no description and pointing to a regular, un-itemized,
+outline heading is replaced with a cross-reference and section number
+of the heading.
+
+A =\ref{label}=-style reference to an image, table etc., is replaced
+with a cross-reference and sequence number of the labeled entity.  See
+[[*Labels and captions in ODT export]].
+

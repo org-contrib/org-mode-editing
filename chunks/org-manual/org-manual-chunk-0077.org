@@ -1,0 +1,43 @@
+#+chunk-id: org-manual-chunk-0077
+#+source-file: org-manual
+#+heading-path: Agenda Views > Custom Agenda Views > Block agenda
+#+start-line: 10958
+#+end-line: 10993
+#+external-urls: 
+#+mirrored-urls: 
+*** Block agenda
+:PROPERTIES:
+:DESCRIPTION: All the stuff you need in a single buffer.
+:END:
+#+cindex: block agenda
+#+cindex: agenda, with block views
+
+Another possibility is the construction of agenda views that comprise
+the results of /several/ commands, each of which creates a block in
+the agenda buffer.  The available commands include ~agenda~ for the
+daily or weekly agenda (as created with {{{kbd(a)}}}), ~alltodo~ for
+the global TODO list (as constructed with {{{kbd(t)}}}), ~stuck~ for
+the list of stuck projects (as obtained with {{{kbd(#)}}}) and the
+matching commands discussed above: ~todo~, ~tags~, and ~tags-todo~.
+
+Here are two examples:
+
+#+begin_src emacs-lisp
+(setq org-agenda-custom-commands
+      '(("h" "Agenda and Home-related tasks"
+         ((agenda "")
+          (tags-todo "home")
+          (tags "garden")))
+        ("o" "Agenda and Office-related tasks"
+         ((agenda "")
+          (tags-todo "work")
+          (tags "office")))))
+#+end_src
+
+#+texinfo: @noindent
+This defines {{{kbd(h)}}} to create a multi-block view for stuff you
+need to attend to at home.  The resulting agenda buffer contains your
+agenda for the current week, all TODO items that carry the tag =home=,
+and also all lines tagged with =garden=.  Finally, the command
+{{{kbd(o)}}} provides a similar view for office tasks.
+

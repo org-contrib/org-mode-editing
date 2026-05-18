@@ -1,0 +1,24 @@
+#+chunk-id: org-manual-chunk-0093
+#+source-file: org-manual
+#+heading-path: Exporting > Beamer Export > Editing support
+#+start-line: 13337
+#+end-line: 13353
+#+external-urls: 
+#+mirrored-urls: 
+*** Editing support
+:PROPERTIES:
+:DESCRIPTION: Editing support.
+:END:
+
+Org Beamer mode is a special minor mode for faster editing of Beamer
+documents.
+
+: #+STARTUP: beamer
+
+- {{{kbd(C-c C-b)}}} (~org-beamer-select-environment~) ::
+  #+kindex: C-c C-b
+  #+findex: org-beamer-select-environment
+
+  Org Beamer mode provides this key for quicker selections in Beamer
+  normal environments, and for selecting the =BEAMER_COL= property.
+

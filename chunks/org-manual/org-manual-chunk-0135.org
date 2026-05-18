@@ -1,0 +1,27 @@
+#+chunk-id: org-manual-chunk-0135
+#+source-file: org-manual
+#+heading-path: Exporting > OpenDocument Text Export > Literal examples in ODT export
+#+start-line: 15590
+#+end-line: 15609
+#+external-urls: 
+#+mirrored-urls: 
+*** Literal examples in ODT export
+:PROPERTIES:
+:DESCRIPTION: For source code and example blocks.
+:END:
+
+The ODT export backend supports literal examples (see [[*Literal
+Examples]]) with full fontification.  Internally, the ODT export
+backend relies on =htmlfontify.el= to generate the style definitions
+needed for fancy listings.  The auto-generated styles get =OrgSrc=
+prefix and inherit colors from the faces used by Emacs Font Lock
+library for that source language.
+
+#+vindex: org-odt-fontify-srcblocks
+For custom fontification styles, customize the
+~org-odt-create-custom-styles-for-srcblocks~ option.
+
+#+vindex: org-odt-create-custom-styles-for-srcblocks
+To turn off fontification of literal examples, customize the
+~org-odt-fontify-srcblocks~ option.
+

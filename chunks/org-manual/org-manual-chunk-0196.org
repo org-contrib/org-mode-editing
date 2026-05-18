@@ -1,0 +1,42 @@
+#+chunk-id: org-manual-chunk-0196
+#+source-file: org-manual
+#+heading-path: Miscellaneous > Org Mobile > Setting up the staging area
+#+start-line: 21747
+#+end-line: 21781
+#+external-urls: 
+#+mirrored-urls: 
+*** Setting up the staging area
+:PROPERTIES:
+:DESCRIPTION: For the mobile device.
+:END:
+
+#+vindex: org-mobile-directory
+The mobile application needs access to a file directory on
+a server[fn:53] to interact with Emacs.  Pass its location through
+the ~org-mobile-directory~ variable.  If you can mount that directory
+locally just set the variable to point to that directory:
+
+#+begin_src emacs-lisp
+(setq org-mobile-directory "~/orgmobile/")
+#+end_src
+
+Alternatively, by using TRAMP (see [[info:tramp][TRAMP User Manual]]),
+~org-mobile-directory~ may point to a remote directory accessible
+through, for example, SSH, SCP, or DAVS:
+
+#+begin_src emacs-lisp
+(setq org-mobile-directory "/davs:user@remote.host:/org/webdav/")
+#+end_src
+
+#+vindex: org-mobile-encryption
+With a public server, consider encrypting the files.  Org also
+requires OpenSSL installed on the local computer.  To turn on
+encryption, set the same password in the mobile application and in
+Emacs.  Set the password in the variable
+~org-mobile-use-encryption~[fn:: If Emacs is configured for safe
+storing of passwords, then configure the variable
+~org-mobile-encryption-password~; please read the docstring of that
+variable.].  Note that even after the mobile application encrypts the
+file contents, the file name remains visible on the file systems of
+the local computer, the server, and the mobile device.
+

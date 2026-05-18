@@ -1,0 +1,43 @@
+#+chunk-id: org-manual-chunk-0102
+#+source-file: org-manual
+#+heading-path: Exporting > HTML Export > Links in HTML export
+#+start-line: 13703
+#+end-line: 13738
+#+external-urls: https://orgmode.org
+#+mirrored-urls: https://orgmode.org
+*** Links in HTML export
+:PROPERTIES:
+:DESCRIPTION: Inserting and formatting links.
+:END:
+#+cindex: links, in HTML export
+#+cindex: internal links, in HTML export
+#+cindex: external links, in HTML export
+
+The HTML export backend transforms Org's internal links (see
+[[*Internal Links]]) to equivalent HTML links in the output.  The backend
+similarly handles Org's automatic links created by radio targets (see
+[[*Radio Targets]]) similarly.  For Org links to external files, the
+backend transforms the links to /relative/ paths.
+
+#+vindex: org-html-link-org-files-as-html
+For Org links to other =.org= files, the backend automatically
+changes the file extension to =.html= and makes file paths relative.
+If the =.org= files have an equivalent =.html= version at the same
+location, then the converted links should work without any further
+manual intervention.  However, to disable this automatic path
+translation, set ~org-html-link-org-files-as-html~ to ~nil~.  When
+disabled, the HTML export backend substitutes the ID-based links in
+the HTML output.  For more about linking files when publishing to
+a directory, see [[*Publishing links]].
+
+Org files can also have special directives to the HTML export
+backend.  For example, by using =#+ATTR_HTML= lines to specify new
+format attributes to ~<a>~ or ~<img>~ tags.  This example shows
+changing the link's title and style:
+
+#+cindex: @samp{ATTR_HTML}, keyword
+#+begin_example
+,#+ATTR_HTML: :title The Org mode website :style color:red;
+[[../../mirror/by-url/8f1099ddb6d95a5a3d22e4d5fb5cf198457425bd218d3581a8c4a02e753cefd1.html]]
+#+end_example
+

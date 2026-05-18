@@ -1,0 +1,23 @@
+#+chunk-id: org-manual-chunk-0087
+#+source-file: org-manual
+#+heading-path: Exporting > ASCII/Latin-1/UTF-8 export > ASCII specific attributes
+#+start-line: 13051
+#+end-line: 13066
+#+external-urls: 
+#+mirrored-urls: 
+*** ASCII specific attributes
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+#+cindex: @samp{ATTR_ASCII}, keyword
+#+cindex: horizontal rules, in ASCII export
+
+ASCII backend recognizes only one attribute, =:width=, which
+specifies the width of a horizontal rule in number of characters.  The
+keyword and syntax for specifying widths is:
+
+#+begin_example
+,#+ATTR_ASCII: :width 10
+-----
+#+end_example
+

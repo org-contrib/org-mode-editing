@@ -1,0 +1,75 @@
+#+chunk-id: org-guide-chunk-0010
+#+source-file: org-guide
+#+heading-path: Agenda Views > Commands in the Agenda Buffer > Remote editing
+#+start-line: 1814
+#+end-line: 1881
+#+external-urls: 
+#+mirrored-urls: 
+*** Remote editing
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+- {{{kbd(0--9)}}} ::
+
+  Digit argument.
+
+- {{{kbd(t)}}} (~org-agenda-todo~) ::
+
+  Change the TODO state of the item, both in the agenda and in the
+  original Org file.
+
+- {{{kbd(C-k)}}} (~org-agenda-kill~) ::
+
+  Delete the current agenda item along with the entire subtree
+  belonging to it in the original Org file.
+
+- {{{kbd(C-c C-w)}}} (~org-agenda-refile~) ::
+
+  Refile the entry at point.
+
+- {{{kbd(a)}}} (~org-agenda-archive-default-with-confirmation~) ::
+
+  Archive the subtree corresponding to the entry at point using the
+  default archiving command set in ~org-archive-default-command~.
+
+- {{{kbd($)}}} (~org-agenda-archive~) ::
+
+  Archive the subtree corresponding to the current headline.
+
+- {{{kbd(C-c C-s)}}} (~org-agenda-schedule~) ::
+
+  Schedule this item.  With a prefix argument, remove the
+  scheduling timestamp
+
+- {{{kbd(C-c C-d)}}} (~org-agenda-deadline~) ::
+
+  Set a deadline for this item.  With a prefix argument, remove the
+  deadline.
+
+- {{{kbd(S-RIGHT)}}} (~org-agenda-do-date-later~) ::
+
+  Change the timestamp associated with the current line by one day
+  into the future.
+
+- {{{kbd(S-LEFT)}}} (~org-agenda-do-date-earlier~) ::
+
+  Change the timestamp associated with the current line by one day
+  into the past.
+
+- {{{kbd(I)}}} (~org-agenda-clock-in~) ::
+
+  Start the clock on the current item.
+
+- {{{kbd(O)}}} (~org-agenda-clock-out~) ::
+
+  Stop the previously started clock.
+
+- {{{kbd(X)}}} (~org-agenda-clock-cancel~) ::
+
+  Cancel the currently running clock.
+
+- {{{kbd(J)}}} (~org-agenda-clock-goto~) ::
+
+  Jump to the running clock in another window.
+

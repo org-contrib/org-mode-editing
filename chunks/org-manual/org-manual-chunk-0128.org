@@ -1,0 +1,55 @@
+#+chunk-id: org-manual-chunk-0128
+#+source-file: org-manual
+#+heading-path: Exporting > OpenDocument Text Export > Extending ODT export
+#+start-line: 15164
+#+end-line: 15211
+#+external-urls: 
+#+mirrored-urls: 
+*** Extending ODT export
+:PROPERTIES:
+:DESCRIPTION: Producing DOC, PDF files.
+:END:
+
+The ODT export backend can produce documents in other formats besides
+ODT using a specialized ODT converter process.  Its common interface
+works with popular converters to produce formats such as =doc=, or
+convert a document from one format, say =csv=, to another format, say
+=xls=.
+
+#+cindex: @file{unoconv}
+#+vindex: org-odt-convert-process
+Customize ~org-odt-convert-process~ variable to point to =unoconv=,
+which is the ODT's preferred converter.  Working installations of
+LibreOffice would already have =unoconv= installed.  Alternatively,
+other converters may be substituted here.  See [[*Configuring
+a document converter]].
+
+**** Automatically exporting to other formats
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+#+vindex: org-odt-preferred-output-format
+If ODT format is just an intermediate step to get to other formats,
+such as =doc=, =docx=, =rtf=, or =pdf=, etc., then extend the ODT
+export backend to directly produce that format.  Specify the final
+format in the ~org-odt-preferred-output-format~ variable.  This is one
+way to extend (see [[*ODT export commands]]).
+
+**** Converting between document formats
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+The Org export backend is made to be interoperable with a wide range
+of text document format converters.  Newer generation converters, such
+as LibreOffice and Pandoc, can handle hundreds of formats at once.
+Org provides a consistent interaction with whatever converter is
+installed.  Here are some generic commands:
+
+- {{{kbd(M-x org-odt-convert)}}} ::
+
+  #+findex: org-odt-convert
+  Convert an existing document from one format to another.  With
+  a prefix argument, opens the newly produced file.
+

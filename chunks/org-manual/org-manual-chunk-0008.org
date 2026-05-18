@@ -1,0 +1,22 @@
+#+chunk-id: org-manual-chunk-0008
+#+source-file: org-manual
+#+heading-path: Introduction > Typesetting Conventions Used in this Manual > Key bindings and commands
+#+start-line: 469
+#+end-line: 483
+#+external-urls: 
+#+mirrored-urls: 
+*** Key bindings and commands
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+The manual lists both the keys and the corresponding commands for
+accessing functionality.  Org mode often uses the same key for
+different functions, depending on context.  The command that is bound
+to such keys has a generic name, like ~org-metaright~.  In the manual,
+we will, wherever possible, give the function that is internally
+called by the generic command.  For example, in the chapter on
+document structure, {{{kbd(M-RIGHT)}}} will be listed to call
+~org-do-demote~, while in the chapter on tables, it will be listed to
+call ~org-table-move-column-right~.
+

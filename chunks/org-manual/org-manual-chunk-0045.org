@@ -1,0 +1,71 @@
+#+chunk-id: org-manual-chunk-0045
+#+source-file: org-manual
+#+heading-path: Dates and Times > Deadlines and Scheduling > Inserting deadlines or schedules
+#+start-line: 6669
+#+end-line: 6732
+#+external-urls: 
+#+mirrored-urls: 
+*** Inserting deadlines or schedules
+:PROPERTIES:
+:DESCRIPTION: Planning items.
+:ALT_TITLE: Inserting deadline/schedule
+:END:
+
+The following commands allow you to quickly insert a deadline or to
+schedule an item:[fn:24]
+
+- {{{kbd(C-c C-d)}}} (~org-deadline~) ::
+
+  #+kindex: C-c C-d
+  #+findex: org-deadline
+  #+vindex: org-log-redeadline
+  Insert =DEADLINE= keyword along with a stamp.  The insertion happens
+  in the line directly following the headline.  Remove any =CLOSED=
+  timestamp.  When called with a prefix argument, also remove any
+  existing deadline from the entry.  Depending on the variable
+  ~org-log-redeadline~, take a note when changing an existing
+  deadline[fn:: Note the corresponding =STARTUP= options
+  =logredeadline=, =lognoteredeadline=, and =nologredeadline=.].
+
+- {{{kbd(C-c C-s)}}} (~org-schedule~) ::
+
+  #+kindex: C-c C-s
+  #+findex: org-schedule
+  #+vindex: org-log-reschedule
+  Insert =SCHEDULED= keyword along with a stamp.  The insertion
+  happens in the line directly following the headline.  Remove any
+  =CLOSED= timestamp.  When called with a prefix argument, also remove
+  the scheduling date from the entry.  Depending on the variable
+  ~org-log-reschedule~, take a note when changing an existing
+  scheduling time[fn:: Note the corresponding =STARTUP= options
+  =logreschedule=, =lognotereschedule=, and =nologreschedule=.].
+
+- {{{kbd(C-c / d)}}} (~org-check-deadlines~) ::
+
+  #+kindex: C-c / d
+  #+findex: org-check-deadlines
+  #+cindex: sparse tree, for deadlines
+  #+vindex: org-deadline-warning-days
+  Create a sparse tree with all deadlines that are either past-due, or
+  which will become due within ~org-deadline-warning-days~.  With
+  {{{kbd(C-u)}}} prefix, show all deadlines in the file.  With
+  a numeric prefix, check that many days.  For example, {{{kbd(C-1 C-c
+  / d)}}} shows all deadlines due tomorrow.
+
+- {{{kbd(C-c / b)}}} (~org-check-before-date~) ::
+
+  #+kindex: C-c / b
+  #+findex: org-check-before-date
+  Sparse tree for deadlines and scheduled items before a given date.
+
+- {{{kbd(C-c / a)}}} (~org-check-after-date~) ::
+
+  #+kindex: C-c / a
+  #+findex: org-check-after-date
+  Sparse tree for deadlines and scheduled items after a given date.
+
+Note that ~org-schedule~ and ~org-deadline~ supports setting the date
+by indicating a relative time e.g., =+1d= sets the date to the next
+day after today, and =--1w= sets the date to the previous week before
+any current timestamp.
+

@@ -1,0 +1,95 @@
+#+chunk-id: org-manual-chunk-0182
+#+source-file: org-manual
+#+heading-path: Working with Source Code > Results of Evaluation > Format
+#+start-line: 19291
+#+end-line: 19378
+#+external-urls: https://orgmode.org/resources/img/org-mode-unicorn.svg
+#+mirrored-urls: https://orgmode.org/resources/img/org-mode-unicorn.svg
+*** Format
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+Format pertains to the type of the result returned by the code block.
+Choose one of the options; they are mutually exclusive.  The default
+follows from the type specified above.
+
+#+attr_texinfo: :sep ,
+- =raw= ::
+
+  Interpreted as raw Org mode.  Inserted directly into the buffer.
+  Aligned if it is a table.  Usage example: =:results value raw=.
+
+- =code= ::
+
+  Result enclosed in a code block.  Useful for parsing.  Usage
+  example: =:results value code=.
+
+- =drawer= ::
+
+  Results are added directly to the Org file as with =raw=, but are
+  wrapped in a =RESULTS= drawer or results macro (for inline code
+  blocks), for later scripting and automated processing.
+  Usage example: =:results value drawer=.
+
+- =html= ::
+
+  Results enclosed in a =BEGIN_EXPORT html= block.  Usage example:
+  =:results value html=.
+
+- =latex= ::
+
+  Results enclosed in a =BEGIN_EXPORT latex= block.  Usage example:
+  =:results value latex=.
+
+- =link=, =graphics= ::
+
+  When used along with =file= type, the result is a link to the file
+  specified in =:file= header argument.  However, unlike plain =file=
+  type, code block output is not written to the disk.  The block is
+  expected to generate the file by its side effects only, as in the
+  following example:
+
+  #+begin_example
+  ,#+begin_src shell :results file link :file "org-mode-unicorn.svg"
+    wget -c "../../mirror/by-url/811b655d33705e0f3300dda62259c35d2b85668f7b147b5ad5c4b2d0b68c0cd1.svg"
+  ,#+end_src
+
+  ,#+RESULTS:
+  [[file:org-mode-unicorn.svg]]
+  #+end_example
+
+  If =:file= header argument is omitted, interpret source block result
+  as the file path.
+
+- =org= ::
+
+  Results enclosed in a =BEGIN_SRC org= block.  For comma-escape,
+  either {{{kbd(TAB)}}} in the block, or export the file.  Usage
+  example: =:results value org=.
+
+- =pp= ::
+
+  Result converted to pretty-print source code.  Enclosed in a code
+  block.  Languages supported: Emacs Lisp, Python, and Ruby.  Usage
+  example: =:results value pp=.
+
+
+#+cindex: @samp{wrap}, header argument
+The =wrap= header argument unconditionally marks the results block by
+appending strings to =#+BEGIN_= and =#+END_=, except if the value is
+=nil= or =no=.  If no string is specified, Org wraps the results in a
+=#+BEGIN_results= ... =#+END_results= block.  It takes precedent over
+the =results= value listed above.  E.g.,
+
+#+begin_example
+,#+BEGIN_SRC emacs-lisp :results html :wrap EXPORT markdown
+"<blink>Welcome back to the 90's</blink>"
+,#+END_SRC
+
+,#+RESULTS:
+,#+BEGIN_EXPORT markdown
+<blink>Welcome back to the 90's</blink>
+,#+END_EXPORT
+#+end_example
+

@@ -1,0 +1,46 @@
+#+chunk-id: org-manual-chunk-0010
+#+source-file: org-manual
+#+heading-path: Document Structure > Visibility Cycling > Initial visibility
+#+start-line: 674
+#+end-line: 712
+#+external-urls: 
+#+mirrored-urls: 
+*** Initial visibility
+:PROPERTIES:
+:DESCRIPTION: Setting the initial visibility state.
+:END:
+
+#+vindex: org-startup-folded
+When Emacs first visits an Org file, the global state is set to
+~showeverything~, i.e., all file content is visible[fn:: When
+~org-agenda-inhibit-startup~ is non-~nil~, Org does not honor the
+default visibility state when first opening a file for the agenda (see
+[[*Speeding Up Your Agendas]]).].  This can be configured through the
+variable ~org-startup-folded~, or on a per-file basis by adding one of
+the following lines anywhere in the buffer:
+
+#+cindex: @samp{STARTUP}, keyword
+#+begin_example
+,#+STARTUP: overview
+,#+STARTUP: content
+,#+STARTUP: showall
+,#+STARTUP: show2levels
+,#+STARTUP: show3levels
+,#+STARTUP: show4levels
+,#+STARTUP: show5levels
+,#+STARTUP: showeverything
+#+end_example
+
+#+cindex: @samp{VISIBILITY}, property
+Furthermore, any entries with a =VISIBILITY= property (see [[*Properties
+and Columns]]) get their visibility adapted accordingly.  Allowed values
+for this property are =folded=, =children=, =content=, and =all=.
+
+- {{{kbd(C-u C-u TAB)}}} (~org-cycle-set-startup-visibility~) ::
+
+  #+kindex: C-u C-u TAB
+  #+findex: org-cycle-set-startup-visibility
+  Switch back to the startup visibility of the buffer, i.e., whatever
+  is requested by startup options and =VISIBILITY= properties in
+  individual entries.
+

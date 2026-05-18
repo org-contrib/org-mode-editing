@@ -1,0 +1,17 @@
+#+chunk-id: org-manual-chunk-0125
+#+source-file: org-manual
+#+heading-path: Exporting > OpenDocument Text Export > Pre-requisites for ODT export
+#+start-line: 15081
+#+end-line: 15090
+#+external-urls: 
+#+mirrored-urls: 
+*** Pre-requisites for ODT export
+:PROPERTIES:
+:DESCRIPTION: Required packages.
+:END:
+#+cindex: zip
+
+The ODT export backend relies on the zip program to create the final
+compressed ODT output.  Check if =zip= is locally available and
+executable.  Without it, export cannot finish.
+

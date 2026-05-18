@@ -1,0 +1,32 @@
+#+chunk-id: org-manual-chunk-0083
+#+source-file: org-manual
+#+heading-path: Exporting > ASCII/Latin-1/UTF-8 export > ASCII export commands
+#+start-line: 12981
+#+end-line: 13005
+#+external-urls: 
+#+mirrored-urls: 
+*** ASCII export commands
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+#+attr_texinfo: :sep ,
+- {{{kbd(C-c C-e t a)}}} (~org-ascii-export-to-ascii~), {{{kbd(C-c C-e t l)}}}, {{{kbd(C-c C-e t u)}}} ::
+  #+kindex: C-c C-e t a
+  #+kindex: C-c C-e t l
+  #+kindex: C-c C-e t u
+  #+findex: org-ascii-export-to-ascii
+
+  Export as an ASCII file with a =.txt= extension.  For =myfile.org=,
+  Org exports to =myfile.txt=, overwriting without warning.  For
+  =myfile.txt=, Org exports to =myfile.txt.txt= in order to prevent
+  data loss.
+
+- {{{kbd(C-c C-e t A)}}} (~org-ascii-export-to-ascii~), {{{kbd(C-c C-e t L)}}}, {{{kbd(C-c C-e t U)}}} ::
+  #+kindex: C-c C-e t A
+  #+kindex: C-c C-e t L
+  #+kindex: C-c C-e t U
+  #+findex: org-ascii-export-as-ascii
+
+  Export to a temporary buffer.  Does not create a file.
+

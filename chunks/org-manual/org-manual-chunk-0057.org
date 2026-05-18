@@ -1,0 +1,26 @@
+#+chunk-id: org-manual-chunk-0057
+#+source-file: org-manual
+#+heading-path: Capture and Attachments > Attachments > Attachment links
+#+start-line: 8747
+#+end-line: 8765
+#+external-urls: 
+#+mirrored-urls: 
+*** Attachment links
+:PROPERTIES:
+:DESCRIPTION: Hyperlink access to attachments
+:END:
+
+Attached files and folders can be referenced using attachment links.
+This makes it easy to refer to the material added to heading/subtree.
+Especially if it was attached using the unique =ID= of the heading!
+
+#+begin_example
+,* TODO Some task
+  :PROPERTIES:
+  :ID:       95d50008-c12e-479f-a4f2-cc0238205319
+  :END:
+See attached document for more information: [[attachment:info.org]]
+#+end_example
+
+See [[*External Links]] for more information about these links.
+

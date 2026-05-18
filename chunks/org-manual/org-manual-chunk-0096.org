@@ -1,0 +1,96 @@
+#+chunk-id: org-manual-chunk-0096
+#+source-file: org-manual
+#+heading-path: Exporting > HTML Export > HTML specific export settings
+#+start-line: 13425
+#+end-line: 13513
+#+external-urls: 
+#+mirrored-urls: 
+*** HTML specific export settings
+:PROPERTIES:
+:DESCRIPTION: Settings for HTML export.
+:END:
+
+HTML export has a number of keywords, similar to the general options
+settings described in [[*Export Settings]].
+
+- =DESCRIPTION= ::
+
+  #+cindex: @samp{DESCRIPTION}, keyword
+  This is the document's description, which the HTML exporter inserts
+  it as an HTML meta tag in the HTML file.  For long descriptions, use
+  multiple =DESCRIPTION= lines.  The exporter takes care of wrapping
+  the lines properly.
+
+  The exporter includes a number of other meta tags, which can be customized
+  by modifying ~org-html-meta-tags~.
+
+- =HTML_DOCTYPE= ::
+
+  #+cindex: @samp{HTML_DOCTYPE}, keyword
+  #+vindex: org-html-doctype
+  Specify the document type, for example: HTML5 (~org-html-doctype~).
+
+- =HTML_CONTAINER= ::
+
+  #+cindex: @samp{HTML_CONTAINER}, keyword
+  #+vindex: org-html-container-element
+  Specify the HTML container, such as =div=, for wrapping sections and
+  elements (~org-html-container-element~).
+
+- =HTML_LINK_HOME= ::
+
+  #+cindex: @samp{HTML_LINK_HOME}, keyword
+  #+vindex: org-html-link-home
+  The URL for home link (~org-html-link-home~).
+
+- =HTML_LINK_UP= ::
+
+  #+cindex: @samp{HTML_LINK_UP}, keyword
+  #+vindex: org-html-link-up
+  The URL for the up link of exported HTML pages (~org-html-link-up~).
+
+- =HTML_MATHJAX= ::
+
+  #+cindex: @samp{HTML_MATHJAX}, keyword
+  #+vindex: org-html-mathjax-options
+  Options for MathJax (~org-html-mathjax-options~).  MathJax is used
+  to typeset LaTeX math in HTML documents.  See [[*Math formatting in
+  HTML export]], for an example.
+
+- =HTML_HEAD= ::
+
+  #+cindex: @samp{HTML_HEAD}, keyword
+  #+vindex: org-html-head
+  Arbitrary lines for appending to the HTML document's head
+  (~org-html-head~).
+
+- =HTML_HEAD_EXTRA= ::
+
+  #+cindex: @samp{HTML_HEAD_EXTRA}, keyword
+  #+vindex: org-html-head-extra
+  More arbitrary lines for appending to the HTML document's head
+  (~org-html-head-extra~).
+
+- =KEYWORDS= ::
+
+  #+cindex: @samp{KEYWORDS}, keyword
+  Keywords to describe the document's content.  HTML exporter inserts
+  these keywords as HTML meta tags.  For long keywords, use multiple
+  =KEYWORDS= lines.
+
+- =LATEX_HEADER= ::
+
+  #+cindex: @samp{LATEX_HEADER}, keyword
+  Arbitrary lines for appending to the preamble; HTML exporter appends
+  when transcoding LaTeX fragments to images (see [[*Math formatting in
+  HTML export]]).
+
+- =SUBTITLE= ::
+
+  #+cindex: @samp{SUBTITLE}, keyword
+  The document's subtitle.  HTML exporter formats subtitle if document
+  type is =HTML5= and the CSS has a =subtitle= class.
+
+Some of these keywords are explained in more detail in the following
+sections of the manual.
+

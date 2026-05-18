@@ -1,0 +1,43 @@
+#+chunk-id: org-manual-chunk-0030
+#+source-file: org-manual
+#+heading-path: TODO Items > Extended Use of TODO Keywords > TODO keywords as workflow states
+#+start-line: 4041
+#+end-line: 4076
+#+external-urls: 
+#+mirrored-urls: 
+*** TODO keywords as workflow states
+:PROPERTIES:
+:DESCRIPTION: From TODO to DONE in steps.
+:ALT_TITLE: Workflow states
+:END:
+#+cindex: TODO workflow
+#+cindex: workflow states as TODO keywords
+
+You can use TODO keywords to indicate different, possibly /sequential/
+states in the process of working on an item, for example[fn:: Changing
+the variable ~org-todo-keywords~ only becomes effective after
+restarting Org mode in a buffer.]:
+
+#+begin_src emacs-lisp
+(setq org-todo-keywords
+      '((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED")))
+#+end_src
+
+The vertical bar separates the TODO keywords (states that /need
+action/) from the DONE states (which need /no further action/).  If
+you do not provide the separator bar, the last state is used as the
+DONE state.
+
+#+cindex: completion, of TODO keywords
+With this setup, the command {{{kbd(C-c C-t)}}} cycles an entry from
+=TODO= to =FEEDBACK=, then to =VERIFY=, and finally to =DONE= and
+=DELEGATED=.  You may also use a numeric prefix argument to quickly
+select a specific state.  For example {{{kbd(C-3 C-c C-t)}}} changes
+the state immediately to =VERIFY=.  Or you can use {{{kbd(S-RIGHT)}}}
+and {{{kbd(S-LEFT)}}} to go forward and backward through the states.
+If you define many keywords, you can use in-buffer completion (see
+[[*Completion]]) or a special one-key selection scheme (see [[*Fast
+access to TODO states]]) to insert these words into the buffer.
+Changing a TODO state can be logged with a timestamp, see [[*Tracking
+TODO state changes]], for more information.
+

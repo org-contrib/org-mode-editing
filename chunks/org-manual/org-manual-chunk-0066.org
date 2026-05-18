@@ -1,0 +1,68 @@
+#+chunk-id: org-manual-chunk-0066
+#+source-file: org-manual
+#+heading-path: Agenda Views > Presentation and Sorting > Time-of-day specifications
+#+start-line: 9712
+#+end-line: 9772
+#+external-urls: 
+#+mirrored-urls: 
+*** Time-of-day specifications
+:PROPERTIES:
+:DESCRIPTION: How the agenda knows the time.
+:END:
+#+cindex: time-of-day specification
+
+Org mode checks each agenda item for a time-of-day specification.  The
+time can be part of the timestamp that triggered inclusion into the
+agenda, for example
+
+: <2005-05-10 Tue 19:00>
+
+#+texinfo: @noindent
+Time ranges can be specified with two timestamps:
+
+: <2005-05-10 Tue 20:30>--<2005-05-10 Tue 22:15>
+
+#+vindex: org-agenda-search-headline-for-time
+In the headline of the entry itself, a time(range)---like =12:45= or a
+=8:30-1pm=---may also appear as plain text[fn:: You can, however,
+disable this by setting ~org-agenda-search-headline-for-time~ variable
+to a ~nil~ value.].
+
+If the agenda integrates the Emacs diary (see [[*Weekly/daily agenda]]),
+time specifications in diary entries are recognized as well.
+
+For agenda display, Org mode extracts the time and displays it in
+a standard 24-hour format as part of the prefix.  The example times in
+the previous paragraphs would end up in the agenda like this:
+
+#+begin_example
+ 8:30-13:00 Arthur Dent lies in front of the bulldozer
+12:45...... Ford Prefect arrives and takes Arthur to the pub
+19:00...... The Vogon reads his poem
+20:30-22:15 Marvin escorts the Hitchhikers to the bridge
+#+end_example
+
+#+cindex: time grid
+If the agenda is in single-day mode, or for the display of today, the
+timed entries are embedded in a time grid, like
+
+#+begin_example
+ 8:00...... ------------------
+ 8:30-13:00 Arthur Dent lies in front of the bulldozer
+10:00...... ------------------
+12:00...... ------------------
+12:45...... Ford Prefect arrives and takes Arthur to the pub
+14:00...... ------------------
+16:00...... ------------------
+18:00...... ------------------
+19:00...... The Vogon reads his poem
+20:00...... ------------------
+20:30-22:15 Marvin escorts the Hitchhikers to the bridge
+#+end_example
+
+#+vindex: org-agenda-use-time-grid
+#+vindex: org-agenda-time-grid
+The time grid can be turned on and off with the variable
+~org-agenda-use-time-grid~, and can be configured with
+~org-agenda-time-grid~.
+

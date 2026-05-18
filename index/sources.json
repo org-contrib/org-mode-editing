@@ -1,0 +1,15 @@
+{
+  "generated_at": "2026-02-20T00:20:48Z",
+  "sources": [
+    {
+      "bytes": 856499,
+      "path": "/Users/opsroller/Projects/Codex/org-mode/doc/org-manual.org",
+      "sha256": "e95577c2fe03596f2ef03c8a60d5cc78beb7bd96b1086cf8f1c0504627dbd3b4"
+    },
+    {
+      "bytes": 87999,
+      "path": "/Users/opsroller/Projects/Codex/org-mode/doc/org-guide.org",
+      "sha256": "95bdb4f5d475d6455b4dd7bf68dddadcf6ec7410075a9b20370a379da499b217"
+    }
+  ]
+}

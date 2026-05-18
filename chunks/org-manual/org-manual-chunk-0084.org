@@ -1,0 +1,23 @@
+#+chunk-id: org-manual-chunk-0084
+#+source-file: org-manual
+#+heading-path: Exporting > ASCII/Latin-1/UTF-8 export > ASCII specific export settings
+#+start-line: 13006
+#+end-line: 13021
+#+external-urls: 
+#+mirrored-urls: 
+*** ASCII specific export settings
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+The ASCII export backend has one extra keyword for customizing ASCII
+output.  Setting this keyword works similar to the general options
+(see [[*Export Settings]]).
+
+- =SUBTITLE= ::
+
+  #+cindex: @samp{SUBTITLE}, keyword
+  The document subtitle.  For long subtitles, use multiple
+  =#+SUBTITLE= lines in the Org file.  Org prints them on one
+  continuous line, wrapping into multiple lines if necessary.
+

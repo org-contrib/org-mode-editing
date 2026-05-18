@@ -1,0 +1,43 @@
+#+chunk-id: org-manual-chunk-0127
+#+source-file: org-manual
+#+heading-path: Exporting > OpenDocument Text Export > ODT specific export settings
+#+start-line: 15128
+#+end-line: 15163
+#+external-urls: 
+#+mirrored-urls: 
+*** ODT specific export settings
+:PROPERTIES:
+:DESCRIPTION: Configuration options.
+:END:
+
+The ODT export backend has several additional keywords for
+customizing ODT output.  Setting these keywords works similar to the
+general options (see [[*Export Settings]]).
+
+- =DESCRIPTION= ::
+
+  #+cindex: @samp{DESCRIPTION}, keyword
+  This is the document's description, which the ODT export backend
+  inserts as document metadata.  For long descriptions, use multiple
+  lines, prefixed with =DESCRIPTION=.
+
+- =KEYWORDS= ::
+
+  #+cindex: @samp{KEYWORDS}, keyword
+  The keywords for the document.  The ODT export backend inserts the
+  description along with author name, keywords, and related file
+  metadata as metadata in the output file.  Use multiple =KEYWORDS= if
+  necessary.
+
+- =ODT_STYLES_FILE= ::
+
+  #+cindex: @samp{ODT_STYLES_FILE}, keyword
+  #+vindex: org-odt-styles-file
+  The ODT export backend uses the ~org-odt-styles-file~ by default.
+  See [[*Applying custom styles]] for details.
+
+- =SUBTITLE= ::
+
+  #+cindex: @samp{SUBTITLE}, keyword
+  The document subtitle.
+

@@ -1,0 +1,27 @@
+#+chunk-id: org-manual-chunk-0095
+#+source-file: org-manual
+#+heading-path: Exporting > HTML Export > HTML export commands
+#+start-line: 13405
+#+end-line: 13424
+#+external-urls: 
+#+mirrored-urls: 
+*** HTML export commands
+:PROPERTIES:
+:DESCRIPTION: Invoking HTML export.
+:END:
+
+- {{{kbd(C-c C-e h h)}}} (~org-html-export-to-html~) ::
+  #+kindex: C-c C-e h h
+  #+kindex: C-c C-e h o
+  #+findex: org-html-export-to-html
+
+  Export as HTML file with a =.html= extension.  For =myfile.org=, Org
+  exports to =myfile.html=, overwriting without warning.  {{{kbd(C-c
+  C-e h o)}}} exports to HTML and opens it in a web browser.
+
+- {{{kbd(C-c C-e h H)}}} (~org-html-export-as-html~) ::
+  #+kindex: C-c C-e h H
+  #+findex: org-html-export-as-html
+
+  Exports to a temporary buffer.  Does not create a file.
+

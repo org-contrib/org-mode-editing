@@ -1,0 +1,28 @@
+#+chunk-id: org-manual-chunk-0088
+#+source-file: org-manual
+#+heading-path: Exporting > ASCII/Latin-1/UTF-8 export > ASCII special blocks
+#+start-line: 13067
+#+end-line: 13087
+#+external-urls: 
+#+mirrored-urls: 
+*** ASCII special blocks
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+#+cindex: special blocks, in ASCII export
+#+cindex: @samp{BEGIN_JUSTIFYLEFT}
+#+cindex: @samp{BEGIN_JUSTIFYRIGHT}
+
+Besides =#+BEGIN_CENTER= blocks (see [[*Paragraphs]]), ASCII backend has
+these two left and right justification blocks:
+
+#+begin_example
+,#+BEGIN_JUSTIFYLEFT
+It's just a jump to the left...
+,#+END_JUSTIFYLEFT
+
+,#+BEGIN_JUSTIFYRIGHT
+...and then a step to the right.
+,#+END_JUSTIFYRIGHT
+#+end_example
+

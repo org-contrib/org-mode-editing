@@ -1,0 +1,347 @@
+<!DOCTYPE HTML PUBLIC>
+<html lang="en" xml:lang="en">
+    <head>
+        <title>NonGNU ELPA - cdlatex</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="shortcut icon" type="image/png" href="../favicon.png">
+        <link rel="stylesheet" href="//code.cdn.mozilla.net/fonts/fira.css">
+        <link rel="stylesheet" type="text/css" href="../layout.css"><link href="cdlatex.xml" type="application/atom+xml" rel="alternate" />
+        <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,width=device-width" />
+    </head>
+    <body>
+
+        <div class="wrapper">
+
+            <header class="small">
+                <div class="container">
+                    <h1><a href="index.html">NonGNU ELPA</a> - cdlatex</h1>
+                </div>
+            </header>
+
+            <main class="container">
+<h2 class="package">cdlatex <a class="badge" href="cdlatex.xml"><img src="/images/rss.svg" alt="Atom Feed"></a></h2><dl><dt>Description</dt><dd>Fast input methods for LaTeX environments and math</dd>
+<dt>Latest</dt> <dd><a href="cdlatex-4.18.5.tar">cdlatex-4.18.5.tar</a> (<a href="cdlatex-4.18.5.tar.sig">.sig</a>), 2024-Oct-07,  110&nbsp;KiB</dd>
+<dt>Maintainer</dt> <dd>Carsten Dominik &lt;carsten.dominik@gmail.com&gt;</dd>
+<dt>Website</dt> <dd><a href="https://elpa.nongnu.org/nongnu/cdlatex.html">https://elpa.nongnu.org/nongnu/cdlatex.html</a></dd>
+<dt>Browse repository</dt> <dd><a href="https://git.savannah.gnu.org/cgit/emacs/nongnu.git/?h=elpa/cdlatex">CGit</a> or <a href="https://git.savannah.gnu.org/gitweb/?p=emacs/nongnu.git;a=shortlog;h=refs/heads/elpa/cdlatex">Gitweb</a></dd>
+<dt>Badge</dt><dd><img src="cdlatex.svg"/></dd>
+</dl><p>To install this package from Emacs, use <code>package-install</code> or <code>list-packages</code>.</p><h2>Full description</h2>
+<div class="splice fulldescription">
+<pre>
+Commentary:
+
+CDLaTeX is a minor mode supporting fast insertion of environment
+templates and math stuff in LaTeX.
+
+To turn CDLaTeX Minor Mode on and off in a particular buffer, use
+`M-x cdlatex-mode'.
+
+To turn on CDLaTeX Minor Mode for all LaTeX files, add one of the
+following lines to your .emacs file:
+
+  (add-hook 'LaTeX-mode-hook #'turn-on-cdlatex)   ; with AUCTeX LaTeX mode
+  (add-hook 'latex-mode-hook #'turn-on-cdlatex)   ; with Emacs latex mode
+
+For key bindings, see further down in this documentation.
+
+CDLaTeX requires texmathp.el (which is distributed with AUCTeX) to
+auto-insert $...$ when needed, so we recommend you install AUCTeX to get
+this functionality.
+
+--------------------------------------------------------------------------
+
+OVERVIEW
+========
+
+CDLaTeX is a minor mode supporting mainly mathematical and scientific
+text development with LaTeX.  CDLaTeX is really about speed.  AUCTeX
+(the major mode I recommend for editing LaTeX files) does have a hook
+based system for inserting environments and macros - but while this is
+useful and general, it is sometimes slow to use.  CDLaTeX tries to be
+quick, with very few and easy to remember keys, and intelligent
+on-the-fly help.
+
+1. ABBREVIATIONS.
+   -------------
+   CDLaTeX has an abbrev-like mechanism to insert full LaTeX
+   environments and other templates into the buffer.  Abbreviation
+   expansion is triggered with the TAB key only, not with SPC or RET.
+   For example, typing &quot;ite&lt;TAB&gt;&quot; inserts an itemize environment.  A
+   full list of defined abbreviations is available with the command
+   `C-c ?' (`cdlatex-command-help').
+
+   1a. ENVIRONMENT TEMPLATES
+       ---------------------
+       Typing `C-c {' (`cdlatex-environment') uses the minibuffer to
+       complete the name of a LaTeX environment and inserts a template
+       for this environment into the buffer.  These environment
+       templates also contain labels created with RefTeX.  In a
+       template, text needs to be filled in at various places, which we
+       call &quot;points of interest&quot;.  You can use the TAB key to jump to
+       the next point of interest in the template.  If there is an
+       active region, the region will be wrapped into the environment,
+       ignoring the template content.
+
+       For many frequently used LaTeX environments, abbreviations are
+       available.  Most of the time, the abbreviation consists of the
+       first three letters of the environment name: `equ&lt;TAB&gt;' expands
+       into
+           \begin{equation}
+           \label{eq:1}
+
+           \end{equation}
+
+       Similarly, `ali&lt;TAB&gt;' inserts an AMS-LaTeX align environment
+       template etc.  For a full list of environment abbreviations, use
+       `C-c ?'.
+
+       Use the command `C-c -' (`cdlatex-item') to insert a generalized
+       new &quot;item&quot; in any &quot;list&quot;-like environment.  For example, in an
+       itemize environment, this inserts &quot;\item&quot;, in an enumerate
+       environment it inserts &quot;\item\label{item:25}&quot; and in an eqnarray
+       environment, it inserts &quot;\label{eq:25} \n &amp; &amp;&quot;.  When
+       appropriate, newlines are inserted, and the previous item is also
+       closed with &quot;\\&quot;.  `cdlatex-item' can also be invoked with the
+       abbreviation &quot;it&lt;TAB&gt;&quot;.
+
+   1b. MATH TEMPLATES
+       --------------
+       Abbreviations are also used to insert simple math templates
+       into the buffer.  The cursor will be positioned properly.  For
+       example, typing `fr&lt;TAB&gt;' will insert &quot;\frac{}{}&quot; with the
+       cursor in the first pair of parenthesis.  Typing `lr(&lt;TAB&gt;'
+       will insert a &quot;\left( \right)&quot; pair and position the cursor in
+       between, etc.  Again, the TAB key can be used to jump to the
+       points in the template where additional text has to be
+       inserted.  For example in the `\frac{}{}' template, it will
+       move you from the first argument to the second and then out of
+       the second.  For a list of available templates, type `C-c ?'.
+       As a special case, the left-right parenthesis combinations can
+       also be applied after writing the content by selecting the
+       content and typing '( or '[ or '{ or '&lt; or '| .
+
+2. MATHEMATICAL SYMBOLS
+   --------------------
+   This feature is similar to the functionality in the Math minor mode
+   of AUCTeX, and to the input methods of the X-Symbol package.  It is
+   introduced by the backquote character.  Backquote followed by any
+   character inserts a LaTeX math macro into the buffer.  If
+   necessary, a pair of &quot;$&quot; is inserted to switch to math mode.  For
+   example, typing &quot;`a&quot; inserts &quot;$\alpha$&quot;.  Since LaTeX defines many
+   more mathematical symbols than the alphabet has letters, different
+   sets of math macros are provided.  We call the different sets
+   &quot;levels&quot;.  On each level, another LaTeX macro is assigned to a
+   given letter.  To select the different levels, simply press the
+   backquote character several times before pressing the letter.  For
+   example, typing &quot;`d&quot; inserts &quot;\delta&quot; (level 1), and typing &quot;``d&quot;
+   inserts &quot;\partial&quot; (level 2).  Similarly, &quot;`e&quot; inserts &quot;\epsilon&quot;
+   and &quot;``e&quot; inserts &quot;\vareppsilon&quot;.
+
+   On each level, on-thy-fly help will pop up automatically if you
+   hesitate to press the next key.  The help screen is a window which
+   lists all math macros available on the current level.  Initially,
+   when you type slowly, this window will pop up each time you press
+   backquote.  However, after you have learned the different keys, you
+   will type more quickly and the help window is not shown.  Try it
+   out: First press &quot;`&quot; (backquote), wait for the help window and then
+   press &quot;a&quot; to get &quot;\alpha&quot;.  Then press &quot;`&quot; and &quot;b&quot; as a quick
+   sequence to get &quot;\beta&quot;, without the help window.
+
+   The LaTeX macros available through this mechanism are fully
+   configurable - see the variable `cdlatex-math-symbol-alist'.
+
+3. ACCENTS AND FONTS
+   -----------------
+   Putting accents on mathematical characters and/or changing the font
+   of a character uses key combinations with the quote character &quot;'&quot;
+   as a prefix.  The accent or font change is applied to the character
+   or LaTeX macro *before* point.  For example
+
+     Keys                            Result
+     --------------------------------------------------------------------
+     a'~                             ERROR                 % in text mode
+     $a'~                            \tilde{a}             % in math mode
+     a':                             \ddot{a}
+     ab'b                            \textbf{ab}           % in text mode
+     $ab'b                           a\mathbf{b}           % in math mode
+     \alpha'.                        \dot{\alpha}
+     r_{dust}'r                      r_\mathrm{dust}       % in math mode
+     &lt;SPC&gt; 'e                        \emph{}
+     this is important   M-2 'b      this \textbf{is important}
+
+   As you can see:
+   - using math accents like ~ outside math mode will throw an error.
+   - the font change used automatically adapts to math mode.
+   - if the item before point is a LaTeX macro, the change applies to
+     the whole macro.
+   - in text mode, the change applies to the entire word before point,
+     while in math mode only the last character is modified.
+   - if the character before point is white space, a dollar or an
+     opening parenthesis, this command just opens an empty template
+     and positions the cursor inside.
+   - when a numeric prefix argument is supplied, the command acts on
+     whole words before the cursor.
+   - Furthermore, if there is an active region, the change will apply
+     to the content of that region.
+
+   In order to insert a normal quote, you can press the quote
+   character twice.  Also, if the key character is not associated with
+   an accent or font, the quote will be inserted.  For example, &quot;'t&quot;
+   and &quot;'s&quot; insert just that, so that normal text typing will not be
+   disturbed.  Just like during the insertion of math macros (see above
+   under (4.)), automatic on-the-fly help will pop up when you pause
+   after hitting the quote character, but will be suppressed when you
+   continue quickly.  The available accents and also the prefix key
+   can be can be configured - see documentation of the variables
+   `cdlatex-math-modify-alist' and `cdlatex-math-modify-prefix'.
+
+4. PAIR INSERTION of (), [], {}, and $$
+   ------------------------------------
+   Dollars and parens can be inserted as pairs.  When you type the
+   opening delimiter, the closing delimiter will be inserted as well,
+   and the cursor positioned between them.  You can configure which
+   delimiter are inserted pairwise by configuring the variable
+   `cdlatex-paired-parens'.
+
+   Also, the keys `_' and `^' will insert &quot;_{}&quot; and &quot;^{}&quot;,
+   respectively, and, if necessary, also a pair of dollar signs to
+   switch to math mode.  You can use TAB to exit paired parenthesis.
+   As a special case, when you use TAB to exit a pair of braces that
+   belong to a subscript or superscript, CDLaTeX removes the braces if
+   the sub/superscript consists of a single character.  For example
+   typing &quot;$10^3&lt;TAB&gt;&quot; inserts &quot;$10^3$&quot;, but typing &quot;$10^34&lt;TAB&gt;&quot;
+   inserts &quot;$10^{34}$&quot;.
+
+   If you press `_' or `^' twice, the template inserted will be
+   `_{\mathrm{}}' or `^{\mathrm }', respectively, to insert a roman
+   sub/super-script.  Style guides require that all sub- and
+   superscripts that are descriptive (so not a mathematical or
+   physical quantity themselves) need to be roman.  So $x_i$ is i
+   is an index, but $x_{\rm max}$ to indicate the maximum value.  You
+   can disable this behavior through the variable
+   `cdlatex-make-sub-superscript-roman-if-pressed-twice'.
+
+5. THE OVERLOADED TAB KEY
+   ----------------------
+   You may have noticed that we use the TAB key for many different
+   purposes in this package.  While this may seem confusing, I have
+   gotten used to this very much.  Hopefully this will work for you as
+   well: &quot;when in doubt, press TAB&quot;.  Here is a summary of what happens
+   when you press the TAB key:
+
+   The function first tries to expand any abbreviation before point.
+
+   If there is none, it cleans up short subscripts and superscripts at
+   point.  I.e., is the cursor is just before the closing brace in
+   &quot;a^{2}&quot;, it changes it to &quot;a^2&quot;, since this is more readable.  If
+   you want to keep the braces also for simple superscripts and
+   subscripts, set the variable `cdlatex-simplify-sub-super-scripts'
+   to nil.
+
+   After that, the TAB function jumps to the next point of interest in
+   a LaTeX text where one would reasonably expect that more input can
+   be put in.  This does *not* use special markers in the template,
+   but a heuristic method which works quite well.  For the detailed
+   rules which govern this feature, check the documentation of the
+   function `cdlatex-tab'.
+
+-----------------------------------------------------------------------------
+
+CONFIGURATION EXAMPLES
+======================
+
+Check out the documentation of the variables in the configuration
+section.  The variables must be set before cdlatex-mode is turned on,
+or, at the latext, in `cdlatex-mode-hook', in order to be effective.
+When changing the variables, toggle the mode off and on to make sure
+that everything is up to date.
+
+Here is how you might configure CDLaTeX to provide environment templates
+(including automatic labels) for two theorem-like environments.
+
+  (setq cdlatex-env-alist
+     '((&quot;axiom&quot; &quot;\\begin{axiom}\nAUTOLABEL\n?\n\\end{axiom}\n&quot; nil)
+       (&quot;theorem&quot; &quot;\\begin{theorem}\nAUTOLABEL\n?\n\\end{theorem}\n&quot; nil)))
+
+The &quot;AUTOLABEL&quot; indicates the place where an automatic label should be
+inserted, using RefTeX.  The question mark defines the position of the
+cursor after the template has been inserted into the buffer.
+
+You could also define your own keyword commands &quot;axm&quot; and &quot;thr&quot; to make
+the template insertion quicker (e.g. `axm&lt;TAB&gt;' and `thm&lt;TAB&gt;'):
+
+(setq cdlatex-command-alist
+ '((&quot;axm&quot; &quot;Insert axiom env&quot;   &quot;&quot; cdlatex-environment (&quot;axiom&quot;) t nil)
+   (&quot;thr&quot; &quot;Insert theorem env&quot; &quot;&quot; cdlatex-environment (&quot;theorem&quot;) t nil)))
+
+Here is how to add new math symbols to CDLaTeX's list: In order to put
+all rightarrow commands onto `&gt;, ``&gt;, ```&gt;, and ````&gt; (i.e. several
+backquotes followed by &gt;) and all leftarrow commands onto '&lt;, ``&lt;, ```&lt;,
+and ````&lt;,  you could do this in .emacs:
+
+  (setq cdlatex-math-symbol-alist
+'((?&lt; (&quot;\\leftarrow&quot; &quot;\\Leftarrow&quot; &quot;\\longleftarrow&quot; &quot;\\Longleftarrow&quot;))
+  (?&gt; (&quot;\\rightarrow&quot; &quot;\\Rightarrow&quot; &quot;\\longrightarrow&quot; &quot;\\Longrightarrow&quot;))
+   ))
+
+To change the prefix key for math accents and font switching, you could
+do something like
+
+  (setq cdlatex-math-modify-prefix [f7])
+-----------------------------------------------------------------------------
+
+KEY BINDINGS
+
+Here is the default set of keybindings from CDLaTeX.  A menu is also
+installed.
+
+  $         cdlatex-dollar
+  (         cdlatex-pbb
+  {         cdlatex-pbb
+  [         cdlatex-pbb
+  |         cdlatex-pbb
+  &lt;         cdlatex-pbb
+  ^         cdlatex-sub-superscript
+  _         cdlatex-sub-superscript
+
+  TAB       cdlatex-tab
+  C-c ?     cdlatex-command-help
+  C-c {     cdlatex-environment
+  C-c -     cdlatex-item
+  `         cdlatex-math-symbol
+  '         cdlatex-math-modify
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+</pre>
+
+</div>
+<h2>Old versions</h2><table>
+<tr><td><a href="cdlatex-4.18.4.tar.lz">cdlatex-4.18.4.tar.lz</a></td><td>2024-Mar-31</td><td>22.1&nbsp;KiB</td>
+<tr><td><a href="cdlatex-4.18.3.tar.lz">cdlatex-4.18.3.tar.lz</a></td><td>2023-Sep-20</td><td>22.1&nbsp;KiB</td>
+<tr><td><a href="cdlatex-4.18.2.tar.lz">cdlatex-4.18.2.tar.lz</a></td><td>2023-Sep-15</td><td>22.1&nbsp;KiB</td>
+<tr><td><a href="cdlatex-4.18.tar.lz">cdlatex-4.18.tar.lz</a></td><td>2023-Aug-23</td><td>22.1&nbsp;KiB</td>
+<tr><td><a href="cdlatex-4.17.tar.lz">cdlatex-4.17.tar.lz</a></td><td>2023-Aug-12</td><td>22.1&nbsp;KiB</td>
+<tr><td><a href="cdlatex-4.15.tar.lz">cdlatex-4.15.tar.lz</a></td><td>2023-Jul-08</td><td>21.4&nbsp;KiB</td>
+<tr><td><a href="cdlatex-4.14.tar.lz">cdlatex-4.14.tar.lz</a></td><td>2022-Aug-23</td><td>21.3&nbsp;KiB</td>
+<tr><td><a href="cdlatex-4.13.tar.lz">cdlatex-4.13.tar.lz</a></td><td>2022-Aug-19</td><td>21.3&nbsp;KiB</td>
+<tr><td><a href="cdlatex-4.12.tar.lz">cdlatex-4.12.tar.lz</a></td><td>2022-Jul-11</td><td>20.5&nbsp;KiB</td>
+</table>
+</main>
+
+
+        <footer>
+            <div class="container">
+                <p>Last refreshed on 2024-Oct-07 21:09 GMT</p>
+                <p>Copyright 2016-2024 <a href="https://fsf.org">Free Software Foundation</a>, Inc.</p>
+                <p>Design provided by <a href="https://nicolas.petton.fr">Nicolas Petton</a></p>
+                <p>
+                  This website is licensed under the
+                  <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+                  International License.
+                </p>
+                <p><a href="/jslicense.html" data-jslicense="1">JavaScript Licenses</a></p>
+            </div>
+        </footer>
+
+</body>

@@ -1,0 +1,32 @@
+#+chunk-id: org-guide-chunk-0003
+#+source-file: org-guide
+#+heading-path: TODO Items > Progress Logging > Tracking TODO state changes
+#+start-line: 766
+#+end-line: 790
+#+external-urls: 
+#+mirrored-urls: 
+*** Tracking TODO state changes
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+You might want to keep track of TODO state changes.  You can either
+record just a timestamp, or a time-stamped note for a change.  These
+records are inserted after the headline as an itemized list.  When
+taking a lot of notes, you might want to get the notes out of the way
+into a drawer.  Customize the variable ~org-log-into-drawer~ to get
+this behavior.
+
+For state logging, Org mode expects configuration on a per-keyword
+basis.  This is achieved by adding special markers =!= (for
+a timestamp) and =@= (for a note) in parentheses after each keyword.
+For example:
+
+: #+TODO: TODO(t) WAIT(w@/!) | DONE(d!) CANCELED(c@)
+
+#+texinfo: @noindent
+defines TODO keywords and fast access keys, and also request that
+a time is recorded when the entry is set to =DONE=, and that a note is
+recorded when switching to =WAIT= or =CANCELED=.  The same syntax
+works also when setting ~org-todo-keywords~.
+

@@ -1,0 +1,43 @@
+#+chunk-id: org-manual-chunk-0115
+#+source-file: org-manual
+#+heading-path: Exporting > LaTeX Export > Plain lists in LaTeX export
+#+start-line: 14683
+#+end-line: 14718
+#+external-urls: 
+#+mirrored-urls: 
+*** Plain lists in LaTeX export
+:PROPERTIES:
+:DESCRIPTION: Attributes specific to lists.
+:END:
+
+#+cindex: plain lists, in @LaTeX{} export
+#+cindex: @samp{ATTR_LATEX}, keyword
+The LaTeX export backend accepts the =environment= and =options=
+attributes for plain lists.  Both attributes work together for
+customizing lists, as shown in the examples:
+
+#+begin_example
+,#+LATEX_HEADER: \usepackage[inline]{enumitem}
+Some ways to say "Hello":
+,#+ATTR_LATEX: :environment itemize*
+,#+ATTR_LATEX: :options [label={}, itemjoin={,}, itemjoin*={, and}]
+- Hola
+- Bonjour
+- Guten Tag.
+#+end_example
+
+Since LaTeX supports only four levels of nesting for lists, use an
+external package, such as =enumitem= in LaTeX, for levels deeper than
+four:
+
+#+begin_example
+,#+LATEX_HEADER: \usepackage{enumitem}
+,#+LATEX_HEADER: \renewlist{itemize}{itemize}{9}
+,#+LATEX_HEADER: \setlist[itemize]{label=$\circ$}
+- One
+  - Two
+    - Three
+      - Four
+        - Five
+#+end_example
+

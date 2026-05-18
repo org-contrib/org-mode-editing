@@ -1,0 +1,26 @@
+#+chunk-id: org-manual-chunk-0186
+#+source-file: org-manual
+#+heading-path: Working with Source Code > Extracting Source Code > Functions
+#+start-line: 19742
+#+end-line: 19760
+#+external-urls: 
+#+mirrored-urls: 
+*** Functions
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+- ~org-babel-tangle~ ::
+
+  #+findex: org-babel-tangle
+  #+kindex: C-c C-v t
+  Tangle the current file.  Bound to {{{kbd(C-c C-v t)}}}.
+
+  With prefix argument only tangle the current code block.
+
+- ~org-babel-tangle-file~ ::
+
+  #+findex: org-babel-tangle-file
+  #+kindex: C-c C-v f
+  Choose a file to tangle.  Bound to {{{kbd(C-c C-v f)}}}.
+

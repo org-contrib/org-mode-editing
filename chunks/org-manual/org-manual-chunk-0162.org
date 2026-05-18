@@ -1,0 +1,134 @@
+#+chunk-id: org-manual-chunk-0162
+#+source-file: org-manual
+#+heading-path: Publishing > Configuration > Options for the exporters
+#+start-line: 17338
+#+end-line: 17464
+#+external-urls: 
+#+mirrored-urls: 
+*** Options for the exporters
+:PROPERTIES:
+:DESCRIPTION: Tweaking HTML/@LaTeX{} export.
+:ALT_TITLE: Publishing options
+:END:
+#+cindex: options, for publishing
+#+cindex: publishing options
+
+The property list can be used to set many export options for the HTML
+and LaTeX exporters.  In most cases, these properties correspond to
+user variables in Org.  The table below lists these properties along
+with the variable they belong to.  See the documentation string for
+the respective variable for details.
+
+#+vindex: org-publish-project-alist
+When a property is given a value in ~org-publish-project-alist~, its
+setting overrides the value of the corresponding user variable, if
+any, during publishing.  Options set within a file (see [[*Export
+Settings]]), however, override everything.
+
+**** Generic properties
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+#+NAME: org-manual-get-export-props-customizations
+#+begin_src emacs-lisp :exports none :results table
+(require 'ox)
+(let (result)
+  (dolist (spec alist)
+    (when (and (nth 3 spec) (symbolp (nth 3 spec))) ; has customization
+      (push (list (format "~%s~" (car spec)) (format "~%s~" (nth 3 spec))) result)))
+  (nreverse result))
+#+end_src
+
+#+begin_src emacs-lisp :exports results :results table :eval yes :noweb yes
+(require 'ox)
+(let ((alist org-export-options-alist))
+<<org-manual-get-export-props-customizations>>
+)
+#+end_src
+
+
+**** ASCII specific properties
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+#+begin_src emacs-lisp :exports results :results table :eval yes :noweb yes
+(require 'ox-ascii)
+(let ((alist (org-export-backend-options (org-export-get-backend 'ascii))))
+<<org-manual-get-export-props-customizations>>
+)
+#+end_src
+
+**** Beamer specific properties
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+#+begin_src emacs-lisp :exports results :results table :eval yes :noweb yes
+(require 'ox-beamer)
+(let ((alist (org-export-backend-options (org-export-get-backend 'beamer))))
+<<org-manual-get-export-props-customizations>>
+)
+#+end_src
+
+**** HTML specific properties
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+#+begin_src emacs-lisp :exports results :results table :eval yes :noweb yes
+(require 'ox-html)
+(let ((alist (org-export-backend-options (org-export-get-backend 'html))))
+<<org-manual-get-export-props-customizations>>
+)
+#+end_src
+
+**** LaTeX specific properties
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+#+begin_src emacs-lisp :exports results :results table :eval yes :noweb yes
+(require 'ox-latex)
+(let ((alist (org-export-backend-options (org-export-get-backend 'latex))))
+<<org-manual-get-export-props-customizations>>
+)
+#+end_src
+
+**** Markdown specific properties
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+#+begin_src emacs-lisp :exports results :results table :eval yes :noweb yes
+(require 'ox-md)
+(let ((alist (org-export-backend-options (org-export-get-backend 'md))))
+<<org-manual-get-export-props-customizations>>
+)
+#+end_src
+
+**** ODT specific properties
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+#+begin_src emacs-lisp :exports results :results table :eval yes :noweb yes
+(require 'ox-odt)
+(let ((alist (org-export-backend-options (org-export-get-backend 'odt))))
+<<org-manual-get-export-props-customizations>>
+)
+#+end_src
+
+**** Texinfo specific properties
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+#+begin_src emacs-lisp :exports results :results table :eval yes :noweb yes
+(require 'ox-texinfo)
+(let ((alist (org-export-backend-options (org-export-get-backend 'texinfo))))
+<<org-manual-get-export-props-customizations>>
+)
+#+end_src
+

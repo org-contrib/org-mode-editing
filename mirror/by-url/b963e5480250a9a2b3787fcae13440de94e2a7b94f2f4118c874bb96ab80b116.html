@@ -1,0 +1,230 @@
+<!-- $Id: header.html,v 1.3 2025/07/14 17:33:41 karl Exp $ -->
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="/tugstyle.css">
+
+<meta name="color-scheme" content="light dark">
+<style>
+@media (prefers-color-scheme: dark) {
+  *, *::before, *::after {
+    background-color: revert !important;
+    color: revert !important;
+ }
+}
+</style>
+<!-- end header -->
+
+<!-- $Id: begin.html,v 1.165 2025/11/25 17:59:13 karl Exp $ -->
+<title>Getting started with TeX, LaTeX, and friends - TeX Users Group</title>
+</head><body>
+
+<h2>Getting started with TeX, LaTeX, and friends</h2>
+
+<p>This page is for the benefit of new TeX system users.  As such, it
+tries to be short and simple.  An <a
+href="https://ctan.org/starter.html">even shorter getting-started
+page</a> is also available, with a different perspective.
+
+
+<hr>
+<h3>What's going on here?</h3>
+
+<p>TeX is a typesetting language. Instead of visually formatting your
+text, you enter your manuscript text intertwined with TeX commands in a
+plain text file.  You then run TeX to produce formatted output, such as
+a PDF file.  Thus, in contrast to standard word processors, your
+document is a separate file that does not pretend to be a representation
+of the final typeset output, and so can be easily edited and manipulated.
+
+<p>Here are a couple of links with further background:
+
+<ul>
+<li>The <a href="levels.html">levels of TeX</a> web page explains
+some of the most common components and terms used throughout TeX.
+
+<li>The <a href="https://en.wikipedia.org/wiki/TeX">Wikipedia
+encyclopedia article</a> on TeX gives a more detailed overview.
+</ul>
+
+<hr>
+<h3><a name="install">Installing TeX and LaTeX</a></h3>
+
+<p>If you are looking to install a complete system, we recommend
+installing <a href="/texlive/">TeX Live</a> (<a
+href="/texlive/quickinstall.html">Unix/GNU/Linux</a>, <a
+href="/mactex/">macOS</a>, <a href="/texlive/windows.html">Windows</a>).
+<a href="https://miktex.org/">MiKTeX</a> is the most commonly-used
+alternative. Both distributions support all common platforms, are
+(almost entirely) <a
+href="https://www.gnu.org/philosophy/free-sw.html">free software</a>,
+and can be downloaded and installed at no charge. See their home pages.
+(<a href="/interest.html#free">Other TeX
+implementations</a> are also available.)
+
+
+<p>If you want physical discs, you can <a href="/dvd/">submit a
+request</a> to the volunteers who have offered to burn them. 
+
+<hr>
+<h3><a name="doc">Online (La)TeX documentation</a></h3>
+
+<p>Here is a little of the principal TeX documentation available on
+the web. A <a href="/interest.html#doc">longer list of documentation
+links</a> is available.
+
+<p><b>LaTeX</b>:
+<ul class="negskip">
+<li><a href="https://learnlatex.org/">LearnLaTeX.org</a>, focused
+lessons on learning LaTeX, with online execution of examples.
+
+<li><a href="https://ctan.org/pkg/first-latex-doc">A First LaTeX
+Document</a> takes you through writing a small document with text and
+math for the first time. Then <a
+href="https://ctan.org/pkg/latex-doc-ptr">A&nbsp;First Set of LaTeX
+Resources</a> recommends packages for common tasks (both documents by
+Jim Hefferon).
+
+<li><a href="https://www.andy-roberts.net/misc/latex/">Online
+LaTeX tutorials</a>, a graduated series (by Andy Roberts).
+
+<li><a href="https://ctan.org/pkg/lshort">The Not So
+Short Introduction to LaTeX2e</a> is a more comprehensive manual on
+writing LaTeX (by Tobias Oetiker et&nbsp;al., translated into many languages).
+
+<li><a href="https://wch.github.io/latexsheet/">LaTeX Cheat
+Sheet</a>, a two-page quick reference (by Winston Chang).
+
+<li><a href="https://ctan.org/topic/tut-latex">Other LaTeX tutorials</a>,
+<a href="/interest.html#latex">more documents</a>.
+</ul>
+
+<p>Other formats: 
+<ul class="negskip">
+<li><b>Plain TeX</b>:
+<a href="https://ntg.nl/literatuur/wilkins/pllong.pdf">Getting started
+with Plain TeX</a> by D.R. Wilkins.
+(<a href="https://www.ctan.org/topic/tut-plaintex">Other plain TeX
+tutorials</a>, <a href="https://tug.org/interest.html#plain">more
+documents</a>.)
+
+<li><b>ConTeXt</b>: a large system based on its own engine; to get
+started, see <a
+href="https://wiki.contextgarden.net/Introduction">ConTeXT wiki</a>.
+<li><b>OpTeX</b>: a LuaTeX-based format firmly grounded in plain TeX;
+see the <a href="https://petr.olsak.net/optex/">OpTeX home page</a>.
+
+</ul>
+
+<p><b>Fonts:</b> a discussion of the <a href="/fonts/">fonts available for use
+with TeX</a> is available separately.
+
+<p><b>General help:</b> <a href="#help">see below</a>.
+
+
+<hr>
+<h3><a name="books">Books to buy</a></h3>
+
+<p>Since TeX predates the Internet, let alone the web, it has a long
+tradition of documentation being available in book form.  (Not to
+mention being a typesetting program!)  Here are the books we recommend
+most highly.
+
+<ul>
+<li><a href="/books/index.html#texbook">The
+TeXbook</a>, by Donald E. Knuth (Addison-Wesley, ISBN 0-201-13448-9,
+1984).  The basis of everything, covering plain TeX.
+
+<li><a href="/l/tlc3">The LaTeX Companion</a>, by
+Frank Mittelbach with Ulrike Fischer (Addison-Wesley, third edition,
+2023). Covers core LaTeX, plus a vast array of additional packages.
+
+<li><a href="https://bookstore.siam.org/ot148/">Learning&nbsp;LaTeX</a>,
+by David Griffiths and Desmond Higham (SIAM, ISBN 978-1-611974-41-6,
+2016, 103pp). A short example-based book covering core LaTeX and some
+commonly-needed packages.
+
+</ul>
+
+<p>See <a href="interest.html#doc">these additional documentation
+links</a> for many more books and other references.
+
+
+<hr>
+<h3><a name="sample">Sample LaTeX documents</a></h3>
+
+<p>If you have TeX installed and just want to get started, you can
+peruse and process this <a
+href="https://mirror.ctan.org/macros/latex/base/small2e.tex">introductory
+LaTeX document</a> (small2e).  When you've mastered that, move on to
+this <a
+href="https://mirror.ctan.org/macros/latex/base/sample2e.tex">more
+complex example</a> (sample2e).
+
+<p>The basic procedure is to create plain text files in any editor or
+GUI front end (<a href="/texworks">TeXworks</a>, <a
+href="https://www.uoregon.edu/~koch/texshop/">TeXShop</a>, <a
+href="https://www.gnu.org/software/emacs/">GNU&nbsp;Emacs</a>, etc.),
+and then run (for example) <tt>pdflatex&nbsp;myfile.tex</tt> from a
+command line to get PDF output. Or run <tt>latex</tt> to get DVI output.
+
+<hr>
+<h3><a name="help">Help using TeX</a></h3>
+
+<ul>
+<li><a href="https://lists.tug.org/texhax/">texhax@tug.org</a>, a public
+    (and publicly-archived) support mailing list.
+<li><a href="https://latex.org/forum/">latex.org</a>, a community forum.
+<li><a href="https://tex.stackexchange.com/"
+    rel="nofollow">tex.stackexchange.com</a>,
+    a collaboratively edited question and answer site.
+<li><a href="https://www.reddit.com/r/LaTeX/">reddit</a>, a conversation site.
+<li>The <a href="https://texfaq.org/">TeX FAQ</a> answers many questions
+    on TeX, LaTeX, and friends.
+</ul>
+
+<p>Finding software and/or packages:
+<ul>
+<li>The <a href="https://ctan.org/">Comprehensive TeX Archive Network</a>
+    (CTAN) is the primary repository for TeX-related software on the
+    Internet.
+<li>The <a href="https://ctan.org/pkg/">TeX Catalogue</a> has
+    descriptions for most TeX packages, and can help you find what you
+    need, along with the <a
+    href="https://ctan.org/topics/cloud">topic&nbsp;cloud</a>.
+<li>The <a href="https://texdoc.net/">texdoc.net</a> site provides online
+    lookup of package documentation, based on the <a
+    href="/texdoc/">texdoc</a> command-line program.
+</ul>
+
+<p><a href="/interest.html#texhelp">More help resources</a>.
+
+<p>If you've tried everything and are still stuck, feel free to <a
+href="mailto:texhax@tug.org">email the public support list</a>.
+
+<p>Happy typesetting!
+
+<hr><small>This web page is public domain.<br>
+$Date: 2025/11/25 17:59:13 $</small>;
+<!-- $Id: footer.html,v 1.32 2025/12/01 23:17:50 karl Exp $ (generic footer) -->
+<!-- <form method=get action="//duckduckgo.com/"> -->
+<small>
+  <a href="/index.html">TUG home page</a>;
+  <a href="/join.html">join TUG/renew membership</a>;
+  <a href="mailto:webmaster@tug.org">webmasters</a>;
+  <a href="https://www.facebook.com/groups/TeXUsersGroup">facebook</a>;
+  <a href="https://x.com/texusersgroup">x</a>;
+  <a href="https://bsky.app/profile/texusersgroup.bsky.social">bluesky</a>;
+  <a href="https://techhub.social/@TeXUsersGroup">mastodon</a>.
+<!-- &nbsp;
+   <input type="hidden" name="sites" value="tug.org">
+   <input name=q size=13 maxlength=99
+  ><input type=submit value="Search tug.org">
+   (via&nbsp;<a href="https://duckduckgo.com/">DuckDuckGo</a>)
+</form>
+-->
+</small>
+</body></html>
+<!-- end footer -->
+

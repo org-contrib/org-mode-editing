@@ -1,0 +1,37 @@
+#+chunk-id: org-manual-chunk-0112
+#+source-file: org-manual
+#+heading-path: Exporting > LaTeX Export > Quoting LaTeX code
+#+start-line: 14438
+#+end-line: 14467
+#+external-urls: 
+#+mirrored-urls: 
+*** Quoting LaTeX code
+:PROPERTIES:
+:DESCRIPTION: Incorporating literal @LaTeX{} code.
+:END:
+
+When the available LaTeX export customizations are not sufficient to
+fine-tune the desired output, it is possible to insert any arbitrary
+LaTeX code (see [[*Embedded LaTeX]]).  There are three ways to embed such
+code in the Org file, and they all use different quoting syntax.
+
+#+cindex: inline, in @LaTeX{} export
+Inserting in-line quoted with @ symbols:
+
+: Code embedded in-line @@latex:any arbitrary LaTeX code@@ in a paragraph.
+
+#+cindex: @samp{LATEX}, keyword
+Inserting as one or more keyword lines in the Org file:
+
+: #+LATEX: any arbitrary LaTeX code
+
+#+cindex: @samp{BEGIN_EXPORT latex}
+Inserting as an export block in the Org file, where the backend
+exports any code between begin and end markers:
+
+#+begin_example
+,#+BEGIN_EXPORT latex
+  any arbitrary LaTeX code
+,#+END_EXPORT
+#+end_example
+

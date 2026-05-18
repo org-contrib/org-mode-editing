@@ -1,0 +1,22 @@
+#+chunk-id: org-manual-chunk-0119
+#+source-file: org-manual
+#+heading-path: Exporting > LaTeX Export > Horizontal rules in LaTeX export
+#+start-line: 14859
+#+end-line: 14873
+#+external-urls: 
+#+mirrored-urls: 
+*** Horizontal rules in LaTeX export
+:PROPERTIES:
+:DESCRIPTION: Attributes specific to horizontal rules.
+:END:
+#+cindex: horizontal rules, in @LaTeX{} export
+#+cindex: @samp{ATTR_LATEX}, keyword
+
+The LaTeX export backend converts horizontal rules by the specified
+=:width= and =:thickness= attributes.  For example:
+
+#+begin_example
+,#+ATTR_LATEX: :width .6\textwidth :thickness 0.8pt
+-----
+#+end_example
+

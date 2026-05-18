@@ -1,0 +1,38 @@
+#+chunk-id: org-manual-chunk-0151
+#+source-file: org-manual
+#+heading-path: Exporting > Texinfo Export > Special blocks in Texinfo export
+#+start-line: 16515
+#+end-line: 16545
+#+external-urls: 
+#+mirrored-urls: 
+*** Special blocks in Texinfo export
+:PROPERTIES:
+:DESCRIPTION: Special block attributes.
+:END:
+
+The Texinfo export backend supports two approaches to writing Texinfo
+definition commands.  One of them is described here, the other in
+[[*Plain lists in Texinfo export]].
+
+#+cindex: @samp{ATTR_TEXINFO}, keyword
+
+The Texinfo export backend converts special blocks to commands with
+the same name.  It also adds any =:options= attributes to the end of
+the command, as shown in this example:
+
+#+begin_example
+,#+ATTR_TEXINFO: :options org-org-export-to-org ...
+,#+BEGIN_defun
+  A somewhat obsessive function name.
+,#+END_defun
+#+end_example
+
+#+texinfo: @noindent
+becomes
+
+#+begin_example
+@defun org-org-export-to-org ...
+  A somewhat obsessive function name.
+@end defun
+#+end_example
+

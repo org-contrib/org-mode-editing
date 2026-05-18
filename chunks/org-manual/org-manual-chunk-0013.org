@@ -1,0 +1,57 @@
+#+chunk-id: org-manual-chunk-0013
+#+source-file: org-manual
+#+heading-path: Tables > Built-in Table Editor > Re-aligning and field motion
+#+start-line: 1491
+#+end-line: 1540
+#+external-urls: 
+#+mirrored-urls: 
+*** Re-aligning and field motion
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+- {{{kbd(C-c C-c)}}} (~org-table-align~) ::
+
+  #+kindex: C-c C-c
+  #+findex: org-table-align
+  Re-align the table without moving point.
+
+- {{{kbd(TAB)}}} (~org-table-next-field~) ::
+
+  #+kindex: TAB
+  #+findex: org-table-next-field
+  Re-align the table, move to the next field.  Creates a new row if
+  necessary.
+
+- {{{kbd(M-x org-table-blank-field)}}} ::
+
+  #+findex: org-table-blank-field
+  Blank the current table field or active region.
+
+- {{{kbd(S-TAB)}}} (~org-table-previous-field~) ::
+
+  #+kindex: S-TAB
+  #+findex: org-table-previous-field
+  Re-align, move to previous field.
+
+- {{{kbd(RET)}}} (~org-table-next-row~) ::
+
+  #+kindex: RET
+  #+findex: org-table-next-row
+  Re-align the table and move down to next row.  Creates a new row if
+  necessary.  At the beginning or end of a line, {{{kbd(RET)}}} still
+  inserts a new line, so it can be used to split a table.
+
+- {{{kbd(M-a)}}} (~org-table-beginning-of-field~) ::
+
+  #+kindex: M-a
+  #+findex: org-table-beginning-of-field
+  Move to beginning of the current table field, or onto the previous
+  field.
+
+- {{{kbd(M-e)}}} (~org-table-end-of-field~) ::
+
+  #+kindex: M-e
+  #+findex: org-table-end-of-field
+  Move to end of the current table field, or onto the next field.
+

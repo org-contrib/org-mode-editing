@@ -1,0 +1,40 @@
+#+chunk-id: org-manual-chunk-0016
+#+source-file: org-manual
+#+heading-path: Tables > Built-in Table Editor > Calculations
+#+start-line: 1692
+#+end-line: 1724
+#+external-urls: 
+#+mirrored-urls: 
+*** Calculations
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+#+cindex: formula, in tables
+#+cindex: calculations, in tables
+
+- {{{kbd(C-c +)}}} (~org-table-sum~) ::
+
+  #+kindex: C-c +
+  #+findex: org-table-sum
+  Sum the numbers in the current column, or in the rectangle defined
+  by the active region.  The result is shown in the echo area and can
+  be inserted with {{{kbd(C-y)}}}.
+
+- {{{kbd(S-RET)}}} (~org-table-copy-down~) ::
+
+  #+kindex: S-RET
+  #+findex: org-table-copy-down
+  #+vindex: org-table-copy-increment
+  When the current field is empty, copy from the first non-empty field above.
+  When it is not empty, copy the current field down to the next row and move point
+  along with it.
+
+  Depending on the variable ~org-table-copy-increment~, integer and
+  time stamp field values, as well as fields prefixed or suffixed with
+  a whole number, can be incremented during copy.  Also, a ~0~ prefix
+  argument temporarily disables the increment.
+
+  This key is also used by shift-selection and related modes (see
+  [[*Packages that conflict with Org mode]]).
+

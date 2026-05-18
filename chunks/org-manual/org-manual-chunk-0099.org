@@ -1,0 +1,33 @@
+#+chunk-id: org-manual-chunk-0099
+#+source-file: org-manual
+#+heading-path: Exporting > HTML Export > Exporting to minimal HTML
+#+start-line: 13630
+#+end-line: 13655
+#+external-urls: 
+#+mirrored-urls: 
+*** Exporting to minimal HTML
+:PROPERTIES:
+:DESCRIPTION: Exporting HTML without CSS, JavaScript, etc.
+:ALT_TITLE: Bare HTML
+:END:
+
+If you want to output a minimal HTML file, with no CSS, no JavaScript,
+no preamble or postamble, here are the variable you would need to set:
+
+#+vindex: org-html-head
+#+vindex: org-html-head-extra
+#+vindex: org-html-head-include-default-style
+#+vindex: org-html-head-include-scripts
+#+vindex: org-html-preamble
+#+vindex: org-html-postamble
+#+vindex: org-html-use-infojs
+#+begin_src emacs-lisp
+(setq org-html-head ""
+      org-html-head-extra ""
+      org-html-head-include-default-style nil
+      org-html-head-include-scripts nil
+      org-html-preamble nil
+      org-html-postamble nil
+      org-html-use-infojs nil)
+#+end_src
+

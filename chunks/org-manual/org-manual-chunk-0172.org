@@ -1,0 +1,27 @@
+#+chunk-id: org-manual-chunk-0172
+#+source-file: org-manual
+#+heading-path: Working with Source Code > Using Header Arguments > Header arguments in function calls
+#+start-line: 18425
+#+end-line: 18444
+#+external-urls: 
+#+mirrored-urls: 
+*** Header arguments in function calls
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+Header arguments in function calls are the most specific and override
+all other settings in case of an overlap.  They get the highest
+priority.  Two =#+CALL:= examples are shown below.  For the complete
+syntax of =CALL= keyword, see [[*Evaluating Code Blocks]].
+
+In this example, =:exports results= header argument is applied to the
+evaluation of the =#+CALL:= line.
+
+: #+CALL: factorial(n=5) :exports results
+
+In this example, =:session special= header argument is applied to the
+evaluation of =factorial= code block.
+
+: #+CALL: factorial[:session special](n=5)
+

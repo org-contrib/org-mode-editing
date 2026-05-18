@@ -1,0 +1,32 @@
+#+chunk-id: org-manual-chunk-0197
+#+source-file: org-manual
+#+heading-path: Miscellaneous > Org Mobile > Pushing to the mobile application
+#+start-line: 21782
+#+end-line: 21806
+#+external-urls: 
+#+mirrored-urls: 
+*** Pushing to the mobile application
+:PROPERTIES:
+:DESCRIPTION: Uploading Org files and agendas.
+:END:
+
+#+findex: org-mobile-push
+#+vindex: org-mobile-files
+The command ~org-mobile-push~ copies files listed in
+~org-mobile-files~ into the staging area.  Files include agenda files
+(as listed in ~org-agenda-files~).  Customize ~org-mobile-files~ to
+add other files.  File names are staged with paths relative to
+~org-directory~, so all files should be inside this directory[fn::
+Symbolic links in ~org-directory~ need to have the same name as their
+targets.].
+
+Push creates a special Org file =agendas.org= with custom agenda views
+defined by the user[fn:54].
+
+Finally, Org writes the file =index.org=, containing links to other
+files.  The mobile application reads this file first from the server
+to determine what other files to download for agendas.  For faster
+downloads, it is expected to only read files whose checksums[fn::
+Checksums are stored automatically in the file =checksums.dat=.]  have
+changed.
+

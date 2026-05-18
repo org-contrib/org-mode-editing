@@ -1,0 +1,24 @@
+#+chunk-id: org-manual-chunk-0137
+#+source-file: org-manual
+#+heading-path: Exporting > Org Export > Org export commands
+#+start-line: 15961
+#+end-line: 15977
+#+external-urls: 
+#+mirrored-urls: 
+*** Org export commands
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+- {{{kbd(C-c C-e O o)}}} (~org-org-export-to-org~) ::
+
+  #+kindex: C-c C-e O o
+  #+findex: org-org-export-to-org
+  Export as an Org file with a =.org= extension.  For =myfile.org=,
+  Org exports to =myfile.org.org=, overwriting without warning.
+
+- {{{kbd(C-c C-e O v)}}} (~~) ::
+
+  #+kindex: C-c C-e O v
+  Export to an Org file, then open it.
+

@@ -1,0 +1,73 @@
+#+chunk-id: org-manual-chunk-0116
+#+source-file: org-manual
+#+heading-path: Exporting > LaTeX Export > Source blocks in LaTeX export
+#+start-line: 14719
+#+end-line: 14784
+#+external-urls: https://www.ctan.org/pkg/fvextra
+#+mirrored-urls: https://www.ctan.org/pkg/fvextra
+*** Source blocks in LaTeX export
+:PROPERTIES:
+:DESCRIPTION: Attributes specific to source code blocks.
+:END:
+#+cindex: source blocks, in @LaTeX{} export
+#+cindex: @samp{ATTR_LATEX}, keyword
+
+#+vindex: org-latex-src-block-backend
+LaTeX export backend provides multiple ways to render src blocks in
+LaTeX, according to the value of ~org-latex-src-block-backend~.  The
+default value =verbatim= renders the src code verbatim, without any
+extra styling.  Alternative values allow more colorful styling, but
+require additional LaTeX (=listings=, =minted=), system (=minted=), or
+Emacs (=engraved=) packages.  See the ~org-latex-src-block-backend~
+docstring for more details.
+
+The LaTeX export backend can make source code blocks into floating
+objects through the attributes =:float= and =:options=.  For =:float=:
+
+- =t= ::
+
+  Makes a source block float; by default floats any source block with
+  a caption.
+
+- =multicolumn= ::
+
+  Spans the source block across multiple columns of a page.
+
+- =nil= ::
+
+  Avoids a =:float= even if using a caption; useful for source code
+  blocks that may not fit on a page.
+
+#+begin_example
+,#+ATTR_LATEX: :float nil
+,#+BEGIN_SRC emacs-lisp
+  Lisp code that may not fit in a single page.
+,#+END_SRC
+#+end_example
+
+#+vindex: org-latex-listings-options
+#+vindex: org-latex-minted-options
+#+vindex: org-latex-engraved-options
+The LaTeX export backend passes string values in =:options= to LaTeX
+packages for customization of that specific source block.  In the
+example below, the =:options= are set for Engraved or Minted.  Minted
+is a source code highlighting LaTeX package with many configurable
+options[fn:: Minted uses an external Python package for code
+highlighting, which requires the flag =-shell-escape= to be added to
+~org-latex-pdf-process~.].  Both Minted and Engraved are built on
+[[../../mirror/by-url/2e2e8ceb21ea2aee3ccd09f164b9c2b26ff30ae7566a54dd3875660aec54c810.html][fvextra]], and so support many of
+the same options.
+
+#+begin_example
+,#+ATTR_LATEX: :options mathescape
+,#+BEGIN_SRC emacs-lisp
+  (defun Fib (n) ; $n_i = n_{i-2} + n_{i-1}$
+    (if (< n 2) n (+ (Fib (- n 1)) (Fib (- n 2)))))
+,#+END_SRC
+#+end_example
+
+To apply similar configuration options for all source blocks in a
+file, use the ~org-latex-listings-options~,
+~org-latex-engraved-options~, and ~org-latex-minted-options~
+variables.
+

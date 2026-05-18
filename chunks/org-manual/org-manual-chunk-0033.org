@@ -1,0 +1,30 @@
+#+chunk-id: org-manual-chunk-0033
+#+source-file: org-manual
+#+heading-path: TODO Items > Extended Use of TODO Keywords > Fast access to TODO states
+#+start-line: 4169
+#+end-line: 4191
+#+external-urls: 
+#+mirrored-urls: 
+*** Fast access to TODO states
+:PROPERTIES:
+:DESCRIPTION: Single letter selection of state.
+:END:
+
+If you would like to quickly change an entry to an arbitrary TODO
+state instead of cycling through the states, you can set up keys for
+single-letter access to the states.  This is done by adding the
+selection character after each keyword, in parentheses[fn:: All
+characters are allowed except =@=, =^= and =!=, which have a special
+meaning here.].  For example:
+
+#+begin_src emacs-lisp
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "|" "DONE(d)")
+        (sequence "REPORT(r)" "BUG(b)" "KNOWNCAUSE(k)" "|" "FIXED(f)")
+        (sequence "|" "CANCELED(c)")))
+#+end_src
+
+If you then press {{{kbd(C-c C-t)}}} followed by the selection key,
+the entry is switched to this state.  {{{kbd(SPC)}}} can be used to
+remove any TODO keyword from an entry.
+

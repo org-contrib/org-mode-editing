@@ -1,0 +1,128 @@
+#+chunk-id: org-manual-chunk-0009
+#+source-file: org-manual
+#+heading-path: Document Structure > Visibility Cycling > Global and local cycling
+#+start-line: 553
+#+end-line: 673
+#+external-urls: 
+#+mirrored-urls: 
+*** Global and local cycling
+:PROPERTIES:
+:DESCRIPTION: Cycling through various visibility states.
+:END:
+#+cindex: subtree visibility states
+#+cindex: subtree cycling
+#+cindex: folded, subtree visibility state
+#+cindex: children, subtree visibility state
+#+cindex: subtree, subtree visibility state
+
+Outlines make it possible to hide parts of the text in the buffer.
+Org uses just two commands, bound to {{{kbd(TAB)}}} and
+{{{kbd(S-TAB)}}}, to change the visibility in the buffer.
+
+#+attr_texinfo: :sep ,
+- {{{kbd(TAB)}}} (~org-cycle~) ::
+
+  #+kindex: TAB
+  #+findex: org-cycle
+  /Subtree cycling/: Rotate current subtree among the states
+
+  #+begin_example
+  ,-> FOLDED -> CHILDREN -> SUBTREE --.
+  '-----------------------------------'
+  #+end_example
+
+  #+vindex: org-cycle-emulate-tab
+  Point must be on a headline for this to work[fn:: See, however, the
+  option ~org-cycle-emulate-tab~.].
+
+- {{{kbd(S-TAB)}}} (~org-global-cycle~), {{{kbd(C-u TAB)}}} ::
+
+  #+cindex: global visibility states
+  #+cindex: global cycling
+  #+cindex: overview, global visibility state
+  #+cindex: contents, global visibility state
+  #+cindex: show all, global visibility state
+  #+kindex: C-u TAB
+  #+kindex: S-TAB
+  #+findex: org-global-cycle
+  /Global cycling/: Rotate the entire buffer among the states
+
+  #+begin_example
+  ,-> OVERVIEW -> CONTENTS -> SHOW ALL --.
+  '--------------------------------------'
+  #+end_example
+
+  When {{{kbd(S-TAB)}}} is called with a numeric prefix argument
+  {{{var(N)}}}, view contents only up to headlines of level
+  {{{var(N)}}}.
+
+  Note that inside tables (see [[*Tables]]), {{{kbd(S-TAB)}}} jumps to the
+  previous field instead.
+
+  #+vindex: org-cycle-global-at-bob
+  You can run global cycling using {{{kbd(TAB)}}} only if point is at
+  the very beginning of the buffer, but not on a headline, and
+  ~org-cycle-global-at-bob~ is set to a non-~nil~ value.
+
+- {{{kbd(C-u C-u TAB)}}} (~org-cycle-set-startup-visibility~) ::
+
+  #+cindex: startup visibility
+  #+kindex: C-u C-u TAB
+  #+findex: org-cycle-set-startup-visibility
+  Switch back to the startup visibility of the buffer (see [[*Initial
+  visibility]]).
+
+- {{{kbd(C-u C-u C-u TAB)}}} (~org-fold-show-all~) ::
+
+  #+cindex: show all, command
+  #+kindex: C-u C-u C-u TAB
+  #+findex: org-show-all
+  #+findex: org-fold-show-all
+  Show all, including drawers.
+
+- {{{kbd(C-c C-r)}}} (~org-reveal~) ::
+
+  #+cindex: revealing context
+  #+kindex: C-c C-r
+  #+findex: org-reveal
+  Reveal context around point, showing the current entry, the
+  following heading, and the hierarchy above.  It is useful for working
+  near a location that has been exposed by a sparse tree command (see
+  [[*Sparse Trees]]) or an agenda command (see [[*Commands in the Agenda
+  Buffer]]).  With a prefix argument, show, on each level, all sibling
+  headings.  With a double prefix argument, also show the entire
+  subtree of the parent.
+
+- {{{kbd(C-c C-k)}}} (~org-show-branches~) ::
+
+  #+cindex: show branches, command
+  #+kindex: C-c C-k
+  #+findex: org-show-branches
+  Expose all the headings of the subtree, but not their bodies.
+
+- {{{kbd(C-c TAB)}}} (~org-fold-show-children~) ::
+
+  #+cindex: show children, command
+  #+kindex: C-c TAB
+  #+findex: org-show-children
+  #+findex: org-fold-show-children
+  Expose all direct children of the subtree.  With a numeric prefix
+  argument {{{var(N)}}}, expose all children down to level
+  {{{var(N)}}}.
+
+- {{{kbd(C-c C-x b)}}} (~org-tree-to-indirect-buffer~) ::
+
+  #+kindex: C-c C-x b
+  #+findex: org-tree-to-indirect-buffer
+  Show the current subtree in an indirect buffer[fn:2].  With
+  a numeric prefix argument {{{var(N)}}}, go up to level {{{var(N)}}}
+  and then take that tree.  If {{{var(N)}}} is negative, then go up
+  that many levels.  With a {{{kbd(C-u)}}} prefix, do not remove the
+  previously used indirect buffer.
+
+- {{{kbd(C-c C-x v)}}} (~org-copy-visible~) ::
+
+  #+kindex: C-c C-x v
+  #+findex: org-copy-visible
+  Copy the /visible/ text in the region into the kill ring.
+

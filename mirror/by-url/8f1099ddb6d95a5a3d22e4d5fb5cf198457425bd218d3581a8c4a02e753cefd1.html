@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2026-01-25 Sun 19:41 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Org mode for GNU Emacs</title>
+<meta name="description" content="Org: an Emacs Mode for Notes, Planning and Authoring" />
+<meta name="generator" content="Org Mode" />
+<meta name="theme-color" content="#77aa99">
+<meta property="og:title" content="Org Mode">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://orgmode.org">
+<meta property="og:image" content="https://orgmode.org/resources/img/social-card.png">
+<meta property="og:image:alt" content="Org-mode. Complex so you don't have to be. A versatile organisationay system with immense capabilities.">
+<meta property="og:image:type" content="image/svg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta property="og:description" content="Org-mode. Complex so you don't have to be. A versatile organisational system with immense capabilities.">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://orgmode.org">
+<meta property="twitter:title" content="Org Mode">
+<meta property="twitter:description" content="Org: an Emacs Mode for Notes, Planning, Authoring and more!">
+<meta property="twitter:image" content="https://orgmode.org/resources/img/social-card.png">
+<meta property="twitter:image:alt" content="Org-mode. Complex so you don't have to be. A versatile organisationay system with immense capabilities.">
+<link rel="alternate" type="application/json+oembed" href="resources/oembed-info.json" title="Org oEmbed Profile" />
+<meta name="flattr:id" content="8d9x0o">
+<link rel="apple-touch-icon" sizes="180x180" href="/resources/img/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/resources/img/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/resources/img/favicons/favicon-16x16.png">
+<link rel="manifest" href="/resources/img/favicons/site.webmanifest">
+<link rel="mask-icon" href="/resources/img/favicons/safari-pinned-tab.svg" color="#77aa99">
+<link rel="shortcut icon" href="/resources/img/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#77aa99">
+<meta name="msapplication-config" content="/resources/img/favicons/browserconfig.xml">
+<link rel="stylesheet" href="/resources/style/org.min.css" type="text/css" />
+<link rel="stylesheet" href="/resources/style/index.min.css" type="text/css" />
+<link rel="preload" href="/resources/img/org-mode-unicorn.svg" as="image" type="image/svg+xml">
+<link rel="stylesheet" href="/resources/style/org-demo.min.css" type="text/css" />
+</head>
+<body>
+<div id="content" class="content">
+<header>
+<h1 class="title">Org mode for GNU Emacs</h1>
+</header><!-- <script type="text/javascript" async src="/resources/js/org.js"></script> -->
+
+<nav id="main">
+    <label for="hamburger">&#9776;</label>
+    <input type="checkbox" id="hamburger"/>
+
+    <span id="translate">
+        [ <a title="English version"   href="/index.html">en</a>
+        - <a title="Version française" href="/fr/index.html">fr</a>
+        - <a title="Japanese version"  href="/ja/index.html">ja</a>
+        - <a title="简体中文版本"        href="/zh-CN/index.html">简</a>
+        ]
+    </span>
+    <a href="index.html">
+      <p class="logo"><img src="/resources/img/org-mode-unicorn.svg" alt="Org-Mode Logo"/> Org Mode</p></a>
+    <a href="/features.html">Features</a>
+    <a title="Get detailed updates on the latest releases" href="/Changes.html">Releases</a>
+    <a title="Check upcoming changes, help requests, confirmed bugs and submitted patches" href="https://tracker.orgmode.org/news">Updates</a>
+    <a title="Start here to install Org" href="https://orgmode.org/org.html#Installation">Install</a>
+    <a title="Check all manuals" href="/manuals.html">Manuals</a>
+    <a title="Worg is the community-driven documentation for Org" href="/worg">Worg</a>
+    <a title="Start here if you want to contribute to Org" href="/worg/org-contribute.html">Contribute</a>
+    <a title="Tools that work with Org" href="/tools.html">Tools</a>
+</nav>
+<style>
+  .outline-3 {
+    background-color: initial;
+    border-left: none;
+    width: initial;
+    max-width: initial;
+    padding: 0;
+  }
+  h3 {
+    display: initial;
+  }
+</style>
+<div class="banner hero" itemscope itemtype="https://schema.org/SoftwareApplication">
+  <img src="/resources/img/org-mode-unicorn.svg"
+       alt="Org unicorn logo" itemprop="image"/>
+  <div>
+    <h2>
+      <span itemprop="name">Org Mode</span>
+      <p class="subtitle">Your life in plain text</p>
+    </h2>
+    <p>
+      A <a href="https://www.gnu.org/software/emacs/" style="color: inherit; font-weight: bold; font-style: italic;"
+           title="An extensible, customizable, free/libre text editor">GNU Emacs</a>
+      major mode for <span itemprop="applicationCategory"> keeping notes, authoring documents,
+      computational notebooks, literate programming, maintaining to-do lists, planning
+      projects, and more &mdash; in a fast and effective plain text
+      system.</p>
+      <p><a title="Install from GNU ELPA" href="https://elpa.gnu.org/packages/org.html"><img src="https://elpa.gnu.org/packages/org.svg" alt="Install from GNU ELPA" /></a>
+        <a title="How to report a bug" href="https://orgmode.org/manual/Feedback.html"><img src="/resources/img/badge-report-bug.svg" alt="How to report a bug" /></a>
+        <a title="Email the Org-mode mailing list" href="mailto:emacs-orgmode@gnu.org"><img src="/resources/img/badge-feedback.svg" alt="Email the Org-mode mailing list" /></a>
+        <a title="Source code" href="https://cgit.git.savannah.nongnu.org/cgit/org-mode.git/"><img src="/resources/img/badge-source-code.svg" alt="Source code" /></a>
+        <a title="sr.ht project page" href="https://sr.ht/~bzg/org"><img src="/resources/img/badge-srht-project.svg" alt="sr.ht project page"/></a>
+        <a title="IRC #org-mode channel" href="https://web.libera.chat/#org-mode"><img src="/resources/img/badge-irc.svg" alt="IRC #org-mode channel"/></a>
+        <a title="Matrix #org-mode room" href="https://matrix.to/#/%23org-mode:matrix.org"><img src="/resources/img/badge-matrix.svg" alt="Matrix #org-mode room"/></a></p>
+    <p><span style="color: #567b70;font-family: var(--sans);font-size: 0.9em;">Source code</span><br>
+      <span style="font-size: 0.9em;"><code>git clone https://https.git.savannah.nongnu.org/git/org-mode.git</code></span></p><br>
+    <p><span style="color: #567b70;font-family: var(--sans);font-size: 0.9em;">Source code (mirror)</span><br>
+      <span style="font-size: 0.9em;"><code>git clone https://git.sr.ht/~bzg/org-mode</code></span></p>
+    <p class="bubble">
+      Support via&ensp;
+      <a href="https://liberapay.com/org-mode" title="Donations always help"
+         style="font-weight: bold; display: inline-block">
+        <img class="inline" src="/resources/img/external/librepay.svg" alt="Liberapay logo"/>
+        Liberapay</a></p>
+    <meta itemprop="operatingSystem" content="Linux, MacOS, Windows">
+    <meta itemprop="softwareVersion" content="9.3.8">
+    <meta itemprop="datePublished" content="2020-08-07">
+    <meta itemprop="url" content="https://orgmode.org">
+  </div>
+</div>
+<div class="banner slim grey faded inline">
+  <p style="width:90vw; color:#515151">
+    Created by
+    <a target="new" href="https://staff.science.uva.nl/~dominik/"
+       style="font-weight:500; color:inherit">Carsten Dominik</a>
+    in <a target="new" href="/manual/History-and-Acknowledgments.html" style="color:#6e6e6e">2003</a>,
+    maintained by <a target="new" href="https://fosstodon.org/@yantar92" style="font-weight:500; color:inherit">Ihor Radchenko</a>
+    and developed by
+    <a href="https://orgmode.org/org.html#History-and-Acknowledgments" style="color:#6e6e6e">many others</a>.</p>
+</div>
+<div id="outline-container-orgb62820e" class="outline-2 columns no-heading">
+<h2 id="orgb62820e">Highlights</h2>
+<div class="outline-text-2" id="text-orgb62820e">
+</div>
+<div id="outline-container-org0f84ece" class="outline-3">
+<h3 id="org0f84ece">Features</h3>
+<div class="outline-text-3" id="text-org0f84ece">
+<p>
+<a href="features.html">
+</p>
+
+<figure id="org14c01ad">
+<img src="resources/img/stars.svg" alt="Three stars" class="org-svg" title="Delve into the possibilities">
+
+</figure>
+
+<p>
+</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org8b57a9e" class="outline-3">
+<h3 id="org8b57a9e">Install</h3>
+<div class="outline-text-3" id="text-org8b57a9e">
+<p>
+<a href="https://orgmode.org/org.html#Installation">
+</p>
+
+<figure id="orgf7e9191">
+<img src="resources/img/install.svg" alt="Downwards facing arrow" class="org-svg" title="What are you waiting for?">
+
+</figure>
+
+<p>
+</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org9a6a3c4" class="outline-3">
+<h3 id="org9a6a3c4">Quickstart</h3>
+<div class="outline-text-3" id="text-org9a6a3c4">
+<p>
+<a href="quickstart.html">
+</p>
+
+<figure id="org3c0c289">
+<img src="resources/img/quickstart.svg" alt="Running stickfigure" class="org-svg" title="Start using Org. You'll never stop.">
+
+</figure>
+
+<p>
+</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org228ab62" class="outline-3">
+<h3 id="org228ab62">Contribute</h3>
+<div class="outline-text-3" id="text-org228ab62">
+<p>
+<a href="worg/org-contribute.html">
+</p>
+
+<figure id="org73f0632">
+<img src="resources/img/contribute.svg" alt="Git branch symbol" class="org-svg" title="Yes. Do this.">
+
+</figure>
+
+<p>
+</a>
+</p>
+</div>
+</div>
+</div>
+<p style="margin-top:2rem;">
+Org is a highly flexible structured plain text file format, composed
+of a few simple, yet versatile, structures &#x2014; constructed to be both
+<a href="https://karl-voit.at/2017/09/23/orgmode-as-markup-only/" style="margin-top:2rem;">simple enough for the novice</a> and <a href="http://howardism.org/Technical/Emacs/literate-devops.html">powerful enough for the expert</a>.
+</p>
+
+<p>
+Get a glimpse of the expressive power Org offers in the example below.
+Click the headings and links to discover how Org intelligently folds structural content.
+</p>
+
+<div id="org-demo" style="counter-set: chk 0">
+  <asside class="label-left">Metadata </asside>
+  <pre class="label-left">
+#+title:  <span class="org-document-title">Example Org File</span>
+#+author: <span class="org-document-info">TEC</span>
+#+date:   <span class="org-document-info">2020-10-27</span></pre>
+  <details open>
+    <summary>
+      <asside class="right" style="position: relative; z-index: -1">
+	<h4>Outlining</h4>
+	Headings and folding make structured editing a breeze.
+	Plain text makes it easy to sync and version control Org files.
+      </asside>
+      <pre><span class="org-level-1">* Revamp orgmode.org website</span></pre>
+    </summary>
+    <asside class="left">
+      <h4>Agenda</h4>
+      List todos across all your files.
+      Filter content, and update it in place.
+    </asside>
+    <pre>
+
+The <i>/beauty/</i> of org <b>*must*</b> be shared.</pre>
+    <details class="replace">
+      <summary>
+	<pre><span class="org-link">[[https://upload.wikimedia.org/wikipedia/commons/b/bd/Share_Icon.svg]]</span></pre>
+      </summary>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/bd/Share_Icon.svg" alt="share icon" style="height: 3em; margin-left: 1.5em"/>
+    </details>
+    <details open class="br">
+      <summary>
+	<pre><span class="org-level-2">** <span class="org-done">DONE Make screenshots</span></span></pre>
+      </summary>
+      <pre>   <span class="org-special-keyword">CLOSED:</span> <span class="org-date">[2020-09-03 Thu 18:24]</span>
+
+</pre>
+    </details>
+    <details open>
+      <summary>
+	<pre><span class="org-level-2">** <span class="org-done">DONE Restyle Site CSS</span></span></pre>
+      </summary>
+      <pre>
+
+Go through <span class="org-link"><a href="/resources/style/org.css">[[file:style.scss][stylesheet]]</a></span>
+
+</pre>
+    </details>
+    <input type="checkbox" class="chk" id="chk1" checked />
+    <input type="checkbox" class="chk" id="chk2" checked />
+    <input type="checkbox" class="chk extra" id="chk3" />
+    <input type="checkbox" class="chk" id="chk4" />
+    <input type="checkbox" class="chk" id="chk5" checked />
+    <input type="checkbox" class="chk extra" id="chk6" />
+    <input type="checkbox" class="chk" id="chk7" />
+    <details>
+      <summary>
+	<pre><span class="org-level-2">** <span class="org-todo">TODO</span> Check CSS on main pages <span class="count-res"></span></span></pre>
+      </summary>
+      <pre class="countme">
+
+<label for="chk1"><span class="org-list-dt">-</span> Index page</label>
+<label for="chk2"><span class="org-list-dt">-</span> Quickstart</label>
+<label for="chk3"><span class="org-list-dt">-</span> Features</label>
+<label for="chk4"><span class="org-list-dt">-</span> Releases</label>
+<label for="chk5"><span class="org-list-dt">-</span> Install</label>
+<label for="chk6"><span class="org-list-dt">-</span> Manual</label>
+<label for="chk7"><span class="org-list-dt">-</span> Contribute</label>
+</pre>
+    </details>
+  </details>
+  <details open class="label-left">
+    <summary>
+      <asside class="label-left">Prose</asside>
+      <pre><span class="org-level-1">* Learn Org</span></pre>
+    </summary>
+    <pre>
+
+Org makes easy things trivial and complex things practical.
+
+You don't need to learn Org before using Org: read the quickstart
+page and you should be good to go.  If you need more, Org will be
+here for you as well: dive into the manual and join the community!
+    </pre>
+    <details open>
+      <summary>
+	<pre><span class="org-level-2">** Feedback</span></pre>
+      </summary>
+      <pre>
+
+<span class="org-special-keyword">#+include: "other/feedback.org*manual" :only-contents t</span></pre>
+    </details>
+  </details>
+  <details open>
+    <summary>
+      <pre>
+<span class="org-level-1">* Check CSS minification ratios</span>
+      </pre>
+    </summary>
+    <asside class="right">
+      <h4>Babel</h4>
+      Perform literate programming in org,
+      with notebook-like live code execution in the buffer.
+    </asside>
+    <asside class="label-left">Code</asside>
+    <details open>
+      <summary><pre class="label-left" style="background-color: #ccc4"><span class="org-block-begin-line">#+begin_src python</span></pre></summary>
+      <pre class="src label-left" style="background-color: #fff4">
+<span class="org-keyword">from</span> pathlib <span class="org-keyword">import</span> Path
+<span class="org-variable-name">cssRatios</span> = []
+<span class="org-keyword">for</span> css_min <span class="org-keyword">in</span> Path(<span class="org-string">"resources/style"</span>).glob(<span class="org-string">"*.min.css"</span>):
+    <span class="org-variable-name">css</span> = css_min.with_suffix(<span class="org-string">''</span>).with_suffix(<span class="org-string">'.css'</span>)
+    cssRatios.append([css.name,
+    <span class="org-string">"{:.0f}% minified ({:4.1f} KiB)"</span>.<span class="org-builtin">format</span>( <b>100</b> *
+                      css_min.stat().st_size / css.stat().st_size,
+                      css_min.stat().st_size / <b>1000</b>)])
+<span class="org-keyword">return</span> cssRatios
+</pre>
+      <pre class="label-left" style="background-color: #ccc4"><span class="org-block-end-line">#+end_src</span></pre>
+    </details>
+    <details open>
+      <summary>
+	<asside class="label-left">Evaluated results</asside>
+	<pre class="label-left br"><span class="org-block-begin-line">#+RESULTS:</span></pre>
+      </summary>
+      <pre class="label-left"><span class="org-table">| index.css    | 76% minified ( 1.4 KiB) |
+| org-demo.css | 77% minified ( 2.8 KiB) |
+| errors.css   | 74% minified ( 4.9 KiB) |
+| org.css      | 75% minified (10.7 KiB) |
+</span></pre>
+    </details>
+  </details>
+</div>
+<div id="outline-container-reading" class="outline-2">
+<h2 id="reading">Further reading</h2>
+<div class="outline-text-2" id="text-reading">
+<p>
+Beyond the <a href="quickstart.html">quickstart</a> and the <a href="manual/index.html">manual</a>, Org has a <a href="guide/index.html">guide</a> and a wealth of
+community-written documentation on <a href="https://orgmode.org/worg/">Worg</a> .
+</p>
+
+<p>
+Nearly every Org user has a story to tell about how Org enables and
+empowers them &#x2014; some have found it so useful that they have written
+<a href="https://orgmode.org/worg/org-papers.html">(scientific) papers</a> about the value of Org for conducting <a href="https://en.wikipedia.org/wiki/Reproducibility#Reproducible_research">reproducible
+research</a>. Some have produced third party tools to enjoy Org outside of
+Emacs, such as mobile applications.
+</p>
+</div>
+</div>
+<div id="outline-container-more" class="outline-2">
+<h2 id="more">More Org</h2>
+<div class="outline-text-2" id="text-more">
+<p>
+The <i>de facto</i> <a href="https://orgmode.org/worg/org-media-type.html">mimetype for Org files</a> is <code>text/org</code>. Org files use the
+<code>.org</code> extension. Most operating systems don't know to open <code>.org</code>
+files in Emacs, but they can be configured to do so without much
+effort.
+</p>
+
+<p>
+While the reference implementation of Org in Emacs lisp is by far the
+most featureful, there are many additional <a href="tools.html">tools</a> that work with Org.
+</p>
+
+<div class="org-center">
+<p class="btn">
+<a href="tools.html" class="btn">Tools that work with Org</a>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org025a5be" class="outline-2">
+<h2 id="org025a5be">Project heartbeat</h2>
+<div class="outline-text-2" id="text-org025a5be">
+<ul class="org-ul">
+<li><p>
+New features:
+</p>
+<p>
+&lt;No new features added to Org mode recently&gt;
+</p></li>
+
+<li>Announcements:
+<ul class="org-ul">
+<li><a href="https://list.orgmode.org/874ioteo2e.fsf@localhost">Ihor Radchenko: #25 bbb:OrgMeetup on Wed, December 10, 19:00 UTC+3</a> (Sat Jan 10 10:54:34 UTC 2026)</li>
+<li><a href="https://list.orgmode.org/87secxh5wt.fsf@localhost">Ihor Radchenko: #24 bbb:OrgMeetup on Wed, November 12, 19:00 UTC+3</a> (Fri Dec 26 10:52:06 UTC 2025)</li>
+<li><a href="https://list.orgmode.org/87frax514c.fsf@localhost">Ihor Radchenko: Contribute to Org mode during FSF40 hackathon [online], Nov 21-23, 2025</a> (Sat Nov 01 13:36:40 UTC 2025)</li>
+<li><a href="https://list.orgmode.org/87ms5cp4j5.fsf@localhost">Ihor Radchenko: #23 [[bbb:OrgMeetup</a> on Wed, October 8, 19:00 UTC+3]] (Mon Oct 27 18:51:28 UTC 2025)</li>
+<li><a href="https://list.orgmode.org/87cy6be06w.fsf@localhost">Ihor Radchenko: #22 [[bbb:OrgMeetup</a> on Wed, September 10, 19:00 UTC+3]] (Sat Oct 25 10:40:30 UTC 2025)</li>
+</ul></li>
+<li>Discussions:
+<ul class="org-ul">
+<li><a href="https://list.orgmode.org/6f0a8b8c-f3e7-448c-abc6-aac2d3f1629c@app.fastmail.com">noa: ensure that org-support-shift-select can conform fully to emacs defaults</a> (Sat Jan 17 07:53:55 UTC 2026)</li>
+<li><a href="https://list.orgmode.org/e58aa11e-3c80-42a5-8204-5755e35472fe@gmail.com">Jacob S. Gordon: Behaviour of ‘org-agenda-clock-goto’ with ‘repeated’ tasks</a> (Wed Jan 07 05:20:08 UTC 2026)</li>
+<li><a href="https://list.orgmode.org/87v7i8zwib.fsf@localhost">Ihor Radchenko: Allow empty headlines without trainling space (was: Fwd: [PATCH] Allow empty headlines without trailing space)</a> (Sun Dec 14 19:37:11 UTC 2025)</li>
+<li><a href="https://list.orgmode.org/142896f6-3355-4339-a8e6-9390bb056a78@zmberber.com">Zeremonienmeister Berber Aab: org-timestamp-translate should always respect org-timestamp-custom-formats (or add option)</a> (Sat Nov 29 08:35:06 UTC 2025)</li>
+<li><a href="https://list.orgmode.org/87pl9bljnc.fsf@localhost">Ihor Radchenko: Typesetting code and links when exporting to LaTeX using RTL languages</a> (Sat Nov 22 01:53:12 UTC 2025)</li>
+</ul></li>
+<li>Recent blog posts (from <a href="https://sachachua.com/blog/category/emacs-news/">2026-01-19 Emacs news</a>):
+<ul class="org-ul">
+<li><a href="https://taonaw.com/2026/01/19/orgmode-capture-menu-inside-a.html">TAONAW - Emacs and Org Mode: org-mode capture: menu inside a menu</a></li>
+<li><a href="https://meanwhiling.com/the-eternal-struggle-against-orgs-overenthusiastic-keybindings.html">noa ks: The eternal struggle against org's overenthusiastic keybindings</a></li>
+<li><a href="https://curtismchale.ca/2026/01/15/org-mode-tags-agenda-my-real-meeting-workflow/">Org Mode Tags +Agenda: My Real Meeting Workflow – Curtis McHale</a> (<a href="https://mastodon.social/@curtismchale/115899472684391838">@curtismchale@mastodon.social</a>, <a href="https://www.youtube.com/watch?v=ZN8vfBjeg_I">YouTube</a>)</li>
+<li><a href="https://chrismaiorana.com/org-mode-workout-tracker/">Chris Maiorana: Workout tracking with Org Mode bounced up to HTML file</a> (<a href="https://www.youtube.com/watch?v=3b7HJgYCzzI">YouTube</a> 13:46, <a href="https://github.com/cryptstopher/org-mode-workout-tracker">GitHub</a>)</li>
+<li><a href="https://typester.dev/blog/2026/01/14/pomodoro-timer-with-orgmode">Cute menu-bar pomodoro timer integrated with org-mode - typester.dev</a> (<a href="https://pdx.social/@typester/115897368055848121">@typester@pdx.social</a>)</li>
+<li><a href="https://www.youtube.com/watch?v=ZN8vfBjeg_I">This Org Agenda View Replaced my Meeting Notes</a> (05:51)</li>
+<li><a href="https://i.redd.it/ialeacuxycdg1.png">[Prototype] org-roam-calendar: A visual and chronological browser for your notes</a> (<a href="https://www.reddit.com/r/OrgRoam/comments/1qcvc6c/prototype_orgroamcalendar_a_visual_and/">Reddit</a>)</li>
+<li><a href="https://www.reddit.com/r/orgmode/comments/1qgb6z5/whats_new_in_org_social_jan_2026/">What’s New in Org Social! (Jan 2026)</a></li>
+<li><a href="https://codeberg.org/Trevoke/org-habit-ng">Introducing org-habit-ng (needs beta testers)</a> (<a href="https://www.reddit.com/r/emacs/comments/1qfjopo/introducing_orghabitng_needs_beta_testers/">Reddit</a>)</li>
+<li><a href="https://www.reddit.com/r/emacs/comments/1qdn7zc/how_are_you_liking_vulpea_ecosystem/">How are you liking vulpea ecosystem?</a> database layer for org-mode</li>
+<li><a href="https://www.reddit.com/r/emacs/comments/1qgf7xi/orgagendaapi_mova_mobile_orgmode_without/">org-agenda-api + mova: Mobile org-mode without compromises</a></li>
+<li><a href="https://github.com/connormclaud/emacs_org_roam_calendar">connormclaud/emacs_org_roam_calendar</a> (<a href="https://www.reddit.com/r/orgmode/comments/1qcvgaa/prototype_orgroamcalendar_a_visual_and/">Reddit</a>)</li>
+<li><a href="https://github.com/GerardoCendejas/ox-reveal-layouts">GerardoCendejas/ox-reveal-layouts: Professional layouts for ox-reveal (Grids, Splits, Stickers)</a> (<a href="https://i.redd.it/1njlvrickceg1.gif">Reddit</a>)</li>
+<li><a href="https://list.orgmode.org/6f0a8b8c-f3e7-448c-abc6-aac2d3f1629c@app.fastmail.com">Org Mode requests: [FR] ensure that org-support-shift-select can conform fully to emacs defaults</a></li>
+<li>Import, export, and integration:
+<ul class="org-ul">
+<li><a href="https://zyd.lol/paste/simple-build.el.v0.1.txt">Build a flat list of HTML files out of Org Mode</a> (<a href="https://yap.zyd.lol/@zyd/statuses/01KF1WC9AA0GEXXT9GZ95PHV9E">@zyd@yap.zyd.lol</a>)</li>
+</ul></li>
+<li><a href="https://activity.andros.dev/@andros/statuses/01KF8SGBZCT29ZHRR2BXFYB6RY">org-social update: notifications, post previews</a></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-worg" class="outline-2">
+<h2 id="worg"><a href="https://orgmode.org/worg/">Worg</a>, a <i>World</i> of Org</h2>
+<div class="outline-text-2" id="text-worg">
+<p>
+Org and Org-mode have so many use cases that it is simply not possible
+to easily document them, let alone show them all off on a single page.
+As a result, <a href="https://orgmode.org/worg/">Worg</a> serves as a community wiki and provides a place to
+document and share information about all aspects of using and working
+with Org.
+</p>
+
+<p>
+For example, Worg contains:
+</p>
+
+<ul class="org-ul">
+<li><a href="https://orgmode.org/worg/org-faq.html">The FAQ</a></li>
+<li><a href="https://orgmode.org/worg/org-hacks.html">Org hacks</a></li>
+<li><a href="https://orgmode.org/worg/org-tutorials/index.html">A list of tutorials</a></li>
+<li><a href="https://orgmode.org/worg/doc.html">Documentation on all hooks, commands and options</a></li>
+<li><a href="https://orgmode.org/worg/org-in-the-wild.html">Org in the wild</a></li>
+<li><i>&#x2026;and much more</i></li>
+</ul>
+
+<p>
+Worg is maintained as a Git repository of Org files that are published
+as an HTML website.  New <a href="https://orgmode.org/worg/worg-about.html#contribute-to-worg">contributors are welcome</a>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">~$ git clone https://git.sr.ht/~bzg/worg
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-mailing-list" class="outline-2">
+<h2 id="mailing-list">Joining the mailing list</h2>
+<div class="outline-text-2" id="text-mailing-list">
+<p>
+Org mailing list is the central place where to connect with Org
+community.  You can <a href="https://lists.gnu.org/mailman/listinfo/emacs-orgmode">subscribe to the list</a> and browse the list archive 
+on <a href="https://list.orgmode.org">list.orgmode.org</a> or on <a href="https://lists.gnu.org/archive/html/emacs-orgmode/">this mailman page</a>.
+</p>
+
+<p>
+If you are not a subscriber to the list, you can still send an email
+to <a href="mailto:emacs-orgmode@gnu.org">emacs-orgmode@gnu.org</a>, we will add you to the whitelist of people
+who can reach the list.
+</p>
+
+<p>
+You can <a href="https://orgmode.org/worg/org-mailing-list.html">read more on the mailing list</a> and more information on <a href="https://orgmode.org/worg/org-web-social.html">Org news
+on the social web</a>.
+</p>
+
+<p>
+You can also connect with other org-thusiasts via IRC at <code>#org-mode</code> on
+<a href="https://libera.chat/">Libera.Chat</a>.
+</p>
+
+<p>
+The full <a href="https://orgmode.org/worg/contributors.html">list of contributors</a> to Org mode is maintained in <i>Worg</i> and
+you can also check the manual's <a href="https://orgmode.org/org.html#History-and-Acknowledgments">acknowledgments</a>.
+</p>
+</div>
+</div>
+<div id="outline-container-configs" class="outline-2">
+<h2 id="configs">Doom, Spacemacs, Scimax and popular configs</h2>
+<div class="outline-text-2" id="text-configs">
+<p>
+The Emacs starter kits <a href="https://github.com/hlissner/doom-emacs">Doom</a>, <a href="https://www.spacemacs.org/">Spacemacs</a> and <a href="https://github.com/jkitchin/scimax">Scimax</a> come with a curated
+set of packages and configurations that aim to enhance Org mode (and
+Emacs more generally) for particular use cases.  They include Org
+along with integrations between <code>org-mode</code> and other modes (such as
+<code>evil-mode</code>).  Here are links to the current packages included with
+<a href="https://github.com/hlissner/doom-emacs/blob/develop/modules/lang/org/packages.el">Doom</a>, and <a href="https://github.com/syl20bnr/spacemacs/blob/master/layers/%2Bemacs/org/packages.el">Spacemacs</a>.  <i>Scimax</i> is deeply integrated with Org so a good
+place to start is the <a href="https://github.com/jkitchin/scimax/blob/master/scimax.org#org-mode">manual</a>.  <i>Doom</i> installs a version of Org that is
+close to the development <code>HEAD</code>, while <i>Spacemacs</i> and <i>Scimax</i> track org
+elpa.
+</p>
+
+<p>
+Starter kits often make significant changes to the default user
+experience for Emacs.  If you are looking for something closer to
+vanilla Emacs there are popular configs such as <a href="https://github.com/purcell/emacs.d/blob/master/lisp/init-org.el">Purcell's emacs.d</a> that
+include org-mode customization and Org-related packages.
+</p>
+</div>
+</div>
+<div id="outline-container-editors" class="outline-2">
+<h2 id="editors">In Other Editors, Android, iOS</h2>
+<div class="outline-text-2" id="text-editors">
+<p>
+While the full set of Org <a href="features.html">features</a> is currently exclusive to Emacs,
+basic functionality for Org files has been implemented for a variety
+of editors and mobile apps. Here are some extensions and apps that
+enable support for Org files.
+</p>
+
+<ul class="org-ul">
+<li><b>Vim</b> : <a href="https://github.com/kristijanhusak/orgmode.nvim">orgmode.nvim</a>, <a href="https://github.com/jceb/vim-orgmode">vim-orgmode</a>, and <a href="https://github.com/axvr/org.vim">org.vim</a></li>
+<li><b>VS Codium</b> : <a href="https://github.com/vscode-org-mode/vscode-org-mode">vscode-org-mode</a></li>
+<li><b>Android</b> : <a href="https://www.orgzlyrevived.com/">Orgzly Revived</a>, <a href="https://orgro.org/">Orgro</a>, <a href="https://github.com/Artawower/orgnote">Org Note</a></li>
+<li><b>iOS</b> : <a href="https://mobileorg.github.io/features/">MobileOrg</a>, <a href="https://orgro.org/">Orgro</a></li>
+<li><b>Web</b> : <a href="https://organice.200ok.ch/">Organice (progressive web app)</a>, <a href="https://github.com/Artawower/orgnote">Org Note</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Created by
+    <a href="https://github.com/tecosaur/"
+       style="font-weight: bold; font-size: 0.9em; letter-spacing: 0.05em"
+       title="Your friendly neighbourhood Org-thusiast">TEC</a>
+    with
+    <a href="https://orgmode.org/worg/org-site-colophon.html">
+        <img class="inline" src="/resources/img/org-mode-unicorn-borderless-icon.svg" alt="Org mode unicorn logo"
+             style="height:1.5em; margin-bottom:-0.3em; opacity:0.9;"
+             title="Conquer the world with Org 😉"/>
+    </a>
+</p>
+<p class="license-text" style="color: #aaa">licensed under the
+    <a rel="license" href="https://git.sr.ht/~bzg/orgweb/blob/master/LICENSE.org"
+       style="font-size: 0.8em; letter-spacing: 0.1em; font-weight: bold; color: inherit"
+       title="GNU Free Documentation License version 1.3">GNU FDL 1.3</a>
+    &mdash; see the <a href="https://git.sr.ht/~bzg/orgweb">source code</a> for this website.
+</p>
+</div>
+</body>
+</html>

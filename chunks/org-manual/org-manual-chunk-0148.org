@@ -1,0 +1,24 @@
+#+chunk-id: org-manual-chunk-0148
+#+source-file: org-manual
+#+heading-path: Exporting > Texinfo Export > Images in Texinfo export
+#+start-line: 16442
+#+end-line: 16458
+#+external-urls: 
+#+mirrored-urls: 
+*** Images in Texinfo export
+:PROPERTIES:
+:DESCRIPTION: Image attributes.
+:END:
+
+#+cindex: @samp{ATTR_TEXINFO}, keyword
+Insert a file link to the image in the Org file, and the Texinfo
+export backend inserts the image.  These links must have the usual
+supported image extensions and no descriptions.  To scale the image,
+use =:width= and =:height= attributes.  For alternate text, use =:alt=
+and specify the text using Texinfo code, as shown in the example:
+
+#+begin_example
+,#+ATTR_TEXINFO: :width 1in :alt Alternate @i{text}
+[[ridt.pdf]]
+#+end_example
+

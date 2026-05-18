@@ -1,0 +1,49 @@
+#+chunk-id: org-manual-chunk-0015
+#+source-file: org-manual
+#+heading-path: Tables > Built-in Table Editor > Regions
+#+start-line: 1650
+#+end-line: 1691
+#+external-urls: 
+#+mirrored-urls: 
+*** Regions
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+- {{{kbd(C-c C-x M-w)}}} (~org-table-copy-region~) ::
+
+  #+kindex: C-c C-x M-w
+  #+findex: org-table-copy-region
+  Copy a rectangular region from a table to a special clipboard.
+  Point and mark determine edge fields of the rectangle.  If there is
+  no active region, copy just the current field.  The process ignores
+  horizontal separator lines.
+
+- {{{kbd(C-c C-x C-w)}}} (~org-table-cut-region~) ::
+
+  #+kindex: C-c C-x C-w
+  #+findex: org-table-cut-region
+  Copy a rectangular region from a table to a special clipboard, and
+  blank all fields in the rectangle.  So this is the "cut" operation.
+
+- {{{kbd(C-c C-x C-y)}}} (~org-table-paste-rectangle~) ::
+
+  #+kindex: C-c C-x C-y
+  #+findex: org-table-paste-rectangle
+  Paste a rectangular region into a table.  The upper left corner ends
+  up in the current field.  All involved fields are overwritten.  If
+  the rectangle does not fit into the present table, the table is
+  enlarged as needed.  The process ignores horizontal separator lines.
+
+- {{{kbd(M-RET)}}} (~org-table-wrap-region~) ::
+
+  #+kindex: M-RET
+  #+findex: org-table-wrap-region
+  Split the current field at point position and move the rest to the
+  line below.  If there is an active region, and both point and mark
+  are in the same column, the text in the column is wrapped to minimum
+  width for the given number of lines.  A numeric prefix argument may
+  be used to change the number of desired lines.  If there is no
+  region, but you specify a prefix argument, the current field is made
+  blank, and the content is appended to the field above.
+

@@ -1,0 +1,25 @@
+#+chunk-id: org-guide-chunk-0008
+#+source-file: org-guide
+#+heading-path: Agenda Views > Commands in the Agenda Buffer > View/Go to Org file
+#+start-line: 1740
+#+end-line: 1757
+#+external-urls: 
+#+mirrored-urls: 
+*** View/Go to Org file
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+- {{{kbd(SPC)}}} (~org-agenda-show-and-scroll-up~) ::
+
+  Display the original location of the item in another window.
+  With a prefix argument, make sure that drawers stay folded.
+
+- {{{kbd(TAB)}}} (~org-agenda-goto~) ::
+
+  Go to the original location of the item in another window.
+
+- {{{kbd(RET)}}} (~org-agenda-switch-to~) ::
+
+  Go to the original location of the item and delete other windows.
+

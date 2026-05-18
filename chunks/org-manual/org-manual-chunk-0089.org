@@ -1,0 +1,37 @@
+#+chunk-id: org-manual-chunk-0089
+#+source-file: org-manual
+#+heading-path: Exporting > Beamer Export > Beamer export commands
+#+start-line: 13103
+#+end-line: 13132
+#+external-urls: 
+#+mirrored-urls: 
+*** Beamer export commands
+:PROPERTIES:
+:DESCRIPTION: For creating Beamer documents.
+:END:
+
+- {{{kbd(C-c C-e l b)}}} (~org-beamer-export-to-latex~) ::
+  #+kindex: C-c C-e l b
+  #+findex: org-beamer-export-to-latex
+
+  Export as LaTeX file with a =.tex= extension.  For =myfile.org=, Org
+  exports to =myfile.tex=, overwriting without warning.
+
+- {{{kbd(C-c C-e l B)}}} (~org-beamer-export-as-latex~) ::
+  #+kindex: C-c C-e l B
+  #+findex: org-beamer-export-as-latex
+
+  Export to a temporary buffer.  Does not create a file.
+
+- {{{kbd(C-c C-e l P)}}} (~org-beamer-export-to-pdf~) ::
+  #+kindex: C-c C-e l P
+  #+findex: org-beamer-export-to-pdf
+
+  Export as LaTeX file and then convert it to PDF format.
+
+- {{{kbd(C-c C-e l O)}}} ::
+  #+kindex: C-c C-e l O
+
+  Export as LaTeX file, convert it to PDF format, and then open the
+  PDF file.
+

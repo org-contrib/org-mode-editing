@@ -1,0 +1,43 @@
+#+chunk-id: org-manual-chunk-0153
+#+source-file: org-manual
+#+heading-path: Exporting > Advanced Export Configuration > Export hooks
+#+start-line: 16790
+#+end-line: 16825
+#+external-urls: 
+#+mirrored-urls: 
+*** Export hooks
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+#+vindex: org-export-before-processing-hook
+#+vindex: org-export-before-processing-functions
+#+vindex: org-export-before-parsing-hook
+#+vindex: org-export-before-parsing-functions
+The export process executes two hooks before the actual exporting
+begins.  The first hook, ~org-export-before-processing-functions~,
+runs before any expansions of macros, Babel code, and include keywords
+in the buffer.  The second hook,
+~org-export-before-parsing-functions~, runs before the buffer is
+parsed.
+
+Functions added to these hooks are called with a single argument: the
+export backend actually used, as a symbol.  You may use them for
+heavy duty structural modifications of the document.  For example, you
+can remove every headline in the buffer during export like this:
+
+#+begin_src emacs-lisp
+(defun my-headline-removal (backend)
+  "Remove all headlines in the current buffer.
+BACKEND is the export backend being used, as a symbol."
+  (org-map-entries
+   (lambda ()
+     (delete-region (point) (line-beginning-position 2))
+     ;; We need to tell `org-map-entries' to not skip over heading at
+     ;; point.  Otherwise, it would continue from _next_ heading.  See
+     ;; the docstring of `org-map-entries' for details.
+     (setq org-map-continue-from (point)))))
+
+(add-hook 'org-export-before-parsing-functions #'my-headline-removal)
+#+end_src
+

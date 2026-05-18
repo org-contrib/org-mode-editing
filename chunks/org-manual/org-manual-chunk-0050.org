@@ -1,0 +1,73 @@
+#+chunk-id: org-manual-chunk-0050
+#+source-file: org-manual
+#+heading-path: Refiling and Archiving > Archiving > Moving a tree to an archive file
+#+start-line: 7723
+#+end-line: 7788
+#+external-urls: 
+#+mirrored-urls: 
+*** Moving a tree to an archive file
+:PROPERTIES:
+:DESCRIPTION: Moving a tree to an archive file.
+:ALT_TITLE: Moving subtrees
+:END:
+#+cindex: external archiving
+
+The most common archiving action is to move a project tree to another
+file, called the archive file.
+
+- {{{kbd(C-c C-x C-s)}}} or short {{{kbd(C-c $)}}} (~org-archive-subtree~) ::
+
+  #+kindex: C-c C-x C-s
+  #+kindex: C-c $
+  #+findex: org-archive-subtree
+  #+vindex: org-archive-location
+  Archive the subtree starting at point position to the location given
+  by ~org-archive-location~.
+
+- {{{kbd(C-u C-c C-x C-s)}}} ::
+
+  #+kindex: C-u C-c C-x C-s
+  Check if any direct children of the current headline could be moved
+  to the archive.  To do this, check each subtree for open TODO
+  entries.  If none is found, the command offers to move it to the
+  archive location.  If point is /not/ on a headline when this command
+  is invoked, check level 1 trees.
+
+- {{{kbd(C-u C-u C-c C-x C-s)}}} ::
+
+  #+kindex: C-u C-u C-c C-x C-s
+  As above, but check subtree for timestamps instead of TODO entries.
+  The command offers to archive the subtree if it /does/ contain
+  a timestamp, and that timestamp is in the past.
+
+#+cindex: archive locations
+The default archive location is a file in the same directory as the
+current file, with the name derived by appending =_archive= to the
+current file name.  You can also choose what heading to file archived
+items under, with the possibility to add them to a datetree in a file.
+For information and examples on how to specify the file and the
+heading, see the documentation string of the variable
+~org-archive-location~.
+
+There is also an in-buffer option for setting this variable, for
+example:
+
+#+cindex: @samp{ARCHIVE}, keyword
+: #+ARCHIVE: %s_done::
+
+#+cindex: ARCHIVE, property
+If you would like to have a special archive location for a single
+entry or a (sub)tree, give the entry an =ARCHIVE= property with the
+location as the value (see [[*Properties and Columns]]).
+
+#+vindex: org-archive-save-context-info
+When a subtree is moved, it receives a number of special properties
+that record context information like the file from where the entry
+came, its outline path, the archiving time etc.  Configure the variable
+~org-archive-save-context-info~ to adjust the amount of information
+added.
+
+#+vindex: org-archive-subtree-save-file-p
+When ~org-archive-subtree-save-file-p~ is non-~nil~, save the target
+archive buffer.
+

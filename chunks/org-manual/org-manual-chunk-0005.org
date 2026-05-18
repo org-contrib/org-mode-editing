@@ -1,0 +1,42 @@
+#+chunk-id: org-manual-chunk-0005
+#+source-file: org-manual
+#+heading-path: Introduction > Feedback > How to create a useful backtrace
+#+start-line: 336
+#+end-line: 370
+#+external-urls: 
+#+mirrored-urls: 
+*** How to create a useful backtrace
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+#+cindex: backtrace of an error
+If working with Org produces an error with a message you do not
+understand, you may have hit a bug.  The best way to report this is by
+providing, in addition to what was mentioned above, a backtrace.  This
+is information from the built-in debugger about where and how the
+error occurred.  Here is how to produce a useful backtrace:
+
+1. Reload uncompiled versions of all Org mode Lisp files.  The
+   backtrace contains much more information if it is produced with
+   uncompiled code.  To do this, use
+
+   : C-u M-x org-reload <RET>
+
+   #+texinfo: @noindent
+   or, from the menu: Org \rarr Refresh/Reload \rarr Reload Org uncompiled.
+
+2. Then, activate the debugger:
+
+   : M-x toggle-debug-on-error <RET>
+
+   #+texinfo: @noindent
+   or, from the menu: Options \rarr Enter Debugger on Error.
+
+3. Do whatever you have to do to hit the error.  Do not forget to
+   document the steps you take.
+
+4. When you hit the error, a =*Backtrace*= buffer appears on the
+   screen.  Save this buffer to a file---for example using {{{kbd(C-x
+   C-w)}}}---and attach it to your bug report.
+

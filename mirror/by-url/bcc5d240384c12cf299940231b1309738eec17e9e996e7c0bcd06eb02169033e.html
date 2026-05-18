@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 2026-02-20 Fri 01:20 -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Babel: Languages</title>
+<meta name="author" content="Eric Schulte, Dan Davison, Tom Dye" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" title="Standard" href="/worg/style/worg.css" type="text/css" />
+<link rel="alternate stylesheet" title="Test" href="/worg/style/worg-test.css" type="text/css" />
+<link rel="alternate stylesheet" title="Classic" href="/worg/style/worg-classic.css" type="text/css" />
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+<style type="text/css">#outline-container-langs{ clear:both; }</style>
+<style type="text/css">#outline-container-syntax{ clear:both; }</style>
+<style type="text/css">#table-of-contents{ max-width:100%; }</style>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="../index.html"> UP </a>
+ |
+ <a accesskey="H" href="https://orgmode.org/worg/"> HOME </a>
+</div><div id="preamble" class="status">
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function() {
+      document.getElementById("table-of-contents").onclick = function() {
+          var elem = document.getElementById("text-table-of-contents");
+          elem.style.display = elem.style.display == "block" ? "none" : "block";
+      }
+  });
+
+  var url = document.location.href;
+  var orgsource = url.substring(0, url.lastIndexOf("."))+".org.html";
+  function show_org_source(){
+      document.location.href = orgsource;
+  }
+</script>
+
+<div id="support">
+    <p>Support via <a href="https://liberapay.com/org-mode" title="Donations always help.">Liberapay</a></p>
+</div>
+</div>
+<div id="content" class="content">
+<header>
+<h1 class="title">Babel: Languages</h1>
+</header><nav id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#langs">Language Support</a>
+<ul>
+<li><a href="#org8f9a171">Language Support Distributed with Emacs</a></li>
+<li><a href="#orgac28c7d">Language Support Distributed with Org-contrib</a></li>
+<li><a href="#orge97627a">Language Support Distributed by an Emacs Lisp Package Archive</a></li>
+</ul>
+</li>
+<li><a href="#configure">Activate a Language</a></li>
+<li><a href="#develop">Develop Support for a Language</a>
+<ul>
+<li><a href="#orgbf69abe">Some additional comments/development tips</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+<div id="outline-container-langs" class="outline-2">
+<h2 id="langs">Language Support</h2>
+<div class="outline-text-2" id="text-langs">
+<p>
+Babel supports a growing number of programming languages; more than
+ten dozen languages currently have some Babel support.  Babel support
+for more than three dozen widely used languages is distributed with
+Emacs, and the various <a href="https://www.emacswiki.org/emacs/ELPA">Emacs Lisp Package Archives</a> include support for
+more than four dozen languages.  In addition, for various historical
+reasons, Babel support for more than two dozen languages is
+distributed in the <a href="https://git.sr.ht/~bzg/org-contrib">Org-contrib package</a>.
+</p>
+
+<p>
+This page provides pointers to sources of Babel language support,
+instructions to activate a supported language, and a brief guide to
+developing support for a language in case you'd like to use a new
+language with Babel or contribute to existing Babel language support.
+</p>
+</div>
+<div id="outline-container-org8f9a171" class="outline-3">
+<h3 id="org8f9a171">Language Support Distributed with Emacs</h3>
+<div class="outline-text-3" id="text-org8f9a171">
+<p>
+Table <a href="#org82ee7ca">1</a> lists the Babel language support distributed
+with Emacs. The table provides links to a web page with information
+about the language and to documentation, indicates how the language is
+identified by Babel, and honors the generosity of your colleagues who
+have volunteered to maintain Babel language support.
+</p>
+
+<p>
+If you would like to maintain a Babel language support file, then
+please review <a href="https://orgmode.org/worg/org-maintenance.html">how Org is maintained</a> and send an email to the <a href="https://orgmode.org/worg/org-mailing-list.html">mailing
+list</a>.
+</p>
+
+<p>
+Note that there are <a href="lang-compat.html">inconsistencies among supported languages</a>.
+</p>
+
+<table id="org82ee7ca">
+<caption class="t-above"><span class="table-number">Table 1:</span> Core language support for Babel</caption>
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Language</th>
+<th scope="col" class="org-left">Identifier</th>
+<th scope="col" class="org-left">Documentation</th>
+<th scope="col" class="org-left">Maintainer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><a href="https://groovy-lang.org/">Apache Groovy</a></td>
+<td class="org-left"><code>groovy</code></td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Palak Mathur</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://en.wikipedia.org/wiki/AWK#Versions_and_implementations">AWK</a></td>
+<td class="org-left"><code>awk</code></td>
+<td class="org-left"><a href="ob-doc-awk.html">ob-doc-awk</a></td>
+<td class="org-left">Tyler Smith</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://en.wikipedia.org/wiki/List_of_compilers#C_compilers">C</a></td>
+<td class="org-left"><code>C</code></td>
+<td class="org-left"><a href="ob-doc-C.html">ob-doc-c</a></td>
+<td class="org-left">Thierry Banel</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://en.wikipedia.org/wiki/List_of_compilers#C++_compilers">C++</a></td>
+<td class="org-left"><code>cpp</code></td>
+<td class="org-left"><a href="ob-doc-C.html">ob-doc-c</a></td>
+<td class="org-left">Thierry Banel</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://learn.microsoft.com/en-us/dotnet/csharp/">C#</a></td>
+<td class="org-left"><code>csharp</code></td>
+<td class="org-left"><a href="ob-doc-csharp.html">ob-doc-csharp</a></td>
+<td class="org-left">Maximilian Kueffner</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://www.gnu.org/software/emacs/manual/html_mono/calc.html">Calc</a></td>
+<td class="org-left"><code>calc</code></td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Tom Gillespie</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://en.wikipedia.org/wiki/List_of_command-line_interpreters">CLI</a></td>
+<td class="org-left"><code>shell</code></td>
+<td class="org-left"><a href="ob-doc-shell.html">ob-doc-shell</a></td>
+<td class="org-left">Matthew Trzcinski</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://clojure.org/">Clojure</a></td>
+<td class="org-left"><code>clojure</code></td>
+<td class="org-left"><a href="ob-doc-clojure.html">ob-doc-clojure</a></td>
+<td class="org-left">Daniel Kraus</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></td>
+<td class="org-left"><code>css</code></td>
+<td class="org-left"><a href="ob-doc-css.html">ob-doc-css</a></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://dlang.org">D</a></td>
+<td class="org-left"><code>D</code></td>
+<td class="org-left"><a href="ob-doc-C.html">ob-doc-c</a></td>
+<td class="org-left">Thierry Banel</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://ditaa.sourceforge.net">ditaa</a></td>
+<td class="org-left"><code>ditaa</code></td>
+<td class="org-left"><a href="ob-doc-ditaa.html">ob-doc-ditaa</a></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/index.html">Emacs Lisp</a></td>
+<td class="org-left"><code>emacs-lisp</code>, <code>elisp</code></td>
+<td class="org-left"><a href="ob-doc-elisp.html">ob-doc-elisp</a></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://www.gnu.org/software/emacs/manual/html_mono/eshell.html">Eshell</a></td>
+<td class="org-left"><code>eshell</code></td>
+<td class="org-left"><a href="ob-doc-eshell.html">ob-doc-eshell</a></td>
+<td class="org-left">stardiviner</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://en.wikipedia.org/wiki/List_of_compilers#Fortran_compilers">Fortran</a></td>
+<td class="org-left"><code>F90</code></td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Ken Mankoff</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://www.gnu.org/software/gforth/">Gforth</a></td>
+<td class="org-left"><code>forth</code></td>
+<td class="org-left"><a href="ob-doc-forth.html">ob-doc-forth</a></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://www.gnuplot.info/">Gnuplot</a></td>
+<td class="org-left"><code>gnuplot</code></td>
+<td class="org-left"><a href="ob-doc-gnuplot.html">ob-doc-gnuplot</a></td>
+<td class="org-left">Ihor Radchenko</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://www.gnu.org/software/screen/">GNU Screen</a></td>
+<td class="org-left"><code>screen</code></td>
+<td class="org-left"><a href="ob-doc-screen.html">ob-doc-screen</a></td>
+<td class="org-left">Ken Mankoff</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://www.gnu.org/software/sed/">GNU sed</a></td>
+<td class="org-left"><code>sed</code></td>
+<td class="org-left"><a href="ob-doc-sed.html">ob-doc-sed</a></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://www.graphviz.org/">Graphviz</a></td>
+<td class="org-left"><code>dot</code></td>
+<td class="org-left"><a href="ob-doc-dot.html">ob-doc-dot</a></td>
+<td class="org-left">Justin Abrahms</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://www.haskell.org/">Haskell</a></td>
+<td class="org-left"><code>haskell</code></td>
+<td class="org-left"><a href="ob-doc-haskell.html">ob-doc-haskell</a></td>
+<td class="org-left">Lawrence Bottorff</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://openjdk.java.net/">Java</a></td>
+<td class="org-left"><code>java</code></td>
+<td class="org-left"><a href="ob-doc-java.html">ob-doc-java</a></td>
+<td class="org-left">Ian Martins</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://julialang.org/">Julia</a></td>
+<td class="org-left"><code>julia</code></td>
+<td class="org-left"><a href="ob-doc-julia.html">ob-doc-julia</a></td>
+<td class="org-left">Pedro Bruel</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://www.latex-project.org/">LaTeX</a></td>
+<td class="org-left"><code>latex</code></td>
+<td class="org-left"><a href="ob-doc-LaTeX.html">ob-doc-LaTeX</a></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://lilypond.org/">LilyPond</a></td>
+<td class="org-left"><code>ly</code></td>
+<td class="org-left"><a href="ob-doc-lilypond.html">ob-doc-lilypond</a></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://en.wikipedia.org/wiki/List_of_compilers#Common_Lisp_compilers">Lisp</a></td>
+<td class="org-left"><code>lisp</code></td>
+<td class="org-left"><a href="ob-doc-lisp.html">ob-doc-lisp</a></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://www.lua.org/">Lua</a></td>
+<td class="org-left"><code>lua</code></td>
+<td class="org-left"><a href="ob-doc-lua.html">ob-doc-lua</a></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://en.wikipedia.org/wiki/Make_(software)#Derivatives">Make</a></td>
+<td class="org-left"><code>makefile</code></td>
+<td class="org-left"><a href="ob-doc-makefile.html">ob-doc-makefile</a></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://www.mathworks.com/products/matlab.html">MATLAB®</a></td>
+<td class="org-left"><code>matlab</code></td>
+<td class="org-left"><a href="ob-doc-octave-matlab.html">ob-doc-octave-matlab</a></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://maxima.sourceforge.net/">Maxima</a></td>
+<td class="org-left"><code>max</code></td>
+<td class="org-left"><a href="ob-doc-maxima.html">ob-doc-maxima</a></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://nodejs.org/">Node.js</a></td>
+<td class="org-left"><code>js</code></td>
+<td class="org-left"><a href="ob-doc-js.html">ob-doc-js</a></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://caml.inria.fr/">OCaml</a></td>
+<td class="org-left"><code>ocaml</code></td>
+<td class="org-left"><a href="ob-doc-ocaml.html">ob-doc-ocaml</a></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://www.gnu.org/software/octave/">Octave</a></td>
+<td class="org-left"><code>octave</code></td>
+<td class="org-left"><a href="ob-doc-octave.html">ob-doc-octave</a></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://orgmode.org/">Org mode</a></td>
+<td class="org-left"><code>org</code></td>
+<td class="org-left"><a href="ob-doc-org.html">ob-doc-org</a></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://www.perl.org/">Perl</a></td>
+<td class="org-left"><code>perl</code></td>
+<td class="org-left"><a href="ob-doc-perl.html">ob-doc-perl</a></td>
+<td class="org-left">Corwin Brust</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://plantuml.com">PlantUML</a></td>
+<td class="org-left"><code>plantuml</code></td>
+<td class="org-left"><a href="ob-doc-plantuml.html">ob-doc-plantuml</a></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://processing.org/">Processing</a></td>
+<td class="org-left"><code>processing</code></td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">Jarmo Hurri</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://www.python.org/">Python</a></td>
+<td class="org-left"><code>python</code></td>
+<td class="org-left"><a href="ob-doc-python.html">ob-doc-python</a></td>
+<td class="org-left">Jack Kamm</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://www.r-project.org/">R</a></td>
+<td class="org-left"><code>R</code></td>
+<td class="org-left"><a href="ob-doc-R.html">ob-doc-R</a></td>
+<td class="org-left">Jeremie Juste</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://www.ruby-lang.org/">Ruby</a></td>
+<td class="org-left"><code>ruby</code></td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://sass-lang.com/">Sass</a></td>
+<td class="org-left"><code>sass</code></td>
+<td class="org-left">&nbsp;</td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://en.wikipedia.org/wiki/List_of_compilers#Scheme_compilers_and_interpreters">Scheme</a></td>
+<td class="org-left"><code>scheme</code></td>
+<td class="org-left"><a href="ob-doc-scheme.html">ob-doc-scheme</a></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://en.wikipedia.org/wiki/SQL">SQL</a></td>
+<td class="org-left"><code>sql</code></td>
+<td class="org-left"><a href="ob-doc-sql.html">ob-doc-sql</a></td>
+<td class="org-left">Daniel Kraus</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://www.sqlite.org/index.html">SQLite</a></td>
+<td class="org-left"><code>sqlite</code></td>
+<td class="org-left"><a href="ob-doc-sqlite.html">ob-doc-sqlite</a></td>
+<td class="org-left">Nick Savage</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgac28c7d" class="outline-3">
+<h3 id="orgac28c7d">Language Support Distributed with Org-contrib</h3>
+<div class="outline-text-3" id="text-orgac28c7d">
+<p>
+Once upon a time, Babel language support that was not released under
+the <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GPL</a> was kept in <a href="https://git.sr.ht/~bzg/org-contrib">Org-contrib</a>.  Later, with the goal of easing the
+burden of Org-mode maintenance, lesser-known languages distributed
+with Emacs were also moved to <a href="https://git.sr.ht/~bzg/org-contrib">Org-contrib</a>.  Table
+<a href="#org984aa81">2</a> includes links to information about these languages and some
+documentation, and how the language is identified by Babel.
+</p>
+
+<table id="org984aa81">
+<caption class="t-above"><span class="table-number">Table 2:</span> Org-contrib language support for Babel</caption>
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Language</th>
+<th scope="col" class="org-left">Identifier</th>
+<th scope="col" class="org-left">Documentation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><a href="https://abcnotation.com/">abc</a></td>
+<td class="org-left"><code>abc</code></td>
+<td class="org-left"><a href="ob-doc-abc.html">ob-doc-abc</a></td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://www.arduino.cc/">Arduino</a></td>
+<td class="org-left"><code>arduino</code></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://coq.inria.fr/">Coq</a></td>
+<td class="org-left"><code>coq</code></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://www.emacswiki.org/emacs/EbnfToPsPackage">ebnf2ps</a></td>
+<td class="org-left"><code>ebnf</code></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://fomus.sourceforge.net/">FOMUS</a></td>
+<td class="org-left"><code>fomus</code></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://hledger.org/">hledger</a></td>
+<td class="org-left"><code>hledger</code></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://iolanguage.org/index.html">io</a></td>
+<td class="org-left"><code>io</code></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://www.jsoftware.com/">J</a></td>
+<td class="org-left"><code>J</code></td>
+<td class="org-left"><a href="ob-doc-J.html">ob-doc-J</a></td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://ledger-cli.org/">ledger</a></td>
+<td class="org-left"><code>ledger</code></td>
+<td class="org-left"><a href="ob-doc-ledger.html">ob-doc-ledger</a></td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://www.wolfram.com/mathematica/">Mathematica</a></td>
+<td class="org-left"><code>mathematica</code></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://github.com/mfillpot/mathomatic">Mathomatic™</a></td>
+<td class="org-left"><code>mathomatic</code></td>
+<td class="org-left"><a href="ob-doc-mathomatic.html">ob-doc-mathomatic</a></td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://github.com/mono/mono">Mono</a></td>
+<td class="org-left"><code>vbnet</code></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://www.mozart2.org/">Mozart</a></td>
+<td class="org-left"><code>oz</code></td>
+<td class="org-left"><a href="ob-doc-oz.html">ob-doc-oz</a></td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://www.mcternan.me.uk/mscgen/">Mscgen</a></td>
+<td class="org-left"><code>mscgen</code></td>
+<td class="org-left"><a href="ob-doc-mscgen.html">ob-doc-mscgen</a></td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://www.php.net/">PHP</a></td>
+<td class="org-left"><code>php</code></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://picolisp.com/5000/!wiki?home">PicoLisp</a></td>
+<td class="org-left"><code>picolisp</code></td>
+<td class="org-left"><a href="ob-doc-picolisp.html">ob-doc-picolisp</a></td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://redis.io/">Redis</a></td>
+<td class="org-left"><code>redis</code></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://www.shenlanguage.org/">Shen</a></td>
+<td class="org-left"><code>shen</code></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://archive.epa.gov/med/med_archive_03/web/html/smiles.html">SMILES</a></td>
+<td class="org-left"><code>smiles</code></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://bwrcs.eecs.berkeley.edu/Classes/IcBook/SPICE/">SPICE</a></td>
+<td class="org-left"><code>spice</code></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://mc-stan.org/">Stan</a></td>
+<td class="org-left"><code>stan</code></td>
+<td class="org-left"><a href="ob-doc-stan.html">ob-doc-stan</a></td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://stata.com/">Stata</a></td>
+<td class="org-left"><code>stata</code></td>
+<td class="org-left"><a href="ob-doc-stata.html">ob-doc-stata</a></td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://supercollider.github.io/">SuperCollider</a></td>
+<td class="org-left"><code>sclang</code></td>
+<td class="org-left">&nbsp;</td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="http://www.tcl.tk/">Tcl</a></td>
+<td class="org-left"><code>tcl</code></td>
+<td class="org-left"><a href="ob-doc-tcl.html">ob-doc-tcl</a></td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://wiki.gnome.org/Projects/Vala">Vala</a></td>
+<td class="org-left"><code>vala</code></td>
+<td class="org-left"><a href="ob-doc-vala.html">ob-doc-vala</a></td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://github.com/zevlg/eukleides">ΕΥΚΛΕΙΔΗΣ</a></td>
+<td class="org-left"><code>eukleides</code></td>
+<td class="org-left"><a href="ob-doc-eukleides.html">ob-doc-eukleides</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orge97627a" class="outline-3">
+<h3 id="orge97627a">Language Support Distributed by an Emacs Lisp Package Archive</h3>
+<div class="outline-text-3" id="text-orge97627a">
+<p>
+Many language support packages are distributed through an <a href="https://www.emacswiki.org/emacs/ELPA">Emacs Lisp
+Package Archive</a>, such as GNU ELPA and MELPA.
+</p>
+
+<p>
+Table <a href="#org5f35fa7">3</a> lists the Babel language support distributed
+by GNU ELPA.  The table provides links to a web page with information
+about the language and to documentation, and indicates how the
+language is identified by Babel.
+</p>
+
+<table id="org5f35fa7">
+<caption class="t-above"><span class="table-number">Table 3:</span> GNU ELPA language support for Babel</caption>
+
+<colgroup>
+<col  class="org-left">
+
+<col  class="org-left">
+
+<col  class="org-left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Language</th>
+<th scope="col" class="org-left">Identifier</th>
+<th scope="col" class="org-left">Documentation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><a href="http://asymptote.sourceforge.net/">Asymptote</a></td>
+<td class="org-left"><code>asymptote</code></td>
+<td class="org-left"><a href="ob-doc-asymptote.html">ob-doc-asymptote</a></td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://haxe.org/">Haxe</a></td>
+<td class="org-left"><code>haxe</code></td>
+<td class="org-left"><a href="ob-doc-haxe.html">ob-doc-haxe</a></td>
+</tr>
+
+<tr>
+<td class="org-left"><a href="https://openscad.org/">OpenSCAD</a></td>
+<td class="org-left"><code>scad</code></td>
+<td class="org-left"><a href="ob-doc-scad.html">ob-doc-scad</a></td>
+</tr>
+</tbody>
+</table>
+
+<p>
+You can find very many Babel language support packages on MELPA with a
+suitably configured <code>M-x list-packages</code>.  In theory, it ought to be
+possible to identify all the Babel language support packages with a
+keyword search using <code>M-x package-menu-filter</code>, but this method is
+unreliable because package developers do not subscribe to a keyword
+authority list.  In practice, you can search for package names that
+start with <code>ob-</code> and go from there.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-configure" class="outline-2">
+<h2 id="configure">Activate a Language</h2>
+<div class="outline-text-2" id="text-configure">
+<p>
+To add support for a particular language to your Babel installation
+first make sure that the requirements of the language are met, then
+customize the <code>org-babel-load-languages</code> variable with the appropriate language identifier, &lt;lang&gt;, from Table <a href="#org82ee7ca">1</a> or Table <a href="#org984aa81">2</a>, as follows:
+</p>
+
+<pre class="example">
+(&lt;lang&gt; . t)
+</pre>
+
+<p>
+To <i>remove</i> support for a language, customize the <code>org-babel-load-languages</code> variable, as follows:
+</p>
+
+<pre class="example">
+(&lt;lang&gt; . nil)
+</pre>
+
+<p>
+Here is an example manual configuration of this variable, which
+enables support for <code>R</code>, and disables support for <code>emacs-lisp</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><code><span class="org-comment-delimiter">;; </span><span class="org-comment">active Babel languages
+</span>(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((R . t)
+   (emacs-lisp . nil)))
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-develop" class="outline-2">
+<h2 id="develop">Develop Support for a Language</h2>
+<div class="outline-text-2" id="text-develop">
+<p>
+The core Babel functions (viewing, export, tangling, etc.) are
+language agnostic and will work even for languages that are not
+explicitly supported.  Explicit language-specific support is required
+only for evaluation of code blocks in a language.
+</p>
+
+<p>
+Babel is designed to be easily extended to support new languages.
+Language support is added by defining language-specific functions
+using a simple naming convention.  The full suite of possible language
+specific functions need not be implemented all at once, but rather it
+is possible (and encouraged) to develop language-specific
+functionality in an incremental fashion&mdash;Babel will make use of
+those functions which are available, and will fail gracefully when
+functionality has not yet been implemented.
+</p>
+
+<p>
+There is a short Emacs Lisp template (<a href="https://git.sr.ht/~bzg/worg/tree/master/item/org-contrib/babel/ob-template.el">ob-template.el</a>) which can be
+used as a starting point for implementing support for new languages.
+To fetch a copy of this file, please clone Worg:
+</p>
+
+<pre class="example" id="orgbcd4409">
+~$ git clone https://git.sr.ht/~bzg/worg
+</pre>
+
+<p>
+You should find <code>org-contrib/babel/ob-template.el</code>.
+</p>
+
+<p>
+Developers are encouraged to read the <a href="../../../org-contribute.html">Org-mode contribution
+instructions</a> in the hope that the language support can be added to the
+Org-mode core.
+</p>
+</div>
+<div id="outline-container-orgbf69abe" class="outline-3">
+<h3 id="orgbf69abe">Some additional comments/development tips</h3>
+<div class="outline-text-3" id="text-orgbf69abe">
+<p>
+Although most of the instructions in <code>ob-template.el</code> should be
+useful, and explain clearly how to use the code, some explanations for
+more advanced functionalities could be a little outdated
+(contributions are very welcome. The thread <a href="https://lists.gnu.org/archive/html/emacs-orgmode/2015-09/msg00487.html">here</a> may contain some
+extra useful information, although most of the suggestions provided by
+Eric should have been implemented). If some of the instructions seem
+clear, then here are some suggestions to gain clarity:
+</p>
+
+<ul class="org-ul">
+<li>start with instrumenting <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Using-Edebug.html">see edebug</a> the <code>org-babel-execute:template</code>
+function, and subsequently evaluate some test-code block. In this way you
+can easily figure out how Babel processes header arguments. Then in
+the end, the result printed by a code block simply consists of the output
+of that function.</li>
+<li>The trick is to process the <code>vars</code>, <code>result-params</code>, and the <code>full-body</code>
+variable (<code>let</code> form within <code>org-babel-execute:template</code> function) and
+send the appropriate lines to some inferior process (or as an argument to
+some shell command). The inferior process can be created in the function
+<code>org-babel-template-initiate-session</code>. The result returned by the inferior
+process (or by the shell command), should be returned by
+<code>org-babel-execute:template</code> (of course you might further process it
+before you return it).</li>
+<li>Don't forget to read the comments in the ob-template file, e.g. for
+sending/receiving output to/from an inferior process. The functions in
+<code>org-babel-comint</code> might also be useful.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="license"><p>Documentation from the orgmode.org/worg/ website (either in its HTML format or in its Org format) is licensed under the <a href="http://www.gnu.org/copyleft/fdl.html">GNU Free Documentation License version 1.3</a> or later.  The code examples and css stylesheets are licensed under the <a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License v3</a> or later.</p></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+#+chunk-id: org-guide-chunk-0004
+#+source-file: org-guide
+#+heading-path: Capture, Refile, Archive > Capture > Setting up capture
+#+start-line: 1352
+#+end-line: 1365
+#+external-urls: 
+#+mirrored-urls: 
+*** Setting up capture
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+The following customization sets a default target[fn:9] file for notes.
+
+#+begin_src emacs-lisp
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+#+end_src
+
+You may also define a global key for capturing new material (see
+[[*Activation]]).
+

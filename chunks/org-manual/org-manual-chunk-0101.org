@@ -1,0 +1,30 @@
+#+chunk-id: org-manual-chunk-0101
+#+source-file: org-manual
+#+heading-path: Exporting > HTML Export > Headlines in HTML export
+#+start-line: 13680
+#+end-line: 13702
+#+external-urls: 
+#+mirrored-urls: 
+*** Headlines in HTML export
+:PROPERTIES:
+:DESCRIPTION: Formatting headlines.
+:END:
+#+cindex: headlines, in HTML export
+
+Headlines are exported to =<h1>=, =<h2>=, etc.  Each headline gets the
+=id= attribute from =CUSTOM_ID= property, or a unique generated value,
+see [[*Internal Links]].
+
+#+vindex: org-html-self-link-headlines
+Headlines can contain a link to themselves.  To enable it, you can:
+
+- Set the variable ~org-html-self-link-headlines~ to a non-~nil~ value
+- In an Org file, use ~html-self-link-headlines~ option
+  : #+OPTIONS: html-self-link-headlines:t
+
+
+#+texinfo: @noindent
+When enabled, the text of the headlines is wrapped in =<a>= tags.
+These tags have a =href= attribute making the headlines link to
+themselves.
+

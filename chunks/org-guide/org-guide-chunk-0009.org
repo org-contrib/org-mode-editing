@@ -1,0 +1,63 @@
+#+chunk-id: org-guide-chunk-0009
+#+source-file: org-guide
+#+heading-path: Agenda Views > Commands in the Agenda Buffer > Change display
+#+start-line: 1758
+#+end-line: 1813
+#+external-urls: 
+#+mirrored-urls: 
+*** Change display
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+#+attr_texinfo: :sep ,
+- {{{kbd(o)}}} (~delete-other-windows~) ::
+
+  Delete other windows.
+
+- {{{kbd(v d)}}} or short {{{kbd(d)}}} (~org-agenda-day-view~) ::
+
+  Switch to day view.
+
+- {{{kbd(v w)}}} or short {{{kbd(w)}}} (~org-agenda-week-view~) ::
+
+  Switch to week view.
+
+- {{{kbd(f)}}} (~org-agenda-later~) ::
+
+  Go forward in time to display the span following the current one.
+  For example, if the display covers a week, switch to the following
+  week.
+
+- {{{kbd(b)}}} (~org-agenda-earlier~) ::
+
+  Go backward in time to display earlier dates.
+
+- {{{kbd(.)}}} (~org-agenda-goto-today~) ::
+
+  Go to today.
+
+- {{{kbd(j)}}} (~org-agenda-goto-date~) ::
+
+  Prompt for a date and go there.
+
+- {{{kbd(v l)}}} or {{{kbd(v L)}}} or short {{{kbd(l)}}} (~org-agenda-log-mode~) ::
+
+  Toggle Logbook mode.  In Logbook mode, entries that were marked as
+  done while logging was on (see the variable ~org-log-done~) are
+  shown in the agenda, as are entries that have been clocked on that
+  day.  When called with a {{{kbd(C-u)}}} prefix argument, show all
+  possible logbook entries, including state changes.
+
+- {{{kbd(r)}}}, {{{kbd(g)}}} (~org-agenda-redo~) ::
+
+  Recreate the agenda buffer, for example to reflect the changes after
+  modification of the timestamps of items.
+
+- {{{kbd(s)}}} (~org-save-all-org-buffers~) ::
+
+  #+kindex: C-x C-s
+  #+findex: org-save-all-org-buffers
+  #+kindex: s
+  Save all Org buffers in the current Emacs session, and also the
+  locations of IDs.
+

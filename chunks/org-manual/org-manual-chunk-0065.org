@@ -1,0 +1,31 @@
+#+chunk-id: org-manual-chunk-0065
+#+source-file: org-manual
+#+heading-path: Agenda Views > Presentation and Sorting > Categories
+#+start-line: 9688
+#+end-line: 9711
+#+external-urls: 
+#+mirrored-urls: 
+*** Categories
+:PROPERTIES:
+:DESCRIPTION: Not all tasks are equal.
+:END:
+#+cindex: category
+#+cindex: @samp{CATEGORY}, keyword
+
+The category is a broad label assigned to each agenda item.  By
+default, the category is simply derived from the file name, but you
+can also specify it with a special line in the buffer, like
+this:
+
+: #+CATEGORY: Thesis
+
+#+cindex: @samp{CATEGORY}, property
+If you would like to have a special category for a single entry or
+a (sub)tree, give the entry a =CATEGORY= property with the special
+category you want to apply as the value.
+
+#+vindex: org-agenda-category-icon-alist
+The display in the agenda buffer looks best if the category is not
+longer than 10 characters.  You can set up icons for category by
+customizing the ~org-agenda-category-icon-alist~ variable.
+

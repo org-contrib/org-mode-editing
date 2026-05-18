@@ -1,0 +1,25 @@
+#+chunk-id: org-manual-chunk-0069
+#+source-file: org-manual
+#+heading-path: Agenda Views > Commands in the Agenda Buffer > Motion
+#+start-line: 10045
+#+end-line: 10062
+#+external-urls: 
+#+mirrored-urls: 
+*** Motion
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+#+cindex: motion commands in agenda
+
+- {{{kbd(n)}}} (~org-agenda-next-line~) ::
+
+  #+kindex: n
+  #+findex: org-agenda-next-line
+  Next line (same as {{{kbd(DOWN)}}} and {{{kbd(C-n)}}}).
+
+- {{{kbd(p)}}} (~org-agenda-previous-line~) ::
+
+  #+kindex: p
+  #+findex: org-agenda-previous-line
+  Previous line (same as {{{kbd(UP)}}} and {{{kbd(C-p)}}}).
+

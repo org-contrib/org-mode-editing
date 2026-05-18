@@ -1,0 +1,57 @@
+#+chunk-id: org-manual-chunk-0026
+#+source-file: org-manual
+#+heading-path: Tables > The Spreadsheet > Updating the table
+#+start-line: 2790
+#+end-line: 2839
+#+external-urls: 
+#+mirrored-urls: 
+*** Updating the table
+:PROPERTIES:
+:DESCRIPTION: Recomputing all dependent fields.
+:END:
+#+cindex: recomputing table fields
+#+cindex: updating, table
+
+Recalculation of a table is normally not automatic, but needs to be
+triggered by a command.  To make recalculation at least
+semi-automatic, see [[*Advanced features]].
+
+In order to recalculate a line of a table or the entire table, use the
+following commands:
+
+- {{{kbd(C-c *)}}} (~org-table-recalculate~) ::
+
+  #+kindex: C-c *
+  #+findex: org-table-recalculate
+  Recalculate the current row by first applying the stored column
+  formulas from left to right, and all field/range formulas in the
+  current row.
+
+- {{{kbd(C-u C-c *)}}} or {{{kbd(C-u C-c C-c)}}} ::
+
+  #+kindex: C-u C-c *
+  #+kindex: C-u C-c C-c
+  Recompute the entire table, line by line.  Any lines before the
+  first hline are left alone, assuming that these are part of the
+  table header.
+
+- {{{kbd(C-u C-u C-c *)}}} or {{{kbd(C-u C-u C-c C-c)}}} (~org-table-iterate~) ::
+
+  #+kindex: C-u C-u C-c *
+  #+kindex: C-u C-u C-c C-c
+  #+findex: org-table-iterate
+  Iterate the table by recomputing it until no further changes occur.
+  This may be necessary if some computed fields use the value of other
+  fields that are computed /later/ in the calculation sequence.
+
+- {{{kbd(M-x org-table-recalculate-buffer-tables)}}} ::
+
+  #+findex: org-table-recalculate-buffer-tables
+  Recompute all tables in the current buffer.
+
+- {{{kbd(M-x org-table-iterate-buffer-tables)}}} ::
+
+  #+findex: org-table-iterate-buffer-tables
+  Iterate all tables in the current buffer, in order to converge
+  table-to-table dependencies.
+

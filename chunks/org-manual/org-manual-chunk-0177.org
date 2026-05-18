@@ -1,0 +1,93 @@
+#+chunk-id: org-manual-chunk-0177
+#+source-file: org-manual
+#+heading-path: Working with Source Code > Evaluating Code Blocks > How to evaluate source code
+#+start-line: 18900
+#+end-line: 18985
+#+external-urls: 
+#+mirrored-urls: 
+*** How to evaluate source code
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+Org captures the results of the code block evaluation and inserts them
+in the Org file, right after the code block.  The insertion point is
+after a newline and the =RESULTS= keyword.  Org creates the =RESULTS=
+keyword if one is not already there.  More details in [[*Results of
+Evaluation]].
+
+By default, Org enables only Emacs Lisp code blocks for execution.
+See [[*Languages]] to enable other languages.
+
+#+kindex: C-c C-c
+#+kindex: C-c C-v e
+#+findex: org-babel-execute-src-block
+Org provides many ways to execute code blocks.  {{{kbd(C-c C-c)}}} or
+{{{kbd(C-c C-v e)}}} with the point on a code block[fn:: The option
+~org-babel-no-eval-on-ctrl-c-ctrl-c~ can be used to remove code
+evaluation from the {{{kbd(C-c C-c)}}} key binding.] calls the
+~org-babel-execute-src-block~ function, which executes the code in the
+block, collects the results, and inserts them in the buffer.
+
+#+cindex: @samp{CALL}, keyword
+#+vindex: org-babel-inline-result-wrap
+By calling a named code block[fn:49] from an Org mode buffer or
+a table.  Org can call the named code blocks from the current Org mode
+buffer or from the "Library of Babel" (see [[*Library of Babel]]).
+
+The syntax for =CALL= keyword is:
+
+#+begin_example
+,#+CALL: <name>(<arguments>)
+,#+CALL: <name>[<inside header arguments>](<arguments>) <end header arguments>
+#+end_example
+
+The syntax for inline named code blocks is:
+
+#+begin_example
+... call_<name>(<arguments>) ...
+... call_<name>[<inside header arguments>](<arguments>)[<end header arguments>] ...
+#+end_example
+
+When inline syntax is used, the result is wrapped based on the
+variable ~org-babel-inline-result-wrap~, which by default is set to
+~"=%s="~ to produce verbatim text suitable for markup.
+
+- =<name>= ::
+
+  This is the name of the code block (see [[*Structure of Code Blocks]])
+  to be evaluated in the current document.  If the block is located in
+  another file, start =<name>= with the file name followed by
+  a colon.  For example, in order to execute a block named =clear-data=
+  in =file.org=, you can write the following:
+
+  : #+CALL: file.org:clear-data()
+
+- =<arguments>= ::
+
+  Org passes arguments to the code block using standard function call
+  syntax.  For example, a =#+CALL:= line that passes =4= to a code
+  block named =double=, which declares the header argument =:var n=2=,
+  would be written as:
+
+  : #+CALL: double(n=4)
+
+  #+texinfo: @noindent
+  Note how this function call syntax is different from the header
+  argument syntax.
+
+- =<inside header arguments>= ::
+
+  Org passes inside header arguments to the named code block using the
+  header argument syntax.  Inside header arguments apply to code block
+  evaluation.  For example, =[:results output]= collects results
+  printed to stdout during code execution of that block.  Note how
+  this header argument syntax is different from the function call
+  syntax.
+
+- =<end header arguments>= ::
+
+  End header arguments affect the results returned by the code block.
+  For example, =:results html= wraps the results in a =#+BEGIN_EXPORT
+  html= block before inserting the results in the Org buffer.
+

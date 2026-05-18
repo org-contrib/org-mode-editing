@@ -1,0 +1,68 @@
+#+chunk-id: org-manual-chunk-0070
+#+source-file: org-manual
+#+heading-path: Agenda Views > Commands in the Agenda Buffer > View/Go to Org file
+#+start-line: 10063
+#+end-line: 10123
+#+external-urls: 
+#+mirrored-urls: 
+*** View/Go to Org file
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+#+cindex: view file commands in agenda
+
+- {{{kbd(SPC)}}} or {{{kbd(mouse-3)}}} (~org-agenda-show-and-scroll-up~) ::
+
+  #+kindex: SPC
+  #+kindex: mouse-3
+  #+findex: org-agenda-show-and-scroll-up
+  Display the original location of the item in another window.
+  With a prefix argument, make sure that drawers stay folded.
+
+- {{{kbd(L)}}} (~org-agenda-recenter~) ::
+
+  #+findex: org-agenda-recenter
+  Display original location and recenter that window.
+
+- {{{kbd(TAB)}}} or {{{kbd(mouse-2)}}} (~org-agenda-goto~) ::
+
+  #+kindex: TAB
+  #+kindex: mouse-2
+  #+findex: org-agenda-goto
+  Go to the original location of the item in another window.
+
+- {{{kbd(RET)}}} (~org-agenda-switch-to~) ::
+
+  #+kindex: RET
+  #+findex: org-agenda-switch-to
+  Go to the original location of the item and delete other windows.
+
+- {{{kbd(F)}}} (~org-agenda-follow-mode~) ::
+
+  #+kindex: F
+  #+findex: org-agenda-follow-mode
+  #+vindex: org-agenda-start-with-follow-mode
+  Toggle Follow mode.  In Follow mode, as you move point through the
+  agenda buffer, the other window always shows the corresponding
+  location in the Org file.  The initial setting for this mode in new
+  agenda buffers can be set with the variable
+  ~org-agenda-start-with-follow-mode~.
+
+- {{{kbd(C-c C-x b)}}} (~org-agenda-tree-to-indirect-buffer~) ::
+
+  #+kindex: C-c C-x b
+  #+findex: org-agenda-tree-to-indirect-buffer
+  Display the entire subtree of the current item in an indirect
+  buffer.  With a numeric prefix argument N, go up to level N and then
+  take that tree.  If N is negative, go up that many levels.  With
+  a {{{kbd(C-u)}}} prefix, do not remove the previously used indirect
+  buffer.
+
+- {{{kbd(C-c C-o)}}} (~org-agenda-open-link~) ::
+
+  #+kindex: C-c C-o
+  #+findex: org-agenda-open-link
+  Follow a link in the entry.  This offers a selection of any links in
+  the text belonging to the referenced Org node.  If there is only one
+  link, follow it without a selection prompt.
+

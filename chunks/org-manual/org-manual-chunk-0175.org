@@ -1,0 +1,66 @@
+#+chunk-id: org-manual-chunk-0175
+#+source-file: org-manual
+#+heading-path: Working with Source Code > Environment of a Code Block > Choosing a working directory
+#+start-line: 18805
+#+end-line: 18863
+#+external-urls: 
+#+mirrored-urls: 
+*** Choosing a working directory
+:PROPERTIES:
+:UNNUMBERED: notoc
+:END:
+
+#+cindex: working directory, in a code block
+#+cindex: @samp{dir}, header argument
+#+cindex: @samp{mkdirp}, header argument
+The =dir= header argument specifies the default directory during code
+block execution.  If it is absent, then the directory associated with
+the current buffer is used.  In other words, supplying =:dir
+DIRECTORY= temporarily has the same effect as changing the current
+directory with {{{kbd(M-x cd RET DIRECTORY)}}}, and then not setting
+=dir=.  Under the surface, =dir= simply sets the value of the Emacs
+variable ~default-directory~.  Setting =mkdirp= header argument to
+a non-~nil~ value creates the directory, if necessary.
+
+Setting =dir= to the symbol ~attach~ or the string ~"'attach"~ will
+set =dir= to the directory returned by ~(org-attach-dir)~, set
+=:mkdirp yes=, and insert any file paths, as when using =:results
+file=, which are under the node's attachment directory using
+=attachment:= links instead of the usual =file:= links.  Any returned
+path outside the attachment directory will use =file:= links as per
+usual.
+
+For example, to save the plot file in the =Work/= folder of the home
+directory---notice tilde is expanded:
+
+#+begin_example
+,#+BEGIN_SRC R :file myplot.png :dir ~/Work
+  matplot(matrix(rnorm(100), 10), type="l")
+,#+END_SRC
+#+end_example
+
+To evaluate the code block on a remote machine, supply a remote
+directory name using Tramp syntax.  For example:
+
+#+begin_example
+,#+BEGIN_SRC R :file plot.png :dir /scp:dand@yakuba.princeton.edu:
+  plot(1:10, main=system("hostname", intern=TRUE))
+,#+END_SRC
+#+end_example
+
+Org first captures the text results as usual for insertion in the Org
+file.  Then Org also inserts a link to the remote file, thanks to
+Emacs Tramp.  Org constructs the remote path to the file name from
+=dir= and ~default-directory~, as illustrated here:
+
+: [[file:/scp:dand@yakuba.princeton.edu:/home/dand/plot.png][plot.png]]
+
+When =dir= is used with =session=, Org sets the starting directory for
+a new session.  But Org does not alter the directory of an already
+existing session.
+
+Do not use =dir= with =:exports results= or with =:exports both= to
+avoid Org inserting incorrect links to remote files.  That is because
+Org does not expand ~default directory~ to avoid some underlying
+portability issues.
+

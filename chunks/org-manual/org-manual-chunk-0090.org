@@ -1,0 +1,73 @@
+#+chunk-id: org-manual-chunk-0090
+#+source-file: org-manual
+#+heading-path: Exporting > Beamer Export > Beamer specific export settings
+#+start-line: 13133
+#+end-line: 13198
+#+external-urls: 
+#+mirrored-urls: 
+*** Beamer specific export settings
+:PROPERTIES:
+:DESCRIPTION: For customizing Beamer export.
+:END:
+
+Beamer export backend has several additional keywords for customizing
+Beamer output.  These keywords work similar to the general options
+settings (see [[*Export Settings]]).
+
+- =BEAMER_THEME= ::
+
+  #+cindex: @samp{BEAMER_THEME}, keyword
+  #+vindex: org-beamer-theme
+  The Beamer layout theme (~org-beamer-theme~).  Use square brackets
+  for options.  For example:
+
+  : #+BEAMER_THEME: Rochester [height=20pt]
+
+- =BEAMER_FONT_THEME= ::
+
+  #+cindex: @samp{BEAMER_FONT_THEME}, keyword
+  The Beamer font theme.
+
+- =BEAMER_INNER_THEME= ::
+
+  #+cindex: @samp{BEAMER_INNER_THEME}, keyword
+  The Beamer inner theme.
+
+- =BEAMER_OUTER_THEME= ::
+
+  #+cindex: @samp{BEAMER_OUTER_THEME}, keyword
+  The Beamer outer theme.
+
+- =BEAMER_HEADER= ::
+
+  #+cindex: @samp{BEAMER_HEADER}, keyword
+  Arbitrary lines inserted in the preamble, just before the =hyperref=
+  settings.
+
+- =DESCRIPTION= ::
+
+  #+cindex: @samp{DESCRIPTION}, keyword
+  The document description.  For long descriptions, use multiple
+  =DESCRIPTION= keywords.  By default, =hyperref= inserts
+  =DESCRIPTION= as metadata.  Use ~org-latex-hyperref-template~ to
+  configure document metadata.  Use ~org-latex-title-command~ to
+  configure typesetting of description as part of front matter.
+
+- =KEYWORDS= ::
+
+  #+cindex: @samp{KEYWORDS}, keyword
+  The keywords for defining the contents of the document.  Use
+  multiple =KEYWORDS= lines if necessary.  By default, =hyperref=
+  inserts =KEYWORDS= as metadata.  Use ~org-latex-hyperref-template~
+  to configure document metadata.  Use ~org-latex-title-command~ to
+  configure typesetting of keywords as part of front matter.
+
+- =SUBTITLE= ::
+
+  #+cindex: @samp{SUBTITLE}, keyword
+  Document's subtitle.  For typesetting, use
+  ~org-beamer-subtitle-format~ string.  Use
+  ~org-latex-hyperref-template~ to configure document metadata.  Use
+  ~org-latex-title-command~ to configure typesetting of subtitle as
+  part of front matter.
+
