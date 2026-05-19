@@ -1,0 +1,18 @@
+#+TITLE: org-mode-editing
+
+Offline Org Mode docs, ready to open locally.
+
+* Start here
+- New to Org or need a quick refresher? Open =docs/org-guide.org=.
+- Need the full details? Open =docs/org-manual.org=.
+
+* What this gives you
+- A fast, local place to check Org syntax and behavior.
+- No web searching needed for common Org questions.
+
+* Files you actually need
+- Quick guide: =docs/org-guide.org=
+- Full manual: =docs/org-manual.org=
+
+* License
+See =LICENSE.md=.
