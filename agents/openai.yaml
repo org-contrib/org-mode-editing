@@ -1,4 +1,4 @@
----
-name: "org-mode-editing"
-description: "This skill packages the Org Mode manual and guide as offline Org sources with a chunk index."
-entrypoint: "SKILL.md"
+interface:
+  display_name: "Org Mode Editing"
+  short_description: "Offline Org Mode manual and guide"
+  default_prompt: "Use $org-mode-editing to answer my Org Mode question from the bundled manual and guide."
